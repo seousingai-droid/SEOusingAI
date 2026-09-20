@@ -3,6 +3,7 @@ title: "Can AI Do SEO? What to Automate and What Not To"
 metaTitle: "Can AI Do SEO? What to Automate and What Not To"
 description: "AI can do most of the manual work in SEO, including audits, research, drafts, and reports. It cannot replace strategy, fact-checking, or real experience."
 eyebrow: "Automation"
+image: "/images/what-ai-can-automate-in-seo.webp"
 order: 7
 published: "2026-09-20"
 updated: "2026-09-20"
@@ -21,6 +22,8 @@ faqs:
 ## Can AI do SEO?
 
 AI can do most of the manual work in SEO, but it cannot do the whole job alone. It reads, sorts, drafts, and summarizes faster than any person. It does not know whether what it wrote is true, and it has never run your business.
+
+![Two lists comparing what AI can automate in SEO, such as audits, keyword grouping, drafts, schema code, and reports, with what needs a person: strategy, fact checking, real experience, relationships, and final approval](/images/what-ai-can-automate-in-seo.webp "AI takes the volume work. A person keeps the parts that depend on truth and judgment.")
 
 The honest answer is a split. Let AI do the volume. Keep a person on the truth.
 

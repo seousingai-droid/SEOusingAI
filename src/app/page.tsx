@@ -294,7 +294,16 @@ export default function Home() {
               </Reveal>
             ))}
             <Reveal delay={200}>
-              <div className="card flex h-full flex-col justify-between p-7">
+              <div className="card flex h-full flex-col overflow-hidden">
+                <div aria-hidden className="grid aspect-video place-items-center border-b border-line bg-ink px-7">
+                  <div className="w-full max-w-[300px] rounded-xl bg-white p-4 shadow-xl">
+                    <div className="flex items-center gap-2"><span className="h-5 w-5 rounded-full bg-[#e8eaed]" /><span className="h-2 w-24 rounded bg-[#dadce0]" /></div>
+                    <div className="mt-3 h-3 w-4/5 rounded bg-[#1a0dab]/80" />
+                    <div className="mt-2.5 h-2 w-full rounded bg-[#dadce0]" /><div className="mt-1.5 h-2 w-2/3 rounded bg-[#dadce0]" />
+                    <div className="mt-3 flex items-center gap-2"><div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#e8eaed]"><div className="h-full w-3/4 rounded-full bg-mark" /></div><span className="font-mono text-[10px] text-[#4d5156]">48/60</span></div>
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col justify-between p-7">
                 <div>
                   <p className="eyebrow">Free tools</p>
                   <ul className="mt-5 space-y-3">
@@ -302,6 +311,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <p className="mt-6 text-[15px] text-muted">They run in your browser. Nothing you type is sent anywhere.</p>
+                </div>
               </div>
             </Reveal>
           </div>

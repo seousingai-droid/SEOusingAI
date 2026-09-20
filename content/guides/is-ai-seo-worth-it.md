@@ -3,6 +3,7 @@ title: "Is AI SEO Worth It? Benefits, Costs, and ROI"
 metaTitle: "Is AI SEO Worth It? Benefits, Costs, and ROI"
 description: "AI SEO is worth it when a person checks the work and the traffic can turn into revenue. Here are the real benefits, the risks, and a simple way to work out ROI."
 eyebrow: "Worth it?"
+image: "/images/ai-seo-roi-formula.webp"
 order: 6
 published: "2026-09-20"
 updated: "2026-09-20"
@@ -42,6 +43,8 @@ The fix is simple and not optional: a person checks every fact, adds real experi
 ## How do you work out the ROI of AI SEO?
 
 You work out the ROI of AI SEO by comparing the value of the extra customers it brings with what you spent. Use your own numbers in this formula.
+
+![Formula for the return on AI SEO: extra customers per month times profit per customer times 12 months, minus yearly SEO cost, equals your yearly return](/images/ai-seo-roi-formula.webp "Use profit per customer, not revenue, and count only customers you can trace to search.")
 
 ```
 Extra customers per month from search

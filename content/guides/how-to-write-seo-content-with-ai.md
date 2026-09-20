@@ -3,6 +3,7 @@ title: "How to Write SEO Content With AI (and Keep It Good)"
 metaTitle: "How to Write SEO Content With AI, Step by Step"
 description: "To write SEO content with AI, start from a brief, draft section by section, then verify every fact and add your own experience. Here is the full process."
 eyebrow: "Content"
+image: "/images/writing-seo-content-with-ai-steps.webp"
 order: 8
 published: "2026-09-20"
 updated: "2026-09-20"
@@ -21,6 +22,8 @@ faqs:
 ## How do you write SEO content with AI?
 
 You write SEO content with AI in five steps: brief, draft, verify, enrich, and optimize. AI leads the first two. A person leads the next two. You share the last.
+
+![Five steps for writing SEO content with AI: brief and draft led by AI, verify and enrich led by a person, and optimize shared](/images/writing-seo-content-with-ai-steps.webp "AI leads the first two steps. A person leads the two that decide quality.")
 
 1. **Brief.** Paste the titles and headings of the top results into the AI and ask what they cover, what they miss, and what format they use.
 2. **Draft.** Have the AI write one section at a time from the brief, starting each section with a direct answer.
