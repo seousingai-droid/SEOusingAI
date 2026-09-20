@@ -1,5 +1,7 @@
 import { getGuides } from "@/lib/content";
 import { site, tools, abs } from "@/lib/site";
+import { servicePages } from "@/lib/servicePages";
+import { landingPages } from "@/lib/landingPages";
 
 export const dynamic = "force-static";
 
@@ -11,6 +13,8 @@ export function GET() {
     ``,
     `## Services`,
     `- [AI SEO services](${abs("/services")}): done-for-you audits, fixes, strategy, content, link outreach, local SEO, and reporting, with human review`,
+    ...servicePages.map((sp) => `- [${sp.name}](${abs(`/services/${sp.slug}`)}): ${sp.description}`),
+    ...landingPages.map((l) => `- [${l.nav}](${abs(`/${l.slug}`)}): ${l.description}`),
     `- [Book a call](${abs("/book-a-call")}): free ${site.callMinutes}-minute strategy call on Google Meet`,
     ``,
     `## Guides`,
@@ -18,6 +22,9 @@ export function GET() {
     ``,
     `## Free tools`,
     ...tools.map((t) => `- [${t.name}](${abs(`/tools/${t.slug}`)}): ${t.blurb}`),
+    ``,
+    `## Reference`,
+    `- [AI SEO glossary](${abs("/glossary")}): plain-English definitions of SEO and AI search terms`,
     ``,
     `## About`,
     `- [About](${abs("/about")}): what the studio is, founded ${site.founded}, and how it is funded`,

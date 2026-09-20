@@ -5,6 +5,7 @@ import ServicesHub from "@/components/ServicesHub";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { services, site, abs } from "@/lib/site";
+import { servicePages } from "@/lib/servicePages";
 
 export const metadata: Metadata = {
   title: "AI SEO Services, Done for You",
@@ -42,11 +43,29 @@ export default function Services() {
         </div>
       </section>
 
+      <section className="band band-line">
+        <div className="wrap">
+          <p className="eyebrow">Most requested</p>
+          <h2 className="h-lg mt-5">Six services, explained in full</h2>
+          <p className="lede mt-5 max-w-2xl">Each page says what the service is, the signs you need it, what you get, and what it will not do.</p>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {servicePages.map((sp) => (
+              <Link key={sp.slug} href={`/services/${sp.slug}`} className="card card-hover p-7">
+                <h3 className="text-[22px] font-bold">{sp.name}</h3>
+                <p className="mt-2 text-[15.5px] text-muted">{sp.lede}</p>
+                <p className="mt-5 font-mono text-[13px] text-mark">Read more →</p>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-10 text-muted">Looking for the big picture? See how we work as an <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-agency">AI SEO agency</Link>, or read <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-for-small-business">AI SEO for small business</Link> and <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-for-b2b">AI SEO for B2B</Link>.</p>
+        </div>
+      </section>
+
       {services.map((s, i) => (
         <section key={s.key} className="band band-line" id={s.key.toLowerCase().replace(/[^a-z]+/g, "-")}>
           <div className="wrap grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
-              <p className="eyebrow">Line {i + 1} of {services.length}</p>
+              <p className="eyebrow">Everything we cover · {i + 1} of {services.length}</p>
               <h2 className="h-lg mt-4 !text-[clamp(30px,3.6vw,44px)]">{s.key}</h2>
               <p className="lede mt-4">{s.summary}</p>
             </div>

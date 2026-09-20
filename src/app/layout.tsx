@@ -15,7 +15,7 @@ export const viewport: Viewport = { themeColor: "#0a0f1f" };
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: "SEO Using AI: Rank on Google and in AI Answers", template: "%s | SEO Using AI" },
-  description: site.description,
+  description: "SEO using AI for small businesses: get found on Google, Google Maps, and in AI answers. Free guides and tools, or done-for-you services checked by a person.",
   applicationName: site.name,
   alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: site.name, locale: site.locale, url: site.url },
@@ -35,6 +35,11 @@ const orgLd = {
       description: site.description,
       foundingDate: site.founded,
       logo: { "@type": "ImageObject", url: abs("/icon.svg") },
+      slogan: site.tagline,
+      knowsAbout: site.knowsAbout,
+      areaServed: { "@type": "Country", name: "United States" },
+      ...(site.social.length ? { sameAs: site.social } : {}),
+      contactPoint: { "@type": "ContactPoint", contactType: "sales", email: site.email, url: abs("/book-a-call"), availableLanguage: "English" },
     },
     {
       "@type": "WebSite",

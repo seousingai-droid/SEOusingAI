@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getGuides } from "@/lib/content";
 import { abs, tools } from "@/lib/site";
+import { servicePages } from "@/lib/servicePages";
+import { landingPages } from "@/lib/landingPages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const guides = getGuides();
@@ -9,6 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: abs("/"), lastModified: latest, priority: 1 },
     { url: abs("/services"), lastModified: latest, priority: 0.9 },
+    ...servicePages.map((sp) => ({ url: abs(`/services/${sp.slug}`), lastModified: latest, priority: 0.9 })),
+    ...landingPages.map((l) => ({ url: abs(`/${l.slug}`), lastModified: latest, priority: 0.9 })),
+    { url: abs("/glossary"), lastModified: latest, priority: 0.6 },
     { url: abs("/book-a-call"), lastModified: latest, priority: 0.7 },
     { url: abs("/guides"), lastModified: latest, priority: 0.9 },
     ...guides.map((g) => ({ url: abs(`/guides/${g.slug}`), lastModified: g.updated, priority: 0.9 })),

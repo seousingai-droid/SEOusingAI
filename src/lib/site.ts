@@ -14,11 +14,15 @@ export const site = {
   // Paste your Google Calendar appointment schedule link here to turn on live booking.
   // Google Calendar > Create > Appointment schedule > set Google Meet as the location > Share > copy the booking page link.
   bookingUrl: "",
+  // Public brand profiles. Add each URL as you create it. They feed the Organization schema (sameAs),
+  // which is how Google and AI tools connect your profiles to this website.
+  social: [] as string[],
+  knowsAbout: ["Search engine optimization", "AI SEO", "Generative engine optimization", "Local SEO", "Technical SEO", "Content marketing", "Link building", "Google Business Profile", "AI Overviews"],
   callMinutes: 30,
   nav: [
     { label: "Services", href: "/services" },
+    { label: "AI SEO agency", href: "/ai-seo-agency" },
     { label: "Guides", href: "/guides" },
-    { label: "AI SEO tools", href: "/guides/best-ai-seo-tools" },
     { label: "Free tools", href: "/tools" },
     { label: "About", href: "/about" },
   ],
@@ -97,6 +101,7 @@ export const services = [
 export const offers = [
   {
     id: "checkup",
+    href: "/services/ai-seo-audit",
     need: "I don't know what is wrong",
     name: "Website Checkup",
     plain: "We check every page of your website and tell you, in plain English, what stops customers from finding you.",
@@ -105,6 +110,7 @@ export const offers = [
   },
   {
     id: "fix",
+    href: "/services/technical-seo",
     need: "My website is broken or slow",
     name: "Fix-It",
     plain: "We repair the problems that hurt your rankings: errors, slow pages, broken links, and missing behind-the-scenes details.",
@@ -113,6 +119,7 @@ export const offers = [
   },
   {
     id: "grow",
+    href: "/services/ai-content-writing",
     need: "I want more customers from Google",
     name: "Monthly Growth",
     plain: "Each month we plan, write, publish, and improve pages so more of the right people find you.",
@@ -121,6 +128,7 @@ export const offers = [
   },
   {
     id: "local",
+    href: "/services/local-seo",
     need: "I need more local customers",
     name: "Local Boost",
     plain: "We help you show up on Google Maps and in \"near me\" searches, ahead of nearby competitors.",
@@ -129,6 +137,7 @@ export const offers = [
   },
   {
     id: "ai",
+    href: "/services/ai-search-optimization",
     need: "I want ChatGPT to recommend me",
     name: "AI Visibility",
     plain: "We set up your website so ChatGPT, Perplexity, and Google's AI answers can understand it, trust it, and mention it.",

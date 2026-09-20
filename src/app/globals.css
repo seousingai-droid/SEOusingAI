@@ -195,3 +195,24 @@ label.lbl { display: block; font-family: var(--font-mono), monospace; font-size:
 @keyframes offer-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .offer-panel:not([hidden]) { animation: offer-in .35s ease; }
 @media (prefers-reduced-motion: reduce) { .offer-panel:not([hidden]) { animation: none; } }
+
+/* service page illustrations */
+@keyframes il-scan { 0% { top: -40px; } 100% { top: 100%; } }
+.il-scan { top: -40px; animation: il-scan 3.4s linear infinite; }
+@keyframes il-pop { from { opacity: 0; transform: translateX(14px) scale(.96); } to { opacity: 1; transform: none; } }
+.il-flag { opacity: 0; animation: il-pop .5s ease forwards; }
+@keyframes il-fixed { from { transform: translateX(-101%); } to { transform: none; } }
+.il-fixed { transform: translateX(-101%); animation: il-fixed .6s cubic-bezier(.3,.8,.2,1) forwards; }
+@keyframes il-line { from { transform: scaleX(0); } to { transform: none; } }
+.il-line { transform-origin: left; transform: scaleX(0); animation: il-line .5s ease forwards; }
+@keyframes il-stamp { from { opacity: 0; transform: rotate(-6deg) scale(1.6); } to { opacity: 1; transform: rotate(-6deg); } }
+.il-stamp { opacity: 0; animation: il-stamp .4s cubic-bezier(.3,1.4,.5,1) 3.4s forwards; }
+@keyframes il-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.il-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: il-draw .7s ease forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .il-scan { animation: none; top: 40%; }
+  .il-flag, .il-stamp { animation: none; opacity: 1; }
+  .il-fixed, .il-line { animation: none; transform: none; }
+  .il-stamp { transform: rotate(-6deg); }
+  .il-draw { animation: none; stroke-dashoffset: 0; }
+}

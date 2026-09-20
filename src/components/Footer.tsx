@@ -2,18 +2,31 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { site, tools } from "@/lib/site";
 import { getGuides } from "@/lib/content";
+import { servicePages } from "@/lib/servicePages";
+import { landingPages } from "@/lib/landingPages";
 
 export default function Footer() {
   const guides = getGuides();
   return (
     <footer className="border-t border-line bg-panel/40">
-      <div className="wrap grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
+      <div className="wrap grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]">
         <div>
           <Logo />
           <p className="mt-5 max-w-sm text-[15px] text-muted">
             Free guides and tools for doing SEO with AI, plus done-for-you AI SEO services with a person reviewing every deliverable.
           </p>
           <p className="mt-5 text-[15px]"><a className="text-link hover:text-mark" href={`mailto:${site.email}`}>{site.email}</a></p>
+        </div>
+        <div>
+          <p className="eyebrow mb-5">Services</p>
+          <ul className="space-y-3 text-[15px] text-muted">
+            {servicePages.map((sp) => (<li key={sp.slug}><Link className="hover:text-text" href={`/services/${sp.slug}`}>{sp.name}</Link></li>))}
+            <li><Link className="hover:text-text" href="/services">All services</Link></li>
+          </ul>
+          <p className="eyebrow mb-5 mt-9">Who we help</p>
+          <ul className="space-y-3 text-[15px] text-muted">
+            {landingPages.map((l) => (<li key={l.slug}><Link className="hover:text-text" href={`/${l.slug}`}>{l.nav}</Link></li>))}
+          </ul>
         </div>
         <div>
           <p className="eyebrow mb-5">Guides</p>
@@ -35,9 +48,9 @@ export default function Footer() {
         <div>
           <p className="eyebrow mb-5">Site</p>
           <ul className="space-y-3 text-[15px] text-muted">
-            <li><Link className="hover:text-text" href="/services">Services</Link></li>
             <li><Link className="hover:text-text" href="/book-a-call">Book a call</Link></li>
             <li><Link className="hover:text-text" href="/about">About</Link></li>
+            <li><Link className="hover:text-text" href="/glossary">Glossary</Link></li>
             <li><Link className="hover:text-text" href="/editorial-standards">Editorial standards</Link></li>
             <li><Link className="hover:text-text" href="/affiliate-disclosure">Affiliate disclosure</Link></li>
             <li><Link className="hover:text-text" href="/contact">Contact</Link></li>

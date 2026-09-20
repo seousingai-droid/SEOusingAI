@@ -41,7 +41,8 @@ export default function OfferPicker() {
             </ul>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-line pt-7">
               <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
-              <p className="text-[15px] text-muted">{o.price ? <><strong className="text-text">{o.price}</strong> · fixed price, agreed up front</> : "Fixed price, agreed on your free call. No contracts."}</p>
+              <Link href={o.href} className="btn btn-ghost">How it works</Link>
+              <p className="w-full text-[15px] text-muted">{o.price ? <><strong className="text-text">{o.price}</strong> · fixed price, agreed up front</> : "Fixed price, agreed on your free call. No contracts."}</p>
             </div>
           </div>
         ))}

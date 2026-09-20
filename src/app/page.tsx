@@ -157,7 +157,7 @@ export default function Home() {
             <p className="eyebrow">Why it works</p>
             <h2 className="h-lg mt-5">AI makes it fast. A person makes it <span className="hl">right</span>.</h2>
             <p className="lede mt-6">AI can read your whole website in minutes and write a first draft in seconds. It can also get facts wrong. So every piece of work passes through a real person before you see it.</p>
-            <p className="mt-4 text-muted">That is how you get big-agency coverage at a small-business pace, without the robotic content Google ignores.</p>
+            <p className="mt-4 text-muted">That is how you get big-agency coverage at a small-business pace, without the robotic content Google ignores. New to all this? Start with <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-for-small-business">AI SEO for small business</Link> or the <Link className="text-link underline underline-offset-4 hover:text-mark" href="/glossary">plain-English glossary</Link>.</p>
           </Reveal>
           <Reveal delay={120}><SplitWork /></Reveal>
         </div>
@@ -181,7 +181,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link href="/services" className="btn btn-ghost mt-8">See all services <span aria-hidden>→</span></Link>
+            <div className="mt-8 flex flex-wrap gap-3"><Link href="/services" className="btn btn-ghost">See all services <span aria-hidden>→</span></Link><Link href="/ai-seo-agency" className="btn btn-ghost">How our agency works</Link></div>
           </Reveal>
         </div>
       </section>
