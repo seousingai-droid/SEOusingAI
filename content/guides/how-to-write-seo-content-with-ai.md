@@ -4,7 +4,7 @@ metaTitle: "How to Write SEO Content With AI, Step by Step"
 description: "To write SEO content with AI, start from a brief, draft section by section, then verify every fact and add your own experience. Here is the full process."
 eyebrow: "Content"
 image: "/images/writing-seo-content-with-ai-steps.webp"
-order: 8
+order: 7
 published: "2026-09-20"
 updated: "2026-09-20"
 quickAnswer: "To write SEO content with AI, build a brief from what already ranks, have the AI draft one section at a time with a direct answer under each heading, then check every fact and add details only you know. An AI writer is good at structure and speed. It is unreliable on facts and has no experience of its own, so the human edit is what makes the content rank and get quoted by AI answers."
@@ -35,7 +35,7 @@ You write SEO content with AI in five steps: brief, draft, verify, enrich, and o
 
 Start with a content brief because AI without direction produces the average of everything it has read. A brief gives it your angle.
 
-A useful brief fits on one page: the search query, what the searcher wants, the headings phrased as questions, the facts to include with their sources, and one sentence on what this page adds that others lack. Ready-made prompts for building briefs are in [prompts for SEO](/guides/chatgpt-prompts-for-seo).
+A useful brief fits on one page: the search query, what the searcher wants, the headings phrased as questions, the facts to include with their sources, and one sentence on what this page adds that others lack. You can copy our [content brief template](/guides/ai-content-brief-template), and ready-made prompts for filling it in are in [prompts for SEO](/guides/chatgpt-prompts-for-seo).
 
 ## How do you get a good first draft from an AI writer?
 

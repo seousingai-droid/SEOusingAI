@@ -1,6 +1,10 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Simple from "@/components/Simple";
-export const metadata: Metadata = { title: "Terms of Use", description: "The terms that apply when you use SEO Using AI and its free tools.", alternates: { canonical: "/terms" } };
+export const metadata = pageMeta({
+  title: "Terms of Use",
+  description: "The terms that apply when you use the SEO Using AI website, guides, and free tools, including content use, trademarks, and the absence of ranking guarantees.",
+  path: "/terms",
+});
 export default function Page() {
   return (
     <Simple name="Terms of use" href="/terms" eyebrow="Legal" title="Terms of use">

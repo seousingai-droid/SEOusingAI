@@ -4,7 +4,7 @@ metaTitle: "AI Keyword Research: Find Keywords With AI (2026)"
 description: "AI keyword research uses AI models to expand, cluster, and prioritize keywords, then validates them with real search data. Here is the exact process."
 eyebrow: "Keyword research"
 image: "/images/ai-keyword-research-process.webp"
-order: 3
+order: 5
 published: "2026-09-20"
 updated: "2026-09-20"
 quickAnswer: "AI keyword research is the process of using an AI model to generate, group, and prioritize search queries, then confirming them with real search data. The model is excellent at expanding seed topics into questions and clustering them by intent. It is unreliable for search volume and difficulty, so those numbers must come from Google Search Console, Keyword Planner, or a paid SEO platform."

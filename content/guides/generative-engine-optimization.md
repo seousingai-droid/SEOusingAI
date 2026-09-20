@@ -4,7 +4,7 @@ metaTitle: "Generative Engine Optimization (GEO): Get Cited by AI"
 description: "Generative engine optimization (GEO) is the practice of making content easy for AI answer engines to retrieve, quote, and cite. Here is how it works."
 eyebrow: "GEO"
 image: "/images/how-ai-engines-cite-sources.webp"
-order: 5
+order: 9
 published: "2026-09-20"
 updated: "2026-09-20"
 quickAnswer: "Generative engine optimization (GEO) is the practice of structuring content so AI answer engines such as ChatGPT, Perplexity, Gemini, Claude, and Google AI Overviews can retrieve it, quote it, and cite it. GEO builds on SEO. AI engines pull passages from pages that already rank, then favor passages that answer directly, stand alone, and include sourced facts."
@@ -47,7 +47,7 @@ You write content that AI engines quote by making every section a complete, sour
 - **Add sourced facts.** A number with a named source is far more quotable than a general claim.
 - **Show dates.** Display a last updated date and keep the content current.
 
-This page follows those rules. Each section opens with a direct answer and repeats its subject on purpose.
+This page follows those rules. Each section opens with a direct answer and repeats its subject on purpose. The reason this works is explained in [NLP and SEO](/guides/nlp-seo), which covers how search engines read meaning.
 
 ## Does classic SEO still matter for AI search?
 
@@ -68,7 +68,7 @@ The technical setup that helps AI crawlers is fast, server-rendered HTML with cl
 | robots.txt that allows AI bots | Blocked crawlers cannot cite you |
 | llms.txt | A short map of your key pages for AI systems |
 
-You can create the last item in a minute with the [llms.txt Generator](/tools/llms-txt-generator).
+You can create the last item in a minute with the [llms.txt Generator](/tools/llms-txt-generator). Be clear about what it does. Google's [documentation on AI features](https://developers.google.com/search/docs/appearance/ai-features) says there are no additional requirements to appear in AI Overviews or AI Mode, and that you do not need new AI text files or special markup. So llms.txt is an optional extra for other AI systems, not a Google ranking factor. The items that matter most in this table are the first four.
 
 ## How do you get your brand mentioned in AI answers?
 

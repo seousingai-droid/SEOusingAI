@@ -4,7 +4,7 @@ metaTitle: "Can AI Do SEO? What to Automate and What Not To"
 description: "AI can do most of the manual work in SEO, including audits, research, drafts, and reports. It cannot replace strategy, fact-checking, or real experience."
 eyebrow: "Automation"
 image: "/images/what-ai-can-automate-in-seo.webp"
-order: 7
+order: 11
 published: "2026-09-20"
 updated: "2026-09-20"
 quickAnswer: "AI can do most of the manual work in SEO but not all of SEO. AI tools and AI agents can check websites, research and group keywords, draft content, write page titles and schema, and build reports. They cannot verify their own facts, supply first-hand experience, earn trust from other people, or decide what matters for a specific business. The reliable setup is automated SEO with a person reviewing the output."
@@ -57,7 +57,7 @@ AI cannot do the parts of SEO that depend on truth, experience, or relationships
 
 AI SEO agents are AI systems that complete a whole SEO job from one instruction. Where a chat tool answers a single question, an agent can crawl a website, list the problems, rank them, and draft the fixes in one run.
 
-Agents are useful for clearly defined jobs such as audits, internal link suggestions, and report writing. They are risky when given open-ended power, such as publishing to a live site with nobody watching. Treat an agent like a fast junior assistant: excellent at the legwork, always reviewed.
+Agents are useful for clearly defined jobs such as audits, internal link suggestions, and report writing. They are risky when given open-ended power, such as publishing to a live site with nobody watching. Treat an agent like a fast junior assistant: excellent at the legwork, always reviewed. The full picture is in [AI SEO agents](/guides/ai-seo-agents).
 
 ## Is automated SEO safe?
 

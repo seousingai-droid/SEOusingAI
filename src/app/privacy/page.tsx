@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Simple from "@/components/Simple";
 import { site } from "@/lib/site";
-export const metadata: Metadata = { title: "Privacy Policy", description: "What data SEO Using AI collects, what it does not collect, and your choices.", alternates: { canonical: "/privacy" } };
+export const metadata = pageMeta({
+  title: "Privacy Policy",
+  description: "What data SEO Using AI collects, what it does not collect, and your choices.",
+  path: "/privacy",
+});
 export default function Page() {
   return (
     <Simple name="Privacy policy" href="/privacy" eyebrow="Legal" title="Privacy policy">

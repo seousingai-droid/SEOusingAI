@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import ToolShell from "@/components/ToolShell";
 import Tool from "./Tool";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "AI SEO Prompt Builder (Free Generator)",
   description: "Build structured SEO prompts for ChatGPT, Claude, or Gemini. Keyword research, briefs, meta tags, audits, and schema. Free, no signup.",
-  alternates: { canonical: "/tools/ai-seo-prompt-builder" },
-};
+  path: "/tools/ai-seo-prompt-builder",
+});
 
 export default function Page() {
   return (

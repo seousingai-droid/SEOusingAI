@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import PageHero, { crumbLd } from "@/components/PageHero";
 import CallArt from "@/components/CallArt";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Book a Free AI SEO Strategy Call",
   description: "Book a free AI SEO strategy call on Google Meet. Talk through your site, your market, and the first fix worth making. No pitch deck.",
-  alternates: { canonical: "/book-a-call" },
-};
+  path: "/book-a-call",
+});
 
 const mailto = `mailto:${site.email}?subject=${encodeURIComponent("Strategy call request")}&body=${encodeURIComponent("Website:\nMain problem:\nThree times that suit you (with time zone):\n")}`;
 

@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Link from "next/link";
 import PageHero, { crumbLd } from "@/components/PageHero";
 import JsonLd from "@/components/JsonLd";
 import { tools } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Free AI SEO Tools, No Signup",
   description: "Free AI SEO tools: SERP snippet preview, AI SEO prompt builder, and llms.txt generator. No signup. Everything runs in your browser.",
-  alternates: { canonical: "/tools" },
-};
+  path: "/tools",
+});
 
 export default function Tools() {
   const crumbs = [{ name: "Free tools", href: "/tools" }];

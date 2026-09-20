@@ -1,6 +1,10 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Simple from "@/components/Simple";
-export const metadata: Metadata = { title: "Affiliate Disclosure", description: "How SEO Using AI earns money from affiliate links, and how that does and does not affect recommendations.", alternates: { canonical: "/affiliate-disclosure" } };
+export const metadata = pageMeta({
+  title: "Affiliate Disclosure",
+  description: "How SEO Using AI earns money from affiliate links, and how that does and does not affect recommendations.",
+  path: "/affiliate-disclosure",
+});
 export default function Page() {
   return (
     <Simple name="Affiliate disclosure" href="/affiliate-disclosure" eyebrow="Disclosure" title="Affiliate disclosure">

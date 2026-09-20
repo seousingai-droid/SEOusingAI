@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Link from "next/link";
 import Simple from "@/components/Simple";
 import JsonLd from "@/components/JsonLd";
 import { site, abs } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "About SEO Using AI",
   description: "SEO Using AI is an independent studio and free resource, founded in 2026, that helps businesses rank on Google and get cited by AI answers.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function About() {
   return (

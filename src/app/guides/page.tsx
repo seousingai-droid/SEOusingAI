@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Link from "next/link";
 import PageHero, { crumbLd } from "@/components/PageHero";
 import JsonLd from "@/components/JsonLd";
 import { getGuides, formatDate } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "AI SEO Guides: Step-by-Step Tutorials",
   description: "Free AI SEO guides covering the full workflow: how to use AI for SEO, keyword research, prompts, tool comparisons, and getting cited by AI answers.",
-  alternates: { canonical: "/guides" },
-};
+  path: "/guides",
+});
 
 export default function Guides() {
   const guides = getGuides();

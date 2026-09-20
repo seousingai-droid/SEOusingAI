@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Simple from "@/components/Simple";
 import { site } from "@/lib/site";
-export const metadata: Metadata = { title: "Contact", description: "Contact SEO Using AI with corrections, questions, or tool suggestions.", alternates: { canonical: "/contact" } };
+export const metadata = pageMeta({
+  title: "Contact the Team",
+  description: "Contact SEO Using AI with corrections, questions, or tool suggestions.",
+  path: "/contact",
+});
 export default function Page() {
   return (
     <Simple name="Contact" href="/contact" eyebrow="Contact" title="Get in touch" lede="Corrections, questions, and tool ideas are all welcome.">

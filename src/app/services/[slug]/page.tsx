@@ -5,9 +5,10 @@ import { crumbLd } from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
-import { ScanArt, FixArt, WriteArt, LinksArt, MapPin, ChatRecommend } from "@/components/Illustrations";
+import { ScanArt, FixArt, WriteArt, LinksArt, MapPin, ChatRecommend, GapArt } from "@/components/Illustrations";
 import { servicePages, getServicePage } from "@/lib/servicePages";
 import { site, abs } from "@/lib/site";
+import { pageMeta } from "@/lib/meta";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => servicePages.map((s) => ({ slug: s.slug }));
@@ -15,10 +16,10 @@ export const generateStaticParams = () => servicePages.map((s) => ({ slug: s.slu
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const s = getServicePage((await params).slug);
   if (!s) return {};
-  return { title: { absolute: s.metaTitle }, description: s.description, alternates: { canonical: `/services/${s.slug}` }, openGraph: { title: s.metaTitle, description: s.description, url: `/services/${s.slug}` } };
+  return pageMeta({ title: s.metaTitle, description: s.description, path: `/services/${s.slug}`, absolute: true });
 }
 
-const art = { scan: <ScanArt />, fix: <FixArt />, write: <WriteArt />, links: <LinksArt />, map: <MapPin />, chat: <ChatRecommend /> };
+const art = { scan: <ScanArt />, fix: <FixArt />, write: <WriteArt />, links: <LinksArt />, map: <MapPin />, chat: <ChatRecommend />, gap: <GapArt /> };
 const Check = () => (<span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-mark text-ink"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden><path d="m5 12 5 5 9-10" /></svg></span>);
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {

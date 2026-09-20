@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Link from "next/link";
 import PageHero, { crumbLd } from "@/components/PageHero";
 import ServicesHub from "@/components/ServicesHub";
@@ -7,11 +7,11 @@ import JsonLd from "@/components/JsonLd";
 import { services, site, abs } from "@/lib/site";
 import { servicePages } from "@/lib/servicePages";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "AI SEO Services, Done for You",
   description: "Done-for-you AI SEO services: audits, fixes, strategy, content, link outreach, local SEO, and reporting. AI does the volume. A person checks every fact.",
-  alternates: { canonical: "/services" },
-};
+  path: "/services",
+});
 
 const faqs = [
   { q: "What are AI SEO services?", a: "AI SEO services are search engine optimization services where AI workflows handle the high-volume work, such as crawling, clustering keywords, drafting, and reporting, while a person sets the strategy, verifies facts, and approves everything before it ships. The result is agency-level coverage at a faster pace." },
@@ -46,7 +46,7 @@ export default function Services() {
       <section className="band band-line">
         <div className="wrap">
           <p className="eyebrow">Most requested</p>
-          <h2 className="h-lg mt-5">Six services, explained in full</h2>
+          <h2 className="h-lg mt-5">Seven services, explained in full</h2>
           <p className="lede mt-5 max-w-2xl">Each page says what the service is, the signs you need it, what you get, and what it will not do.</p>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {servicePages.map((sp) => (
@@ -95,7 +95,7 @@ export default function Services() {
         </div></div>
       </section>
 
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: "AI SEO services", serviceType: "Search engine optimization", url: abs("/services"), provider: { "@id": abs("/#org") }, areaServed: { "@type": "Country", name: "United States" }, description: metadata.description, hasOfferCatalog: { "@type": "OfferCatalog", name: "AI SEO services", itemListElement: services.map((s) => ({ "@type": "OfferCatalog", name: s.key, itemListElement: s.items.map(([t, b]) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: t, description: b } })) })) } }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: "AI SEO services", serviceType: "Search engine optimization", url: abs("/services"), provider: { "@id": abs("/#org") }, areaServed: { "@type": "Country", name: "United States" }, description: "Done-for-you AI SEO services: audits, fixes, strategy, content, link outreach, local SEO, and reporting, with a person reviewing every deliverable.", hasOfferCatalog: { "@type": "OfferCatalog", name: "AI SEO services", itemListElement: services.map((s) => ({ "@type": "OfferCatalog", name: s.key, itemListElement: s.items.map(([t, b]) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: t, description: b } })) })) } }} />
       <JsonLd data={crumbLd(crumbs)} />
       <JsonLd data={faqLd(faqs)} />
     </>

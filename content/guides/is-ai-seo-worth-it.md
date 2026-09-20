@@ -4,7 +4,7 @@ metaTitle: "Is AI SEO Worth It? Benefits, Costs, and ROI"
 description: "AI SEO is worth it when a person checks the work and the traffic can turn into revenue. Here are the real benefits, the risks, and a simple way to work out ROI."
 eyebrow: "Worth it?"
 image: "/images/ai-seo-roi-formula.webp"
-order: 6
+order: 13
 published: "2026-09-20"
 updated: "2026-09-20"
 quickAnswer: "AI SEO is worth it for most businesses that get customers from search, as long as a person reviews the AI's work. The main benefit is cost: AI does in minutes what used to take paid hours, so the same budget produces more finished work. The main risk is publishing unchecked AI content, which can hurt rankings. It is not worth it if your customers do not use search or AI tools to find businesses like yours."

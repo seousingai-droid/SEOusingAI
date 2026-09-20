@@ -1,6 +1,6 @@
 // One entry per service page. Plain English first, the technical term second.
 export type ServicePage = {
-  slug: string; name: string; art: "scan" | "fix" | "write" | "links" | "map" | "chat";
+  slug: string; name: string; art: "scan" | "fix" | "write" | "links" | "map" | "chat" | "gap";
   metaTitle: string; description: string; h1: string; h1Mark: string; lede: string;
   quickQ: string; quickA: string;
   signs: string[];
@@ -197,6 +197,36 @@ export const servicePages: ServicePage[] = [
       { q: "How do you measure results?", a: "We test the same list of customer questions in the main AI tools every month and record whether you are mentioned, whether your site is linked, and how many visitors arrive from AI tools." },
     ],
     related: ["ai-content-writing", "link-building", "ai-seo-audit"], guide: { href: "/guides/generative-engine-optimization", label: "Generative engine optimization guide" },
+  },
+  {
+    slug: "competitor-analysis", name: "SEO Competitor Analysis", art: "gap",
+    metaTitle: "SEO Competitor Analysis: See Why They Outrank You",
+    description: "An AI SEO competitor analysis shows what rival websites rank for that you do not, how their sites are built, and exactly what to copy, beat, or ignore.",
+    h1: "SEO competitor analysis: see why they", h1Mark: "outrank you",
+    lede: "We study the websites that beat you in search and turn what we find into a short plan of what to copy, beat, and ignore.",
+    quickQ: "What is an SEO competitor analysis?",
+    quickA: "An SEO competitor analysis is a study of the websites that appear above yours in search results. It looks at which searches they show up for, which topics they cover that you do not, how their pages and site are structured, who links to them, and whether AI tools mention them. The purpose is practical: to find the specific gaps you can close, and to avoid wasting effort where a competitor is too far ahead.",
+    signs: ["The same two or three competitors show up above you every time", "You are not sure who your real competitors in search are", "You are about to invest in content and want to aim it well", "A competitor's traffic seems to have jumped", "ChatGPT recommends them and not you"],
+    doTitle: "What does the analysis cover?",
+    doItems: [
+      ["Who you really compete with", "Your search competitors are often not your business competitors. We find who actually takes the clicks for your most valuable searches."],
+      ["Content gaps", "Topics and questions your competitors answer and you do not, sorted by how valuable and how winnable each one is."],
+      ["How their site is built", "Their page types, site structure, and internal linking, so you can see the pattern behind their results."],
+      ["Depth and freshness", "How thorough their pages are and how often they publish or update."],
+      ["Who links to them", "The websites that mention them and might mention you, which feeds a link building plan."],
+      ["Visibility in AI answers", "Whether ChatGPT, Perplexity, and Google's AI summaries mention them, and what those tools say."],
+    ],
+    get: ["A short battle plan: what to copy, what to beat, what to ignore", "A prioritized list of content gaps", "A side-by-side comparison with up to five competitors", "A call to walk through the findings"],
+    ai: ["Crawls and compares competitor sites", "Maps topics each site covers", "Tests AI tools for brand mentions"],
+    human: ["Decides which competitors matter", "Judges which gaps are worth closing", "Turns findings into a realistic plan"],
+    steps: [["You name your competitors", "Or we find them from the searches that matter most to you."], ["We study and compare", "AI does the crawling and mapping. A person decides what it means for your business."], ["You get the battle plan", "A short document and a call, ready to act on."]],
+    honest: "A competitor analysis uses public information and third-party estimates. We cannot see a competitor's private data, such as their real traffic or sales, and any traffic figures are estimates.",
+    faqs: [
+      { q: "How do you find my SEO competitors?", a: "We look at who ranks for the searches that bring you customers. These search competitors are often different from the businesses you think of as rivals, and can include directories, publishers, and marketplaces." },
+      { q: "Is it legal to analyze a competitor's website?", a: "Yes. A competitor analysis uses only publicly available information, the same pages any visitor or search engine can see." },
+      { q: "Should I copy what my competitors do?", a: "Copy the patterns that clearly work, such as page types or topics they cover, and then do them better. Copying text is plagiarism and does not rank. The goal is to find what is missing from every competing page and provide it." },
+    ],
+    related: ["ai-seo-audit", "ai-content-writing", "link-building"], guide: { href: "/guides/ai-seo-strategies", label: "AI SEO strategies" },
   },
 ];
 

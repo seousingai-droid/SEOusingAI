@@ -31,9 +31,10 @@ export default function Footer() {
         <div>
           <p className="eyebrow mb-5">Guides</p>
           <ul className="space-y-3 text-[15px] text-muted">
-            {guides.map((g) => (
+            {guides.slice(0, 7).map((g) => (
               <li key={g.slug}><Link className="hover:text-text" href={`/guides/${g.slug}`}>{g.title}</Link></li>
             ))}
+            <li><Link className="hover:text-text" href="/guides">All guides</Link></li>
           </ul>
         </div>
         <div>

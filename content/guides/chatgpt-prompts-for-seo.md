@@ -4,7 +4,7 @@ metaTitle: "ChatGPT Prompts for SEO: 11 That Actually Work"
 description: "Good SEO prompts give the model a role, context, source material, constraints, and an output format. Here are 11 prompts for ChatGPT, Claude, or Gemini."
 eyebrow: "Prompts"
 image: "/images/anatomy-of-an-seo-prompt.webp"
-order: 4
+order: 6
 published: "2026-09-20"
 updated: "2026-09-20"
 quickAnswer: "The best ChatGPT prompts for SEO share five parts: a role, your business context, pasted source material, clear constraints, and a required output format. Prompts built this way work the same in ChatGPT, Claude, and Gemini. The most useful ones cover keyword clustering, content briefs, title and meta description variants, internal links, schema markup, and analysis of Search Console exports."
@@ -64,6 +64,8 @@ Review this outline for "[query]": [paste].
 Which sections would a reader skip? Which question is missing?
 Reply with a revised outline only.
 ```
+
+To keep briefs consistent, use the one-page [content brief template](/guides/ai-content-brief-template).
 
 ## What are the best prompts for on-page SEO?
 

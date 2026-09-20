@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import ToolShell from "@/components/ToolShell";
 import Tool from "./Tool";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "SERP Snippet Preview and Length Checker",
   description: "Preview how your title tag and meta description look in Google. Free SERP snippet preview with live length checks. No signup.",
-  alternates: { canonical: "/tools/serp-preview" },
-};
+  path: "/tools/serp-preview",
+});
 
 export default function Page() {
   return (

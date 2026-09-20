@@ -80,4 +80,6 @@ The practical rule is simple. Ask whether the page would deserve to exist if AI 
 
 You need two tools to start doing SEO with AI: one general AI model and one source of real search data. A free setup is ChatGPT, Claude, or Gemini plus Google Search Console.
 
+For the wider context, read [how AI is changing SEO](/guides/how-ai-is-changing-seo), then pick from these [AI SEO strategies](/guides/ai-seo-strategies). If you want software to run whole tasks for you, see [AI SEO agents](/guides/ai-seo-agents).
+
 When you are ready to spend money, add a keyword and competitor platform. Our [AI SEO tools comparison](/guides/best-ai-seo-tools) explains which type of tool fits which job. You can also start with the free [AI SEO Prompt Builder](/tools/ai-seo-prompt-builder), which assembles structured prompts for the most common tasks.

@@ -17,9 +17,10 @@ export const metadata: Metadata = {
   title: { default: "SEO Using AI: Rank on Google and in AI Answers", template: "%s | SEO Using AI" },
   description: "SEO using AI for small businesses: get found on Google, Google Maps, and in AI answers. Free guides and tools, or done-for-you services checked by a person.",
   applicationName: site.name,
-  alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: site.name, locale: site.locale, url: site.url },
   twitter: { card: "summary_large_image" },
+  verification: { ...(site.verification.google ? { google: site.verification.google } : {}), ...(site.verification.bing ? { other: { "msvalidate.01": site.verification.bing } } : {}) },
+  alternates: { canonical: "/", types: { "application/rss+xml": "/feed.xml" } },
   robots: { index: true, follow: true, googleBot: { "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 } },
 };
 
@@ -46,6 +47,7 @@ const orgLd = {
       "@id": abs("/#website"),
       url: site.url,
       name: site.name,
+      alternateName: ["SEOusingAI", "seousingai.com"],
       description: site.description,
       inLanguage: "en-US",
       publisher: { "@id": abs("/#org") },

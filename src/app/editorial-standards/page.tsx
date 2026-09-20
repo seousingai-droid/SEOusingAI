@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Simple from "@/components/Simple";
 import { site } from "@/lib/site";
-export const metadata: Metadata = { title: "Editorial Standards", description: "How SEO Using AI researches, writes, fact-checks, and updates its guides, including how AI is used in the process.", alternates: { canonical: "/editorial-standards" } };
+export const metadata = pageMeta({
+  title: "Editorial Standards",
+  description: "How SEO Using AI researches, writes, fact-checks, and updates its guides, including how AI is used in the process.",
+  path: "/editorial-standards",
+});
 export default function Page() {
   return (
     <Simple name="Editorial standards" href="/editorial-standards" eyebrow="Editorial standards" title="How we write and check guides">

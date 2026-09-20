@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 import Link from "next/link";
 import PageHero, { crumbLd } from "@/components/PageHero";
 import JsonLd from "@/components/JsonLd";
 import { abs } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "AI SEO Glossary: Plain-English Definitions",
   description: "An AI SEO glossary in plain English. Short definitions of SEO, GEO, AI Overviews, schema, backlinks, NLP, E-E-A-T, llms.txt, and more.",
-  alternates: { canonical: "/glossary" },
-};
+  path: "/glossary",
+});
 
 const terms: [string, string, string?][] = [
   ["AI Overview", "An AI Overview is the AI-written summary Google shows at the top of some search results. It answers the question directly and links to a few source websites.", "/guides/generative-engine-optimization"],

@@ -6,6 +6,7 @@ import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { getGuide, getGuides, formatDate } from "@/lib/content";
 import { site, abs } from "@/lib/site";
+import { pageMeta } from "@/lib/meta";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -16,19 +17,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const g = getGuide(slug);
   if (!g) return {};
-  return {
-    title: { absolute: g.metaTitle },
-    description: g.description,
-    alternates: { canonical: `/guides/${g.slug}` },
-    openGraph: { type: "article", title: g.metaTitle, description: g.description, url: `/guides/${g.slug}`, publishedTime: g.published, modifiedTime: g.updated, images: g.image ? [g.image] : undefined },
-  };
+  return pageMeta({ title: g.metaTitle, description: g.description, path: `/guides/${g.slug}`, absolute: true, type: "article", image: g.image, published: g.published, modified: g.updated });
 }
 
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const g = getGuide(slug);
   if (!g) notFound();
-  const others = getGuides().filter((x) => x.slug !== g.slug).slice(0, 3);
+  const all = getGuides();
+  const at = all.findIndex((x) => x.slug === g.slug);
+  const others = [1, 2, 3].map((n) => all[(at + n) % all.length]);
   const crumbs = [{ name: "Guides", href: "/guides" }, { name: g.title, href: `/guides/${g.slug}` }];
   const articleLd = {
     "@context": "https://schema.org",

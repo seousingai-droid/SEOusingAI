@@ -10,6 +10,14 @@ import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { getGuides } from "@/lib/content";
 import { tools, services, site } from "@/lib/site";
+import { pageMeta } from "@/lib/meta";
+
+export const metadata = pageMeta({
+  title: "SEO Using AI: Get Found on Google and in AI Answers",
+  description: "SEO using AI for small businesses: get found on Google, Google Maps, and in AI answers. Free guides and tools, or done-for-you services checked by a person.",
+  path: "/",
+  absolute: true,
+});
 
 const places = [
   { art: <SearchClimb />, title: "Google search", body: "When someone types what you sell, the businesses at the top get most of the calls. We work to move you up." },
@@ -275,13 +283,13 @@ export default function Home() {
               <p className="lede mt-5">Step-by-step guides and small tools that run in your browser. No signup. Start with the six-step workflow on the right.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/guides/how-to-use-ai-for-seo" className="btn btn-primary">Read the first guide <span aria-hidden>→</span></Link>
-                <Link href="/tools" className="btn btn-ghost">Free tools</Link>
+                <Link href="/guides" className="btn btn-ghost">All {guides.length} guides</Link>
               </div>
             </div>
             <Image src="/images/ai-seo-workflow.webp" alt="Diagram of the six-step AI SEO workflow: research, brief, draft, verify, optimize, measure, with verify done by a person" width={1600} height={900} sizes="(min-width: 1024px) 680px, 100vw" className="figure-img" />
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {guides.map((g, i) => (
+            {guides.slice(0, 5).map((g, i) => (
               <Reveal key={g.slug} delay={(i % 3) * 100}>
                 <Link href={`/guides/${g.slug}`} className="card card-hover flex h-full flex-col overflow-hidden">
                   {g.image && <Image src={g.image} alt="" width={800} height={450} sizes="(min-width: 1024px) 380px, (min-width: 768px) 50vw, 100vw" className="aspect-video w-full border-b border-line object-cover" />}

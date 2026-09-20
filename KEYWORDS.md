@@ -19,17 +19,33 @@ One page per search intent. Do not create a second page for a phrase that is alr
 | generative, brands, assistant, optimization | Be mentioned by AI | `/services/ai-search-optimization` |
 | business, growth, successful | Small business owner | `/ai-seo-for-small-business` |
 | b2b | B2B marketer | `/ai-seo-for-b2b` |
-| strategies, tasks, examples, advanced, 2025, 2026 | Learn the method | `/guides/how-to-use-ai-for-seo` |
+| improve, tasks | Learn the method | `/guides/how-to-use-ai-for-seo` |
+| strategies, advanced, successful, examples, growth | Find plays that work | `/guides/ai-seo-strategies` |
+| effect, 2025, 2026 | Understand what changed | `/guides/how-ai-is-changing-seo` |
+| agents, assistant | Understand AI agents | `/guides/ai-seo-agents` |
+| nlp | Understand NLP | `/guides/nlp-seo` |
+| briefs | Get a template | `/guides/ai-content-brief-template` |
+| analysis (competitor sense) | Study rivals | `/services/competitor-analysis` |
 | tools, best, top, platform, technologies, brightedge | Compare tools | `/guides/best-ai-seo-tools` |
 | chatgpt | Prompts | `/guides/chatgpt-prompts-for-seo` |
 | analysis (keyword sense) | Keyword research | `/guides/ai-keyword-research` |
 | generative (learn sense), searchengineland | Learn GEO | `/guides/generative-engine-optimization` |
 | worth, roi, benefits, effect | Should I do this | `/guides/is-ai-seo-worth-it` |
-| can, automated, agents, assistant, tasks | What can AI do | `/guides/can-ai-do-seo` |
-| write, writer, content, briefs, nlp (learn sense) | Learn to write with AI | `/guides/how-to-write-seo-content-with-ai` |
-| nlp and other definitions | Look up a term | `/glossary` |
+| can, automated | What can AI do | `/guides/can-ai-do-seo` |
+| write, writer, content (learn sense) | Learn to write with AI | `/guides/how-to-write-seo-content-with-ai` |
+| definitions of any term | Look up a term | `/glossary` |
 
 ## Not built on purpose
 
 - **City pages** such as "AI SEO agency Charlotte". Without a real presence or clients in a city, these are doorway pages, which Google penalizes. Build one only when there is something true and local to say.
 - **Competitor brand pages** such as BrightEdge. It is covered inside the tools guide. A dedicated page needs hands-on testing first.
+
+## Terms with no page, and why
+
+| Term | Reason |
+|---|---|
+| chatgpt (alone), business, website, content, tools, best, top (alone) | Single words. Covered as part of the phrases above. |
+| charlotte | City modifier. See "Not built on purpose". |
+| brightedge, searchengineland | Other companies' brand names. Navigational searches we cannot honestly serve. |
+| platform, technologies, solution, leading, rated | Synonyms already owned by the tools guide, the services page, or the agency page. |
+| worth, roi, benefits, effect | All one intent. Splitting them would make pages compete. |

@@ -14,6 +14,8 @@ export const site = {
   // Paste your Google Calendar appointment schedule link here to turn on live booking.
   // Google Calendar > Create > Appointment schedule > set Google Meet as the location > Share > copy the booking page link.
   bookingUrl: "",
+  // Paste the verification codes from Google Search Console and Bing Webmaster Tools here.
+  verification: { google: "", bing: "" },
   // Public brand profiles. Add each URL as you create it. They feed the Organization schema (sameAs),
   // which is how Google and AI tools connect your profiles to this website.
   social: [] as string[],

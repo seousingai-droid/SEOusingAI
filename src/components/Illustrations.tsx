@@ -171,3 +171,23 @@ export function LinksArt() {
     </Frame>
   );
 }
+
+export function GapArt() {
+  const rows: [string, boolean][] = [["Service pages", true], ["Pricing explained", false], ["Comparison pages", false], ["Customer questions", true], ["Local area pages", false]];
+  return (
+    <Frame tall label="Animation of a comparison table showing topics a competitor covers and you do not, with the gaps highlighted">
+      <div className="mx-auto flex h-full max-w-[420px] flex-col justify-center">
+        <div className="grid grid-cols-[1fr_70px_70px] gap-y-2 text-[13.5px]">
+          <span /><span className="text-center font-mono text-[11px] uppercase tracking-wider text-muted">Them</span><span className="text-center font-mono text-[11px] uppercase tracking-wider text-mark">You</span>
+          {rows.map(([t, you], i) => (
+            <div key={t} className={`il-flag col-span-3 grid grid-cols-[1fr_70px_70px] items-center rounded-lg border px-3 py-2 ${you ? "border-line bg-panel" : "border-mark/60 bg-mark/10"}`} style={{ animationDelay: `${0.3 + i * 0.45}s` }}>
+              <span>{t}</span>
+              <span className="text-center text-link">✓</span>
+              <span className={`text-center ${you ? "text-link" : "font-mono text-[11px] font-bold uppercase text-mark"}`}>{you ? "✓" : "Gap"}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Frame>
+  );
+}
