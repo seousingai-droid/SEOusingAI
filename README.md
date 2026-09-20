@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SEOusingAI.com
 
-## Getting Started
+Next.js 16 (App Router, TypeScript, Tailwind v4) site for **seousingai.com**. Every page is statically generated, so it is fast and fully readable by Google and AI crawlers.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | Where |
+|---|---|
+| Brand facts, author, nav, contact email | `src/lib/site.ts` |
+| Guides (markdown with front matter) | `content/guides/*.md` |
+| Homepage sections | `src/app/page.tsx` |
+| Free tools | `src/app/tools/*` |
+| Design tokens (colors, type, highlighter) | `src/app/globals.css` |
+| sitemap.xml, robots.txt, llms.txt | `src/app/sitemap.ts`, `robots.ts`, `llms.txt/route.ts` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Add a guide
 
-## Learn More
+Create `content/guides/your-slug.md` with the same front matter as the existing guides (`title`, `metaTitle`, `description`, `quickAnswer`, `faqs`, `published`, `updated`, `order`). It is picked up by the guides index, footer, sitemap, and llms.txt automatically, with Article, FAQPage, and BreadcrumbList schema.
 
-To learn more about Next.js, take a look at the following resources:
+House rules for guides: question H2s, first sentence answers the heading, every statistic linked to a source you have opened and checked, no software prices, update the `updated` date when you change facts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy (Vercel)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Import this GitHub repo at vercel.com. Defaults work.
+2. Add the domain `seousingai.com` and point DNS as Vercel instructs. Redirect `www` to the apex.
+3. After it is live: verify the domain in Google Search Console and Bing Webmaster Tools, then submit `https://seousingai.com/sitemap.xml` in both. Bing matters because ChatGPT and Copilot retrieve from it.
 
-## Deploy on Vercel
+## Before launch
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Set a real mailbox for `hello@seousingai.com` or change `email` in `src/lib/site.ts`.
+- Review the author name and bio in `src/lib/site.ts`.
