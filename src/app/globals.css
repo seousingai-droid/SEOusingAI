@@ -23,7 +23,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3, h4 { font-family: var(--font-display), system-ui, sans-serif; letter-spacing: -0.02em; line-height: 1.08; }
+h1, h2, h3, h4 { font-family: var(--font-display), system-ui, sans-serif; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance; }
 ::selection { background: var(--color-mark); color: var(--color-ink); }
 :focus-visible { outline: 2px solid var(--color-mark); outline-offset: 3px; border-radius: 4px; }
 
@@ -76,7 +76,7 @@ h1, h2, h3, h4 { font-family: var(--font-display), system-ui, sans-serif; letter
 .card-hover:hover { border-color: rgb(255 216 77 / 0.55); transform: translateY(-2px); }
 
 .lede { color: var(--color-muted); font-size: clamp(17px, 1.4vw, 19px); }
-.h-xl { font-size: clamp(40px, 6.2vw, 76px); font-weight: 700; }
+.h-xl { font-size: clamp(38px, 5.2vw, 66px); font-weight: 700; }
 .h-lg { font-size: clamp(32px, 4.4vw, 54px); font-weight: 700; }
 .h-md { font-size: clamp(22px, 2.2vw, 28px); font-weight: 600; }
 
@@ -136,3 +136,62 @@ label.lbl { display: block; font-family: var(--font-mono), monospace; font-size:
 .prose figcaption { margin-top: 10px; font-size: 14.5px; color: var(--color-muted); }
 /* marked wraps a lone image in <p>; keep the figure full width */
 .prose p:has(> figure) { margin: 0; }
+
+/* ---------- Motion ---------- */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+@keyframes float { 50% { transform: translateY(-10px); } }
+.float { animation: float 7s ease-in-out infinite; }
+@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgb(255 216 77 / .55); } 100% { box-shadow: 0 0 0 14px rgb(255 216 77 / 0); } }
+.pulse { animation: pulse-ring 2.2s ease-out infinite; }
+.btn span[aria-hidden] { transition: transform .2s ease; }
+.btn:hover span[aria-hidden] { transform: translateX(4px); }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee-mask { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.marquee-mask:hover .marquee { animation-play-state: paused; }
+
+/* search result climbing to first place */
+@keyframes il-loop { 0% { opacity: 0; } 6%, 90% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes il-you { 0%, 22% { transform: translateY(128px); } 42%, 100% { transform: none; } }
+@keyframes il-push { 0%, 22% { transform: translateY(-64px); } 42%, 100% { transform: none; } }
+.il-loop { animation: il-loop 7s ease infinite; }
+.il-you { animation: il-you 7s cubic-bezier(.3,.8,.2,1) infinite; z-index: 1; }
+.il-push { animation: il-push 7s cubic-bezier(.3,.8,.2,1) infinite; }
+/* map pin */
+@keyframes il-pin { 0% { transform: translateY(-90px); opacity: 0; } 18% { transform: none; opacity: 1; } 24% { transform: translateY(-9px); } 30%, 92% { transform: none; opacity: 1; } 100% { opacity: 0; } }
+@keyframes il-ripple { 0%, 18% { transform: scale(.1); opacity: .9; } 55%, 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes il-card { 0%, 28% { transform: translateY(14px); opacity: 0; } 40%, 92% { transform: none; opacity: 1; } 100% { opacity: 0; } }
+.il-pin { animation: il-pin 6s ease infinite; }
+.il-ripple { transform-origin: 160px 112px; opacity: 0; animation: il-ripple 6s ease-out infinite; }
+.il-card { animation: il-card 6s ease infinite; }
+/* chat */
+@keyframes il-q { 0% { opacity: 0; transform: translateY(8px); } 8%, 93% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes il-dots { 0%, 14% { opacity: 0; } 18%, 36% { opacity: 1; } 40%, 100% { opacity: 0; } }
+@keyframes il-a { 0%, 40% { opacity: 0; transform: translateY(8px); } 48%, 93% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes il-dot { 50% { transform: translateY(-4px); opacity: 1; } }
+.il-q { animation: il-q 9s ease infinite; }
+.il-dots { opacity: 0; animation: il-dots 9s ease infinite; }
+.il-dots i { display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--color-muted); opacity: .5; animation: il-dot 1s ease-in-out infinite; }
+.il-dots i:nth-child(2) { animation-delay: .15s; } .il-dots i:nth-child(3) { animation-delay: .3s; }
+.il-a { animation: il-a 9s ease infinite; }
+/* check marks ticking in once the block is revealed */
+@keyframes il-tick { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+.reveal .il-tick { opacity: 0; }
+.reveal.in .il-tick { animation: il-tick .5s ease forwards; }
+/* line that draws between the three steps */
+.steps-line { transform: scaleX(0); transform-origin: left; transition: transform 1.4s cubic-bezier(.3,.7,.2,1) .2s; }
+.reveal.in .steps-line { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal .il-tick { opacity: 1; transform: none; transition: none; }
+  .float, .pulse, .marquee, .il-loop, .il-you, .il-push, .il-pin, .il-card, .il-q, .il-a, .il-dots, .il-dots i, .il-ripple, .reveal.in .il-tick { animation: none; }
+  .marquee { flex-wrap: wrap; justify-content: center; width: auto; }
+  .marquee > [aria-hidden] { display: none; }
+  .steps-line { transform: none; transition: none; }
+}
+@keyframes offer-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.offer-panel:not([hidden]) { animation: offer-in .35s ease; }
+@media (prefers-reduced-motion: reduce) { .offer-panel:not([hidden]) { animation: none; } }

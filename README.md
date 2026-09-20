@@ -15,6 +15,8 @@ npm run build    # production build
 | What | Where |
 |---|---|
 | Brand facts, nav, contact email, booking link, services | `src/lib/site.ts` |
+| The five offers on the homepage (add a `price` to show it) | `offers` in `src/lib/site.ts` |
+| Animated illustrations and scroll reveal | `src/components/Illustrations.tsx`, `Reveal.tsx` |
 | Generated images (WebP, 1600x900) | `public/images/` |
 | Guides (markdown with front matter) | `content/guides/*.md` |
 | Homepage sections | `src/app/page.tsx` |

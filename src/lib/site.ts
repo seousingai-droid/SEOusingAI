@@ -47,49 +47,93 @@ export const tools = [
 
 export const services = [
   {
-    key: "Audit and fixes",
-    summary: "Find what is holding the site back, then fix it in the code.",
+    key: "Check and fix",
+    summary: "Find what is holding your website back, then fix it.",
     items: [
-      ["Full-site SEO audit", "Every page crawled, not a sample. Titles, metas, headings, broken links, redirects, canonicals, indexability, schema, and thin content, delivered as a prioritized report."],
-      ["WordPress and Next.js fixes", "Errors, plugin conflicts, redirects, schema, meta tags, and Core Web Vitals issues fixed at the code level."],
-      ["Conversion review", "Fonts, spacing, readability, and every page area checked for what stops visitors from buying or enquiring."],
+      ["Full website checkup", "We check every page, not a sample. You get a plain-English list of what is broken, what is missing, and what to fix first."],
+      ["Website fixes", "Errors, slow pages, broken links, and the behind-the-scenes code Google reads. We fix it on WordPress and Next.js sites."],
+      ["Turn visitors into customers", "We review your menus, pages, forms, and buttons and show you what stops people from calling or buying."],
     ],
   },
   {
-    key: "Strategy",
-    summary: "Decide what to publish, in what order, and why.",
+    key: "Plan",
+    summary: "Know what to publish, in what order, and why.",
     items: [
-      ["Keyword and content strategy", "Queries worth targeting, grouped by intent into topic clusters, with a content calendar that says what to publish next."],
-      ["Competitor analysis", "What rivals rank for that you do not, how their sites are built, and what to copy, beat, or ignore."],
-      ["SEO and AI answer optimization", "Pages structured to rank on Google and to be quoted by ChatGPT, Perplexity, Gemini, and AI Overviews."],
+      ["What your customers search for", "A clear list of the searches worth going after, grouped into topics, with a simple calendar of what to publish next."],
+      ["What your competitors do", "We study the sites that outrank you and tell you what to copy, what to beat, and what to ignore."],
+      ["Ready for Google and AI", "Pages set up so Google ranks them and so ChatGPT, Perplexity, and Google's AI answers can quote them."],
     ],
   },
   {
-    key: "Content",
-    summary: "Publish pages that deserve to rank, without the production drag.",
+    key: "Create",
+    summary: "Helpful pages and posts, without you writing a word.",
     items: [
-      ["Article and page writing", "Publish-ready guides, comparisons, and landing pages with metadata, FAQs, and schema built in. Every fact checked by a person."],
-      ["Images that explain", "Diagrams and illustrations made for the page, sized to the placement, compressed, and named for search."],
-      ["Publishing and internal links", "Posts formatted, checked for errors, linked to related pages, and published to your site."],
+      ["Articles and web pages", "Ready-to-publish guides, comparisons, and service pages. A person checks every fact before you see it."],
+      ["Pictures that explain", "Diagrams and illustrations made for your pages, sized correctly so your site stays fast."],
+      ["Posted for you", "We format each page, check it for mistakes, link it to your other pages, and publish it on your site."],
     ],
   },
   {
-    key: "Authority",
-    summary: "Earn the mentions that Google and AI engines trust.",
+    key: "Get known",
+    summary: "Earn the mentions that Google and AI trust.",
     items: [
-      ["Digital PR and link outreach", "Linkable assets such as original data and free tools, qualified prospects, and personal outreach. No paid link schemes."],
-      ["Local SEO", "Google Business Profile, reviews, citations, location pages, and LocalBusiness schema for map pack and local results."],
-      ["Prospect research", "Lists of relevant businesses and publications with verified public contact details, built for partnerships and outreach."],
+      ["Mentions and links from other sites", "We create things worth linking to, find the right websites, and reach out to them personally. No paid link schemes."],
+      ["Local search and Google Maps", "Your Google Business Profile, reviews, local listings, and location pages, so nearby customers find you first."],
+      ["Partner and press lists", "Lists of relevant businesses and publications with their public contact details, ready for outreach."],
     ],
   },
   {
-    key: "Reporting",
-    summary: "Know what changed, what it did, and what happens next.",
+    key: "Share and report",
+    summary: "Get more from every page, and see what it did.",
     items: [
-      ["Performance reports", "Search Console and GA4 data turned into a plain monthly report: wins, losses, near-miss keywords, and next actions."],
-      ["Social repurposing", "Each article rewritten natively for X, LinkedIn, Instagram, Facebook, YouTube, Pinterest, and email."],
-      ["Email design", "Mobile-ready HTML emails that render correctly in Gmail, Outlook, Apple Mail, and dark mode."],
+      ["Simple monthly reports", "What went up, what went down, which pages are close to page one, and what we will do next. No jargon."],
+      ["Social media posts", "Each article rewritten properly for X, LinkedIn, Instagram, Facebook, YouTube, Pinterest, and email."],
+      ["Email newsletters", "Good-looking emails that display correctly on phones, Gmail, Outlook, and Apple Mail."],
     ],
+  },
+] as const;
+
+// The five ways people start. `price` is shown when you fill it in, for example "From $490".
+export const offers = [
+  {
+    id: "checkup",
+    need: "I don't know what is wrong",
+    name: "Website Checkup",
+    plain: "We check every page of your website and tell you, in plain English, what stops customers from finding you.",
+    get: ["Every page checked, not a sample", "A short list of what to fix first, and why", "A call to walk you through it"],
+    price: "",
+  },
+  {
+    id: "fix",
+    need: "My website is broken or slow",
+    name: "Fix-It",
+    plain: "We repair the problems that hurt your rankings: errors, slow pages, broken links, and missing behind-the-scenes details.",
+    get: ["Problems fixed on your live site", "A before and after list of what changed", "Works with WordPress and Next.js sites"],
+    price: "",
+  },
+  {
+    id: "grow",
+    need: "I want more customers from Google",
+    name: "Monthly Growth",
+    plain: "Each month we plan, write, publish, and improve pages so more of the right people find you.",
+    get: ["A plan of what to publish and when", "New pages and articles, fact-checked by a person", "Links and mentions from other websites", "A simple monthly report"],
+    price: "",
+  },
+  {
+    id: "local",
+    need: "I need more local customers",
+    name: "Local Boost",
+    plain: "We help you show up on Google Maps and in \"near me\" searches, ahead of nearby competitors.",
+    get: ["Google Business Profile set up properly", "A simple way to earn more reviews", "Your name, address, and phone matching everywhere", "Pages for the areas you serve"],
+    price: "",
+  },
+  {
+    id: "ai",
+    need: "I want ChatGPT to recommend me",
+    name: "AI Visibility",
+    plain: "We set up your website so ChatGPT, Perplexity, and Google's AI answers can understand it, trust it, and mention it.",
+    get: ["A check of what AI tools say about you today", "Pages rewritten so AI can quote them", "The technical setup AI tools read", "Monthly tracking of your mentions"],
+    price: "",
   },
 ] as const;
 
