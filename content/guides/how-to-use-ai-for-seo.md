@@ -3,6 +3,7 @@ title: "How to Use AI for SEO: A Step-by-Step Guide"
 metaTitle: "How to Use AI for SEO: Step-by-Step Guide (2026)"
 description: "SEO using AI means letting AI handle research, briefs, drafts, and audits while you verify facts and add experience. Here is the full workflow, step by step."
 eyebrow: "Start here"
+image: "/images/ai-seo-workflow.webp"
 order: 1
 published: "2026-09-20"
 updated: "2026-09-20"
@@ -37,6 +38,8 @@ The takeaway is practical. Informational clicks are harder to earn, so each page
 ## How do you use AI for SEO, step by step?
 
 You use AI for SEO by running a six-step loop: research, brief, draft, verify, optimize, and measure. AI speeds up every step except verification, which stays human.
+
+![Diagram of the six-step AI SEO workflow: research, brief, draft, verify, optimize, measure, with verify done by a person](/images/ai-seo-workflow.webp "The six-step loop. Verification is the one step that stays fully human.")
 
 1. **Research.** Give the model your niche, audience, and seed topics. Ask for question-style queries grouped by search intent. Then check volumes and difficulty in a real data source such as Google Search Console, Semrush, or Ahrefs. See [AI keyword research](/guides/ai-keyword-research).
 2. **Brief.** Paste the top-ranking page titles and headings into the model. Ask what they cover, what they miss, and what a better page would include. Turn that into an outline with question headings.

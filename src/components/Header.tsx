@@ -13,7 +13,7 @@ export default function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <Link href="/guides/how-to-use-ai-for-seo" className="btn btn-primary !hidden !py-2.5 !px-4 !text-[15px] sm:!inline-flex">Read the guide</Link>
+          <Link href="/book-a-call" className="btn btn-primary !hidden !py-2.5 !px-4 !text-[15px] sm:!inline-flex">Book a call</Link>
           <details className="relative lg:hidden">
             <summary className="grid h-11 w-11 cursor-pointer list-none place-items-center rounded-lg border border-line [&::-webkit-details-marker]:hidden" aria-label="Open menu">
               <span className="block h-[2px] w-5 bg-text shadow-[0_6px_0_var(--color-text),0_-6px_0_var(--color-text)]" />
@@ -22,6 +22,7 @@ export default function Header() {
               {site.nav.map((n) => (
                 <Link key={n.href} href={n.href} className="rounded-lg px-3 py-3 hover:bg-panel2">{n.label}</Link>
               ))}
+              <Link href="/book-a-call" className="btn btn-primary mt-2">Book a call</Link>
             </nav>
           </details>
         </div>

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: { absolute: g.metaTitle },
     description: g.description,
     alternates: { canonical: `/guides/${g.slug}` },
-    openGraph: { type: "article", title: g.metaTitle, description: g.description, url: `/guides/${g.slug}`, publishedTime: g.published, modifiedTime: g.updated, authors: [site.author.name] },
+    openGraph: { type: "article", title: g.metaTitle, description: g.description, url: `/guides/${g.slug}`, publishedTime: g.published, modifiedTime: g.updated, images: g.image ? [g.image] : undefined },
   };
 }
 
@@ -39,9 +39,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     dateModified: g.updated,
     inLanguage: "en-US",
     mainEntityOfPage: abs(`/guides/${g.slug}`),
-    author: { "@type": "Person", "@id": abs("/about#author"), name: site.author.name, url: site.author.url },
+    author: { "@type": "Organization", "@id": abs("/#org"), name: site.name, url: site.url },
     publisher: { "@id": abs("/#org") },
-    image: abs("/opengraph-image"),
+    image: abs(g.image ?? "/opengraph-image"),
   };
   return (
     <article>
@@ -49,7 +49,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <div className="wrap grid gap-14 py-14 lg:grid-cols-[minmax(0,1fr)_280px] lg:py-20">
         <div className="min-w-0">
           <p className="font-mono text-[13px] text-muted">
-            By <Link className="text-text underline underline-offset-4 hover:text-mark" href="/about">{site.author.name}</Link> · Last updated <time dateTime={g.updated}>{formatDate(g.updated)}</time> · {g.readMinutes} min read
+            By the <Link className="text-text underline underline-offset-4 hover:text-mark" href="/editorial-standards">{site.editorial.name}</Link> · Last updated <time dateTime={g.updated}>{formatDate(g.updated)}</time> · {g.readMinutes} min read
           </p>
           <div className="card mt-8 max-w-[72ch] border-l-2 !border-l-mark p-7">
             <p className="eyebrow">Quick answer</p>
@@ -62,12 +62,12 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               <Faq items={g.faqs} />
             </section>
           )}
-          <aside className="card mt-16 flex max-w-[72ch] flex-col gap-2 p-7 sm:flex-row sm:items-center sm:gap-6">
-            <div aria-hidden className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-mark font-[family-name:var(--font-display)] text-[20px] font-bold text-ink">{site.author.name.split(" ").map((n) => n[0]).join("")}</div>
+          <aside className="card mt-16 grid max-w-[72ch] gap-5 p-7 sm:grid-cols-[1fr_auto] sm:items-center">
             <div>
-              <p className="font-semibold">{site.author.name} <span className="font-normal text-muted">· {site.author.role}</span></p>
-              <p className="mt-1 text-[15.5px] text-muted">{site.author.bio} <Link className="text-link underline underline-offset-4 hover:text-mark" href="/editorial-standards">How we write and check guides</Link>.</p>
+              <p className="font-[family-name:var(--font-display)] text-[20px] font-semibold">Want this done for you?</p>
+              <p className="mt-1 text-[15.5px] text-muted">We run this workflow for businesses, with a person checking every fact. Talk it through on a free {site.callMinutes}-minute Google Meet call. Read <Link className="text-link underline underline-offset-4 hover:text-mark" href="/editorial-standards">how we write and check guides</Link>.</p>
             </div>
+            <Link href="/book-a-call" className="btn btn-primary">Book a call</Link>
           </aside>
         </div>
         <aside className="hidden lg:block">

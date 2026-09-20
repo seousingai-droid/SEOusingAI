@@ -4,7 +4,9 @@ import Tabs from "@/components/Tabs";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { getGuides } from "@/lib/content";
-import { tools } from "@/lib/site";
+import Image from "next/image";
+import ServicesHub from "@/components/ServicesHub";
+import { tools, services, site } from "@/lib/site";
 
 const audiences = [
   {
@@ -101,15 +103,16 @@ const strengths = [
 
 const paths = [
   { k: "Learn", title: "How to use AI for SEO", body: "The full six-step workflow, from research to measurement. Read this first.", best: "Anyone new to doing SEO with AI.", href: "/guides/how-to-use-ai-for-seo", cta: "Read the guide" },
-  { k: "Compare", title: "Best AI SEO tools", body: "Four types of tools, what each is for, and how to build a stack without overpaying.", best: "People about to pay for a tool.", href: "/guides/best-ai-seo-tools", cta: "Compare tools" },
+  { k: "Hand it over", title: "Done-for-you AI SEO", body: "Audits, fixes, strategy, content, outreach, and reporting, with a person reviewing every deliverable.", best: "Businesses that want results without running the process.", href: "/services", cta: "See the services" },
   { k: "Do", title: "Free AI SEO tools", body: "Snippet preview, prompt builder, and llms.txt generator. No signup, nothing to install.", best: "People who want to act today.", href: "/tools", cta: "Open the tools" },
-  { k: "Get cited", title: "Generative engine optimization", body: "How AI engines pick sources, and how to write passages they quote.", best: "Sites that rank but never get mentioned.", href: "/guides/generative-engine-optimization", cta: "Learn GEO" },
+  { k: "Talk it through", title: "Free strategy call", body: `A ${site.callMinutes}-minute Google Meet call. You leave with one fix worth making this week.`, best: "Anyone unsure what their site needs first.", href: "/book-a-call", cta: "Book a call" },
 ];
 
 const faqs = [
   { q: "What is SEO using AI?", a: "SEO using AI is the practice of using AI models such as ChatGPT, Claude, and Gemini to speed up search engine optimization work, including keyword research, content briefs, drafting, on-page optimization, technical audits, and reporting. A human still sets the strategy, verifies facts, and adds first-hand experience." },
   { q: "Is SEO using AI allowed by Google?", a: "Yes. Google states that it rewards helpful, original content however it is produced. What violates Google's spam policies is scaled content abuse, meaning many low-value pages published mainly to manipulate rankings, whether written by AI or people." },
-  { q: "Is this site free?", a: "Yes. Every guide and tool on SEO Using AI is free and needs no signup. The site may earn a commission from some tool links. Those links are labeled, and they never change what we recommend." },
+  { q: "Are the guides and tools free?", a: "Yes. Every guide and tool on SEO Using AI is free and needs no signup. The site earns money from done-for-you services and, in some cases, labeled affiliate links. Neither changes what we recommend." },
+  { q: "Do you offer done-for-you AI SEO services?", a: "Yes. SEO Using AI offers done-for-you services covering audits, code fixes, keyword strategy, content, link outreach, local SEO, and reporting. AI workflows handle the volume and a person reviews every deliverable. It starts with a free Google Meet call." },
   { q: "Do I need paid tools to do SEO with AI?", a: "No. You can start with a free tier of a general AI model and Google Search Console. Paid SEO platforms become useful when you need reliable search volumes, competitor data, or rank tracking at scale." },
   { q: "What is the difference between AI SEO and GEO?", a: "AI SEO usually means using AI to do SEO work. Generative engine optimization (GEO) means optimizing content so AI answer engines cite it. This site covers both, because in 2026 you need both." },
 ];
@@ -123,19 +126,19 @@ export default function Home() {
         <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(138_180_255/0.13),transparent)]" />
         <div className="wrap relative grid items-center gap-14 pb-20 pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:pb-28 lg:pt-24">
           <div>
-            <p className="pill"><i />A free, plain-English guide to AI SEO</p>
+            <p className="pill"><i />AI SEO guides, free tools, and done-for-you services</p>
             <h1 className="h-xl mt-7">
               SEO using AI: rank on Google and get <span className="hl">cited by AI answers</span>
             </h1>
             <p className="lede mt-7 max-w-xl">
-              SEO using AI means letting AI do the research, briefs, drafts, and audits, while you verify the facts and add what only you know. This site shows the whole workflow, step by step.
+              SEO using AI means letting AI do the research, briefs, drafts, and audits, while a person verifies the facts and adds real experience. Learn the workflow here for free, or have us run it for you.
             </p>
             <p className="mt-4 max-w-xl text-[16px] text-muted">
-              Guides, tested prompt structures, honest tool comparisons, and free tools. No signup. No hype about one-click rankings.
+              Free guides, prompt structures, and tools, plus done-for-you AI SEO services with a person reviewing everything. No hype about one-click rankings.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link href="/guides/how-to-use-ai-for-seo" className="btn btn-primary">Read the guide <span aria-hidden>→</span></Link>
-              <Link href="/tools" className="btn btn-ghost">Try the free tools</Link>
+              <Link href="/book-a-call" className="btn btn-primary">Book a free strategy call <span aria-hidden>→</span></Link>
+              <Link href="/guides/how-to-use-ai-for-seo" className="btn btn-ghost">Read the guide</Link>
             </div>
           </div>
           <AnswerCard />
@@ -151,15 +154,15 @@ export default function Home() {
             <p className="lede mt-7 max-w-2xl">AI made content cheap, so search engines stopped rewarding content that is merely there. What still works is a page that answers better than the rest and proves someone real stands behind it.</p>
             <p className="mt-4 max-w-2xl text-muted">Everything here follows one rule: AI does the volume, a person does the truth. Start with <Link className="text-link underline underline-offset-4 hover:text-mark" href="/guides/ai-keyword-research">AI keyword research</Link>, use our <Link className="text-link underline underline-offset-4 hover:text-mark" href="/guides/chatgpt-prompts-for-seo">prompts for SEO</Link>, then learn <Link className="text-link underline underline-offset-4 hover:text-mark" href="/guides/generative-engine-optimization">how to get cited by AI</Link>.</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link href="/guides" className="btn btn-primary">Browse all guides</Link>
-              <Link href="/guides/best-ai-seo-tools" className="btn btn-ghost">Compare AI SEO tools</Link>
+              <Link href="/services" className="btn btn-primary">See the services</Link>
+              <Link href="/guides" className="btn btn-ghost">Browse all guides</Link>
             </div>
           </div>
           <dl className="card divide-y divide-line self-start border-l-2 !border-l-mark">
             {[
               ["Search surfaces covered", "Google, AI Overviews, ChatGPT, Perplexity, Gemini, Claude"],
-              ["What you get", "Guides, prompt structures, tool comparisons, free tools"],
-              ["Cost", "Free to read and use. No signup."],
+              ["Learn it", "Free guides, prompt structures, and tools. No signup."],
+              ["Hand it over", "Audits, fixes, strategy, content, outreach, and reporting"],
               ["Approach", "SEO first, then optimize for AI answers"],
             ].map(([k, v]) => (
               <div key={k} className="px-7 py-6">
@@ -168,6 +171,32 @@ export default function Home() {
               </div>
             ))}
           </dl>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="band band-line">
+        <div className="wrap grid items-center gap-12 lg:grid-cols-2">
+          <ServicesHub className="hidden w-full md:block" />
+          <div>
+            <p className="eyebrow">Done-for-you AI SEO</p>
+            <h2 className="h-lg mt-5">Fifteen AI workflows. <span className="hl">One review gate.</span></h2>
+            <p className="lede mt-6">Each job in SEO has its own specialist workflow, from the first crawl to the monthly report. A person reviews what they produce before it reaches your site.</p>
+            <ul className="mt-8 divide-y divide-line border-y border-line">
+              {services.map((sv) => (
+                <li key={sv.key}>
+                  <Link href={`/services#${sv.key.toLowerCase().replace(/[^a-z]+/g, "-")}`} className="group flex items-baseline justify-between gap-6 py-4">
+                    <span className="font-[family-name:var(--font-display)] text-[20px] font-semibold group-hover:text-mark">{sv.key}</span>
+                    <span className="hidden text-right text-[15px] text-muted sm:block">{sv.items.map((it) => it[0]).join(" · ")}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
+              <Link href="/services" className="btn btn-ghost">All services</Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -256,6 +285,14 @@ export default function Home() {
               </figure>
             ))}
           </div>
+          <figure className="mt-16 grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+            <Image src="/images/how-ai-engines-cite-sources.webp" alt="Diagram of how AI answer engines cite sources in three stages: search the web, chunk pages into passages, and rank passages for the answer" width={1600} height={900} sizes="(min-width: 1024px) 680px, 100vw" className="figure-img" />
+            <figcaption>
+              <h3 className="h-md">How AI engines decide who gets cited</h3>
+              <p className="mt-4 text-muted">AI answer engines search the web, split each page into passages, and quote the passages that answer best. You compete as a passage, not as a page, which is why every section on a page has to stand on its own.</p>
+              <Link href="/guides/generative-engine-optimization" className="mt-5 inline-block text-link underline underline-offset-4 hover:text-mark">Read the GEO guide</Link>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -287,6 +324,7 @@ export default function Home() {
         <div className="wrap">
           <p className="eyebrow">The method</p>
           <h2 className="h-lg mt-5">SEO using AI, step by step</h2>
+          <Image src="/images/ai-seo-workflow.webp" alt="Diagram of the six-step AI SEO workflow: research, brief, draft, verify, optimize, measure, with verify done by a person" width={1600} height={900} sizes="(min-width: 1200px) 1150px, 100vw" className="figure-img mt-12" />
           <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {process.map(([t, b], i) => (
               <li key={t} className="card p-7">
@@ -340,7 +378,7 @@ export default function Home() {
       <section className="band band-line">
         <div className="wrap">
           <p className="eyebrow">Choose the right start</p>
-          <h2 className="h-lg mt-5 max-w-3xl">Start with your problem, not with a tool.</h2>
+          <h2 className="h-lg mt-5 max-w-3xl">Do it yourself, or hand it over.</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {paths.map((p) => (
               <div key={p.k} className="card flex flex-col p-8">
@@ -372,10 +410,10 @@ export default function Home() {
           <div className="card grid items-center gap-8 p-8 sm:p-14 lg:grid-cols-[1.3fr_0.7fr]">
             <div>
               <p className="eyebrow">Not sure where to begin?</p>
-              <h2 className="h-lg mt-4">Read one guide. Fix one page this week.</h2>
-              <p className="lede mt-5 max-w-xl">The start-here guide takes about ten minutes and gives you a six-step loop you can run on your own site today.</p>
+              <h2 className="h-lg mt-4">Talk it through on a free call.</h2>
+              <p className="lede mt-5 max-w-xl">A {site.callMinutes}-minute Google Meet call about your site and your market. You leave with one fix worth making this week, whether or not we work together.</p>
             </div>
-            <div className="flex lg:justify-end"><Link href="/guides/how-to-use-ai-for-seo" className="btn btn-primary">Start here <span aria-hidden>→</span></Link></div>
+            <div className="flex flex-wrap gap-3 lg:justify-end"><Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link><Link href="/guides/how-to-use-ai-for-seo" className="btn btn-ghost">Or read the guide</Link></div>
           </div>
         </div>
       </section>

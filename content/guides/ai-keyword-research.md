@@ -3,6 +3,7 @@ title: "AI Keyword Research: How to Find Keywords With AI"
 metaTitle: "AI Keyword Research: Find Keywords With AI (2026)"
 description: "AI keyword research uses AI models to expand, cluster, and prioritize keywords, then validates them with real search data. Here is the exact process."
 eyebrow: "Keyword research"
+image: "/images/ai-keyword-research-process.webp"
 order: 3
 published: "2026-09-20"
 updated: "2026-09-20"
@@ -25,6 +26,8 @@ The division of labor matters. A general AI model has read a huge amount of text
 ## How do you find keywords with AI, step by step?
 
 You find keywords with AI in five steps: seed, expand, cluster, validate, and prioritize.
+
+![Five-step AI keyword research process: seed, expand, and cluster with an AI model, then validate and prioritize with real search data](/images/ai-keyword-research-process.webp "The AI model handles the first three steps. Real search data decides the last two.")
 
 1. **Seed.** Tell the model what you sell, who buys it, and where they are. Add five to ten seed topics in your own words.
 2. **Expand.** Ask for question-style queries across the buying journey: problem, comparison, purchase, and use. Ask for the phrasing a real person would type or say.

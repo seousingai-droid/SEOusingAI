@@ -14,7 +14,8 @@ npm run build    # production build
 
 | What | Where |
 |---|---|
-| Brand facts, author, nav, contact email | `src/lib/site.ts` |
+| Brand facts, nav, contact email, booking link, services | `src/lib/site.ts` |
+| Generated images (WebP, 1600x900) | `public/images/` |
 | Guides (markdown with front matter) | `content/guides/*.md` |
 | Homepage sections | `src/app/page.tsx` |
 | Free tools | `src/app/tools/*` |
@@ -36,4 +37,4 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 ## Before launch
 
 - Set a real mailbox for `hello@seousingai.com` or change `email` in `src/lib/site.ts`.
-- Review the author name and bio in `src/lib/site.ts`.
+- Turn on live booking: in Google Calendar choose Create, Appointment schedule, keep Google Meet as the location, save, click Share, copy the booking page link, and paste it into `bookingUrl` in `src/lib/site.ts`. Until then the page shows an email request instead.

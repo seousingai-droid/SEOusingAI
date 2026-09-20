@@ -3,6 +3,7 @@ title: "ChatGPT Prompts for SEO That Produce Usable Work"
 metaTitle: "ChatGPT Prompts for SEO: 11 That Actually Work"
 description: "Good SEO prompts give the model a role, context, source material, constraints, and an output format. Here are 11 prompts for ChatGPT, Claude, or Gemini."
 eyebrow: "Prompts"
+image: "/images/anatomy-of-an-seo-prompt.webp"
 order: 4
 published: "2026-09-20"
 updated: "2026-09-20"
@@ -19,6 +20,8 @@ faqs:
 ## What makes a good SEO prompt?
 
 A good SEO prompt has five parts: role, context, source material, constraints, and output format. Missing any one of them is why most SEO prompts return filler.
+
+![Anatomy of an SEO prompt with five labeled parts: role, context, source material, constraints, and output format](/images/anatomy-of-an-seo-prompt.webp "Source material is the part most people skip, and the one that changes the output most.")
 
 - **Role.** Who the model should act as, such as a technical SEO or a content strategist.
 - **Context.** What you sell, who buys it, and the country you target.

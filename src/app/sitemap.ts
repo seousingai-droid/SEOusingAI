@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const stat = ["/about", "/editorial-standards", "/affiliate-disclosure", "/contact", "/privacy", "/terms"];
   return [
     { url: abs("/"), lastModified: latest, priority: 1 },
+    { url: abs("/services"), lastModified: latest, priority: 0.9 },
+    { url: abs("/book-a-call"), lastModified: latest, priority: 0.7 },
     { url: abs("/guides"), lastModified: latest, priority: 0.9 },
     ...guides.map((g) => ({ url: abs(`/guides/${g.slug}`), lastModified: g.updated, priority: 0.9 })),
     { url: abs("/tools"), lastModified: latest, priority: 0.8 },

@@ -11,7 +11,7 @@ export default function Footer() {
         <div>
           <Logo />
           <p className="mt-5 max-w-sm text-[15px] text-muted">
-            A free, plain-English resource for doing SEO with AI. Guides, prompts, tool comparisons, and free tools for ranking on Google and getting cited by AI answers.
+            Free guides and tools for doing SEO with AI, plus done-for-you AI SEO services with a person reviewing every deliverable.
           </p>
           <p className="mt-5 text-[15px]"><a className="text-link hover:text-mark" href={`mailto:${site.email}`}>{site.email}</a></p>
         </div>
@@ -35,6 +35,8 @@ export default function Footer() {
         <div>
           <p className="eyebrow mb-5">Site</p>
           <ul className="space-y-3 text-[15px] text-muted">
+            <li><Link className="hover:text-text" href="/services">Services</Link></li>
+            <li><Link className="hover:text-text" href="/book-a-call">Book a call</Link></li>
             <li><Link className="hover:text-text" href="/about">About</Link></li>
             <li><Link className="hover:text-text" href="/editorial-standards">Editorial standards</Link></li>
             <li><Link className="hover:text-text" href="/affiliate-disclosure">Affiliate disclosure</Link></li>

@@ -3,6 +3,7 @@ title: "Generative Engine Optimization: How to Get Cited by AI"
 metaTitle: "Generative Engine Optimization (GEO): Get Cited by AI"
 description: "Generative engine optimization (GEO) is the practice of making content easy for AI answer engines to retrieve, quote, and cite. Here is how it works."
 eyebrow: "GEO"
+image: "/images/how-ai-engines-cite-sources.webp"
 order: 5
 published: "2026-09-20"
 updated: "2026-09-20"
@@ -27,6 +28,8 @@ GEO exists because a growing share of questions are answered on the results page
 ## How do AI answer engines choose what to cite?
 
 AI answer engines choose what to cite in three stages: search, chunk, and rank.
+
+![Diagram of how AI answer engines cite sources in three stages: search the web, chunk pages into passages, and rank passages for the answer](/images/how-ai-engines-cite-sources.webp "AI engines search, split pages into passages, then cite the passages that answer best.")
 
 1. **Search.** The engine turns the user's question into search queries and fetches top results.
 2. **Chunk.** Each page is split into passages of a few hundred words, often at headings.

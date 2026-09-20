@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   title: { default: "SEO Using AI: Rank on Google and in AI Answers", template: "%s | SEO Using AI" },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.author.name, url: site.author.url }],
   alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: site.name, locale: site.locale, url: site.url },
   twitter: { card: "summary_large_image" },
@@ -35,7 +34,6 @@ const orgLd = {
       email: site.email,
       description: site.description,
       foundingDate: site.founded,
-      founder: { "@type": "Person", "@id": abs("/about#author"), name: site.author.name, url: site.author.url, sameAs: site.author.sameAs },
       logo: { "@type": "ImageObject", url: abs("/icon.svg") },
     },
     {

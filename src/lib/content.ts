@@ -20,6 +20,7 @@ export type Guide = {
   html: string;
   toc: { id: string; text: string }[];
   order: number;
+  image?: string;
 };
 
 const slugify = (s: string) =>
@@ -58,6 +59,9 @@ function render(md: string) {
     const attrs = external ? ' target="_blank" rel="noopener"' : "";
     return `<a href="${href}"${title ? ` title="${title}"` : ""}${attrs}>${text}</a>`;
   };
+  renderer.image = function ({ href, title, text }) {
+    return `<figure><img src="${href}" alt="${text}" width="1600" height="900" loading="lazy" decoding="async" />${title ? `<figcaption>${title}</figcaption>` : ""}</figure>`;
+  };
   const html = marked.parse(md, { renderer, async: false }) as string;
   return { html, toc };
 }
@@ -83,6 +87,7 @@ export function getGuides(): Guide[] {
         quickAnswer: data.quickAnswer,
         faqs: data.faqs ?? [],
         order: data.order ?? 99,
+        image: data.image,
         html,
         toc,
       } as Guide;
