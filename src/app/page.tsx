@@ -5,7 +5,7 @@ import Tabs from "@/components/Tabs";
 import Reveal from "@/components/Reveal";
 import OfferPicker from "@/components/OfferPicker";
 import ServicesHub from "@/components/ServicesHub";
-import { SearchClimb, MapPin, ChatRecommend, SplitWork, StepIcon } from "@/components/Illustrations";
+import { SearchClimb, MapPin, ChatRecommend, SplitWork, StepIcon, SampleReport } from "@/components/Illustrations";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { getGuides } from "@/lib/content";
@@ -98,6 +98,24 @@ export default function Home() {
             <p className="rise mt-6 text-[15px] text-muted" style={{ animationDelay: ".6s" }}>Prefer to do it yourself? <Link className="text-link underline underline-offset-4 hover:text-mark" href="/guides/how-to-use-ai-for-seo">Every guide and tool here is free</Link>.</p>
           </div>
           <AnswerCard />
+        </div>
+      </section>
+
+      {/* Free checker */}
+      <section className="band band-line">
+        <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <Reveal>
+            <p className="eyebrow">Free tool</p>
+            <h2 className="h-lg mt-5">The SEO checklist that <span className="hl">checks itself</span></h2>
+            <p className="lede mt-6 max-w-xl">Other checklists hand you 150 boxes to tick by hand. Enter your website and ours runs 30 checks for Google and AI search, then tells you what to fix in plain English.</p>
+            <form action="/tools/seo-checklist" method="get" className="card mt-8 flex max-w-xl flex-col gap-3 p-4 sm:flex-row sm:p-3">
+              <label htmlFor="home-site" className="sr-only">Your website address</label>
+              <input id="home-site" name="url" required className="field !border-0 !bg-transparent text-[18px] sm:flex-1" placeholder="yourwebsite.com" inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} />
+              <button className="btn btn-primary shrink-0">Check my website <span aria-hidden>→</span></button>
+            </form>
+            <p className="mt-3 text-[14.5px] text-muted">Free. No signup. Takes about ten seconds.</p>
+          </Reveal>
+          <Reveal delay={120}><SampleReport /></Reveal>
         </div>
       </section>
 
@@ -280,7 +298,7 @@ export default function Home() {
             <div>
               <p className="eyebrow">Prefer to do it yourself?</p>
               <h2 className="h-lg mt-5">Learn SEO using AI, free.</h2>
-              <p className="lede mt-5">Step-by-step guides and small tools that run in your browser. No signup. Start with the six-step workflow on the right.</p>
+              <p className="lede mt-5">Step-by-step guides and small free tools. No signup. Start with the six-step workflow on the right.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/guides/how-to-use-ai-for-seo" className="btn btn-primary">Read the first guide <span aria-hidden>→</span></Link>
                 <Link href="/guides" className="btn btn-ghost">All {guides.length} guides</Link>
@@ -318,7 +336,7 @@ export default function Home() {
                     {tools.map((t) => (<li key={t.slug}><Link className="text-[18px] font-semibold hover:text-mark" href={`/tools/${t.slug}`}>{t.name} <span className="text-mark">→</span></Link></li>))}
                   </ul>
                 </div>
-                <p className="mt-6 text-[15px] text-muted">They run in your browser. Nothing you type is sent anywhere.</p>
+                <p className="mt-6 text-[15px] text-muted">No signup. Nothing you enter is stored.</p>
                 </div>
               </div>
             </Reveal>

@@ -216,3 +216,13 @@ label.lbl { display: block; font-family: var(--font-mono), monospace; font-size:
   .il-stamp { transform: rotate(-6deg); }
   .il-draw { animation: none; stroke-dashoffset: 0; }
 }
+
+/* checklist tool */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin .8s linear infinite; }
+@keyframes arc { from { stroke-dashoffset: var(--c); } }
+.score-arc { animation: arc 1.1s cubic-bezier(.3,.7,.2,1); }
+@keyframes check-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.check-row { animation: check-in .4s ease both; }
+@media (prefers-reduced-motion: reduce) { .spin, .score-arc, .check-row { animation: none; } }
+@media print { header, footer, form, .btn, nav, label { display: none !important; } body { background: #fff; color: #000; } .card { border-color: #ccc; background: #fff; } }

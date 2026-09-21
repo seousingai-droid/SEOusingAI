@@ -32,6 +32,12 @@ export const site = {
 
 export const tools = [
   {
+    slug: "seo-checklist",
+    name: "SEO Checklist Checker",
+    blurb:
+      "Enter your website and get an instant report: 30 checks for Google and AI search, each explained in plain English.",
+  },
+  {
     slug: "serp-preview",
     name: "SERP Snippet Preview",
     blurb:

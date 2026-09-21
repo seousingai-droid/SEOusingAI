@@ -34,6 +34,7 @@ One page per search intent. Do not create a second page for a phrase that is alr
 | can, automated | What can AI do | `/guides/can-ai-do-seo` |
 | write, writer, content (learn sense) | Learn to write with AI | `/guides/how-to-write-seo-content-with-ai` |
 | definitions of any term | Look up a term | `/glossary` |
+| seo checklist, seo checker, website seo check (not in the export, added 2026-09-22) | Check my own site | `/tools/seo-checklist` |
 
 ## Not built on purpose
 
