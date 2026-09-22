@@ -55,10 +55,19 @@ Scoring is weighted geometrically (a critical check is worth nine routine ones),
 
 ## Sign-in
 
+Two steps: someone enters an email, we send a six-digit code, they type it back. The email also carries a one-click link that works on any device. There is no password and no database.
+
+**Turn confirmation on** by setting `RESEND_API_KEY`. Until it is set the site still works, but it signs people in without confirming the address and says so in the response. Get a key free at resend.com, then set `MAIL_FROM` to an address on a domain you have verified there.
+
+Limits: five wrong codes per cookie, ten per visitor per ten minutes on the server, five sign-in emails per address per ten minutes. Codes expire in ten minutes.
+
+Run `npm run verify:auth` after touching anything in `src/lib/verify.ts` or `src/lib/session.ts`.
+
+
 - Running a check requires an account. `src/lib/session.ts` signs a cookie holding the person's email and plan; there is no database and no password.
-- Routes: `/api/auth/signin` (email), `/api/auth/key` (licence key, upgrades the same session to lifetime), `/api/auth/signout`, `/api/auth/me`.
+- Routes: `/api/auth/signin` (sends the code), `/api/auth/verify` (checks it), `/api/auth/magic` (the one-click link), `/api/auth/key` (licence key, upgrades the same session to lifetime), `/api/auth/signout`, `/api/auth/me`.
 - `/api/check` returns 401 without a valid session, the 5 free results for a free account, and all 94 for lifetime.
-- Set `AUTH_SECRET` in `.env.local` and in your host's environment variables. Changing it signs everyone out.
+- Set `AUTH_SECRET` in `.env.local` and in your host's environment variables. Changing it signs everyone out and voids any code in flight.
 - Set `LEAD_WEBHOOK_URL` to a Kit, Mailchimp, Zapier, or Formspree endpoint to collect the emails people sign up with. Without it, sign-in still works and no email is kept anywhere but the cookie.
 - To let people run one check before signing in, remove the 401 guard at the top of `src/app/api/check/route.ts` and pass the count through instead.
 
