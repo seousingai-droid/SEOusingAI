@@ -44,6 +44,7 @@ export default function Footer() {
               <li key={t.slug}><Link className="hover:text-text" href={`/tools/${t.slug}`}>{t.name}</Link></li>
             ))}
             <li><Link className="hover:text-text" href="/tools">All tools</Link></li>
+            <li><Link className="hover:text-text" href="/pricing">Pricing</Link></li>
           </ul>
         </div>
         <div>

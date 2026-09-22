@@ -107,13 +107,13 @@ export default function Home() {
           <Reveal>
             <p className="eyebrow">Free tool</p>
             <h2 className="h-lg mt-5">The SEO checklist that <span className="hl">checks itself</span></h2>
-            <p className="lede mt-6 max-w-xl">Other checklists hand you 150 boxes to tick by hand. Enter your website and ours runs 30 checks for Google and AI search, then tells you what to fix in plain English.</p>
+            <p className="lede mt-6 max-w-xl">Other checklists hand you a hundred boxes to tick by hand. Enter your website and ours runs 94 checks for Google and AI search, then tells you what to fix in plain English.</p>
             <form action="/tools/seo-checklist" method="get" className="card mt-8 flex max-w-xl flex-col gap-3 p-4 sm:flex-row sm:p-3">
               <label htmlFor="home-site" className="sr-only">Your website address</label>
               <input id="home-site" name="url" required className="field !border-0 !bg-transparent text-[18px] sm:flex-1" placeholder="yourwebsite.com" inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} />
               <button className="btn btn-primary shrink-0">Check my website <span aria-hidden>→</span></button>
             </form>
-            <p className="mt-3 text-[14.5px] text-muted">Free. No signup. Takes about ten seconds.</p>
+            <p className="mt-3 text-[14.5px] text-muted">First 5 results free, no signup. <Link className="text-link underline underline-offset-4 hover:text-mark" href="/pricing">$67 once</Link> for all 94.</p>
           </Reveal>
           <Reveal delay={120}><SampleReport /></Reveal>
         </div>

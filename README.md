@@ -36,6 +36,15 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 2. Add the domain `seousingai.com` and point DNS as Vercel instructs. Redirect `www` to the apex.
 3. After it is live: verify the domain in Google Search Console and Bing Webmaster Tools, then submit `https://seousingai.com/sitemap.xml` in both. Bing matters because ChatGPT and Copilot retrieve from it.
 
+## The SEO Checklist Checker (paid tool)
+
+- Engine: `src/lib/checker.ts` (94 checks). API: `src/app/api/check/route.ts`. Screen: `src/app/tools/seo-checklist/Tool.tsx`.
+- Free visitors get the 5 checks marked `free: true`. A valid key in the `x-license` header unlocks all 94.
+- Keys are signed with `LICENSE_SECRET`. Set it in `.env.local` locally and in your host's environment variables. Never change it: every key issued so far would stop working.
+- Issue keys: `node scripts/issue-license.mjs 5`. Email one key per purchase.
+- To take payments, create the product on a provider that pays out to the Philippines (Payhip works via PayPal), and paste the checkout link into `checklist.checkoutUrl` in `src/lib/site.ts`. Until then the pricing page shows "Email to buy".
+- Refund promise on the pricing page: 14 days.
+
 ## Before launch
 
 - Set a real mailbox for `hello@seousingai.com` or change `email` in `src/lib/site.ts`.

@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages.map((sp) => ({ url: abs(`/services/${sp.slug}`), lastModified: latest, priority: 0.9 })),
     ...landingPages.map((l) => ({ url: abs(`/${l.slug}`), lastModified: latest, priority: 0.9 })),
     { url: abs("/glossary"), lastModified: latest, priority: 0.6 },
+    { url: abs("/pricing"), lastModified: latest, priority: 0.8 },
     { url: abs("/book-a-call"), lastModified: latest, priority: 0.7 },
     { url: abs("/guides"), lastModified: latest, priority: 0.9 },
     ...guides.map((g) => ({ url: abs(`/guides/${g.slug}`), lastModified: g.updated, priority: 0.9 })),
