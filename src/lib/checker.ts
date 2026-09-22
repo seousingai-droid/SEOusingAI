@@ -276,3 +276,22 @@ export function runChecks(page: Fetched, x: Extras): Report {
 export function redact(r: Report): Report {
   return { ...r, locked: true, checks: r.checks.map((c) => (c.free ? c : { id: c.id, group: c.group, label: c.label, weight: c.weight, status: "locked" })) };
 }
+
+/**
+ * The real list of checks, derived by running the engine against a stub page.
+ * Used by the homepage and tool page so the published counts can never drift
+ * from what the checker actually does.
+ */
+export function catalog() {
+  const stub: Fetched = {
+    url: "https://example.com/", status: 200, headers: new Headers({ "content-type": "text/html" }),
+    body: "<!doctype html><html lang='en'><head><meta charset='utf-8'><title>t</title></head><body><h1>h</h1><p>p</p></body></html>",
+    ms: 0, hops: [], bytes: 120,
+  };
+  const checks = runChecks(stub, {}).checks.map(({ id, group, label, weight, free }) => ({ id, group, label, weight, free: !!free }));
+  return {
+    total: checks.length,
+    free: checks.filter((c) => c.free).length,
+    groups: GROUPS.map((g) => ({ ...g, checks: checks.filter((c) => c.group === g.name) })),
+  };
+}

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import AnswerCard from "@/components/AnswerCard";
 import Tabs from "@/components/Tabs";
 import Reveal from "@/components/Reveal";
 import OfferPicker from "@/components/OfferPicker";
 import ServicesHub from "@/components/ServicesHub";
+import CheckForm, { trustPoints } from "@/components/CheckForm";
+import CheckCatalog from "@/components/CheckCatalog";
 import { SearchClimb, MapPin, ChatRecommend, SplitWork, StepIcon, SampleReport } from "@/components/Illustrations";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
@@ -13,10 +14,11 @@ import { getCaseStudies } from "@/lib/caseStudies";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { tools, services, site } from "@/lib/site";
 import { pageMeta } from "@/lib/meta";
+import { catalog } from "@/lib/checker";
 
 export const metadata = pageMeta({
-  title: "SEO Using AI: Get Found on Google and in AI Answers",
-  description: "SEO using AI for small businesses: get found on Google, Google Maps, and in AI answers. Free guides and tools, or done-for-you services checked by a person.",
+  title: "Free Website SEO Check: 94 Tests in 10 Seconds",
+  description: "Check your website free against 94 SEO and AI-search checks, with a plain-English fix for each. Or have our team do the work, with a person checking everything.",
   path: "/",
   absolute: true,
 });
@@ -78,46 +80,69 @@ const faqs = [
 ];
 
 export default function Home() {
-  const guides = getGuides(); const studies = getCaseStudies().slice(0, 3);
+  const guides = getGuides(); const studies = getCaseStudies().slice(0, 3); const cat = catalog();
   return (
     <>
-      {/* Hero */}
+      {/* Hero: the checker is the primary action */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(138_180_255/0.13),transparent)]" />
-        <div className="wrap relative grid items-center gap-14 pb-20 pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:pb-28 lg:pt-24">
+        <div className="wrap relative grid items-center gap-14 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
           <div>
-            <p className="pill rise" style={{ animationDelay: ".05s" }}><i />For small businesses that want more customers</p>
+            <p className="pill rise" style={{ animationDelay: ".05s" }}><i />{cat.total} checks for Google and AI search</p>
             <h1 className="h-xl rise mt-7" style={{ animationDelay: ".15s" }}>
-              SEO using AI: get found on Google and <span className="hl">recommended by AI</span>
+              See what is stopping your website from <span className="hl">getting found</span>
             </h1>
             <p className="lede rise mt-7 max-w-xl" style={{ animationDelay: ".3s" }}>
-              Your customers ask Google, Google Maps, and ChatGPT who to call. We help your business show up in all three. AI does the heavy lifting. A real person checks every detail.
+              Enter your address. In about ten seconds you get a report on what Google and AI tools like ChatGPT see when they visit, with a plain-English fix for every problem.
             </p>
-            <div className="rise mt-9 flex flex-wrap gap-3" style={{ animationDelay: ".45s" }}>
-              <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
-              <a href="#offers" className="btn btn-ghost">See what we offer</a>
-            </div>
-            <p className="rise mt-6 text-[15px] text-muted" style={{ animationDelay: ".6s" }}>Prefer to do it yourself? <Link className="text-link underline underline-offset-4 hover:text-mark" href="/guides/how-to-use-ai-for-seo">Every guide and tool here is free</Link>.</p>
+            <div className="rise mt-8 max-w-xl" style={{ animationDelay: ".42s" }}><CheckForm id="hero-site" /></div>
+            <dl className="rise mt-7 grid max-w-xl gap-x-8 gap-y-4 sm:grid-cols-2" style={{ animationDelay: ".55s" }}>
+              {trustPoints.map(([t, b]) => (
+                <div key={t} className="flex gap-3">
+                  <span aria-hidden className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-ink"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><path d="m5 12 5 5 9-10" /></svg></span>
+                  <div><dt className="text-[15.5px] font-medium">{t}</dt><dd className="text-[14.5px] text-muted">{b}</dd></div>
+                </div>
+              ))}
+            </dl>
+            <p className="rise mt-7 text-[15px] text-muted" style={{ animationDelay: ".65s" }}>Want it done for you instead? <Link className="text-link underline underline-offset-4 hover:text-mark" href="/book-a-call">Book a free call</Link>.</p>
           </div>
-          <AnswerCard />
+          <div className="rise" style={{ animationDelay: ".25s" }}><SampleReport /></div>
         </div>
       </section>
 
-      {/* Free checker */}
+      {/* What the checker looks at */}
       <section className="band band-line">
-        <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="wrap">
           <Reveal>
-            <p className="eyebrow">Free tool</p>
-            <h2 className="h-lg mt-5">The SEO checklist that <span className="hl">checks itself</span></h2>
-            <p className="lede mt-6 max-w-xl">Other checklists hand you a hundred boxes to tick by hand. Enter your website and ours runs 94 checks for Google and AI search, then tells you what to fix in plain English.</p>
-            <form action="/tools/seo-checklist" method="get" className="card mt-8 flex max-w-xl flex-col gap-3 p-4 sm:flex-row sm:p-3">
-              <label htmlFor="home-site" className="sr-only">Your website address</label>
-              <input id="home-site" name="url" required className="field !border-0 !bg-transparent text-[18px] sm:flex-1" placeholder="yourwebsite.com" inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} />
-              <button className="btn btn-primary shrink-0">Check my website <span aria-hidden>→</span></button>
-            </form>
-            <p className="mt-3 text-[14.5px] text-muted">First 5 results free, no signup. <Link className="text-link underline underline-offset-4 hover:text-mark" href="/pricing">$67 once</Link> for all 94.</p>
+            <p className="eyebrow">What we look at</p>
+            <h2 className="h-lg mt-5 max-w-3xl">{cat.total} checks, grouped the way you would <span className="hl">actually fix them</span></h2>
+            <p className="lede mt-6 max-w-2xl">Nothing here is hidden behind a score. Every check is named below, and every result tells you what we found on your page, why it matters, and what to do about it.</p>
           </Reveal>
-          <Reveal delay={120}><SampleReport /></Reveal>
+          <Reveal className="mt-12" delay={100}><CheckCatalog /></Reveal>
+          <Reveal className="mt-10"><div className="max-w-xl"><CheckForm id="catalog-site" size="sm" /></div></Reveal>
+        </div>
+      </section>
+
+      {/* Why it is worth trusting, without borrowed proof */}
+      <section className="band band-line">
+        <div className="wrap grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <Reveal>
+            <p className="eyebrow">Why trust this</p>
+            <h2 className="h-lg mt-5">We would rather show you than tell you.</h2>
+            <p className="lede mt-6">SEO Using AI is new. Instead of a wall of logos and testimonials, here is what we can prove today.</p>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                ["Run it on your own site", "You do not have to take our word for anything. The checker reads your real page and shows you real findings, free."],
+                ["Every claim is sourced", "The statistics on this site link to Pew Research Center, Semrush, SparkToro, and Google's own documentation. Check them."],
+                ["We say what we cannot do", "Every service page has a section on what that work will not achieve. No ranking guarantees, anywhere on this site."],
+                ["No borrowed proof", "No stock testimonials, no screenshots from other companies, no invented numbers. When we have client results, we will publish them with their permission and their source."],
+              ].map(([t, b]) => (
+                <div key={t} className="card p-6"><h3 className="text-[19px] font-semibold leading-snug">{t}</h3><p className="mt-2.5 text-[15.5px] text-muted">{b}</p></div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 

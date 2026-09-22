@@ -32,7 +32,7 @@ export default function CaseStudies() {
               <div className="mt-8 flex flex-wrap gap-3"><Link href="/tools/seo-checklist" className="btn btn-primary">Check my website free</Link><Link href="/book-a-call" className="btn btn-ghost">Book a free call</Link></div>
             </div>
           )}
-          <p className="mt-12 max-w-2xl text-[15px] text-muted">How we write these: numbers come from Google Search Console, Google Analytics, Google Business Profile, or the client's booking system, over a stated period. Screenshots are exported from those tools and only have private details blurred. Quotes are the client's own words. Read our <Link className="text-link underline underline-offset-4 hover:text-mark" href="/editorial-standards">editorial standards</Link>.</p>
+          <p className="mt-12 max-w-2xl text-[15px] text-muted">How we write these: numbers come from Google Search Console, Google Analytics, Google Business Profile, or the client&apos;s booking system, over a stated period. Screenshots are exported from those tools and only have private details blurred. Quotes are the client&apos;s own words. Read our <Link className="text-link underline underline-offset-4 hover:text-mark" href="/editorial-standards">editorial standards</Link>.</p>
         </div>
       </section>
       <JsonLd data={crumbLd(crumbs)} />

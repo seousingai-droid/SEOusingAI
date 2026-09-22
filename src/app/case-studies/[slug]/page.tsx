@@ -7,7 +7,7 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import JsonLd from "@/components/JsonLd";
 import { getCaseStudies, getCaseStudy } from "@/lib/caseStudies";
 import { pageMeta } from "@/lib/meta";
-import { site, abs } from "@/lib/site";
+import { abs } from "@/lib/site";
 import { formatDate } from "@/lib/content";
 
 export const dynamicParams = false;
