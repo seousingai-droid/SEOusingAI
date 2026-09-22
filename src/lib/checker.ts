@@ -266,7 +266,15 @@ export function runChecks(page: Fetched, x: Extras): Report {
 
   // Score and priorities from the full report
   const counts: Counts = { pass: 0, warn: 0, fail: 0, info: 0 }; out.forEach((c) => counts[c.status as keyof Counts]++);
-  let got = 0, max = 0; for (const c of out) { if (c.status === "info") continue; max += c.weight; got += c.status === "pass" ? c.weight : c.status === "warn" ? c.weight / 2 : 0; }
+  // Importance is geometric, not linear: one critical failure outweighs nine minor
+  // passes, so a page that cannot rank cannot score well on a pile of easy checks.
+  const points = { 1: 1, 2: 3, 3: 9 } as const;
+  let got = 0, max = 0;
+  for (const c of out) {
+    if (c.status === "info") continue;
+    const p = points[c.weight]; max += p;
+    got += c.status === "pass" ? p : c.status === "warn" ? p / 2 : 0;
+  }
   const score = max ? Math.round((got / max) * 100) : 0;
   const priorities = out.filter((c) => c.status === "fail" || c.status === "warn").sort((a, b) => (a.status === b.status ? b.weight - a.weight : a.status === "fail" ? -1 : 1)).slice(0, 3).map((c) => c.id);
   return { url: page.url, checkedAt: new Date().toISOString(), score, counts, total: out.length, groups: GROUPS, checks: out, priorities, locked: false };

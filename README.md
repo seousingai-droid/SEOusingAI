@@ -45,6 +45,14 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 - To take payments, create the product on a provider that pays out to the Philippines (Payhip works via PayPal), and paste the checkout link into `checklist.checkoutUrl` in `src/lib/site.ts`. Until then the pricing page shows "Email to buy".
 - Refund promise on the pricing page: 14 days.
 
+## Is the checker accurate?
+
+`npm run verify` runs the checker against two fixture pages whose problems are known in advance: one deliberately broken, one built properly. It asserts the verdict of 85 individual checks, and fails the run if the clean page reports a false problem, if the broken page scores too generously, or if any problem is reported without a finding, a reason, and a fix.
+
+Run it after every change to `src/lib/checker.ts`. Add a fixture whenever you add a check.
+
+Scoring is weighted geometrically (a critical check is worth nine routine ones), so a page that cannot rank cannot score well by passing a pile of easy checks.
+
 ## Sign-in
 
 - Running a check requires an account. `src/lib/session.ts` signs a cookie holding the person's email and plan; there is no database and no password.
