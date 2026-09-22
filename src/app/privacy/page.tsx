@@ -11,7 +11,7 @@ export default function Page() {
     <Simple name="Privacy policy" href="/privacy" eyebrow="Legal" title="Privacy policy">
       <p>Last updated September 20, 2026.</p>
       <h2>What do we collect?</h2>
-      <p>This site has no accounts and no comment system. Most of the free tools run entirely in your browser, and what you type into them is never sent to our servers. The SEO Checklist Checker is the exception: the website address you enter is sent to our server so it can open that page and check it. We do not store the address or the report.</p>
+      <p>This site has no accounts and no comment system. Most of the free tools run entirely in your browser, and what you type into them is never sent to our servers. The SEO Checklist Checker is the exception: the website address you enter is sent to our server so it can open that page and check it. We do not store the address or the report. If you unlock the tool, your licence key, your saved audit history, and the jobs you tick off are stored in your own browser only. We never receive a copy, and you can export or erase all of it from your dashboard at any time.</p>
       <p>Our hosting provider keeps standard server logs, such as IP address, browser type, and pages requested, for security and reliability. If we add privacy-friendly analytics, this page will be updated before it goes live.</p>
       <h2>Do we use cookies?</h2>
       <p>The site itself does not set advertising or tracking cookies. If you click an affiliate link, the destination site may set its own cookies under its own privacy policy.</p>

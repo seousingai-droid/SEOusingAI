@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { site } from "@/lib/site";
+import MemberLink from "./MemberLink";
 
 export default function Header() {
   return (
@@ -11,6 +12,7 @@ export default function Header() {
           {site.nav.map((n) => (
             <Link key={n.href} href={n.href} className="transition-colors hover:text-text">{n.label}</Link>
           ))}
+          <MemberLink className="text-mark transition-colors hover:text-text" />
         </nav>
         <div className="flex items-center gap-3">
           <Link href="/book-a-call" className="btn btn-primary !hidden !py-2.5 !px-4 !text-[15px] sm:!inline-flex">Book a call</Link>
@@ -22,6 +24,7 @@ export default function Header() {
               {site.nav.map((n) => (
                 <Link key={n.href} href={n.href} className="rounded-lg px-3 py-3 hover:bg-panel2">{n.label}</Link>
               ))}
+              <MemberLink className="rounded-lg px-3 py-3 text-mark hover:bg-panel2" />
               <Link href="/book-a-call" className="btn btn-primary mt-2">Book a call</Link>
             </nav>
           </details>

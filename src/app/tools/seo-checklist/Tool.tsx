@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Check, Report, Status } from "@/lib/checker";
 import Unlock, { KEY_STORAGE } from "@/components/Unlock";
+import { saveRun } from "@/lib/history";
 import { site } from "@/lib/site";
 
 const STEPS = ["Opening your website", "Reading the page", "Checking robots.txt, sitemap, and redirects", "Testing links and the share image", "Running 94 checks", "Writing your report"];
@@ -53,7 +54,7 @@ function Row({ c, i }: { c: Check; i: number }) {
 export default function Tool() {
   const [url, setUrl] = useState(""); const [busy, setBusy] = useState(false); const [step, setStep] = useState(0);
   const [error, setError] = useState(""); const [report, setReport] = useState<Report | null>(null); const [only, setOnly] = useState(false);
-  const [license, setLicense] = useState(""); const top = useRef<HTMLDivElement>(null); const keyRef = useRef("");
+  const [license, setLicense] = useState(""); const [saved, setSaved] = useState(false); const top = useRef<HTMLDivElement>(null); const keyRef = useRef("");
 
   const run = useCallback(async (target: string) => {
     if (!target.trim()) return;
@@ -62,7 +63,7 @@ export default function Tool() {
     try {
       const res = await fetch("/api/check", { method: "POST", headers: { "content-type": "application/json", ...(keyRef.current ? { "x-license": keyRef.current } : {}) }, body: JSON.stringify({ url: target }) });
       const data = await res.json();
-      if (!res.ok) setError(data.error ?? "Something went wrong. Please try again."); else { setReport(data); requestAnimationFrame(() => top.current?.scrollIntoView({ behavior: "smooth", block: "start" })); }
+      if (!res.ok) setError(data.error ?? "Something went wrong. Please try again."); else { setReport(data); setSaved(!!saveRun(data)); requestAnimationFrame(() => top.current?.scrollIntoView({ behavior: "smooth", block: "start" })); }
     } catch { setError("We could not reach the checker. Check your connection and try again."); }
     finally { clearInterval(tick); setBusy(false); }
   }, []);
@@ -132,6 +133,13 @@ export default function Tool() {
               </div>
             )}
           </div>
+
+          {saved && (
+            <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-line bg-panel px-5 py-3.5 text-[15.5px]">
+              <span aria-hidden className="text-mark">✓</span> Saved to your dashboard.
+              <Link className="text-link underline underline-offset-4 hover:text-mark" href="/dashboard">See your history and to-do list</Link>
+            </p>
+          )}
 
           <label className="mt-8 flex w-fit cursor-pointer items-center gap-3 text-[15.5px]"><input type="checkbox" className="h-5 w-5 accent-[#ffd84d]" checked={only} onChange={(e) => setOnly(e.target.checked)} />Show only what needs attention</label>
 

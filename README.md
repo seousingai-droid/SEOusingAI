@@ -45,6 +45,13 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 - To take payments, create the product on a provider that pays out to the Philippines (Payhip works via PayPal), and paste the checkout link into `checklist.checkoutUrl` in `src/lib/site.ts`. Until then the pricing page shows "Email to buy".
 - Refund promise on the pricing page: 14 days.
 
+## The members dashboard (`/dashboard`)
+
+- Saves every unlocked audit, tracks the score over time, and turns all open problems into one ordered to-do list with tick-off state.
+- Storage lives in the visitor's own browser (`src/lib/history.ts`). No database, no account, no copy on our servers. It does not follow them to another device and is erased with their browser data; the page says so and offers an export.
+- To add cross-device sync later, replace the read/write pair in `src/lib/history.ts` with API calls keyed by the licence key. Nothing else needs to change.
+- The page is noindex, nofollow and is kept out of the sitemap on purpose.
+
 ## Before launch
 
 - Set a real mailbox for `hello@seousingai.com` or change `email` in `src/lib/site.ts`.

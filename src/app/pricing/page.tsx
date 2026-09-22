@@ -16,7 +16,8 @@ export const metadata = pageMeta({
 const { price, freeChecks, checkoutUrl } = site.checklist;
 const faqs = [
   { q: "Is the $67 a subscription?", a: "No. It is one payment for lifetime access to the SEO Checklist Checker, including every check we add in future." },
-  { q: "What do I get after paying?", a: "You get a license key by email. Paste it into the tool once, and every report on that browser shows all 94 results with what we found and how to fix it. The key works on any device." },
+  { q: "What do I get after paying?", a: "You get a license key by email. Paste it into the tool once, and every report on that browser shows all 94 results with what we found and how to fix it. It also unlocks your dashboard, where every audit is saved and turned into one to-do list. The key works on any device." },
+  { q: "Where is my audit history stored?", a: "In your own browser, not on our servers. That keeps it private, and it means the history does not follow you to another device and is erased if you clear your browser data. You can export a copy from the dashboard at any time." },
   { q: "How many pages can I check?", a: "As many as you like, within a fair-use limit of about 30 checks a minute. Check your own pages, your competitors' pages, and your clients' pages." },
   { q: "Can I use it for client work?", a: "Yes. One key covers one person's use, on any number of websites. Agencies with several team members should buy a key per person." },
   { q: "What if it does not help me?", a: "Email us within 14 days and we will refund the payment. We only ask that you tell us what was missing, so we can improve the tool." },
@@ -30,6 +31,9 @@ const rows: [string, string, string][] = [
   ["Fix-these-first priorities", "Names only", "Full details"],
   ["Pages you can check", "Unlimited", "Unlimited"],
   ["Checks per minute", "6", "30"],
+  ["Saved audit history", "No", "Yes"],
+  ["Score tracked over time", "No", "Yes"],
+  ["One to-do list across your sites", "No", "Yes"],
   ["Printable report", "No", "Yes"],
   ["Future checks", "", "Included"],
 ];
@@ -59,7 +63,9 @@ export default function Pricing() {
               <p className="mt-3 font-[family-name:var(--font-display)] text-[48px] font-bold leading-none">${price}</p>
               <p className="mt-2 text-muted">One payment. Yours forever.</p>
               <ul className="mt-6 flex-1 space-y-3 text-[16px]">
-                {["All 94 results, with what we found on your page", "A plain-English fix for every problem", "Why each check matters, so you can decide what to skip", "Full details on what to fix first", "Printable report to hand to a developer", "30 checks a minute", "Every new check we add, at no extra cost"].map((t) => (<li key={t} className="flex gap-3"><span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-mark" />{t}</li>))}
+                {["All 94 results, with what we found on your page", "A plain-English fix for every problem", "Why each check matters, so you can decide what to skip", "Full details on what to fix first", "A dashboard that saves every audit and tracks your score",
+                "One ordered to-do list across all your websites",
+                "Printable report to hand to a developer", "30 checks a minute", "Every new check we add, at no extra cost"].map((t) => (<li key={t} className="flex gap-3"><span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-mark" />{t}</li>))}
               </ul>
               <a href={buy} className="btn btn-primary mt-8">{checkoutUrl ? "Get lifetime access" : "Email to buy"} <span aria-hidden>→</span></a>
               <p className="mt-3 text-center text-[13.5px] text-muted">14-day refund if it does not help you.</p>
