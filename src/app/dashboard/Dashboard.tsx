@@ -2,7 +2,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Sparkline from "@/components/Sparkline";
-import Unlock, { KEY_STORAGE } from "@/components/Unlock";
+import Unlock from "@/components/Unlock";
+import SignIn, { type Session } from "@/components/SignIn";
 import { actionPlan, bySite, clearHistory, deleteSite, diff, loadDone, loadRuns, toggleDone, type Run, type SavedCheck } from "@/lib/history";
 import { site } from "@/lib/site";
 
@@ -50,18 +51,17 @@ function Changed({ latest, previous }: { latest: Run; previous: Run }) {
 
 export default function Dashboard() {
   const [ready, setReady] = useState(false);
-  const [licensed, setLicensed] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
   const [runs, setRuns] = useState<Run[]>([]);
   const [done, setDone] = useState<Record<string, string>>({});
   const [showDone, setShowDone] = useState(false);
 
   const refresh = useCallback(() => { setRuns(loadRuns()); setDone(loadDone()); }, []);
   useEffect(() => {
-    const id = setTimeout(() => {
-      try { setLicensed(!!localStorage.getItem(KEY_STORAGE)); } catch { /* private mode */ }
-      refresh(); setReady(true);
-    }, 0);
-    return () => clearTimeout(id);
+    let live = true;
+    fetch("/api/auth/me").then((r) => r.json()).then((d) => { if (!live) return; setSession(d.session); refresh(); setReady(true); })
+      .catch(() => { if (live) setReady(true); });
+    return () => { live = false; };
   }, [refresh]);
 
   const sites = useMemo(() => bySite(runs), [runs]);
@@ -74,15 +74,28 @@ export default function Dashboard() {
 
   if (!ready) return <div className="card p-8 text-muted">Loading your saved audits…</div>;
 
-  if (!licensed) {
+  if (!session) {
     return (
       <div>
-        <div className="card border-l-2 !border-l-mark p-7 sm:p-9">
+        <div className="card mb-6 border-l-2 !border-l-mark p-7 sm:p-9">
           <p className="eyebrow">Members only</p>
-          <h2 className="mt-3 text-[clamp(24px,3vw,32px)] font-bold">Your dashboard needs a key</h2>
-          <p className="mt-4 max-w-2xl text-muted">The dashboard saves every audit you run, tracks your score over time, and turns all your open problems into one ordered to-do list. It comes with lifetime access.</p>
+          <h2 className="mt-3 text-[clamp(24px,3vw,32px)] font-bold">Sign in to see your dashboard</h2>
+          <p className="mt-4 max-w-2xl text-muted">The dashboard saves every audit you run, tracks your score over time, and turns all your open problems into one ordered to-do list.</p>
         </div>
-        <div className="mt-6"><Unlock total={94} onUnlocked={() => { setLicensed(true); refresh(); }} /></div>
+        <SignIn onSignedIn={(s) => { setSession(s); refresh(); }} />
+      </div>
+    );
+  }
+
+  if (session.plan !== "life") {
+    return (
+      <div>
+        <div className="card mb-6 border-l-2 !border-l-mark p-7 sm:p-9">
+          <p className="eyebrow">Signed in as {session.email}</p>
+          <h2 className="mt-3 text-[clamp(24px,3vw,32px)] font-bold">The dashboard comes with lifetime access</h2>
+          <p className="mt-4 max-w-2xl text-muted">Your free account lets you run checks and see {site.checklist.freeChecks} results each time. Lifetime access saves every audit here, tracks your score, and turns your problems into one to-do list.</p>
+        </div>
+        <Unlock total={94} onUnlocked={() => { setSession({ ...session, plan: "life" }); refresh(); }} />
       </div>
     );
   }
@@ -172,7 +185,12 @@ export default function Dashboard() {
         </>
       )}
 
-      <div className="card mt-8 grid items-center gap-6 border-l-2 !border-l-mark p-7 lg:grid-cols-[1.4fr_0.6fr]">
+      <p className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 text-[14.5px] text-muted">
+        Signed in as <span className="text-text">{session.email}</span>
+        <button type="button" onClick={async () => { await fetch("/api/auth/signout", { method: "POST" }); setSession(null); }} className="text-link underline underline-offset-4 hover:text-mark">Sign out</button>
+      </p>
+
+      <div className="card mt-6 grid items-center gap-6 border-l-2 !border-l-mark p-7 lg:grid-cols-[1.4fr_0.6fr]">
         <div><h2 className="text-[22px] font-bold">Want someone to do the jobs on this list?</h2><p className="mt-2 text-muted">Send us your list on a free {site.callMinutes}-minute call and we will tell you which ones actually matter for your business, and what it would cost to have them done.</p></div>
         <div className="flex lg:justify-end"><Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link></div>
       </div>

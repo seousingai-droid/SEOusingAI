@@ -3,17 +3,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { site } from "@/lib/site";
 
-export const KEY_STORAGE = "suai_license";
-
-export default function Unlock({ total, onUnlocked, compact = false }: { total: number; onUnlocked: (key: string) => void; compact?: boolean }) {
+export default function Unlock({ total, onUnlocked, compact = false }: { total: number; onUnlocked: () => void; compact?: boolean }) {
   const [key, setKey] = useState(""); const [busy, setBusy] = useState(false); const [error, setError] = useState(""); const [open, setOpen] = useState(false);
   const { price, checkoutUrl } = site.checklist;
   const verify = async (e: React.FormEvent) => {
     e.preventDefault(); setBusy(true); setError("");
     try {
-      const res = await fetch("/api/license", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key }) });
+      const res = await fetch("/api/auth/key", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key }) });
       const d = await res.json();
-      if (d.ok) { try { localStorage.setItem(KEY_STORAGE, key.trim()); } catch { /* private mode */ } onUnlocked(key.trim()); } else setError(d.error ?? "That key is not valid.");
+      if (d.ok) onUnlocked(); else setError(d.error ?? "That key is not valid.");
     } catch { setError("Could not check the key. Try again."); } finally { setBusy(false); }
   };
   return (

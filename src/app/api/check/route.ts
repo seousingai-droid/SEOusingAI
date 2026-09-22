@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { safeFetch, type Fetched } from "@/lib/safeFetch";
 import { runChecks, planExtras, redact, type LinkProbe } from "@/lib/checker";
-import { verifyKey } from "@/lib/license";
+import { currentSession } from "@/lib/session";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -17,8 +17,10 @@ const quiet = (p: Promise<Fetched>) => p.catch(() => null);
 const probe = (url: string): Promise<LinkProbe> => safeFetch(url, { timeout: 6000, maxBytes: 20_000 }).then((f) => ({ url, status: f.status })).catch(() => ({ url, status: null }));
 
 export async function POST(req: Request) {
+  const session = await currentSession();
+  if (!session) return NextResponse.json({ error: "Please sign in to run a check.", needsSignIn: true }, { status: 401 });
   const ip = (req.headers.get("x-forwarded-for") ?? "local").split(",")[0].trim();
-  const unlocked = verifyKey(req.headers.get("x-license") ?? "");
+  const unlocked = session.plan === "life";
   if (limited(ip, unlocked ? 30 : 6)) return NextResponse.json({ error: "Too many checks in a short time. Please wait a minute and try again." }, { status: 429 });
   let input = "";
   try { input = String((await req.json()).url ?? "").trim(); } catch { /* handled below */ }

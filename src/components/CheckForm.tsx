@@ -13,8 +13,8 @@ export default function CheckForm({ id = "check", size = "lg" }: { id?: string; 
 }
 
 export const trustPoints = [
-  ["No signup", "No email, no account, no card."],
-  ["Nothing stored", "We open your page, check it, and forget it."],
+  ["Free account", "Just an email. No password, no card."],
+  ["Your page is not stored", "We open it, check it, and keep no copy."],
   [`${site.checklist.freeChecks} free every time`, "Free results on every page you check, forever."],
   ["Plain English", "Every result says what it found and how to fix it."],
 ] as const;

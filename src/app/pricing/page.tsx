@@ -50,9 +50,9 @@ export default function Pricing() {
             <div className="card flex h-full flex-col p-8">
               <p className="eyebrow">Free</p>
               <p className="mt-3 font-[family-name:var(--font-display)] text-[48px] font-bold leading-none">$0</p>
-              <p className="mt-2 text-muted">No signup. No card.</p>
+              <p className="mt-2 text-muted">One email. No password, no card.</p>
               <ul className="mt-6 flex-1 space-y-3 text-[16px]">
-                {[`The first ${freeChecks} results in full`, "Your score out of 100", "How many problems were found in each group", "The names of the three things to fix first", "Unlimited pages"].map((t) => (<li key={t} className="flex gap-3"><span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-link" />{t}</li>))}
+                {["A free account, with no password and no card", `The first ${freeChecks} results in full`, "Your score out of 100", "How many problems were found in each group", "The names of the three things to fix first", "Unlimited pages"].map((t) => (<li key={t} className="flex gap-3"><span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-link" />{t}</li>))}
               </ul>
               <Link href="/tools/seo-checklist" className="btn btn-ghost mt-8">Check a page free <span aria-hidden>→</span></Link>
             </div>

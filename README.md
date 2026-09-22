@@ -45,6 +45,15 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 - To take payments, create the product on a provider that pays out to the Philippines (Payhip works via PayPal), and paste the checkout link into `checklist.checkoutUrl` in `src/lib/site.ts`. Until then the pricing page shows "Email to buy".
 - Refund promise on the pricing page: 14 days.
 
+## Sign-in
+
+- Running a check requires an account. `src/lib/session.ts` signs a cookie holding the person's email and plan; there is no database and no password.
+- Routes: `/api/auth/signin` (email), `/api/auth/key` (licence key, upgrades the same session to lifetime), `/api/auth/signout`, `/api/auth/me`.
+- `/api/check` returns 401 without a valid session, the 5 free results for a free account, and all 94 for lifetime.
+- Set `AUTH_SECRET` in `.env.local` and in your host's environment variables. Changing it signs everyone out.
+- Set `LEAD_WEBHOOK_URL` to a Kit, Mailchimp, Zapier, or Formspree endpoint to collect the emails people sign up with. Without it, sign-in still works and no email is kept anywhere but the cookie.
+- To let people run one check before signing in, remove the 401 guard at the top of `src/app/api/check/route.ts` and pass the count through instead.
+
 ## The members dashboard (`/dashboard`)
 
 - Saves every unlocked audit, tracks the score over time, and turns all open problems into one ordered to-do list with tick-off state.

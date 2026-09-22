@@ -2,7 +2,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Check, Report, Status } from "@/lib/checker";
-import Unlock, { KEY_STORAGE } from "@/components/Unlock";
+import Unlock from "@/components/Unlock";
+import SignIn, { type Session } from "@/components/SignIn";
 import { saveRun } from "@/lib/history";
 import { site } from "@/lib/site";
 
@@ -54,45 +55,61 @@ function Row({ c, i }: { c: Check; i: number }) {
 export default function Tool() {
   const [url, setUrl] = useState(""); const [busy, setBusy] = useState(false); const [step, setStep] = useState(0);
   const [error, setError] = useState(""); const [report, setReport] = useState<Report | null>(null); const [only, setOnly] = useState(false);
-  const [license, setLicense] = useState(""); const [saved, setSaved] = useState(false); const top = useRef<HTMLDivElement>(null); const keyRef = useRef("");
+  const [session, setSession] = useState<Session | null>(null); const [ready, setReady] = useState(false); const [saved, setSaved] = useState(false); const [pending, setPending] = useState(""); const top = useRef<HTMLDivElement>(null);
 
   const run = useCallback(async (target: string) => {
     if (!target.trim()) return;
     setBusy(true); setError(""); setReport(null); setStep(0);
     const tick = setInterval(() => setStep((s) => Math.min(s + 1, STEPS.length - 1)), 1400);
     try {
-      const res = await fetch("/api/check", { method: "POST", headers: { "content-type": "application/json", ...(keyRef.current ? { "x-license": keyRef.current } : {}) }, body: JSON.stringify({ url: target }) });
+      const res = await fetch("/api/check", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ url: target }) });
       const data = await res.json();
+      if (res.status === 401) { setSession(null); setPending(target); setError(""); return; }
       if (!res.ok) setError(data.error ?? "Something went wrong. Please try again."); else { setReport(data); setSaved(!!saveRun(data)); requestAnimationFrame(() => top.current?.scrollIntoView({ behavior: "smooth", block: "start" })); }
     } catch { setError("We could not reach the checker. Check your connection and try again."); }
     finally { clearInterval(tick); setBusy(false); }
   }, []);
 
   useEffect(() => {
-    const id = setTimeout(() => {
-      try { const k = localStorage.getItem(KEY_STORAGE) ?? ""; keyRef.current = k; setLicense(k); } catch { /* private mode */ }
-      const q = new URLSearchParams(window.location.search).get("url");
-      if (q) { setUrl(q); run(q); }
+    let live = true;
+    const id = setTimeout(async () => {
+      const q = new URLSearchParams(window.location.search).get("url") ?? "";
+      if (!live) return;
+      if (q) setUrl(q);
+      let found: Session | null = null;
+      try { found = (await (await fetch("/api/auth/me")).json()).session ?? null; } catch { /* offline */ }
+      if (!live) return;
+      setSession(found); setReady(true);
+      if (q) { if (found) run(q); else setPending(q); }
     }, 0);
-    return () => clearTimeout(id);
+    return () => { live = false; clearTimeout(id); };
   }, [run]);
 
-  const unlocked = (k: string) => { keyRef.current = k; setLicense(k); if (report) run(report.url); };
-  const forget = () => { try { localStorage.removeItem(KEY_STORAGE); } catch { /* ignore */ } keyRef.current = ""; setLicense(""); };
+  const afterSignIn = (s: Session) => { setSession(s); const next = pending || report?.url || url; setPending(""); if (next) run(next); };
+  const unlocked = () => { setSession((s) => (s ? { ...s, plan: "life" } : s)); if (report) run(report.url); };
+  const signOut = async () => { await fetch("/api/auth/signout", { method: "POST" }); setSession(null); setReport(null); };
   const visible = (c: Check) => !only || c.status === "fail" || c.status === "warn" || c.status === "locked";
   const freeChecks = report?.checks.filter((c) => c.free) ?? [];
 
   return (
     <div>
-      <form onSubmit={(e) => { e.preventDefault(); run(url); }} className="card flex flex-col gap-3 p-4 sm:flex-row sm:p-3">
-        <label htmlFor="site" className="sr-only">Your website address</label>
-        <input id="site" className="field !border-0 !bg-transparent text-[18px] sm:flex-1" placeholder="yourwebsite.com" value={url} onChange={(e) => setUrl(e.target.value)} inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} />
-        <button className="btn btn-primary shrink-0 disabled:opacity-60" disabled={busy || !url.trim()}>{busy ? "Checking…" : "Check my website"} {!busy && <span aria-hidden>→</span>}</button>
-      </form>
-      <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[14.5px] text-muted">
-        <span>{license ? "Lifetime access is on. All 94 results are unlocked." : `Free. No signup. The first ${site.checklist.freeChecks} results are free, and one payment unlocks all 94.`}</span>
-        {license && <button type="button" onClick={forget} className="text-link underline underline-offset-4 hover:text-mark">Remove key from this browser</button>}
-      </p>
+      {!ready ? (
+        <div className="card p-7 text-muted">Loading…</div>
+      ) : !session ? (
+        <SignIn onSignedIn={afterSignIn} website={pending || url} />
+      ) : (
+        <>
+          <form onSubmit={(e) => { e.preventDefault(); run(url); }} className="card flex flex-col gap-3 p-4 sm:flex-row sm:p-3">
+            <label htmlFor="site" className="sr-only">Your website address</label>
+            <input id="site" className="field !border-0 !bg-transparent text-[18px] sm:flex-1" placeholder="yourwebsite.com" value={url} onChange={(e) => setUrl(e.target.value)} inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} />
+            <button className="btn btn-primary shrink-0 disabled:opacity-60" disabled={busy || !url.trim()}>{busy ? "Checking…" : "Check my website"} {!busy && <span aria-hidden>→</span>}</button>
+          </form>
+          <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[14.5px] text-muted">
+            <span>Signed in as <span className="text-text">{session.email}</span>{session.plan === "life" ? ". All 94 results are unlocked." : `. You see ${site.checklist.freeChecks} results on every check.`}</span>
+            <button type="button" onClick={signOut} className="text-link underline underline-offset-4 hover:text-mark">Sign out</button>
+          </p>
+        </>
+      )}
 
       <div aria-live="polite">
         {busy && (
