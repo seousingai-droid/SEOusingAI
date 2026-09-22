@@ -8,10 +8,10 @@ There is no Anthropic or Claude product for storing application data. Claude wri
 
 ## Stage 1: launch (do this first, about an hour)
 
-1. **GitHub.** Push this repository. It is already a git repo with every change committed.
+1. **GitHub.** Push this repository to https://github.com/seousingai-droid/SEOusingAI. The remote is already set.
 2. **Vercel.** Sign in with GitHub, import the repo, accept the defaults. Next.js needs no configuration.
 3. **Environment variables**, set in Vercel under Settings, Environment Variables:
-   - `LICENSE_SECRET` and `AUTH_SECRET`: copy the values from your local `.env.local`. Never change them afterwards, or every licence key and every signed-in session stops working.
+   - `LICENSE_SECRET` and `AUTH_SECRET`: copy the values from your local `.env.local` (the names are listed in `.env.example`). Never change them afterwards, or every licence key and every signed-in session stops working.
    - `LEAD_WEBHOOK_URL` (optional): a Kit, Mailchimp, Zapier, or Formspree endpoint. Without it, people can sign in but their email is not collected anywhere.
 4. **Domain.** Add seousingai.com in Vercel and point the DNS as it instructs. Redirect www to the apex.
 5. **Search Console and Bing.** Verify the domain, paste the codes into `verification` in `src/lib/site.ts`, and submit `/sitemap.xml`.
