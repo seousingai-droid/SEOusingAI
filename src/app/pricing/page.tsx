@@ -8,7 +8,7 @@ import { site, abs } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Pricing: Free SEO Checklist, $67 for Lifetime Access",
-  description: "The SEO Checklist Checker is free for the first 5 results. One payment of $67 unlocks all 94 checks, with a plain-English fix for each, forever. No subscription.",
+  description: "The SEO Checklist Checker is free for the first 5 results. One payment of $67 unlocks all 94 checks with a plain-English fix for each, forever. No subscription.",
   path: "/pricing",
   absolute: true,
 });

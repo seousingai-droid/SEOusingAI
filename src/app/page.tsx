@@ -195,8 +195,8 @@ export default function Home() {
           <Reveal><ServicesHub className="hidden w-full md:block" /></Reveal>
           <Reveal delay={120}>
             <p className="eyebrow">Everything in one place</p>
-            <h2 className="h-lg mt-5">Fifteen kinds of work, one team to call.</h2>
-            <p className="lede mt-6">You do not need a writer, a developer, a designer, and a marketing agency. It is all here, and one person reviews all of it.</p>
+            <h2 className="h-lg mt-5">SEO, social media, and your website. One team to call.</h2>
+            <p className="lede mt-6">You do not need an SEO agency, a social media manager, a designer, and a developer. It is all here, and one person reviews all of it.</p>
             <ul className="mt-8 divide-y divide-line border-y border-line">
               {services.map((sv) => (
                 <li key={sv.key}>

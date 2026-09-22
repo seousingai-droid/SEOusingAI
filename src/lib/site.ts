@@ -98,12 +98,21 @@ export const services = [
     ],
   },
   {
-    key: "Share and report",
-    summary: "Get more from every page, and see what it did.",
+    key: "Market",
+    summary: "Show up where customers spend time, without spending your evenings on it.",
     items: [
-      ["Simple monthly reports", "What went up, what went down, which pages are close to page one, and what we will do next. No jargon."],
-      ["Social media posts", "Each article rewritten properly for X, LinkedIn, Instagram, Facebook, YouTube, Pinterest, and email."],
+      ["Social media marketing", "A monthly plan and posts written properly for each platform, with images. You approve everything before it goes out."],
+      ["Social media automation", "Every new page on your site becomes scheduled posts for each platform, waiting for your approval. Replies stay human."],
       ["Email newsletters", "Good-looking emails that display correctly on phones, Gmail, Outlook, and Apple Mail."],
+    ],
+  },
+  {
+    key: "Convert and report",
+    summary: "Turn more visitors into customers, and see what changed.",
+    items: [
+      ["Website redesign for conversion", "A faster, clearer site with an obvious next step on every page, built so your rankings come with you."],
+      ["Simple monthly reports", "What went up, what went down, which pages are close to page one, and what we will do next. No jargon."],
+      ["Ongoing improvements", "Each month we improve the pages that are closest to bringing in customers, based on the report."],
     ],
   },
 ] as const;
@@ -144,6 +153,24 @@ export const offers = [
     name: "Local Boost",
     plain: "We help you show up on Google Maps and in \"near me\" searches, ahead of nearby competitors.",
     get: ["Google Business Profile set up properly", "A simple way to earn more reviews", "Your name, address, and phone matching everywhere", "Pages for the areas you serve"],
+    price: "",
+  },
+  {
+    id: "convert",
+    href: "/services/website-redesign",
+    need: "I get visitors but no customers",
+    name: "Conversion Redesign",
+    plain: "We rebuild your site so visitors understand what you do in five seconds and know what to do next, without losing your rankings.",
+    get: ["A review of where visitors give up today", "Clearer pages with one obvious next step", "Faster loading, built for phones first", "Every old address redirected so rankings stay"],
+    price: "",
+  },
+  {
+    id: "social",
+    href: "/services/social-media-marketing",
+    need: "I have no time for social media",
+    name: "Social on Autopilot",
+    plain: "Every page on your website becomes posts for each platform, scheduled a month ahead. You approve, we handle the rest.",
+    get: ["A month of posts, approved by you", "Written properly for each platform, not copy-pasted", "Images for every post", "A plain monthly report"],
     price: "",
   },
   {

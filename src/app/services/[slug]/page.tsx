@@ -5,7 +5,7 @@ import { crumbLd } from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
-import { ScanArt, FixArt, WriteArt, LinksArt, MapPin, ChatRecommend, GapArt } from "@/components/Illustrations";
+import { ScanArt, FixArt, WriteArt, LinksArt, MapPin, ChatRecommend, GapArt, SocialArt, AutomationArt, RedesignArt } from "@/components/Illustrations";
 import { servicePages, getServicePage } from "@/lib/servicePages";
 import { site, abs } from "@/lib/site";
 import { pageMeta } from "@/lib/meta";
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return pageMeta({ title: s.metaTitle, description: s.description, path: `/services/${s.slug}`, absolute: true });
 }
 
-const art = { scan: <ScanArt />, fix: <FixArt />, write: <WriteArt />, links: <LinksArt />, map: <MapPin />, chat: <ChatRecommend />, gap: <GapArt /> };
+const art = { scan: <ScanArt />, fix: <FixArt />, write: <WriteArt />, links: <LinksArt />, map: <MapPin />, chat: <ChatRecommend />, gap: <GapArt />, social: <SocialArt />, automation: <AutomationArt />, redesign: <RedesignArt /> };
 const Check = () => (<span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-mark text-ink"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden><path d="m5 12 5 5 9-10" /></svg></span>);
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {

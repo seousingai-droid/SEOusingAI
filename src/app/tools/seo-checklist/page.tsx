@@ -4,7 +4,7 @@ import Tool from "./Tool";
 
 export const metadata = pageMeta({
   title: "Free SEO Checklist Tool: Check Your Website in Seconds",
-  description: "Enter your website and get an SEO checklist report: 94 checks for Google and AI search, each explained in plain English with how to fix it. First 5 free, no signup.",
+  description: "Enter your website and get an SEO checklist report: 94 checks for Google and AI search, each explained in plain English with a fix. First 5 free, no signup.",
   path: "/tools/seo-checklist",
   absolute: true,
 });

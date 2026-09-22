@@ -8,8 +8,8 @@ import { services, site, abs } from "@/lib/site";
 import { servicePages } from "@/lib/servicePages";
 
 export const metadata = pageMeta({
-  title: "AI SEO Services, Done for You",
-  description: "Done-for-you AI SEO services: audits, fixes, strategy, content, link outreach, local SEO, and reporting. AI does the volume. A person checks every fact.",
+  title: "SEO, Social Media, and Website Services",
+  description: "Done-for-you SEO, social media marketing and automation, and website redesign for conversion. AI does the volume. A person checks and approves everything.",
   path: "/services",
 });
 
@@ -25,12 +25,12 @@ export default function Services() {
   const crumbs = [{ name: "Services", href: "/services" }];
   return (
     <>
-      <PageHero eyebrow="Services" crumbs={crumbs} title={<>AI SEO services with a <span className="hl">person in the loop</span></>} lede="Fifteen specialist AI workflows cover the full job, from the first crawl to the monthly report. A person reviews what they produce before it touches your site." />
+      <PageHero eyebrow="Services" crumbs={crumbs} title={<>SEO, social media, and websites, with a <span className="hl">person in the loop</span></>} lede="Fifteen specialist AI workflows cover the whole job: getting found on Google and in AI answers, showing up on social media, and turning visitors into customers. A person reviews everything before it goes live." />
       <section className="band">
         <div className="wrap grid items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="eyebrow">How it works</p>
-            <h2 className="h-lg mt-5">Five lines of work. One review gate.</h2>
+            <h2 className="h-lg mt-5">Six lines of work. One review gate.</h2>
             <p className="lede mt-6">AI SEO services work when speed and judgment are kept apart. The workflows do the crawling, clustering, drafting, and reporting. A person decides the strategy, checks the facts, and signs off.</p>
             <ol className="mt-8 space-y-4">
               {[["Free call", `A ${site.callMinutes}-minute Google Meet call about your site, market, and main problem.`], ["Written scope", "The narrowest sensible first step, with deliverables and a fixed price."], ["Delivery", "Work ships in reviewed batches. You approve before anything goes live."], ["Report", "What changed, what it did, and what should happen next."]].map(([t, b], i) => (
@@ -46,7 +46,7 @@ export default function Services() {
       <section className="band band-line">
         <div className="wrap">
           <p className="eyebrow">Most requested</p>
-          <h2 className="h-lg mt-5">Seven services, explained in full</h2>
+          <h2 className="h-lg mt-5">Ten services, explained in full</h2>
           <p className="lede mt-5 max-w-2xl">Each page says what the service is, the signs you need it, what you get, and what it will not do.</p>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {servicePages.map((sp) => (

@@ -209,3 +209,62 @@ export function SampleReport() {
     </div>
   );
 }
+
+export function SocialArt() {
+  const posts: [string, string][] = [["LinkedIn", "Three signs your website is losing customers, and the one fix that…"], ["X", "Most SEO checklists have 150 boxes. Ours ticks them for you. 🧵"], ["Instagram", "Your customers ask Google, Maps, and ChatGPT. Show up in all three."]];
+  return (
+    <Frame tall label="Animation of one article becoming three different posts for LinkedIn, X, and Instagram">
+      <div className="mx-auto grid h-full max-w-[440px] grid-cols-[110px_1fr] items-center gap-4">
+        <div className="rounded-xl border border-mark/60 bg-panel p-3"><div className="h-2 w-3/4 rounded bg-text/70" /><div className="mt-2 h-1.5 rounded bg-line" /><div className="mt-1.5 h-1.5 rounded bg-line" /><div className="mt-1.5 h-1.5 w-2/3 rounded bg-line" /><p className="mt-3 font-mono text-[10px] text-mark">New article</p></div>
+        <div className="space-y-2.5">
+          {posts.map(([p, t], i) => (
+            <div key={p} className="il-flag rounded-xl border border-line bg-panel px-3 py-2.5" style={{ animationDelay: `${0.5 + i * 0.6}s` }}><p className="font-mono text-[10px] uppercase tracking-wider text-muted">{p}</p><p className="mt-1 text-[12.5px] leading-snug">{t}</p></div>
+          ))}
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
+export function AutomationArt() {
+  const steps = ["Page goes live", "Posts drafted", "You approve", "Scheduled"];
+  return (
+    <Frame tall label="Animation of a pipeline: a page goes live, posts are drafted, a person approves them, and they are scheduled">
+      <div className="flex h-full flex-col items-center justify-center gap-5">
+        <div className="flex items-center gap-2">
+          {steps.map((s, i) => (
+            <div key={s} className="flex items-center gap-2">
+              <div className={`il-flag rounded-xl border px-3 py-2.5 text-center text-[12.5px] font-medium ${i === 2 ? "border-mark bg-mark text-ink" : "border-line bg-panel"}`} style={{ animationDelay: `${0.4 + i * 0.5}s` }}>{s}</div>
+              {i < 3 && <span aria-hidden className="il-flag text-link" style={{ animationDelay: `${0.65 + i * 0.5}s` }}>→</span>}
+            </div>
+          ))}
+        </div>
+        <div className="grid w-full max-w-[400px] grid-cols-7 gap-1.5">
+          {Array.from({ length: 21 }, (_, i) => <div key={i} className={`il-flag h-8 rounded-md ${[2, 5, 9, 12, 16, 19].includes(i) ? "bg-mark/80" : "bg-panel2"}`} style={{ animationDelay: `${2.4 + i * 0.05}s` }} />)}
+        </div>
+        <p className="font-mono text-[11px] text-muted">Three weeks scheduled. Replies stay human.</p>
+      </div>
+    </Frame>
+  );
+}
+
+export function RedesignArt() {
+  return (
+    <Frame tall label="Animation of a cluttered web page turning into a clear one with a headline, a short message, and one obvious button">
+      <div className="relative mx-auto h-full max-w-[420px]">
+        <div className="absolute inset-0 rounded-xl border border-line bg-panel p-4">
+          <div className="grid grid-cols-3 gap-2">{Array.from({ length: 9 }, (_, i) => <div key={i} className="h-10 rounded bg-line/60" />)}</div>
+          <div className="mt-3 grid grid-cols-2 gap-2"><div className="h-6 rounded bg-line/50" /><div className="h-6 rounded bg-line/50" /></div>
+          <p className="mt-3 font-mono text-[10px] text-muted">Before: everything, everywhere</p>
+        </div>
+        <div className="il-fixed absolute inset-0 rounded-xl border border-mark/70 bg-ink p-5" style={{ animationDelay: "1.6s", animationDuration: "0.9s" }}>
+          <div className="h-5 w-4/5 rounded bg-text/85" /><div className="mt-2 h-5 w-3/5 rounded bg-text/85" />
+          <div className="mt-4 h-2 w-full rounded bg-line" /><div className="mt-1.5 h-2 w-5/6 rounded bg-line" />
+          <div className="mt-5 inline-block rounded-lg bg-mark px-5 py-2 text-[13px] font-semibold text-ink">Book a call</div>
+          <div className="mt-4 flex gap-1 text-[11px] text-mark">★★★★★ <span className="text-muted">4.9 from 120 reviews</span></div>
+          <p className="mt-4 font-mono text-[10px] text-muted">After: one message, one next step</p>
+        </div>
+      </div>
+    </Frame>
+  );
+}
