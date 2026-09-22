@@ -25,6 +25,8 @@ export default function SignInPage() {
     window.location.href = safe;
   };
 
+  const flag = typeof window === "undefined" ? "" : new URLSearchParams(window.location.search).get("expired") ? "expired" : "";
+
   if (!ready) return <div className="card p-7 text-muted">Loading…</div>;
 
   if (session) {
@@ -44,5 +46,10 @@ export default function SignInPage() {
     );
   }
 
-  return <SignIn onSignedIn={go} />;
+  return (
+    <div>
+      {flag === "expired" && <p role="alert" className="card mb-5 border-mark/60 px-5 py-4 text-[15.5px]">That sign-in link has expired. Enter your email below and we will send a fresh code.</p>}
+      <SignIn onSignedIn={go} />
+    </div>
+  );
 }
