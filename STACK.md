@@ -18,6 +18,19 @@ There is no Anthropic or Claude product for storing application data. Claude wri
 
 What works at this stage: the whole site, sign-in, the 94-check audit, the free and paid tiers, and the dashboard. Audit history is saved in each visitor's own browser.
 
+## If Vercel blocks a deployment
+
+Vercel's Hobby plan only builds commits whose author it recognises as the project owner. If a deployment shows "Deployment Blocked: the commit author did not have contributing access", the commit was authored under a different name or email.
+
+Fix it by making sure the repository's git identity matches the GitHub account that owns the Vercel project:
+
+```
+git config --local user.name "seousingai-droid"
+git config --local user.email "332692477+seousingai-droid@users.noreply.github.com"
+```
+
+That address is GitHub's private noreply form, `<id>+<username>@users.noreply.github.com`, so no personal email is ever published. Every commit made after that is deployable. A public repository also lifts the restriction, because the plan limit is on collaboration in private repositories.
+
 ## Stage 2: add Supabase (when one of these becomes true)
 
 - A paying customer asks why their history is missing on their phone.
