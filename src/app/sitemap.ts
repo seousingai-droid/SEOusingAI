@@ -3,9 +3,10 @@ import { getGuides } from "@/lib/content";
 import { abs, tools } from "@/lib/site";
 import { servicePages } from "@/lib/servicePages";
 import { landingPages } from "@/lib/landingPages";
+import { getCaseStudies } from "@/lib/caseStudies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const guides = getGuides();
+  const guides = getGuides(); const studies = getCaseStudies();
   const latest = guides.map((g) => g.updated).sort().at(-1)!;
   const stat = ["/about", "/editorial-standards", "/affiliate-disclosure", "/contact", "/privacy", "/terms"];
   return [
@@ -15,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...landingPages.map((l) => ({ url: abs(`/${l.slug}`), lastModified: latest, priority: 0.9 })),
     { url: abs("/glossary"), lastModified: latest, priority: 0.6 },
     { url: abs("/pricing"), lastModified: latest, priority: 0.8 },
+    ...(studies.length ? [{ url: abs("/case-studies"), lastModified: studies[0].published, priority: 0.8 }, ...studies.map((c) => ({ url: abs(`/case-studies/${c.slug}`), lastModified: c.published, priority: 0.8 }))] : []),
     { url: abs("/book-a-call"), lastModified: latest, priority: 0.7 },
     { url: abs("/guides"), lastModified: latest, priority: 0.9 },
     ...guides.map((g) => ({ url: abs(`/guides/${g.slug}`), lastModified: g.updated, priority: 0.9 })),

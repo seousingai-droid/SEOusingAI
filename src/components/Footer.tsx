@@ -4,9 +4,10 @@ import { site, tools } from "@/lib/site";
 import { getGuides } from "@/lib/content";
 import { servicePages } from "@/lib/servicePages";
 import { landingPages } from "@/lib/landingPages";
+import { getCaseStudies } from "@/lib/caseStudies";
 
 export default function Footer() {
-  const guides = getGuides();
+  const guides = getGuides(); const hasStudies = getCaseStudies().length > 0;
   return (
     <footer className="border-t border-line bg-panel/40">
       <div className="wrap grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]">
@@ -51,6 +52,7 @@ export default function Footer() {
           <p className="eyebrow mb-5">Site</p>
           <ul className="space-y-3 text-[15px] text-muted">
             <li><Link className="hover:text-text" href="/book-a-call">Book a call</Link></li>
+            {hasStudies && <li><Link className="hover:text-text" href="/case-studies">Case studies</Link></li>}
             <li><Link className="hover:text-text" href="/about">About</Link></li>
             <li><Link className="hover:text-text" href="/glossary">Glossary</Link></li>
             <li><Link className="hover:text-text" href="/editorial-standards">Editorial standards</Link></li>

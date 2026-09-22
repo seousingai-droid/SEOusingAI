@@ -2,6 +2,7 @@ import { getGuides } from "@/lib/content";
 import { site, tools, abs } from "@/lib/site";
 import { servicePages } from "@/lib/servicePages";
 import { landingPages } from "@/lib/landingPages";
+import { getCaseStudies } from "@/lib/caseStudies";
 
 export const dynamic = "force-static";
 
@@ -24,6 +25,7 @@ export function GET() {
     `## Free tools`,
     ...tools.map((t) => `- [${t.name}](${abs(`/tools/${t.slug}`)}): ${t.blurb}`),
     ``,
+    ...(getCaseStudies().length ? [`## Case studies`, ...getCaseStudies().map((c) => `- [${c.headline}](${abs(`/case-studies/${c.slug}`)}): ${c.summary}`), ``] : []),
     `## Reference`,
     `- [AI SEO glossary](${abs("/glossary")}): plain-English definitions of SEO and AI search terms`,
     ``,

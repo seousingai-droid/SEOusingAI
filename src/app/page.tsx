@@ -9,6 +9,8 @@ import { SearchClimb, MapPin, ChatRecommend, SplitWork, StepIcon, SampleReport }
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { getGuides } from "@/lib/content";
+import { getCaseStudies } from "@/lib/caseStudies";
+import CaseStudyCard from "@/components/CaseStudyCard";
 import { tools, services, site } from "@/lib/site";
 import { pageMeta } from "@/lib/meta";
 
@@ -76,7 +78,7 @@ const faqs = [
 ];
 
 export default function Home() {
-  const guides = getGuides();
+  const guides = getGuides(); const studies = getCaseStudies().slice(0, 3);
   return (
     <>
       {/* Hero */}
@@ -118,6 +120,21 @@ export default function Home() {
           <Reveal delay={120}><SampleReport /></Reveal>
         </div>
       </section>
+
+      {/* Results: renders only once a real, permitted case study exists */}
+      {studies.length > 0 && (
+        <section className="band band-line">
+          <div className="wrap">
+            <Reveal>
+              <div className="flex flex-wrap items-end justify-between gap-6">
+                <div><p className="eyebrow">Results</p><h2 className="h-lg mt-5">Real numbers from real clients</h2><p className="lede mt-4 max-w-2xl">Every figure comes from Google Search Console or another named source, over a stated period, published with permission.</p></div>
+                <Link href="/case-studies" className="btn btn-ghost">All case studies</Link>
+              </div>
+            </Reveal>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">{studies.map((c, i) => <Reveal key={c.slug} delay={i * 120}><CaseStudyCard c={c} /></Reveal>)}</div>
+          </div>
+        </section>
+      )}
 
       {/* Three places customers look */}
       <section className="band band-line">
