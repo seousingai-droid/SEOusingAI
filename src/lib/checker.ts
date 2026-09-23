@@ -150,8 +150,15 @@ export function runChecks(page: Fetched, x: Extras): Report {
   add(1, "img-size", "Images declare their size", 1, imgs.length === 0 ? "info" : noDim === 0 ? "pass" : "warn", imgs.length === 0 ? "No images on the page." : `${noDim} of ${imgs.length} images have no width and height.`, "Without sizes, the page jumps around as images load, which Google measures as a bad experience.", "Add width and height attributes to every image.");
   const lazy = imgs.filter((i) => i.getAttribute("loading") === "lazy").length;
   add(1, "img-lazy", "Images below the fold load lazily", 1, imgs.length < 6 ? "info" : lazy ? "pass" : "warn", imgs.length < 6 ? "Few images, so this matters little." : `${lazy} of ${imgs.length} images are set to load lazily.`, "Lazy loading defers offscreen images so the visible part of the page appears faster.", "Add loading=\"lazy\" to images that are not visible at first.");
-  const modern = imgs.filter((i) => /\.(webp|avif|svg)(\?|$)/i.test(i.getAttribute("src") ?? "")).length;
-  add(1, "img-format", "Images use modern, lightweight formats", 1, imgs.length === 0 ? "info" : modern / imgs.length >= 0.5 ? "pass" : "warn", imgs.length === 0 ? "No images on the page." : `${modern} of ${imgs.length} images are WebP, AVIF, or SVG.`, "Modern formats are often half the size of JPEG or PNG at the same quality.", "Convert photos to WebP and logos to SVG. Most platforms can do this automatically.", "/services/technical-seo");
+  const isModern = (src: string) => {
+    if (/\.(webp|avif|svg)(\?|$)/i.test(src)) return true;
+    // Next.js, Shopify, Cloudinary and friends serve modern formats from a
+    // resizing endpoint, so the extension is on the original, not the request.
+    if (/\/_next\/image\?|\/cdn-cgi\/image\/|res\.cloudinary\.com|\/_vercel\/image\?/i.test(src)) return true;
+    return false;
+  };
+  const modern = imgs.filter((i) => isModern(i.getAttribute("src") ?? "")).length;
+  add(1, "img-format", "Images use modern, lightweight formats", 1, imgs.length === 0 ? "info" : modern / imgs.length >= 0.5 ? "pass" : "warn", imgs.length === 0 ? "No images on the page." : `${modern} of ${imgs.length} images use a modern format or an image service that serves one.`, "Modern formats are often half the size of JPEG or PNG at the same quality.", "Convert photos to WebP and logos to SVG. Most platforms can do this automatically.", "/services/technical-seo");
   const intSet = new Set(internal.map(({ l }) => l.pathname));
   add(1, "internal", "The page links to your other pages", 2, intSet.size >= 5 ? "pass" : intSet.size >= 1 ? "warn" : "fail", `Links to ${plural(intSet.size, "other page")} on your site.`, "Internal links help Google discover pages and understand which ones matter most.", "Link to related pages using descriptive words.");
   const generic = links.filter(({ a }) => /^(click here|here|read more|learn more|more|link|this)$/i.test(a.text.trim())).length;
@@ -166,7 +173,14 @@ export function runChecks(page: Fetched, x: Extras): Report {
   add(2, "words", "The page has enough helpful content", 3, words >= 300 ? "pass" : words >= 120 ? "warn" : "fail", `About ${words.toLocaleString("en-US")} words of readable text.`, "Thin pages rarely rank. Google looks for pages that fully answer the question.", "Add what a customer needs: what you offer, who it is for, how pricing works, and answers to common questions.", "/services/ai-content-writing");
   const ratio = page.bytes ? (text.length / page.bytes) * 100 : 0;
   add(2, "ratio", "The page is mostly content, not code", 1, ratio >= 10 ? "pass" : ratio >= 4 ? "warn" : "fail", `Text makes up about ${ratio.toFixed(0)}% of the page code.`, "A very low ratio usually means a bloated page builder or content loaded by scripts.", "Trim unnecessary code and make sure the content is in the HTML.");
-  const sentences = text.split(/[.!?]+\s/).filter((s) => s.split(" ").length > 2); const avgSent = sentences.length ? words / sentences.length : 0;
+  // Block elements end a sentence just as a full stop does. Without this, a long
+  // list with no punctuation reads as one enormous sentence.
+  const blocks = root.querySelectorAll("p,li,h1,h2,h3,h4,h5,h6,td,th,figcaption,blockquote,dt,dd,summary")
+    .map((b) => b.text.replace(/\s+/g, " ").trim()).filter(Boolean);
+  const source = blocks.length ? blocks : [text];
+  const sentences = source.flatMap((b) => b.split(/[.!?]+(?:\s|$)/)).map((x) => x.trim()).filter((x) => x.split(" ").length > 2);
+  const sentenceWords = sentences.reduce((n, x) => n + x.split(" ").length, 0);
+  const avgSent = sentences.length ? sentenceWords / sentences.length : 0;
   add(2, "sentences", "Sentences are easy to read", 1, !words ? "info" : avgSent <= 22 ? "pass" : avgSent <= 30 ? "warn" : "fail", words ? `Average sentence is about ${Math.round(avgSent)} words.` : "No text to measure.", "Long sentences lose readers, and AI tools prefer clear statements they can quote.", "Aim for an average under 20 words. Split long sentences in two.");
   const paras = root.querySelectorAll("p").map((p) => p.text.trim().split(/\s+/).length); const longP = paras.filter((n) => n > 120).length;
   add(2, "paragraphs", "Paragraphs are short", 1, longP ? "warn" : "pass", longP ? `${plural(longP, "paragraph")} run over 120 words.` : "No wall-of-text paragraphs.", "On a phone, a 120-word paragraph is a full screen of unbroken text.", "Keep paragraphs to two or four sentences.");

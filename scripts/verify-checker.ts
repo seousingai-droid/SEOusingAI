@@ -61,9 +61,9 @@ const GOOD = `<!doctype html><html lang="en-US">
 <p>Acme Plumbing reaches most addresses inside the Columbus outerbelt within 60 to 90 minutes of your call. If we are further away than that, we say so on the phone rather than leaving you waiting, and we will tell you who else is closer.</p>
 <h3>Do you charge extra at night?</h3>
 <p>Acme Plumbing charges the same hourly rate at night as during the day. Only the call-out fee changes, and we tell you the figure on the phone before we set off.</p>
-<ul><li>Burst pipes and leaks</li><li>Blocked drains</li><li>Water heater failures</li></ul>
+<ul><li>Burst pipes and leaks</li><li>Blocked drains</li><li>Water heater failures</li><li>Frozen pipes</li><li>Failed sump pumps</li><li>Leaking radiators</li><li>Blocked toilets</li><li>Broken stopcocks</li></ul>
 <table><tr><th>Service</th><th>Typical time</th></tr><tr><td>Leak repair</td><td>1 hour</td></tr></table>
-<img src="/van.webp" alt="An Acme Plumbing van outside a house in Columbus" width="800" height="450" loading="lazy">
+<img src="/_next/image?url=%2Fvan.png&w=800&q=75" alt="An Acme Plumbing van outside a house in Columbus" width="800" height="450" loading="lazy">
 <p>Read more about our <a href="/services/leak-repair">leak repair service</a>, our <a href="/services/drains">blocked drain service</a>, our <a href="/about">team</a>, our <a href="/pricing">prices</a> and our <a href="/contact">contact details</a>. Figures come from the <a href="https://www.ohio.gov/survey">2025 Ohio trade survey</a>.</p>
 <p><a href="tel:+16145550100">Call 614 555 0100</a> or <a href="/contact">book a visit</a> today.</p>
 <time datetime="2026-09-01">Updated 1 September 2026</time>
