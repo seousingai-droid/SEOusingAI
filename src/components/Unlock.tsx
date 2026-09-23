@@ -6,8 +6,8 @@ import { PLANS } from "@/lib/plans";
 
 export default function Unlock({ onUnlocked, compact = false }: { onUnlocked: (s: import("./SignIn").Session) => void; compact?: boolean }) {
   const [key, setKey] = useState(""); const [busy, setBusy] = useState(false); const [error, setError] = useState(""); const [open, setOpen] = useState(false);
-  const { checkoutUrl } = site.checklist;
   const price = PLANS.basic.price;
+  const checkoutUrl = PLANS.basic.checkoutUrl;
   const verify = async (e: React.FormEvent) => {
     e.preventDefault(); setBusy(true); setError("");
     try {

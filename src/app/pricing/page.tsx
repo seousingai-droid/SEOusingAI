@@ -38,9 +38,10 @@ const rows: [string, string, string, string, string][] = [
 
 export default function Pricing() {
   const crumbs = [{ name: "Pricing", href: "/pricing" }];
-  const buy = (name: string, price: number) =>
-    site.checklist.checkoutUrl ||
-    `mailto:${site.email}?subject=${encodeURIComponent(`${name} plan ($${price})`)}&body=${encodeURIComponent(`Hi, I would like the ${name} plan ($${price}). Please send me payment details.\n\nName:\nWebsite:\n`)}`;
+  // Each plan gets its own checkout link. Until one is set, the button opens an
+  // email so nobody who wants to buy is left with nowhere to go.
+  const buy = (name: string, price: number, url?: string) =>
+    url || `mailto:${site.email}?subject=${encodeURIComponent(`${name} plan ($${price})`)}&body=${encodeURIComponent(`Hi, I would like the ${name} plan ($${price}). Please send me payment details.\n\nName:\nWebsite:\n`)}`;
 
   return (
     <>
@@ -69,7 +70,7 @@ export default function Pricing() {
                   <p className="mt-5 font-mono text-[12px] uppercase tracking-widest text-muted">Best for</p>
                   <p className="mt-1 text-[14.5px] text-muted">{p.best}</p>
                   {p.price
-                    ? <a href={buy(p.name, p.price)} className={`btn mt-6 ${best ? "btn-primary" : "btn-ghost"}`}>Get {p.name}</a>
+                    ? <a href={buy(p.name, p.price, p.checkoutUrl)} className={`btn mt-6 ${best ? "btn-primary" : "btn-ghost"}`}>Get {p.name}</a>
                     : <Link href="/tools/seo-checklist" className="btn btn-ghost mt-6">Check a page free</Link>}
                 </div>
               </Reveal>
@@ -104,7 +105,7 @@ export default function Pricing() {
         </div>
       </section>
 
-      {site.checklist.checkoutUrl && PAID.map((id) => (
+      {PAID.filter((id) => PLANS[id].checkoutUrl).map((id) => (
         <JsonLd key={id} data={{ "@context": "https://schema.org", "@type": "Product", name: `SEO Checklist Checker, ${PLANS[id].name} plan`, description: PLANS[id].blurb, brand: { "@id": abs("/#org") }, offers: { "@type": "Offer", price: String(PLANS[id].price), priceCurrency: site.checklist.currency, url: abs("/pricing"), availability: "https://schema.org/InStock" } }} />
       ))}
       <JsonLd data={crumbLd(crumbs)} />
