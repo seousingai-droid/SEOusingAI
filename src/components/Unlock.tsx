@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { site } from "@/lib/site";
 import { PLANS } from "@/lib/plans";
 
 export default function Unlock({ onUnlocked, compact = false }: { onUnlocked: (s: import("./SignIn").Session) => void; compact?: boolean }) {
