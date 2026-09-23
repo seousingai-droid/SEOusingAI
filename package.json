@@ -6,10 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "verify": "tsx scripts/verify-checker.ts",
-    "verify:auth": "tsx scripts/verify-auth.ts",
-    "verify:all": "npm run verify && npm run verify:auth"
+    "lint": "eslint"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

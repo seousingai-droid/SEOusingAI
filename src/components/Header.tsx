@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { site } from "@/lib/site";
-import AccountMenu from "./AccountMenu";
 
 export default function Header() {
   return (
@@ -13,8 +12,7 @@ export default function Header() {
             <Link key={n.href} href={n.href} className="transition-colors hover:text-text">{n.label}</Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2.5">
-          <AccountMenu />
+        <div className="flex items-center gap-3">
           <Link href="/book-a-call" className="btn btn-primary !hidden !py-2.5 !px-4 !text-[15px] sm:!inline-flex">Book a call</Link>
           <details className="relative lg:hidden">
             <summary className="grid h-11 w-11 cursor-pointer list-none place-items-center rounded-lg border border-line [&::-webkit-details-marker]:hidden" aria-label="Open menu">
@@ -24,8 +22,7 @@ export default function Header() {
               {site.nav.map((n) => (
                 <Link key={n.href} href={n.href} className="rounded-lg px-3 py-3 hover:bg-panel2">{n.label}</Link>
               ))}
-              <Link href="/tools/seo-checklist" className="rounded-lg px-3 py-3 hover:bg-panel2">Check my website</Link>
-              <AccountMenu variant="mobile" />
+              <Link href="/pricing" className="rounded-lg px-3 py-3 hover:bg-panel2">Pricing</Link>
               <Link href="/book-a-call" className="btn btn-primary mt-3">Book a call</Link>
             </nav>
           </details>

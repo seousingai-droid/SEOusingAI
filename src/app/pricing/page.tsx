@@ -8,7 +8,7 @@ import { site, offers, abs } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Pricing: What SEO and Website Work Costs",
-  description: "Plain prices for SEO, content, local search, and website work. A fixed quote before anything starts, no long contracts, and a free audit so you know what you need first.",
+  description: "Plain prices for SEO, content, local search, and website work. One fixed quote in writing before anything starts, and no long contracts.",
   path: "/pricing",
   absolute: true,
 });
@@ -16,7 +16,7 @@ export const metadata = pageMeta({
 const faqs = [
   { q: "Why are these prices a range?", a: "Because a five-page local site and a 500-product shop need very different work. The range tells you whether we are in your budget. After a free call you get one fixed price in writing, and it does not move." },
   { q: "Do I have to sign a contract?", a: "No. Monthly work is month to month and you can stop whenever you like. One-off work is quoted and paid once." },
-  { q: "How do I know what I need?", a: "Run the free audit first. It tells you what is actually wrong with your website, in plain English, and costs nothing. Then we talk about which of it is worth paying to fix." },
+  { q: "How do I know what I need?", a: "Book the free call. We look at your website together and tell you what is actually wrong with it. If the honest answer is that you need less than you thought, we will say so." },
   { q: "Do you guarantee first place on Google?", a: "No, and be careful with anyone who does. Google and AI tools decide their own results. We commit to specific work, honest reporting, and a person checking everything." },
   { q: "How do I pay?", a: "By bank transfer or card, invoiced before the work starts for one-off projects, and monthly in advance for ongoing work." },
   { q: "What if I only need one small thing?", a: "Say so on the call. If the honest answer is a one-hour fix or a free guide you can follow yourself, we will tell you that rather than sell you a package." },
@@ -60,10 +60,10 @@ export default function Pricing() {
             <div className="card grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-[1.35fr_0.65fr]">
               <div>
                 <p className="eyebrow">Not sure which</p>
-                <h2 className="h-lg mt-4 !text-[clamp(26px,3.2vw,38px)]">Get the free audit first.</h2>
-                <p className="lede mt-4 max-w-2xl">It reads every page of your website and tells you exactly what is wrong, in plain English. Free, no card, and yours to keep whether or not you hire us. Most people find they need less than they expected.</p>
+                <h2 className="h-lg mt-4 !text-[clamp(26px,3.2vw,38px)]">Start with the free call.</h2>
+                <p className="lede mt-4 max-w-2xl">We look at your website together for {site.callMinutes} minutes and tell you what is actually holding it back. You leave with one thing worth fixing this week, whether or not you hire us. Most people find they need less than they expected.</p>
               </div>
-              <div className="flex lg:justify-end"><Link href="/tools/seo-checklist" className="btn btn-primary">Audit my website free <span aria-hidden>→</span></Link></div>
+              <div className="flex lg:justify-end"><Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link></div>
             </div>
           </Reveal>
 

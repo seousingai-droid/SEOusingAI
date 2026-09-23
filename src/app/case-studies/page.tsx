@@ -28,8 +28,8 @@ export default function CaseStudies() {
               <p className="eyebrow">Nothing to show yet, on purpose</p>
               <h2 className="mt-4 text-[clamp(24px,3vw,32px)] font-bold">We publish results after we get them, not before.</h2>
               <p className="mt-4 text-muted">SEO Using AI is new. Rather than borrow screenshots or invent numbers, this page stays empty until the first client agrees to share real Search Console data. When it does, it will show the problem, the work, the numbers, and their source.</p>
-              <p className="mt-4 text-muted">Want to see what we can find on your site today? Run the free checker, or book a call.</p>
-              <div className="mt-8 flex flex-wrap gap-3"><Link href="/tools/seo-checklist" className="btn btn-primary">Check my website free</Link><Link href="/book-a-call" className="btn btn-ghost">Book a free call</Link></div>
+              <p className="mt-4 text-muted">Want to know what we would find on your site? Book a free call and we will look at it together.</p>
+              <div className="mt-8 flex flex-wrap gap-3"><Link href="/book-a-call" className="btn btn-primary">Book a free call</Link><Link href="/services" className="btn btn-ghost">See what we do</Link></div>
             </div>
           )}
           <p className="mt-12 max-w-2xl text-[15px] text-muted">How we write these: numbers come from Google Search Console, Google Analytics, Google Business Profile, or the client&apos;s booking system, over a stated period. Screenshots are exported from those tools and only have private details blurred. Quotes are the client&apos;s own words. Read our <Link className="text-link underline underline-offset-4 hover:text-mark" href="/editorial-standards">editorial standards</Link>.</p>

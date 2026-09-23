@@ -4,9 +4,8 @@ import Tabs from "@/components/Tabs";
 import Reveal from "@/components/Reveal";
 import OfferPicker from "@/components/OfferPicker";
 import ServicesHub from "@/components/ServicesHub";
-import CheckForm, { trustPoints } from "@/components/CheckForm";
-import CheckCatalog from "@/components/CheckCatalog";
-import { SearchClimb, MapPin, ChatRecommend, SplitWork, StepIcon, SampleReport } from "@/components/Illustrations";
+import AnswerCard from "@/components/AnswerCard";
+import { SearchClimb, MapPin, ChatRecommend, SplitWork, StepIcon } from "@/components/Illustrations";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { getGuides } from "@/lib/content";
@@ -14,7 +13,6 @@ import { getCaseStudies } from "@/lib/caseStudies";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { tools, services, site } from "@/lib/site";
 import { pageMeta } from "@/lib/meta";
-import { catalog } from "@/lib/checker";
 
 export const metadata = pageMeta({
   title: "SEO Services That Get Small Businesses Found",
@@ -80,13 +78,13 @@ const faqs = [
 ];
 
 export default function Home() {
-  const guides = getGuides(); const studies = getCaseStudies().slice(0, 3); const cat = catalog();
+  const guides = getGuides(); const studies = getCaseStudies().slice(0, 3);
   return (
     <>
-      {/* Hero: what we do, with the free audit as the way in */}
+      {/* Hero */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(138_180_255/0.13),transparent)]" />
-        <div className="wrap relative grid items-center gap-14 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
+        <div className="wrap relative grid items-center gap-14 pb-20 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:pb-28 lg:pt-24">
           <div>
             <p className="pill rise" style={{ animationDelay: ".05s" }}><i />SEO, content, and websites for small businesses</p>
             <h1 className="h-xl rise mt-7" style={{ animationDelay: ".15s" }}>
@@ -97,34 +95,13 @@ export default function Home() {
             </p>
             <div className="rise mt-9 flex flex-wrap gap-3" style={{ animationDelay: ".45s" }}>
               <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
-              <a href="#offers" className="btn btn-ghost">See what it costs</a>
+              <Link href="/pricing" className="btn btn-ghost">See what it costs</Link>
             </div>
             <p className="rise mt-7 text-[15px] text-muted" style={{ animationDelay: ".6s" }}>
-              Not ready to talk? <Link className="text-link underline underline-offset-4 hover:text-mark" href="/tools/seo-checklist">Get a free audit of your website</Link> and see what we would fix.
+              A free {site.callMinutes}-minute call. You leave with one thing worth fixing this week, whether or not we work together.
             </p>
           </div>
-          <div className="rise" style={{ animationDelay: ".25s" }}><SampleReport /></div>
-        </div>
-      </section>
-
-      {/* The free audit, now the way in rather than the product */}
-      <section className="band band-line">
-        <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-          <Reveal>
-            <p className="eyebrow">Start here, free</p>
-            <h2 className="h-lg mt-5">See what we would fix, <span className="hl">before you pay us anything</span></h2>
-            <p className="lede mt-6 max-w-xl">Enter your website. We read every page we can reach, run {cat.total} checks on each, and show you exactly what is holding it back, in plain English. Free, and yours to keep whether or not you hire us.</p>
-            <div className="mt-8 max-w-xl"><CheckForm id="hero-site" /></div>
-            <dl className="mt-7 grid max-w-xl gap-x-8 gap-y-4 sm:grid-cols-2">
-              {trustPoints.map(([t, b]) => (
-                <div key={t} className="flex gap-3">
-                  <span aria-hidden className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-ink"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><path d="m5 12 5 5 9-10" /></svg></span>
-                  <div><dt className="text-[15.5px] font-medium">{t}</dt><dd className="text-[14.5px] text-muted">{b}</dd></div>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
-          <Reveal delay={120}><CheckCatalog /></Reveal>
+          <AnswerCard />
         </div>
       </section>
 
@@ -133,13 +110,13 @@ export default function Home() {
         <div className="wrap grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
             <p className="eyebrow">Why trust this</p>
-            <h2 className="h-lg mt-5">We would rather show you than tell you.</h2>
-            <p className="lede mt-6">SEO Using AI is new. Instead of a wall of logos and testimonials, here is what we can prove today.</p>
+            <h2 className="h-lg mt-5">Why trust a new studio?</h2>
+            <p className="lede mt-6">SEO Using AI is new, so there is no wall of client logos here. Instead, here is what you can check for yourself today.</p>
           </Reveal>
           <Reveal delay={120}>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                ["Run it on your own site", "You do not have to take our word for anything. The checker reads your real page and shows you real findings, free."],
+                ["We look before we quote", "Every job starts with us reading your actual site, not a template. You get the findings on a free call, whether or not you hire us."],
                 ["Every claim is sourced", "The statistics on this site link to Pew Research Center, Semrush, SparkToro, and Google's own documentation. Check them."],
                 ["We say what we cannot do", "Every service page has a section on what that work will not achieve. No ranking guarantees, anywhere on this site."],
                 ["No borrowed proof", "No stock testimonials, no screenshots from other companies, no invented numbers. When we have client results, we will publish them with their permission and their source."],
@@ -345,7 +322,7 @@ export default function Home() {
             <div>
               <p className="eyebrow">Prefer to do it yourself?</p>
               <h2 className="h-lg mt-5">Learn SEO using AI, free.</h2>
-              <p className="lede mt-5">Step-by-step guides, free to read with nothing to sign up for. Start with the six-step workflow on the right.</p>
+              <p className="lede mt-5">Step-by-step guides and small tools, free to read and use with nothing to sign up for. Start with the six-step workflow on the right.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/guides/how-to-use-ai-for-seo" className="btn btn-primary">Read the first guide <span aria-hidden>→</span></Link>
                 <Link href="/guides" className="btn btn-ghost">All {guides.length} guides</Link>

@@ -21,9 +21,6 @@ export const site = {
   social: [] as string[],
   knowsAbout: ["Search engine optimization", "AI SEO", "Generative engine optimization", "Local SEO", "Technical SEO", "Content marketing", "Link building", "Google Business Profile", "AI Overviews"],
   callMinutes: 30,
-  // The checklist tool. Paste your checkout link (Payhip, Paddle, or similar) to turn on buying.
-  // Keys are issued with: node scripts/issue-license.mjs
-  checklist: { currency: "USD", freeChecks: 5, checkoutUrl: "" },
   nav: [
     { label: "Services", href: "/services" },
     { label: "AI SEO agency", href: "/ai-seo-agency" },
@@ -34,12 +31,6 @@ export const site = {
 } as const;
 
 export const tools = [
-  {
-    slug: "seo-checklist",
-    name: "SEO Checklist Checker",
-    blurb:
-      "Enter your website and we audit every page, 94 checks each, with a plain-English fix for every problem.",
-  },
   {
     slug: "serp-preview",
     name: "SERP Snippet Preview",
