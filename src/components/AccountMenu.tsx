@@ -52,12 +52,12 @@ export default function AccountMenu({ variant = "desktop" }: { variant?: "deskto
   const initial = session.email[0]?.toUpperCase() ?? "?";
   const items = (
     <>
-      <p className="px-3 pb-2 pt-1 font-mono text-[12px] text-muted">Signed in as</p>
+      <p className="px-3 pb-2 pt-1 font-mono text-[12px] text-muted">{session.planName ?? "Free"} plan</p>
       <p className="break-all px-3 pb-3 text-[15px]">{session.email}</p>
       <div className="border-t border-line pt-2">
-        {session.plan === "life"
+        {session.plan !== "free"
           ? <Link href="/dashboard" className="block rounded-lg px-3 py-2.5 text-[15px] hover:bg-panel2">My dashboard</Link>
-          : <Link href="/pricing" className="block rounded-lg px-3 py-2.5 text-[15px] text-mark hover:bg-panel2">Get lifetime access</Link>}
+          : <Link href="/pricing" className="block rounded-lg px-3 py-2.5 text-[15px] text-mark hover:bg-panel2">See the plans</Link>}
         <Link href="/tools/seo-checklist" className="block rounded-lg px-3 py-2.5 text-[15px] hover:bg-panel2">Check a website</Link>
         <button type="button" onClick={signOut} className="block w-full rounded-lg px-3 py-2.5 text-left text-[15px] text-muted hover:bg-panel2 hover:text-text">Sign out</button>
       </div>
@@ -70,7 +70,7 @@ export default function AccountMenu({ variant = "desktop" }: { variant?: "deskto
     <div ref={box} className="relative">
       <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-haspopup="menu" aria-label="Account menu"
         className="flex items-center gap-2 rounded-lg border border-line px-3 py-2 text-[15px] transition-colors hover:border-muted">
-        <span aria-hidden className={`grid h-6 w-6 place-items-center rounded-full text-[12px] font-bold ${session.plan === "life" ? "bg-mark text-ink" : "bg-panel2 text-text"}`}>{initial}</span>
+        <span aria-hidden className={`grid h-6 w-6 place-items-center rounded-full text-[12px] font-bold ${session.plan !== "free" ? "bg-mark text-ink" : "bg-panel2 text-text"}`}>{initial}</span>
         <span className="hidden xl:inline">Account</span>
         <span aria-hidden className="text-[10px] text-muted">{open ? "\u25b4" : "\u25be"}</span>
       </button>

@@ -7,6 +7,8 @@
 process.env.AUTH_SECRET ||= "test-secret-not-used-in-production";
 import { checkCode, magicToken, newCode, openMagic, sealPending } from "../src/lib/verify";
 import { cleanEmail, sign, verify } from "../src/lib/session";
+import { issueKey, readKey } from "../src/lib/license";
+import { planOf, siteKey } from "../src/lib/plans";
 
 const out: string[] = [];
 let ok = 0;
@@ -62,10 +64,29 @@ is("a typo without an @ is refused", cleanEmail("not-an-email") === null);
 is("spacing and capitals are tidied", cleanEmail("  Owner@Example.COM ") === "owner@example.com");
 is("an address with a comma is refused", cleanEmail("a,b@example.com") === null);
 is("an address with no dot in the domain is refused", cleanEmail("a@localhost") === null);
-const session = sign({ email, plan: "life", since: Date.now() })!;
-is("a valid session is read back", verify(session)?.plan === "life");
+const session = sign({ email, plan: "basic", since: Date.now() })!;
+is("a valid session is read back", verify(session)?.plan === "basic");
+is("a key bought before plans existed still works", verify(sign({ email, plan: "life", since: Date.now() })!)?.plan === "basic");
+is("the websites a member registered survive the round trip", verify(sign({ email, plan: "premium", since: Date.now(), sites: ["a.com", "b.com"] })!)?.sites?.length === 2);
 is("a forged session is refused", verify(session.split(".")[0] + ".forged") === null);
-is("an old session is refused", verify(sign({ email, plan: "life", since: Date.now() - 31 * 24 * 3600 * 1000 })!) === null);
+is("an old session is refused", verify(sign({ email, plan: "basic", since: Date.now() - 31 * 24 * 3600 * 1000 })!) === null);
+
+console.log("\nLicence keys and plans");
+const SECRET = "licence-test-secret";
+for (const tier of ["basic", "standard", "premium"] as const) {
+  const k = issueKey(SECRET, tier);
+  is(`a ${tier} key reports the ${tier} plan`, readKey(k, SECRET) === tier);
+  is(`a ${tier} key is refused under another secret`, readKey(k, "different-secret") === null);
+}
+const basicKey = issueKey(SECRET, "basic");
+const upgraded = basicKey.replace(/(.)(-[A-Z0-9]{4}-[A-Z0-9]{4})$/, (m, _c, rest) => "P" + rest);
+is("editing the plan letter in a key breaks the signature", readKey(upgraded, SECRET) === null || upgraded === basicKey);
+is("a made-up key is refused", readKey("SUAI-AAAA-BBBB-CCCC-DDDD-EEEE", SECRET) === null);
+is("the free plan allows one website", planOf("free").sites === 1);
+is("the premium plan allows ten websites", planOf("premium").sites === 10);
+is("an unknown plan falls back to free", planOf("nonsense").id === "free");
+is("www and the bare domain count as one website", siteKey("https://www.Example.com/page") === siteKey("example.com"));
+is("a nonsense address is refused", siteKey("not a url") === null);
 
 console.log(`\n${"=".repeat(60)}\n${ok} checks passed, ${out.length} failed`);
 if (out.length) { console.log(out.map((f) => "  - " + f).join("\n")); process.exit(1); }

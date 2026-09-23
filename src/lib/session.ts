@@ -12,8 +12,7 @@ import { cookies } from "next/headers";
 export const COOKIE = "suai_session";
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
-export type Plan = "free" | "life";
-export type Session = { email: string; plan: Plan; since: number };
+export type Session = { email: string; plan: string; since: number; sites?: string[] };
 
 const secret = () => process.env.AUTH_SECRET || process.env.LICENSE_SECRET || "";
 const b64 = (s: string) => Buffer.from(s, "utf8").toString("base64url");
@@ -34,7 +33,8 @@ export function verify(token: string | undefined): Session | null {
   if (expected.length !== got.length || !timingSafeEqual(expected, got)) return null;
   try {
     const s = JSON.parse(unb64(body)) as Session;
-    if (!s.email || (s.plan !== "free" && s.plan !== "life")) return null;
+    if (!s.email || typeof s.plan !== "string") return null;
+    if (s.plan === "life") s.plan = "basic"; // keys issued before plans existed
     if (Date.now() - s.since > MAX_AGE * 1000) return null;
     return s;
   } catch { return null; }

@@ -226,3 +226,44 @@ label.lbl { display: block; font-family: var(--font-mono), monospace; font-size:
 .check-row { animation: check-in .4s ease both; }
 @media (prefers-reduced-motion: reduce) { .spin, .score-arc, .check-row { animation: none; } }
 @media print { header, footer, form, .btn, nav, label { display: none !important; } body { background: #fff; color: #000; } .card { border-color: #ccc; background: #fff; } }
+
+/* ---------- Audit report ----------
+   A report is read, not skimmed: lower contrast on everything that is not the
+   finding itself, one accent, and rows rather than nested cards. */
+.rep { --ok: #5ec9a0; --mid: #e8c15c; --bad: #e8878b; --rep-text: #d9deee; --rep-dim: #8b97b8; }
+.rep-row { border-bottom: 1px solid rgb(37 47 85 / 0.7); }
+.rep-row:last-child { border-bottom: 0; }
+.rep-open { width: 100%; display: grid; grid-template-columns: 14px 1fr 16px; gap: 12px; align-items: center;
+  padding: 13px 4px; text-align: left; cursor: pointer; transition: background .15s ease; border-radius: 8px; }
+/* The coverage bar needs room to mean anything, so it only appears once there is some. */
+.rep-cov-wrap { display: none; }
+@media (min-width: 720px) {
+  .rep-open { grid-template-columns: 14px 1fr auto 16px; gap: 14px; }
+  .rep-cov-wrap { display: flex; }
+}
+.rep-open:hover { background: rgb(23 32 66 / 0.55); }
+.rep-dot { width: 9px; height: 9px; border-radius: 50%; margin-inline: auto; }
+.rep-chev { transition: transform .2s ease; color: var(--rep-dim); font-size: 11px; }
+.rep-open[aria-expanded="true"] .rep-chev { transform: rotate(90deg); }
+/* Signature: how much of the site a problem touches, at a glance. */
+.rep-cov { width: 62px; height: 5px; border-radius: 99px; background: rgb(37 47 85 / 0.9); overflow: hidden; }
+.rep-cov span { display: block; height: 100%; border-radius: 99px; }
+.rep-body { padding: 2px 4px 20px 40px; max-width: 74ch; }
+@media (max-width: 719px) { .rep-body { padding-left: 26px; } }
+.rep-why { color: var(--rep-dim); font-size: 14.5px; line-height: 1.65; }
+.rep-fix { margin-top: 12px; border-left: 2px solid var(--color-mark); background: rgb(23 32 66 / 0.6);
+  padding: 12px 16px; border-radius: 0 10px 10px 0; font-size: 15px; line-height: 1.65; }
+.rep-pages { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.rep-page { font-family: var(--font-mono), monospace; font-size: 11.5px; color: var(--rep-dim);
+  background: rgb(23 32 66 / 0.8); border: 1px solid rgb(37 47 85 / 0.8); border-radius: 6px; padding: 3px 8px; }
+.rep-rail a { display: block; padding: 7px 0 7px 14px; border-left: 2px solid transparent; color: var(--rep-dim);
+  font-size: 14px; transition: color .15s ease, border-color .15s ease; }
+.rep-rail a:hover { color: var(--rep-text); border-color: var(--color-mark); }
+.rep-strip { display: flex; gap: 3px; flex-wrap: wrap; }
+.rep-tick { width: 26px; height: 26px; border-radius: 5px; display: grid; place-items: center;
+  font-family: var(--font-mono), monospace; font-size: 10px; font-weight: 700; color: #0a0f1f; }
+@media print {
+  .rep-body { display: block !important; }
+  .rep-open { page-break-inside: avoid; }
+  .rep-rail, .rep-strip { display: none; }
+}

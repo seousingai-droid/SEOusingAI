@@ -87,15 +87,15 @@ export default function Dashboard() {
     );
   }
 
-  if (session.plan !== "life") {
+  if (session.plan === "free") {
     return (
       <div>
         <div className="card mb-6 border-l-2 !border-l-mark p-7 sm:p-9">
           <p className="eyebrow">Signed in as {session.email}</p>
-          <h2 className="mt-3 text-[clamp(24px,3vw,32px)] font-bold">The dashboard comes with lifetime access</h2>
-          <p className="mt-4 max-w-2xl text-muted">Your free account lets you run checks and see {site.checklist.freeChecks} results each time. Lifetime access saves every audit here, tracks your score, and turns your problems into one to-do list.</p>
+          <h2 className="mt-3 text-[clamp(24px,3vw,32px)] font-bold">The dashboard comes with a paid plan</h2>
+          <p className="mt-4 max-w-2xl text-muted">Your free account checks one page and shows {site.checklist.freeChecks} results. A paid plan audits every page of your website, saves the history here, and turns the problems into one to-do list.</p>
         </div>
-        <Unlock total={94} onUnlocked={() => { setSession({ ...session, plan: "life" }); refresh(); }} />
+        <Unlock onUnlocked={(s) => { setSession(s); refresh(); }} />
       </div>
     );
   }
@@ -164,7 +164,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                   {s.previous && <Changed latest={s.latest} previous={s.previous} />}
-                  <p className="mt-4 font-mono text-[12.5px] text-muted">{s.runs.length} saved {s.runs.length === 1 ? "check" : "checks"} · {s.latest.counts.fail} to fix · {s.latest.counts.warn} could be better</p>
+                  <p className="mt-4 font-mono text-[12.5px] text-muted">{s.runs.length} saved {s.runs.length === 1 ? "audit" : "audits"}{s.latest.pages > 1 ? ` · ${s.latest.pages} pages` : ""} · {s.latest.counts.fail} to fix · {s.latest.counts.warn} could be better</p>
                   <div className="mt-5 flex flex-wrap gap-3">
                     <Link href={`/tools/seo-checklist?url=${encodeURIComponent(s.latest.url)}`} className="btn btn-primary !py-2.5 !px-4 !text-[15px]">Check again</Link>
                     <button type="button" onClick={() => { if (confirm(`Remove all saved checks for ${s.host}? This cannot be undone.`)) { deleteSite(s.host); refresh(); } }} className="btn btn-ghost !py-2.5 !px-4 !text-[15px]">Remove</button>

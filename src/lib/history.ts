@@ -1,4 +1,5 @@
-import type { Check, Counts, Report, Status } from "./checker";
+import type { Check, Counts, Status } from "./checker";
+import type { SiteAudit } from "./crawl";
 
 /**
  * Saved audit history.
@@ -12,7 +13,7 @@ const DONE = "suai_done";
 const MAX_RUNS = 80;
 
 export type SavedCheck = Pick<Check, "id" | "status" | "weight"> & Partial<Pick<Check, "label" | "group" | "found" | "why" | "fix" | "learn">>;
-export type Run = { id: string; url: string; host: string; path: string; checkedAt: string; score: number; counts: Counts; total: number; checks: SavedCheck[] };
+export type Run = { id: string; url: string; host: string; path: string; checkedAt: string; score: number; counts: Counts; total: number; pages: number; checks: SavedCheck[] };
 export type SiteHistory = { host: string; runs: Run[]; latest: Run; previous?: Run; change: number | null };
 
 const read = <T,>(key: string, fallback: T): T => {
@@ -32,20 +33,17 @@ export function loadRuns(): Run[] {
   return read<Run[]>(RUNS, []).filter((r) => r && r.url && r.checkedAt).sort((a, b) => b.checkedAt.localeCompare(a.checkedAt));
 }
 
-export function saveRun(report: Report): Run | null {
-  if (report.locked) return null; // a part-locked report would make a misleading history entry
-  let host = report.url, path = "/";
-  try { const u = new URL(report.url); host = u.hostname.replace(/^www\./, ""); path = u.pathname; } catch { /* keep raw */ }
+export function saveAudit(audit: SiteAudit): Run | null {
+  if (audit.locked) return null; // a part-locked report would make a misleading history entry
   const run: Run = {
     id: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`,
-    url: report.url, host, path, checkedAt: report.checkedAt, score: report.score,
-    counts: report.counts, total: report.total, checks: report.checks.map(compact),
+    url: audit.startUrl, host: audit.site, path: new URL(audit.startUrl).pathname,
+    checkedAt: audit.checkedAt, score: audit.score, counts: audit.counts,
+    total: audit.findings.length, pages: audit.pagesCrawled,
+    checks: audit.findings.map((f) => compact({ ...f, found: f.pages.length > 1 ? `${f.found} Affects ${f.pages.length} of ${f.total} pages.` : f.found })),
   };
   const runs = [run, ...loadRuns()].slice(0, MAX_RUNS);
-  if (!write(RUNS, runs)) {
-    // Browser storage is full or blocked: keep the most recent 20 and try once more.
-    if (!write(RUNS, runs.slice(0, 20))) return null;
-  }
+  if (!write(RUNS, runs) && !write(RUNS, runs.slice(0, 20))) return null;
   return run;
 }
 

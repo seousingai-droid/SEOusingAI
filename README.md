@@ -36,9 +36,27 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 2. Add the domain `seousingai.com` and point DNS as Vercel instructs. Redirect `www` to the apex.
 3. After it is live: verify the domain in Google Search Console and Bing Webmaster Tools, then submit `https://seousingai.com/sitemap.xml` in both. Bing matters because ChatGPT and Copilot retrieve from it.
 
+## Plans and cost control
+
+Crawling costs real money per audit, so the limits in `src/lib/plans.ts` are the cost control, not an upsell trick.
+
+| Plan | Websites | Pages per audit | Results |
+|---|---|---|---|
+| Free | 1 | 1 | 5 of 94 |
+| Basic $67 | 1 | 25 | All |
+| Standard $127 | 3 | 50 | All |
+| Premium $247 | 10 | 100 | All |
+
+A licence key carries its plan in the last character of the key body, covered by the signature, so it cannot be edited upwards. Issue one with `node scripts/issue-license.mjs standard 1`.
+
+A website is registered against the member the first time it is audited, and counted against the plan limit. The list lives in the signed session cookie. Clearing cookies resets it, which is acceptable while there is no database: it also wipes their saved history. Move this to Supabase when the limit needs to be airtight (see STACK.md).
+
+Server-side limits, all in `src/app/api/check/route.ts`: 20 audits a minute per visitor, and 6 full crawls an hour per member.
+
 ## The SEO Checklist Checker (paid tool)
 
-- Engine: `src/lib/checker.ts` (94 checks). API: `src/app/api/check/route.ts`. Screen: `src/app/tools/seo-checklist/Tool.tsx`.
+- Page checks: `src/lib/checker.ts` (94 checks). Whole-site crawl and roll-up: `src/lib/crawl.ts`. API: `src/app/api/check/route.ts`. Report: `src/components/AuditReport.tsx`.
+- Pages are found from the sitemap, or by following the site's own links, then picked one per section so a large shop is not audited as 25 product pages. Findings are grouped across pages, so the reader sees "12 pages have no description" rather than the same problem twelve times.
 - Free visitors get the 5 checks marked `free: true`. A valid key in the `x-license` header unlocks all 94.
 - Keys are signed with `LICENSE_SECRET`. Set it in `.env.local` locally and in your host's environment variables. Never change it: every key issued so far would stop working.
 - Issue keys: `node scripts/issue-license.mjs 5`. Email one key per purchase.

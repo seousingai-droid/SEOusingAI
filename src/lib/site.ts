@@ -38,7 +38,7 @@ export const tools = [
     slug: "seo-checklist",
     name: "SEO Checklist Checker",
     blurb:
-      "Enter your website and get an instant report. The first 5 checks are free. Unlock all 94 for one payment.",
+      "Enter your website and we audit every page, 94 checks each, with a plain-English fix for every problem.",
   },
   {
     slug: "serp-preview",

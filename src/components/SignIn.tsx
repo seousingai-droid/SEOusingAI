@@ -2,7 +2,11 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-export type Session = { email: string; plan: "free" | "life" };
+export type Session = {
+  email: string; plan: string; planName?: string;
+  sites?: string[]; siteLimit?: number; pageLimit?: number; full?: boolean;
+};
+export const isPaidSession = (s: Session | null) => !!s && s.plan !== "free";
 type Step = "email" | "code";
 
 /** The gate in front of the checker: email, then the code we send to confirm it. */
