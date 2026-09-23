@@ -10,9 +10,9 @@ export const mailReady = () => !!process.env.RESEND_API_KEY;
 
 const escape = (s: string) => s.replace(/[<>&"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" })[c]!);
 
-export async function sendCode(to: string, code: string, link: string): Promise<{ ok: true } | { ok: false; error: string }> {
+export async function sendCode(to: string, code: string, link: string): Promise<{ ok: true } | { ok: false; error: string; setup?: boolean }> {
   const key = process.env.RESEND_API_KEY;
-  if (!key) return { ok: false, error: "Email sending is not set up on this server yet." };
+  if (!key) return { ok: false, error: "Email sending is not set up on this server yet.", setup: true };
   const from = process.env.MAIL_FROM || `${site.name} <onboarding@resend.dev>`;
 
   const html = `<!doctype html><html><body style="margin:0;background:#f4f5f8;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
@@ -44,8 +44,24 @@ export async function sendCode(to: string, code: string, link: string): Promise<
     });
     clearTimeout(t);
     if (res.ok) return { ok: true };
+
     const detail = await res.text();
-    console.error("Resend refused the email:", res.status, detail.slice(0, 300));
+    console.error("Resend refused the email:", res.status, detail.slice(0, 400));
+
+    // A 4xx from Resend is a setup problem, not a passing glitch. Say what it is
+    // so it can be fixed, without ever echoing the API key.
+    if (res.status >= 400 && res.status < 500) {
+      let reason = "";
+      try { reason = String((JSON.parse(detail) as { message?: string }).message ?? ""); } catch { /* not json */ }
+      const testSender = !process.env.MAIL_FROM;
+      if (/only send testing emails|verify a domain|own email address/i.test(reason)) {
+        return { ok: false, error: `Email is not fully set up yet: ${reason} Verify a domain in Resend and set MAIL_FROM to an address on it.`, setup: true };
+      }
+      if (res.status === 401 || res.status === 403) {
+        return { ok: false, error: "The email service rejected our key. Check RESEND_API_KEY in the hosting settings.", setup: true };
+      }
+      return { ok: false, error: `Email is not fully set up yet${reason ? `: ${reason}` : "."}${testSender ? " Set MAIL_FROM to an address on a domain verified in Resend." : ""}`, setup: true };
+    }
     return { ok: false, error: "We could not send the email just now. Please try again in a moment." };
   } catch {
     return { ok: false, error: "We could not send the email just now. Please try again in a moment." };

@@ -42,7 +42,7 @@ export async function POST(req: Request) {
   if (!pending || !magic) return NextResponse.json({ ok: false, error: "Sign-in is not set up on this server yet." }, { status: 503 });
 
   const sent = await sendCode(email, code, abs(`/api/auth/magic?t=${encodeURIComponent(magic)}`));
-  if (!sent.ok) return NextResponse.json({ ok: false, error: sent.error }, { status: 502 });
+  if (!sent.ok) return NextResponse.json({ ok: false, error: sent.error, setup: sent.setup ?? false }, { status: 502 });
 
   const res = NextResponse.json({ ok: true, sent: true, email });
   res.cookies.set(PENDING, pending, pendingCookie);
