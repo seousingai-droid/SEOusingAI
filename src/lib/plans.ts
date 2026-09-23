@@ -22,10 +22,10 @@ export type Plan = {
 
 export const PLANS: Record<Tier, Plan> = {
   free: {
-    id: "free", name: "Free", price: 0, sites: 1, pages: 1, fullResults: false,
-    blurb: "Check one page and see the five most important results.",
-    best: "Seeing whether your site has a problem at all.",
-    includes: ["One page per check", "5 of 94 results", "Your score out of 100", "The names of the top 3 fixes"],
+    id: "free", name: "Free", price: 0, sites: 3, pages: 60, fullResults: true,
+    blurb: "A full audit of your website, free.",
+    best: "Anyone who wants to know what is wrong before spending money.",
+    includes: ["Up to 3 websites", "Every page we can reach, up to 60", "All 94 checks on every page", "Saved history and your to-do list"],
   },
   basic: {
     id: "basic", name: "Basic", price: 39, sites: 1, pages: FULL_SITE, fullResults: true,

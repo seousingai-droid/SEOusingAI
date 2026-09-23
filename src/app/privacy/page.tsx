@@ -18,7 +18,7 @@ export default function Page() {
       <p>You can sign out at any time, which deletes the cookie. Your saved audit history and the jobs you tick off stay in your own browser and can be exported or erased from your dashboard.</p>
 
       <h2>Do we use cookies?</h2>
-      <p>The site sets one cookie, and only after you sign in: it holds your email address and whether you have lifetime access. There are no advertising or tracking cookies. If you click an affiliate link, the destination site may set its own cookies under its own privacy policy.</p>
+      <p>The site sets one cookie, and only after you sign in: it holds your email address and which websites you have audited. There are no advertising or tracking cookies. If you click an affiliate link, the destination site may set its own cookies under its own privacy policy.</p>
       <h2>What happens when you book a call?</h2>
       <p>Calls are booked through Google Calendar and held on Google Meet. The name, email address, and notes you enter are handled by Google under its privacy policy and are used only to arrange and hold the call.</p>
       <h2>What happens when you email us?</h2>

@@ -196,7 +196,7 @@ export function SampleReport() {
   const rows: [string, string, string][] = [["pass", "Google is allowed to list this page", "✓"], ["pass", "The page is set up for phones", "✓"], ["warn", "Google headline is too long", "!"], ["fail", "No summary for Google found", "✕"], ["fail", "AI tools are blocked from reading the site", "✕"]];
   const c: Record<string, string> = { pass: "bg-[#2fd08a]/15 text-[#5fe3a8]", warn: "bg-mark/15 text-mark", fail: "bg-[#e5484d]/15 text-[#ff8589]" };
   return (
-    <div role="img" aria-label="Example of a checklist report with a score of 72 out of 100 and five free results: two passed, one could be better, two need fixing" className="card p-6 shadow-[0_40px_120px_-40px_rgb(255_216_77/0.25)] sm:p-7">
+    <div role="img" aria-label="Example of an audit report with a score of 72 out of 100: two checks passed, one could be better, two need fixing" className="card p-6 shadow-[0_40px_120px_-40px_rgb(255_216_77/0.25)] sm:p-7">
       <div className="flex items-center gap-5 border-b border-line pb-5">
         <div className="relative h-[84px] w-[84px] shrink-0">
           <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90" aria-hidden><circle cx="60" cy="60" r="52" fill="none" stroke="#252f55" strokeWidth="11" /><circle cx="60" cy="60" r="52" fill="none" stroke="#ffd84d" strokeWidth="11" strokeLinecap="round" strokeDasharray="326.7" strokeDashoffset="91.5" className="score-arc" style={{ ["--c" as string]: 326.7 }} /></svg>
@@ -205,7 +205,7 @@ export function SampleReport() {
         <div><p className="font-mono text-[12px] text-muted">yourwebsite.com</p><p className="mt-1 font-[family-name:var(--font-display)] text-[19px] font-bold leading-snug">2 things to fix, 1 could be better</p></div>
       </div>
       <ul className="mt-2">{rows.map(([s, t, i], n) => (<li key={t} className="il-flag flex items-center gap-3 border-b border-line/70 py-3 text-[14.5px] last:border-0" style={{ animationDelay: `${0.5 + n * 0.35}s` }}><span className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-[12px] font-bold ${c[s]}`}>{i}</span>{t}</li>))}</ul>
-      <p className="mt-3 font-mono text-[11px] text-muted">Example. Your 5 free results come from your real page.</p>
+      <p className="mt-3 font-mono text-[11px] text-muted">Example. Yours is built from your real pages.</p>
     </div>
   );
 }

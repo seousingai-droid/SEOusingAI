@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Sparkline from "@/components/Sparkline";
-import Unlock from "@/components/Unlock";
 import SignIn, { type Session } from "@/components/SignIn";
 import { actionPlan, bySite, clearHistory, deleteSite, diff, loadDone, loadRuns, toggleDone, type Run, type SavedCheck } from "@/lib/history";
 import { site } from "@/lib/site";
@@ -83,19 +82,6 @@ export default function Dashboard() {
           <p className="mt-4 max-w-2xl text-muted">The dashboard saves every audit you run, tracks your score over time, and turns all your open problems into one ordered to-do list.</p>
         </div>
         <SignIn onSignedIn={(s) => { setSession(s); refresh(); }} />
-      </div>
-    );
-  }
-
-  if (session.plan === "free") {
-    return (
-      <div>
-        <div className="card mb-6 border-l-2 !border-l-mark p-7 sm:p-9">
-          <p className="eyebrow">Signed in as {session.email}</p>
-          <h2 className="mt-3 text-[clamp(24px,3vw,32px)] font-bold">The dashboard comes with a paid plan</h2>
-          <p className="mt-4 max-w-2xl text-muted">Your free account checks one page and shows {site.checklist.freeChecks} results. A paid plan audits every page of your website, saves the history here, and turns the problems into one to-do list.</p>
-        </div>
-        <Unlock onUnlocked={(s) => { setSession(s); refresh(); }} />
       </div>
     );
   }

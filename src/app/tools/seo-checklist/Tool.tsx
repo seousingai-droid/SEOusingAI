@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { SiteAudit } from "@/lib/crawl";
 import AuditReport from "@/components/AuditReport";
-import Unlock from "@/components/Unlock";
 import SignIn, { type Session } from "@/components/SignIn";
 import { saveAudit } from "@/lib/history";
 import { site } from "@/lib/site";
@@ -57,10 +56,8 @@ export default function Tool() {
   }, [run]);
 
   const afterSignIn = (s: Session) => { setSession(s); const next = pending || audit?.startUrl || url; setPending(""); if (next) run(next); };
-  const onUpgraded = (s: Session) => { setSession(s); if (audit) run(audit.startUrl); };
   const signOut = async () => { await fetch("/api/auth/signout", { method: "POST" }); setSession(null); setAudit(null); };
 
-  const paid = session && session.plan !== "free";
 
   return (
     <div>
@@ -74,15 +71,13 @@ export default function Tool() {
             <label htmlFor="site" className="sr-only">Your website address</label>
             <input id="site" className="field !border-0 !bg-transparent text-[18px] sm:flex-1" placeholder="yourwebsite.com" value={url} onChange={(e) => setUrl(e.target.value)} inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} />
             <button className="btn btn-primary shrink-0 disabled:opacity-60" disabled={busy || !url.trim()}>
-              {busy ? "Auditing…" : paid ? "Audit my website" : "Check my website"} {!busy && <span aria-hidden>→</span>}
+              {busy ? "Auditing…" : "Audit my website"} {!busy && <span aria-hidden>→</span>}
             </button>
           </form>
           <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[14.5px] text-muted">
             <span>
               Signed in as <span className="text-text">{session.email}</span>
-              {paid
-                ? `, on the ${session.planName} plan: full audits of ${session.siteLimit} ${session.siteLimit === 1 ? "website" : "websites"}.`
-                : `. Your free account checks one page and shows ${site.checklist.freeChecks} results.`}
+              {`. You can audit ${session.siteLimit ?? 3} websites, as often as you like.`}
             </span>
             <button type="button" onClick={signOut} className="text-link underline underline-offset-4 hover:text-mark">Sign out</button>
           </p>
@@ -103,7 +98,7 @@ export default function Tool() {
                 <span className={`grid h-6 w-6 place-items-center rounded-full text-[12px] font-bold ${i < step ? "bg-mark text-ink" : i === step ? "spin border-2 border-mark border-t-transparent" : "border border-line"}`}>{i < step ? "✓" : ""}</span>{s}
               </li>))}</ul>
             <p className="mt-5 text-[14px] text-muted">
-              {paid ? "A full audit reads every page it can find, and usually takes 20 to 45 seconds. Leave this tab open." : "This usually takes 10 to 20 seconds."}
+              A full audit reads every page it can find, and usually takes 20 to 45 seconds. Leave this tab open.
             </p>
           </div>
         )}
@@ -117,10 +112,7 @@ export default function Tool() {
 
       {audit && (
         <div ref={top} className="mt-10 scroll-mt-24">
-          <AuditReport
-            audit={audit}
-            onUpgrade={audit.locked ? <div className="mt-8"><Unlock onUnlocked={onUpgraded} /></div> : undefined}
-          />
+          <AuditReport audit={audit} />
           {saved && (
             <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-line bg-panel px-5 py-3.5 text-[15.5px]">
               <span aria-hidden className="text-mark">✓</span> Saved to your dashboard.
@@ -129,12 +121,12 @@ export default function Tool() {
           )}
           <div className="card mt-8 grid items-center gap-6 border-l-2 !border-l-mark p-7 sm:p-9 lg:grid-cols-[1.4fr_0.6fr]">
             <div>
-              <h3 className="text-[23px] font-bold">Want someone to fix these for you?</h3>
-              <p className="mt-2.5 text-muted">Bring this report to a free {site.callMinutes}-minute call. We will tell you which fixes actually matter for your business, and what it would cost to have them done.</p>
+              <h3 className="text-[23px] font-bold">Want us to fix these for you?</h3>
+              <p className="mt-2.5 text-muted">Bring this report to a free {site.callMinutes}-minute call. We will tell you which of these actually matter for your business, what we would charge to fix them, and which ones you can safely ignore.</p>
             </div>
             <div className="flex flex-wrap gap-3 lg:justify-end">
               <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
-              {!audit.locked && <button type="button" onClick={() => window.print()} className="btn btn-ghost">Print</button>}
+              <button type="button" onClick={() => window.print()} className="btn btn-ghost">Print</button>
             </div>
           </div>
         </div>

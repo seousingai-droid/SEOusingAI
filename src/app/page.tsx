@@ -17,8 +17,8 @@ import { pageMeta } from "@/lib/meta";
 import { catalog } from "@/lib/checker";
 
 export const metadata = pageMeta({
-  title: "Free Website SEO Check: 94 Tests in 10 Seconds",
-  description: "Check your website free against 94 SEO and AI-search checks, with a plain-English fix for each. Or have our team do the work, with a person checking everything.",
+  title: "SEO Services That Get Small Businesses Found",
+  description: "SEO, content, local search, and website work for small businesses. Clear prices, no contracts, and a free audit of your site before you spend anything.",
   path: "/",
   absolute: true,
 });
@@ -76,27 +76,46 @@ const faqs = [
   { q: "How much does it cost?", a: "You get a fixed price in writing after a free call, before any work starts. The price depends on the size of your website and what it needs. There are no long contracts and no packages of hours." },
   { q: "Do you guarantee first place on Google?", a: "No, and you should be careful with anyone who does. Google and AI tools decide their own results. We promise clear work, honest reports, and a person checking everything." },
   { q: "Is SEO using AI allowed by Google?", a: "Yes. Google says it rewards helpful content however it is made. What Google punishes is mass-produced, low-quality pages made only to trick rankings. That is why a person reviews everything we publish." },
-  { q: "Are the guides and tools really free?", a: "Yes. Every guide is free to read with nothing to sign up for. The website checker asks for an email so we can save your audits, then gives you 5 results on every check at no charge. The site earns money from done-for-you services, lifetime access to the checker, and some labeled affiliate links." },
+  { q: "Are the guides and tools really free?", a: "Yes. Every guide is free to read with nothing to sign up for, and the website audit is free too: it asks for an email so we can save your reports, then shows you everything it found. We make money from the done-for-you services, and from some labeled affiliate links." },
 ];
 
 export default function Home() {
   const guides = getGuides(); const studies = getCaseStudies().slice(0, 3); const cat = catalog();
   return (
     <>
-      {/* Hero: the checker is the primary action */}
+      {/* Hero: what we do, with the free audit as the way in */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(138_180_255/0.13),transparent)]" />
         <div className="wrap relative grid items-center gap-14 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
           <div>
-            <p className="pill rise" style={{ animationDelay: ".05s" }}><i />{cat.total} checks for Google and AI search</p>
+            <p className="pill rise" style={{ animationDelay: ".05s" }}><i />SEO, content, and websites for small businesses</p>
             <h1 className="h-xl rise mt-7" style={{ animationDelay: ".15s" }}>
-              See what is stopping your website from <span className="hl">getting found</span>
+              We get your business <span className="hl">found on Google</span> and recommended by AI
             </h1>
             <p className="lede rise mt-7 max-w-xl" style={{ animationDelay: ".3s" }}>
-              Enter your address. In about ten seconds you get a report on what Google and AI tools like ChatGPT see when they visit, with a plain-English fix for every problem.
+              Your customers ask Google, Google Maps, and ChatGPT who to call. We do the work that puts you in all three: fixing the site, writing the pages, and earning the mentions. A person checks everything before it goes live.
             </p>
-            <div className="rise mt-8 max-w-xl" style={{ animationDelay: ".42s" }}><CheckForm id="hero-site" /></div>
-            <dl className="rise mt-7 grid max-w-xl gap-x-8 gap-y-4 sm:grid-cols-2" style={{ animationDelay: ".55s" }}>
+            <div className="rise mt-9 flex flex-wrap gap-3" style={{ animationDelay: ".45s" }}>
+              <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
+              <a href="#offers" className="btn btn-ghost">See what it costs</a>
+            </div>
+            <p className="rise mt-7 text-[15px] text-muted" style={{ animationDelay: ".6s" }}>
+              Not ready to talk? <Link className="text-link underline underline-offset-4 hover:text-mark" href="/tools/seo-checklist">Get a free audit of your website</Link> and see what we would fix.
+            </p>
+          </div>
+          <div className="rise" style={{ animationDelay: ".25s" }}><SampleReport /></div>
+        </div>
+      </section>
+
+      {/* The free audit, now the way in rather than the product */}
+      <section className="band band-line">
+        <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <Reveal>
+            <p className="eyebrow">Start here, free</p>
+            <h2 className="h-lg mt-5">See what we would fix, <span className="hl">before you pay us anything</span></h2>
+            <p className="lede mt-6 max-w-xl">Enter your website. We read every page we can reach, run {cat.total} checks on each, and show you exactly what is holding it back, in plain English. Free, and yours to keep whether or not you hire us.</p>
+            <div className="mt-8 max-w-xl"><CheckForm id="hero-site" /></div>
+            <dl className="mt-7 grid max-w-xl gap-x-8 gap-y-4 sm:grid-cols-2">
               {trustPoints.map(([t, b]) => (
                 <div key={t} className="flex gap-3">
                   <span aria-hidden className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-ink"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><path d="m5 12 5 5 9-10" /></svg></span>
@@ -104,22 +123,8 @@ export default function Home() {
                 </div>
               ))}
             </dl>
-            <p className="rise mt-7 text-[15px] text-muted" style={{ animationDelay: ".65s" }}>Want it done for you instead? <Link className="text-link underline underline-offset-4 hover:text-mark" href="/book-a-call">Book a free call</Link>.</p>
-          </div>
-          <div className="rise" style={{ animationDelay: ".25s" }}><SampleReport /></div>
-        </div>
-      </section>
-
-      {/* What the checker looks at */}
-      <section className="band band-line">
-        <div className="wrap">
-          <Reveal>
-            <p className="eyebrow">What we look at</p>
-            <h2 className="h-lg mt-5 max-w-3xl">{cat.total} checks, grouped the way you would <span className="hl">actually fix them</span></h2>
-            <p className="lede mt-6 max-w-2xl">Nothing here is hidden behind a score. Every check is named below, and every result tells you what we found on your page, why it matters, and what to do about it.</p>
           </Reveal>
-          <Reveal className="mt-12" delay={100}><CheckCatalog /></Reveal>
-          <Reveal className="mt-10"><div className="max-w-xl"><CheckForm id="catalog-site" size="sm" /></div></Reveal>
+          <Reveal delay={120}><CheckCatalog /></Reveal>
         </div>
       </section>
 

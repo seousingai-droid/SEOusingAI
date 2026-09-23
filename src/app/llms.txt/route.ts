@@ -16,7 +16,7 @@ export function GET() {
     `- [AI SEO services](${abs("/services")}): done-for-you audits, fixes, strategy, content, link outreach, local SEO, and reporting, with human review`,
     ...servicePages.map((sp) => `- [${sp.name}](${abs(`/services/${sp.slug}`)}): ${sp.description}`),
     ...landingPages.map((l) => `- [${l.nav}](${abs(`/${l.slug}`)}): ${l.description}`),
-    `- [Pricing](${abs("/pricing")}): one free page check, or from $39 once to audit every page of a website against all 94 checks`,
+    `- [Pricing](${abs("/pricing")}): what SEO, content, local search, and website work costs, with a free website audit first`,
     `- [Book a call](${abs("/book-a-call")}): free ${site.callMinutes}-minute strategy call on Google Meet`,
     ``,
     `## Guides`,

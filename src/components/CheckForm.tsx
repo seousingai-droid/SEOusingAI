@@ -1,4 +1,3 @@
-import { site } from "@/lib/site";
 
 /** The site's primary action. Plain GET form, so it works without JavaScript. */
 export default function CheckForm({ id = "check", size = "lg" }: { id?: string; size?: "lg" | "sm" }) {
@@ -13,8 +12,9 @@ export default function CheckForm({ id = "check", size = "lg" }: { id?: string; 
 }
 
 export const trustPoints = [
-  ["Free account", "Just an email. No password, no card."],
+  ["Free, not a trial", "The whole audit. No card, ever."],
   ["Your page is not stored", "We open it, check it, and keep no copy."],
-  [`${site.checklist.freeChecks} free every time`, "Free results on every page you check, forever."],
+  ["Every page checked", "Not a sample, and not just the homepage."],
   ["Plain English", "Every result says what it found and how to fix it."],
+  ["Yours to keep", "Hire us or fix it yourself. No pressure either way."],
 ] as const;

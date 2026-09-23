@@ -28,7 +28,10 @@ export default function OfferPicker() {
         {offers.map((o, i) => (
           <div key={o.id} role="tabpanel" id={`offer-p-${o.id}`} aria-labelledby={`offer-t-${o.id}`} hidden={i !== active} className="card offer-panel h-full p-7 sm:p-9">
             <p className="eyebrow">We suggest</p>
-            <h3 className="mt-3 text-[clamp(28px,3vw,38px)] font-bold">{o.name}</h3>
+            <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <h3 className="text-[clamp(28px,3vw,38px)] font-bold">{o.name}</h3>
+              <p className="font-[family-name:var(--font-display)] text-[22px] font-bold text-mark">{o.price} <span className="font-mono text-[11px] font-normal uppercase tracking-widest text-muted">{o.unit}</span></p>
+            </div>
             <p className="mt-4 text-[18px] text-muted">{o.plain}</p>
             <p className="mt-7 font-mono text-[12px] uppercase tracking-widest text-muted">What you get</p>
             <ul className="mt-4 space-y-3">
@@ -42,7 +45,7 @@ export default function OfferPicker() {
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-line pt-7">
               <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
               <Link href={o.href} className="btn btn-ghost">How it works</Link>
-              <p className="w-full text-[15px] text-muted">{o.price ? <><strong className="text-text">{o.price}</strong> · fixed price, agreed up front</> : "Fixed price, agreed on your free call. No contracts."}</p>
+              <p className="w-full text-[15px] text-muted">A fixed quote in writing after the call. No contracts.</p>
             </div>
           </div>
         ))}

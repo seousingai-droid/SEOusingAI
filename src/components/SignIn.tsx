@@ -11,9 +11,8 @@ type Step = "email" | "code";
 
 /** The gate in front of the checker: email, then the code we send to confirm it. */
 export default function SignIn({ onSignedIn, website = "" }: { onSignedIn: (s: Session) => void; website?: string }) {
-  const [tab, setTab] = useState<"free" | "key">("free");
   const [step, setStep] = useState<Step>("email");
-  const [email, setEmail] = useState(""); const [code, setCode] = useState(""); const [key, setKey] = useState("");
+  const [email, setEmail] = useState(""); const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false); const [error, setError] = useState(""); const [note, setNote] = useState("");
   const codeBox = useRef<HTMLInputElement>(null);
 
@@ -55,29 +54,12 @@ export default function SignIn({ onSignedIn, website = "" }: { onSignedIn: (s: S
 
   return (
     <div className="card overflow-hidden">
-      <div role="tablist" aria-label="Sign in" className="flex border-b border-line">
-        {([["free", "Free account"], ["key", "I have a key"]] as const).map(([id, label]) => (
-          <button key={id} role="tab" aria-selected={tab === id} onClick={() => { setTab(id); setError(""); }}
-            className={`flex-1 px-5 py-4 text-[16px] font-medium transition-colors ${tab === id ? "bg-panel2 text-text" : "text-muted hover:text-text"}`}>{label}</button>
-        ))}
-      </div>
-
       <div className="p-7 sm:p-9">
-        {tab === "key" ? (
-          <>
-            <h2 className="text-[clamp(22px,2.6vw,28px)] font-bold">Sign in with your key</h2>
-            <p className="mt-3 max-w-xl text-muted">Paste the licence key from your purchase email to unlock all 94 results and your dashboard.</p>
-            <form onSubmit={async (e) => { e.preventDefault(); const d = await post("/api/auth/key", { key, email }); if (d?.ok) onSignedIn(d.session); else setError(d?.error ?? "That key is not valid."); }} className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <label htmlFor="signin-key" className="sr-only">Your licence key</label>
-              <input id="signin-key" className="field font-mono sm:flex-1" placeholder="SUAI-XXXX-XXXX-XXXX-XXXX-XXXX" value={key} onChange={(e) => setKey(e.target.value)} autoCapitalize="characters" autoCorrect="off" spellCheck={false} />
-              <button className="btn btn-primary shrink-0 disabled:opacity-60" disabled={busy || key.length < 20}>{busy ? "Checking…" : "Unlock"}</button>
-            </form>
-            <p className="mt-4 text-[14.5px] text-muted">No key yet? <Link className="text-link underline underline-offset-4 hover:text-mark" href="/pricing">See what lifetime access includes</Link>.</p>
-          </>
-        ) : step === "email" ? (
+        {step === "email" ? (
+
           <>
             <h2 className="text-[clamp(22px,2.6vw,28px)] font-bold">Sign in to check your website</h2>
-            <p className="mt-3 max-w-xl text-muted">Enter your email and we will send you a 6-digit code. No password to remember, no card.</p>
+            <p className="mt-3 max-w-xl text-muted">Enter your email and we will send you a 6-digit code. The audit is free and complete. No password, no card.</p>
             <form onSubmit={start} className="mt-7 flex flex-col gap-3 sm:flex-row">
               <label htmlFor="signin-email" className="sr-only">Your email address</label>
               <input id="signin-email" type="email" required autoComplete="email" className="field sm:flex-1" placeholder="you@yourbusiness.com" value={email} onChange={(e) => setEmail(e.target.value)} />

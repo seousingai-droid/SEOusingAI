@@ -117,7 +117,9 @@ export const services = [
   },
 ] as const;
 
-// The five ways people start. `price` is shown when you fill it in, for example "From $490".
+// The ways people start with us. Prices are shown on the site, so a visitor can
+// tell whether we are in their range before booking a call. This is the only
+// place they are written: change them here and every page follows.
 export const offers = [
   {
     id: "checkup",
@@ -126,7 +128,8 @@ export const offers = [
     name: "Website Checkup",
     plain: "We check every page of your website and tell you, in plain English, what stops customers from finding you.",
     get: ["Every page checked, not a sample", "A short list of what to fix first, and why", "A call to walk you through it"],
-    price: "",
+    price: "$290",
+    unit: "one-time",
   },
   {
     id: "fix",
@@ -135,7 +138,8 @@ export const offers = [
     name: "Fix-It",
     plain: "We repair the problems that hurt your rankings: errors, slow pages, broken links, and missing behind-the-scenes details.",
     get: ["Problems fixed on your live site", "A before and after list of what changed", "Works with WordPress and Next.js sites"],
-    price: "",
+    price: "from $490",
+    unit: "one-time",
   },
   {
     id: "grow",
@@ -144,7 +148,8 @@ export const offers = [
     name: "Monthly Growth",
     plain: "Each month we plan, write, publish, and improve pages so more of the right people find you.",
     get: ["A plan of what to publish and when", "New pages and articles, fact-checked by a person", "Links and mentions from other websites", "A simple monthly report"],
-    price: "",
+    price: "from $690",
+    unit: "per month",
   },
   {
     id: "local",
@@ -153,7 +158,8 @@ export const offers = [
     name: "Local Boost",
     plain: "We help you show up on Google Maps and in \"near me\" searches, ahead of nearby competitors.",
     get: ["Google Business Profile set up properly", "A simple way to earn more reviews", "Your name, address, and phone matching everywhere", "Pages for the areas you serve"],
-    price: "",
+    price: "from $390",
+    unit: "per month",
   },
   {
     id: "convert",
@@ -162,7 +168,8 @@ export const offers = [
     name: "Conversion Redesign",
     plain: "We rebuild your site so visitors understand what you do in five seconds and know what to do next, without losing your rankings.",
     get: ["A review of where visitors give up today", "Clearer pages with one obvious next step", "Faster loading, built for phones first", "Every old address redirected so rankings stay"],
-    price: "",
+    price: "from $1,490",
+    unit: "one-time",
   },
   {
     id: "social",
@@ -171,7 +178,8 @@ export const offers = [
     name: "Social on Autopilot",
     plain: "Every page on your website becomes posts for each platform, scheduled a month ahead. You approve, we handle the rest.",
     get: ["A month of posts, approved by you", "Written properly for each platform, not copy-pasted", "Images for every post", "A plain monthly report"],
-    price: "",
+    price: "from $490",
+    unit: "per month",
   },
   {
     id: "ai",
@@ -180,7 +188,8 @@ export const offers = [
     name: "AI Visibility",
     plain: "We set up your website so ChatGPT, Perplexity, and Google's AI answers can understand it, trust it, and mention it.",
     get: ["A check of what AI tools say about you today", "Pages rewritten so AI can quote them", "The technical setup AI tools read", "Monthly tracking of your mentions"],
-    price: "",
+    price: "from $590",
+    unit: "one-time",
   },
 ] as const;
 
