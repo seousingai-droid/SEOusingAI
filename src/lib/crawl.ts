@@ -20,7 +20,8 @@ export type SiteAudit = {
   pages: PageResult[];
   priorities: string[];
   discovery: "sitemap" | "links";
-  truncated: boolean;
+  truncated: boolean;   // more pages exist than the plan allows
+  stoppedEarly: boolean; // the time budget ran out before every target was read
   locked: boolean;
   seconds: number;
 };
@@ -195,7 +196,8 @@ export async function auditSite(startUrl: string, pageLimit: number): Promise<Si
     site: new URL(home.url).hostname.replace(/^www\./, ""), startUrl: home.url, checkedAt: new Date().toISOString(),
     score, pagesCrawled: pages.length, pagesFound: Math.max(found.length, pages.length), pageLimit,
     counts, groups: GROUPS, findings, pages, priorities, discovery,
-    truncated: found.length > pageLimit, locked: false, seconds: Math.round((Date.now() - began) / 100) / 10,
+    truncated: found.length > pageLimit,
+    stoppedEarly: pages.length < targets.length, locked: false, seconds: Math.round((Date.now() - began) / 100) / 10,
   };
 }
 

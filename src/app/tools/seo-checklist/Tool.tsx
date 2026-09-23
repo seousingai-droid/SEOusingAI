@@ -61,7 +61,6 @@ export default function Tool() {
   const signOut = async () => { await fetch("/api/auth/signout", { method: "POST" }); setSession(null); setAudit(null); };
 
   const paid = session && session.plan !== "free";
-  const pageLimit = session?.pageLimit ?? 1;
 
   return (
     <div>
@@ -82,7 +81,7 @@ export default function Tool() {
             <span>
               Signed in as <span className="text-text">{session.email}</span>
               {paid
-                ? `, on the ${session.planName} plan: up to ${pageLimit} pages, ${session.siteLimit} ${session.siteLimit === 1 ? "website" : "websites"}.`
+                ? `, on the ${session.planName} plan: full audits of ${session.siteLimit} ${session.siteLimit === 1 ? "website" : "websites"}.`
                 : `. Your free account checks one page and shows ${site.checklist.freeChecks} results.`}
             </span>
             <button type="button" onClick={signOut} className="text-link underline underline-offset-4 hover:text-mark">Sign out</button>
@@ -104,7 +103,7 @@ export default function Tool() {
                 <span className={`grid h-6 w-6 place-items-center rounded-full text-[12px] font-bold ${i < step ? "bg-mark text-ink" : i === step ? "spin border-2 border-mark border-t-transparent" : "border border-line"}`}>{i < step ? "✓" : ""}</span>{s}
               </li>))}</ul>
             <p className="mt-5 text-[14px] text-muted">
-              {paid ? `A full audit reads up to ${pageLimit} pages and usually takes 20 to 45 seconds. Leave this tab open.` : "This usually takes 10 to 20 seconds."}
+              {paid ? "A full audit reads every page it can find, and usually takes 20 to 45 seconds. Leave this tab open." : "This usually takes 10 to 20 seconds."}
             </p>
           </div>
         )}

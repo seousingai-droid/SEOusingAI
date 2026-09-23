@@ -8,16 +8,16 @@ import { site, abs } from "@/lib/site";
 import { PLANS, PAID } from "@/lib/plans";
 
 export const metadata = pageMeta({
-  title: "Pricing: Free Check, or a Full Site Audit From $67",
-  description: "Check one page free. A full audit crawls every page and runs 94 checks on each, with a plain-English fix for every problem. One payment, no subscription.",
+  title: "Pricing: Free Check, or a Full Site Audit From $39",
+  description: "Check one page free. From $39, audit every page of your website against 94 checks, with a plain-English fix for every problem. One payment, no subscription.",
   path: "/pricing",
   absolute: true,
 });
 
 const faqs = [
   { q: "Is this a subscription?", a: "No. Every plan is a single payment for lifetime access, including every check we add in future." },
-  { q: "Why is the number of websites limited?", a: "A full audit crawls and reads every page of a site, which costs us real money each time. Limiting websites per plan is what keeps the price a one-off payment instead of a monthly fee." },
-  { q: "What counts as one website?", a: "One domain. Every page on it counts toward your page limit, and you can re-audit it as often as you like at no extra cost." },
+  { q: "Why is the number of websites limited?", a: "A full audit reads every page of a site, which costs us real money each time. Charging by website is what keeps this a one-off payment instead of a monthly fee. Every plan audits its websites in full, as often as you like." },
+  { q: "What counts as one website?", a: "One domain. Every page on it is audited, and you can re-audit as often as you like at no extra cost. A subdomain such as shop.yoursite.com counts as a separate website." },
   { q: "Can I change which website I audit?", a: "Your plan registers a website the first time you audit it. If you need to swap one, email us and we will reset it." },
   { q: "What do I get after paying?", a: "A licence key by email. Paste it into the tool once and your account is upgraded. The key works on any device." },
   { q: "What if it does not help me?", a: "Email us within 14 days and we will refund you. We only ask what was missing, so we can improve the tool." },
@@ -26,7 +26,7 @@ const faqs = [
 
 const rows: [string, string, string, string, string][] = [
   ["Websites", "1", "1", "3", "10"],
-  ["Pages audited each time", "1", "Up to 25", "Up to 50", "Up to 100"],
+  ["Pages audited each time", "1", "Every page", "Every page", "Every page"],
   ["Checks on every page", "94", "94", "94", "94"],
   ["Results you can see", "5", "All", "All", "All"],
   ["Plain-English fix for each", "First 5", "Yes", "Yes", "Yes"],
@@ -45,8 +45,8 @@ export default function Pricing() {
   return (
     <>
       <PageHero eyebrow="Pricing" crumbs={crumbs}
-        title={<>Check one page free. <span className="hl">Audit the whole site</span> from $67.</>}
-        lede="One payment, not a subscription. The only difference between the plans is how many websites you audit and how deep each audit goes." />
+        title={<>Check one page free. <span className="hl">Audit the whole site</span> from $39.</>}
+        lede="One payment, not a subscription. Every paid plan audits every page it can reach. The only difference is how many websites you can audit." />
 
       <section className="band">
         <div className="wrap grid gap-5 lg:grid-cols-4">
@@ -89,7 +89,7 @@ export default function Pricing() {
                 </tr>))}</tbody>
             </table>
           </div>
-          <p className="mt-5 max-w-2xl text-[15px] text-muted">A full audit reads every page it can find, from your sitemap or by following your own links, then groups the problems so you see &ldquo;12 pages have no description&rdquo; rather than the same problem twelve times.</p>
+          <p className="mt-5 max-w-2xl text-[15px] text-muted">A full audit reads every page it can find, from your sitemap or by following your own links, then groups the problems so you see &ldquo;12 pages have no description&rdquo; rather than the same problem twelve times. Very large sites are read in batches: the report always says how many pages it reached.</p>
         </Reveal>
       </section>
 

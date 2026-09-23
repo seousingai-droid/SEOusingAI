@@ -107,8 +107,9 @@ export default function AuditReport({ audit, onUpgrade }: { audit: SiteAudit; on
             <p className="mt-2.5 text-[16px] text-[color:var(--rep-dim)]">
               {audit.pagesCrawled === 1
                 ? "We checked your homepage."
-                : `We crawled ${audit.pagesCrawled} pages${audit.truncated ? ` of the ${audit.pagesFound} we found` : ""} and ran ${audit.findings.length} checks on each.`}
+                : `We read ${audit.pagesCrawled} pages${audit.pagesFound > audit.pagesCrawled ? ` of the ${audit.pagesFound} we found` : ""} and ran ${audit.findings.length} checks on each.`}
               {" "}Took {audit.seconds} seconds.
+              {audit.stoppedEarly && " We stopped at the time limit, so run it again to reach more pages."}
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 sm:justify-start">
               {([["fail", audit.counts.fail], ["warn", audit.counts.warn], ["pass", audit.counts.pass]] as const).map(([k, n]) => (

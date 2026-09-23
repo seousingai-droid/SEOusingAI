@@ -40,12 +40,14 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 
 Crawling costs real money per audit, so the limits in `src/lib/plans.ts` are the cost control, not an upsell trick.
 
-| Plan | Websites | Pages per audit | Results |
-|---|---|---|---|
-| Free | 1 | 1 | 5 of 94 |
-| Basic $67 | 1 | 25 | All |
-| Standard $127 | 3 | 50 | All |
-| Premium $247 | 10 | 100 | All |
+| Plan | Price | Websites | Pages per audit | Results |
+|---|---|---|---|---|
+| Free | $0 | 1 | 1 | 5 of 94 |
+| Basic | $39 | 1 | Every page | All |
+| Standard | $67 | 3 | Every page | All |
+| Premium | $127 | 10 | Every page | All |
+
+Websites are the difference between plans, not page depth: every paid plan audits its sites in full. `FULL_SITE` in `src/lib/plans.ts` is a ceiling (300); in practice the crawler's time budget stops first on a large site, and the report says how many pages it reached.
 
 A licence key carries its plan in the last character of the key body, covered by the signature, so it cannot be edited upwards. Issue one with `node scripts/issue-license.mjs standard 1`.
 

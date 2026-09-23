@@ -23,7 +23,7 @@ export default function Unlock({ onUnlocked, compact = false }: { onUnlocked: (s
           <p className="eyebrow">Full site audit</p>
           <h3 className={`mt-2 font-bold ${compact ? "text-[22px]" : "text-[clamp(24px,2.6vw,32px)]"}`}>Audit the whole site, not just this page</h3>
           <ul className="mt-4 grid gap-2 text-[15.5px] text-muted sm:grid-cols-2">
-            {["Up to 25 pages crawled and checked", "All 94 results, with a fix for each", "See exactly which pages are affected", "Saved history and your to-do list", "Printable report for your developer", "One payment. No subscription."].map((t) => (
+            {["Every page of your website audited", "All 94 results, with a fix for each", "See exactly which pages are affected", "Saved history and your to-do list", "Printable report for your developer", "One payment. No subscription."].map((t) => (
               <li key={t} className="flex gap-2.5"><span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-mark" />{t}</li>
             ))}
           </ul>
