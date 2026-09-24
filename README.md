@@ -17,7 +17,9 @@ npm run build    # production build
 | Brand facts, nav, contact email, booking link, services | `src/lib/site.ts` |
 | Animated illustrations and scroll reveal | `src/components/Illustrations.tsx`, `Reveal.tsx` |
 | Generated images (WebP, 1600x900) | `public/images/` |
-| Service prices | `offers` in `src/lib/site.ts` |
+| Service prices, menu groups, menu one-liners | `servicePages` in `src/lib/servicePages.ts` |
+| Package prices on /pricing | `offers` in `src/lib/site.ts` |
+| Main menu | `src/components/Nav.tsx`, fed by `src/components/Header.tsx` |
 | Guides (markdown with front matter) | `content/guides/*.md` |
 | Homepage sections | `src/app/page.tsx` |
 | Free tools | `src/app/tools/*` |
@@ -40,3 +42,11 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 
 - Set a real mailbox for `hello@seousingai.com` or change `email` in `src/lib/site.ts`.
 - Turn on live booking: in Google Calendar choose Create, Appointment schedule, keep Google Meet as the location, save, click Share, copy the booking page link, and paste it into `bookingUrl` in `src/lib/site.ts`. Until then the page shows an email request instead.
+
+## Sign-up for the free tools
+
+The three tools ask visitors to create a free account first. Only the interactive part is gated (`src/components/ToolGate.tsx`); the explanation and FAQ around it stay in the page, so the tool pages keep ranking.
+
+Sign-up is email plus a six-digit code, with no password and no database. Needs `AUTH_SECRET` and `RESEND_API_KEY` in Vercel. Resend's test sender only delivers to your own Resend inbox, so real visitors get codes once `MAIL_FROM` is on a domain verified in Resend. `npm run verify` runs 28 checks on the sign-in code.
+
+Set `LEAD_WEBHOOK_URL` to send every new sign-up to your email list.

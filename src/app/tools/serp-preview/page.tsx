@@ -4,7 +4,7 @@ import Tool from "./Tool";
 
 export const metadata = pageMeta({
   title: "SERP Snippet Preview and Length Checker",
-  description: "Preview how your title tag and meta description look in Google. A free SERP snippet preview with live length checks, running in your browser.",
+  description: "Preview how your title tag and meta description look in Google. A free SERP snippet preview with live length checks. Free with an account.",
   path: "/tools/serp-preview",
 });
 
@@ -21,7 +21,7 @@ export default function Page() {
       ]}
       faqs={[
         { q: "Is the SERP preview exact?", a: "The SERP preview is a close approximation. Google measures snippet length in pixels, varies layouts by device, and sometimes rewrites titles and descriptions, so use the preview as a guide." },
-        { q: "Does this tool store what I type?", a: "No. The SERP Snippet Preview runs entirely in your browser. Nothing you type is sent to or stored on a server." },
+        { q: "Does this tool store what I type?", a: "No. The SERP Snippet Preview runs entirely in your browser. Nothing you type is sent to or stored on a server. The only thing we keep is the email you signed up with." },
       ]}
     >
       <Tool />

@@ -74,7 +74,7 @@ const faqs = [
   { q: "How much does it cost?", a: "You get a fixed price in writing after a free call, before any work starts. The price depends on the size of your website and what it needs. There are no long contracts and no packages of hours." },
   { q: "Do you guarantee first place on Google?", a: "No, and you should be careful with anyone who does. Google and AI tools decide their own results. We promise clear work, honest reports, and a person checking everything." },
   { q: "Is SEO using AI allowed by Google?", a: "Yes. Google says it rewards helpful content however it is made. What Google punishes is mass-produced, low-quality pages made only to trick rankings. That is why a person reviews everything we publish." },
-  { q: "Are the guides and tools really free?", a: "Yes. Every guide is free to read with nothing to sign up for, and the website audit is free too: it asks for an email so we can save your reports, then shows you everything it found. We make money from the done-for-you services, and from some labeled affiliate links." },
+  { q: "Are the guides and tools really free?", a: "Yes. Every guide is free to read with nothing to sign up for. The tools are free too, and ask for an email so we can send the occasional guide. We make money from the done-for-you services, and from some labeled affiliate links." },
 ];
 
 export default function Home() {
@@ -322,7 +322,7 @@ export default function Home() {
             <div>
               <p className="eyebrow">Prefer to do it yourself?</p>
               <h2 className="h-lg mt-5">Learn SEO using AI, free.</h2>
-              <p className="lede mt-5">Step-by-step guides and small tools, free to read and use with nothing to sign up for. Start with the six-step workflow on the right.</p>
+              <p className="lede mt-5">Step-by-step guides, free to read. The small tools are free too, with an account that takes one email. Start with the six-step workflow on the right.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/guides/how-to-use-ai-for-seo" className="btn btn-primary">Read the first guide <span aria-hidden>→</span></Link>
                 <Link href="/guides" className="btn btn-ghost">All {guides.length} guides</Link>
@@ -360,7 +360,7 @@ export default function Home() {
                     {tools.map((t) => (<li key={t.slug}><Link className="text-[18px] font-semibold hover:text-mark" href={`/tools/${t.slug}`}>{t.name} <span className="text-mark">→</span></Link></li>))}
                   </ul>
                 </div>
-                <p className="mt-6 text-[15px] text-muted">These three run in your browser. Nothing you type is sent anywhere.</p>
+                <p className="mt-6 text-[15px] text-muted">Free with an account. What you type into them stays in your browser.</p>
                 </div>
               </div>
             </Reveal>

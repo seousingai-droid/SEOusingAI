@@ -38,7 +38,12 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             <p className="eyebrow">Service</p>
             <h1 className="h-lg mt-5 !text-[clamp(34px,4.6vw,58px)]">{s.h1} <span className="hl">{s.h1Mark}</span></h1>
             <p className="lede mt-6 max-w-xl">{s.lede}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <p className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-[family-name:var(--font-display)] text-[30px] font-bold text-mark">{s.price}</span>
+              <span className="font-mono text-[12px] uppercase tracking-widest text-muted">{s.unit}</span>
+              <span className="text-[14.5px] text-muted">· fixed quote in writing before we start</span>
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
               <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
               <a href="#what-you-get" className="btn btn-ghost">See what you get</a>
             </div>
@@ -76,8 +81,12 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
           <Reveal>
             <p className="eyebrow">What you get</p>
             <h2 className="h-lg mt-5">Clear deliverables, fixed price.</h2>
+            <p className="mt-4 flex items-baseline gap-3">
+              <span className="font-[family-name:var(--font-display)] text-[26px] font-bold">{s.price}</span>
+              <span className="font-mono text-[12px] uppercase tracking-widest text-muted">{s.unit}</span>
+            </p>
             <ul className="mt-8 space-y-4">{s.get.map((g) => (<li key={g} className="flex gap-3 text-[17.5px]"><Check />{g}</li>))}</ul>
-            <p className="mt-8 text-muted">You get a written scope and a fixed price after a free call, before any work starts. No long contracts.</p>
+            <p className="mt-8 text-muted">{s.price.startsWith("from") ? "The starting price covers a small website. " : ""}You get a written scope and one fixed price after a free call, before any work starts. {s.unit === "per month" ? "Month to month, stop whenever you like." : "Paid once."}</p>
           </Reveal>
           <Reveal delay={120}>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -118,7 +127,8 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: s.name, serviceType: s.name, description: s.description, url: abs(`/services/${s.slug}`), provider: { "@id": abs("/#org") }, areaServed: { "@type": "Country", name: "United States" } }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: s.name, serviceType: s.name, description: s.description, url: abs(`/services/${s.slug}`), provider: { "@id": abs("/#org") }, areaServed: { "@type": "Country", name: "United States" },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: s.price.replace(/[^0-9.]/g, ""), priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", price: s.price.replace(/[^0-9.]/g, ""), ...(s.unit === "per month" ? { unitText: "MONTH" } : {}), description: `${s.price} ${s.unit}` }, url: abs(`/services/${s.slug}`) } }} />
       <JsonLd data={crumbLd(crumbs)} />
       <JsonLd data={faqLd(s.faqs)} />
     </>

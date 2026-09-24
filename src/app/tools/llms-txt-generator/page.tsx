@@ -4,7 +4,7 @@ import Tool from "./Tool";
 
 export const metadata = pageMeta({
   title: "llms.txt Generator (Free)",
-  description: "Generate an llms.txt file that tells AI systems what your site is and which pages matter. A free llms.txt generator, running in your browser.",
+  description: "Generate an llms.txt file that tells AI systems what your site is and which pages matter. A free llms.txt generator. Free with an account.",
   path: "/tools/llms-txt-generator",
 });
 

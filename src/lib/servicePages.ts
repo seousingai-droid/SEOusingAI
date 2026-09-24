@@ -1,5 +1,12 @@
 // One entry per service page. Plain English first, the technical term second.
+export type MenuGroup = "Get found" | "Grow" | "Market and convert";
+export const MENU_GROUPS: MenuGroup[] = ["Get found", "Grow", "Market and convert"];
+
 export type ServicePage = {
+  /** Starting price, shown in the menu, on the service page, and on the index. */
+  price: string; unit: "one-time" | "per month";
+  /** One short line for the menu. */
+  short: string; group: MenuGroup;
   slug: string; name: string; art: "scan" | "fix" | "write" | "links" | "map" | "chat" | "gap" | "social" | "automation" | "redesign";
   metaTitle: string; description: string; h1: string; h1Mark: string; lede: string;
   quickQ: string; quickA: string;
@@ -15,6 +22,7 @@ export type ServicePage = {
 
 export const servicePages: ServicePage[] = [
   {
+    price: "$290", unit: "one-time", short: "Every page checked, fixes in plain English", group: "Get found",
     slug: "ai-seo-audit", name: "AI SEO Audit", art: "scan",
     metaTitle: "AI SEO Audit: Every Page Checked, Explained Simply",
     description: "An AI SEO audit checks every page of your website for what stops it ranking on Google and in AI answers. You get a plain-English fix list, reviewed by a person.",
@@ -46,6 +54,7 @@ export const servicePages: ServicePage[] = [
     related: ["technical-seo", "ai-search-optimization", "local-seo"], guide: { href: "/guides/how-to-use-ai-for-seo", label: "How to use AI for SEO" },
   },
   {
+    price: "from $490", unit: "one-time", short: "Errors, speed, and the code Google reads", group: "Get found",
     slug: "technical-seo", name: "Technical SEO Fixes", art: "fix",
     metaTitle: "Technical SEO Services: Website Fixes Done for You",
     description: "Technical SEO services that fix what hurts your rankings: errors, slow pages, broken links, redirects, and the code Google reads. WordPress and Next.js.",
@@ -76,6 +85,7 @@ export const servicePages: ServicePage[] = [
     related: ["ai-seo-audit", "ai-content-writing", "ai-search-optimization"], guide: { href: "/tools/serp-preview", label: "Free Google snippet preview" },
   },
   {
+    price: "from $390", unit: "per month", short: "Pages and articles, checked by a person", group: "Grow",
     slug: "ai-content-writing", name: "AI Content Writing", art: "write",
     metaTitle: "AI SEO Content Writing, Fact-Checked by a Person",
     description: "AI SEO content writing services: articles and web pages planned from real searches, drafted with AI, then fact-checked and edited by a person. Ready to publish.",
@@ -107,6 +117,7 @@ export const servicePages: ServicePage[] = [
     related: ["link-building", "ai-search-optimization", "ai-seo-audit"], guide: { href: "/guides/how-to-write-seo-content-with-ai", label: "How to write SEO content with AI" },
   },
   {
+    price: "from $590", unit: "per month", short: "Earn mentions from trusted websites", group: "Grow",
     slug: "link-building", name: "Link Building and Digital PR", art: "links",
     metaTitle: "Link Building Services: Earn Mentions, No Schemes",
     description: "Link building and digital PR services that earn real mentions from relevant websites. Builds the authority Google and AI tools trust. No paid link schemes.",
@@ -137,6 +148,7 @@ export const servicePages: ServicePage[] = [
     related: ["ai-content-writing", "local-seo", "ai-search-optimization"], guide: { href: "/guides/generative-engine-optimization", label: "How AI tools choose who to mention" },
   },
   {
+    price: "from $390", unit: "per month", short: "Show up on Google Maps and near-me searches", group: "Get found",
     slug: "local-seo", name: "Local SEO", art: "map",
     metaTitle: "Local SEO Services: Show Up on Google Maps",
     description: "Local SEO services that help nearby customers find you first on Google Maps and in near-me searches. Google Business Profile, reviews, and listings.",
@@ -168,6 +180,7 @@ export const servicePages: ServicePage[] = [
     related: ["ai-seo-audit", "link-building", "ai-search-optimization"], guide: { href: "/ai-seo-for-small-business", label: "AI SEO for small business" },
   },
   {
+    price: "from $590", unit: "one-time", short: "Get mentioned by ChatGPT and AI answers", group: "Get found",
     slug: "ai-search-optimization", name: "AI Search Optimization", art: "chat",
     metaTitle: "AI Search Optimization: Get Recommended by ChatGPT",
     description: "AI search optimization (GEO) services that help ChatGPT, Perplexity, Gemini, and Google AI Overviews understand, trust, and mention your business.",
@@ -199,6 +212,7 @@ export const servicePages: ServicePage[] = [
     related: ["ai-content-writing", "link-building", "ai-seo-audit"], guide: { href: "/guides/generative-engine-optimization", label: "Generative engine optimization guide" },
   },
   {
+    price: "$390", unit: "one-time", short: "See exactly why rivals outrank you", group: "Grow",
     slug: "competitor-analysis", name: "SEO Competitor Analysis", art: "gap",
     metaTitle: "SEO Competitor Analysis: See Why They Outrank You",
     description: "An AI SEO competitor analysis shows what rival websites rank for that you do not, how their sites are built, and exactly what to copy, beat, or ignore.",
@@ -229,6 +243,7 @@ export const servicePages: ServicePage[] = [
     related: ["ai-seo-audit", "ai-content-writing", "link-building"], guide: { href: "/guides/ai-seo-strategies", label: "AI SEO strategies" },
   },
   {
+    price: "from $490", unit: "per month", short: "A month of posts, written for each platform", group: "Market and convert",
     slug: "social-media-marketing", name: "Social Media Marketing", art: "social",
     metaTitle: "Social Media Marketing for Small Business, Done for You",
     description: "Done-for-you social media marketing for small businesses: a monthly plan, posts written for each platform, images, and a plain report. You approve every post.",
@@ -260,6 +275,7 @@ export const servicePages: ServicePage[] = [
     related: ["social-media-automation", "ai-content-writing", "link-building"], guide: { href: "/guides/ai-seo-strategies", label: "AI SEO strategies" },
   },
   {
+    price: "from $290", unit: "per month", short: "New pages become scheduled posts", group: "Market and convert",
     slug: "social-media-automation", name: "Social Media Automation", art: "automation",
     metaTitle: "Social Media Automation With a Person Approving Every Post",
     description: "Social media automation that turns each new article into scheduled posts for every platform, with a person approving each one. No bots, no bought engagement.",
@@ -291,6 +307,7 @@ export const servicePages: ServicePage[] = [
     related: ["social-media-marketing", "ai-content-writing", "ai-search-optimization"], guide: { href: "/guides/can-ai-do-seo", label: "What to automate and what not to" },
   },
   {
+    price: "from $1,490", unit: "one-time", short: "A site that turns visitors into customers", group: "Market and convert",
     slug: "website-redesign", name: "Website Redesign for Conversion", art: "redesign",
     metaTitle: "Website Redesign for Conversion, Without Losing Rankings",
     description: "A website redesign built to turn visitors into customers: clearer pages, faster loading, mobile first, and every redirect in place so your rankings stay.",
@@ -322,5 +339,8 @@ export const servicePages: ServicePage[] = [
     related: ["ai-seo-audit", "technical-seo", "local-seo"], guide: { href: "/services/ai-seo-audit", label: "the Website Checkup" },
   },
 ];
+
+/** "$390/mo", "from $490", "$290" — compact enough for a menu. */
+export const shortPrice = (s: Pick<ServicePage, "price" | "unit">) => (s.unit === "per month" ? `${s.price}/mo` : s.price);
 
 export const getServicePage = (slug: string) => servicePages.find((s) => s.slug === slug);

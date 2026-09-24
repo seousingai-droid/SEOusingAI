@@ -1,31 +1,42 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { site } from "@/lib/site";
+import Nav, { type NavData } from "./Nav";
+import AccountMenu from "./AccountMenu";
+import { servicePages, MENU_GROUPS, shortPrice } from "@/lib/servicePages";
+import { landingPages } from "@/lib/landingPages";
+import { getGuides } from "@/lib/content";
+import { tools } from "@/lib/site";
+
+// The menu is built from the same data as the pages, so a new service or
+// price change appears in the menu without touching this file.
+function navData(): NavData {
+  const featured = ["how-to-use-ai-for-seo", "ai-seo-strategies", "best-ai-seo-tools", "generative-engine-optimization"];
+  const guides = getGuides();
+  return {
+    services: MENU_GROUPS.map((group) => ({
+      group,
+      items: servicePages.filter((s) => s.group === group).map((s) => ({ href: `/services/${s.slug}`, name: s.name, short: s.short, price: shortPrice(s) })),
+    })),
+    audiences: landingPages.map((l) => ({ href: `/${l.slug}`, name: l.nav.replace(/^AI SEO for /, "For ").replace(/^AI SEO agency$/, "How our agency works"), short: l.lede.split(". ")[0].replace(/\.$/, "") })),
+    guides: featured.map((slug) => guides.find((g) => g.slug === slug)).filter(Boolean).map((g) => {
+      const name = g!.title.split(":")[0];
+      // A subtitle that repeats the title ("AI SEO Strategies / Strategies") says nothing, so drop it.
+      const first = g!.eyebrow.split(" ")[0].toLowerCase().replace(/s$/, "");
+      return { href: `/guides/${g!.slug}`, name, short: name.toLowerCase().includes(first) ? undefined : g!.eyebrow };
+    }),
+    tools: tools.map((t) => ({ href: `/tools/${t.slug}`, name: t.name })),
+  };
+}
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ink/85 backdrop-blur">
-      <div className="wrap flex h-[72px] items-center justify-between gap-6">
-        <Link href="/" aria-label="SEO Using AI home"><Logo /></Link>
-        <nav aria-label="Main" className="hidden items-center gap-7 text-[15px] text-muted lg:flex">
-          {site.nav.map((n) => (
-            <Link key={n.href} href={n.href} className="transition-colors hover:text-text">{n.label}</Link>
-          ))}
-        </nav>
+    <header className="sticky top-0 z-50 border-b border-line bg-ink/90 backdrop-blur">
+      <div className="wrap relative flex h-[72px] items-center justify-between gap-6">
+        <Link href="/" aria-label="SEO Using AI home" className="shrink-0"><Logo /></Link>
+        <Nav data={navData()} />
         <div className="flex items-center gap-3">
+          <div className="hidden lg:block"><AccountMenu /></div>
           <Link href="/book-a-call" className="btn btn-primary !hidden !py-2.5 !px-4 !text-[15px] sm:!inline-flex">Book a call</Link>
-          <details className="relative lg:hidden">
-            <summary className="grid h-11 w-11 cursor-pointer list-none place-items-center rounded-lg border border-line [&::-webkit-details-marker]:hidden" aria-label="Open menu">
-              <span className="block h-[2px] w-5 bg-text shadow-[0_6px_0_var(--color-text),0_-6px_0_var(--color-text)]" />
-            </summary>
-            <nav aria-label="Mobile" className="card absolute right-0 top-14 flex w-72 flex-col p-3">
-              {site.nav.map((n) => (
-                <Link key={n.href} href={n.href} className="rounded-lg px-3 py-3 hover:bg-panel2">{n.label}</Link>
-              ))}
-              <Link href="/pricing" className="rounded-lg px-3 py-3 hover:bg-panel2">Pricing</Link>
-              <Link href="/book-a-call" className="btn btn-primary mt-3">Book a call</Link>
-            </nav>
-          </details>
         </div>
       </div>
     </header>

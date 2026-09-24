@@ -1,4 +1,5 @@
 import PageHero, { crumbLd } from "./PageHero";
+import ToolGate from "./ToolGate";
 import JsonLd from "./JsonLd";
 import Faq, { faqLd } from "./Faq";
 import type { Faq as F } from "@/lib/content";
@@ -12,7 +13,7 @@ export default function ToolShell({ slug, name, title, lede, children, how, faqs
   return (
     <>
       <PageHero eyebrow="Free tool" crumbs={crumbs} title={title} lede={lede} />
-      <section className="wrap py-12 lg:py-16">{children}</section>
+      <section className="wrap py-12 lg:py-16"><ToolGate name={name}>{children}</ToolGate></section>
       <section className="band band-line">
         <div className="wrap grid gap-12 lg:grid-cols-2">
           <div className="prose">

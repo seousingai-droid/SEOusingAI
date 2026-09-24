@@ -4,7 +4,7 @@ import Tool from "./Tool";
 
 export const metadata = pageMeta({
   title: "AI SEO Prompt Builder (Free Generator)",
-  description: "Build structured SEO prompts for ChatGPT, Claude, or Gemini. Keyword research, briefs, meta tags, audits, and schema. Free, in your browser.",
+  description: "Build structured SEO prompts for ChatGPT, Claude, or Gemini. Keyword research, briefs, meta tags, audits, and schema. Free with an account.",
   path: "/tools/ai-seo-prompt-builder",
 });
 

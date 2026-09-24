@@ -5,7 +5,7 @@ import ServicesHub from "@/components/ServicesHub";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { services, site, abs } from "@/lib/site";
-import { servicePages } from "@/lib/servicePages";
+import { servicePages, MENU_GROUPS } from "@/lib/servicePages";
 
 export const metadata = pageMeta({
   title: "SEO, Social Media, and Website Services",
@@ -46,17 +46,28 @@ export default function Services() {
       <section className="band band-line">
         <div className="wrap">
           <p className="eyebrow">Most requested</p>
-          <h2 className="h-lg mt-5">Ten services, explained in full</h2>
-          <p className="lede mt-5 max-w-2xl">Each page says what the service is, the signs you need it, what you get, and what it will not do.</p>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {servicePages.map((sp) => (
-              <Link key={sp.slug} href={`/services/${sp.slug}`} className="card card-hover p-7">
-                <h3 className="text-[22px] font-bold">{sp.name}</h3>
-                <p className="mt-2 text-[15.5px] text-muted">{sp.lede}</p>
-                <p className="mt-5 font-mono text-[13px] text-mark">Read more →</p>
-              </Link>
-            ))}
-          </div>
+          <h2 className="h-lg mt-5">Ten services, with prices</h2>
+          <p className="lede mt-5 max-w-2xl">Each one shows a starting price, so you know whether we are in your range before you call. Each page says what the service is, what you get, and what it will not do.</p>
+          {MENU_GROUPS.map((group) => (
+            <div key={group} className="mt-10">
+              <p className="eyebrow">{group}</p>
+              <div className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {servicePages.filter((sp) => sp.group === group).map((sp) => (
+                  <Link key={sp.slug} href={`/services/${sp.slug}`} className="card card-hover flex flex-col p-7">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="text-[21px] font-bold leading-snug">{sp.name}</h3>
+                    </div>
+                    <p className="mt-2 flex-1 text-[15.5px] text-muted">{sp.lede}</p>
+                    <p className="mt-5 flex items-baseline gap-2 border-t border-line pt-4">
+                      <span className="font-[family-name:var(--font-display)] text-[20px] font-bold text-mark">{sp.price}</span>
+                      <span className="font-mono text-[11px] uppercase tracking-widest text-muted">{sp.unit}</span>
+                      <span className="ml-auto font-mono text-[13px] text-muted">Details →</span>
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
           <p className="mt-10 text-muted">Looking for the big picture? See how we work as an <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-agency">AI SEO agency</Link>, or read <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-for-small-business">AI SEO for small business</Link> and <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-for-b2b">AI SEO for B2B</Link>.</p>
         </div>
       </section>
