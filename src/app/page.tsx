@@ -11,6 +11,7 @@ import JsonLd from "@/components/JsonLd";
 import { getGuides } from "@/lib/content";
 import { getCaseStudies } from "@/lib/caseStudies";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import GuideCard from "@/components/GuideCard";
 import { tools, services, site } from "@/lib/site";
 import { pageMeta } from "@/lib/meta";
 
@@ -332,16 +333,7 @@ export default function Home() {
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {guides.slice(0, 5).map((g, i) => (
-              <Reveal key={g.slug} delay={(i % 3) * 100}>
-                <Link href={`/guides/${g.slug}`} className="card card-hover flex h-full flex-col overflow-hidden">
-                  {g.image && <Image src={g.image} alt="" width={800} height={450} sizes="(min-width: 1024px) 380px, (min-width: 768px) 50vw, 100vw" className="aspect-video w-full border-b border-line object-cover" />}
-                  <div className="flex flex-1 flex-col p-7">
-                    <p className="eyebrow">{g.eyebrow}</p>
-                    <h3 className="mt-3 text-[21px] font-bold leading-tight">{g.title}</h3>
-                    <p className="mt-4 font-mono text-[13px] text-muted">{g.readMinutes} min read <span className="text-mark">→</span></p>
-                  </div>
-                </Link>
-              </Reveal>
+              <Reveal key={g.slug} delay={(i % 3) * 100}><GuideCard g={g} /></Reveal>
             ))}
             <Reveal delay={200}>
               <div className="card flex h-full flex-col overflow-hidden">

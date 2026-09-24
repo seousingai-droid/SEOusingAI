@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import GuideCard from "@/components/GuideCard";
 import { notFound } from "next/navigation";
 import PageHero, { crumbLd } from "@/components/PageHero";
 import Faq, { faqLd } from "@/components/Faq";
@@ -49,6 +51,13 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           <p className="font-mono text-[13px] text-muted">
             By the <Link className="text-text underline underline-offset-4 hover:text-mark" href="/editorial-standards">{site.editorial.name}</Link> · Last updated <time dateTime={g.updated}>{formatDate(g.updated)}</time> · {g.readMinutes} min read
           </p>
+          {g.image && (
+            <figure className="mt-8">
+              <Image src={g.image} alt={g.imageAlt ?? ""} width={1600} height={900} priority
+                sizes="(min-width: 1024px) 860px, 100vw" className="figure-img" />
+              {g.imageCaption && <figcaption className="mt-3 text-[14.5px] text-muted">{g.imageCaption}</figcaption>}
+            </figure>
+          )}
           <div className="card mt-8 max-w-[72ch] border-l-2 !border-l-mark p-7">
             <p className="eyebrow">Quick answer</p>
             <p className="mt-3 text-[18px] leading-relaxed">{g.quickAnswer}</p>
@@ -80,14 +89,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       </div>
       <section className="band band-line">
         <div className="wrap">
-          <h2 className="h-md">Keep going</h2>
+          <h2 className="h-md">Keep reading</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {others.map((o) => (
-              <Link key={o.slug} href={`/guides/${o.slug}`} className="card card-hover p-7">
-                <p className="eyebrow">{o.eyebrow}</p>
-                <h3 className="mt-3 text-[20px] font-semibold leading-snug">{o.title}</h3>
-              </Link>
-            ))}
+            {others.map((o) => <GuideCard key={o.slug} g={o} size="sm" />)}
           </div>
         </div>
       </section>

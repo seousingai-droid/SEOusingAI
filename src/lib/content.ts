@@ -21,6 +21,9 @@ export type Guide = {
   toc: { id: string; text: string }[];
   order: number;
   image?: string;
+  /** The cover's own description and caption, lifted from where it sat in the article. */
+  imageAlt?: string;
+  imageCaption?: string;
 };
 
 const slugify = (s: string) =>
@@ -73,7 +76,17 @@ export function getGuides(): Guide[] {
     .map((file) => {
       const raw = fs.readFileSync(path.join(DIR, file), "utf8");
       const { data, content } = matter(raw);
-      const { html, toc } = render(content);
+      // The cover used to appear once inside the article as well. It is now the
+      // featured image at the top, so take it out of the body to avoid showing it twice.
+      let imageAlt: string | undefined, imageCaption: string | undefined;
+      const body = data.image
+        ? content.replace(/!\[([^\]]*)\]\(([^ )]+)(?: "([^"]*)")?\)\n?/, (m, alt: string, src: string, cap?: string) => {
+            if (src !== data.image) return m;
+            imageAlt = alt; imageCaption = cap;
+            return "";
+          })
+        : content;
+      const { html, toc } = render(body);
       const words = content.split(/\s+/).length;
       return {
         slug: file.replace(/\.md$/, ""),
@@ -88,6 +101,8 @@ export function getGuides(): Guide[] {
         faqs: data.faqs ?? [],
         order: data.order ?? 99,
         image: data.image,
+        imageAlt,
+        imageCaption,
         html,
         toc,
       } as Guide;
