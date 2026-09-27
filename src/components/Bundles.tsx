@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
+import ReelPlayer from "./ReelPlayer";
 import { bundles, bothBundles, offers } from "@/lib/site";
 
 const Tick = () => <span aria-hidden className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-mark" />;
@@ -9,14 +10,10 @@ export function SampleReel() {
   return (
     <figure className="card flex h-full flex-col p-5">
       <p className="eyebrow">Sample AI reel</p>
-      <video
-        className="mt-4 aspect-[9/16] w-full rounded-xl border border-line bg-ink object-cover"
+      <ReelPlayer
         src="/videos/sample-reel.mp4"
         poster="/videos/sample-reel.webp"
-        controls
-        playsInline
-        preload="none"
-        aria-label="Sample AI reel: a stick-man animation explaining how to turn website visits into calls"
+        label="Sample AI reel: a stick-man animation explaining how to turn website visits into calls"
       />
       <figcaption className="mt-4 text-[14.5px] text-muted">From our own channel. Yours explains your business, in your colors.</figcaption>
     </figure>
