@@ -5,7 +5,7 @@ import AccountMenu from "./AccountMenu";
 import { servicePages, MENU_GROUPS, shortPrice } from "@/lib/servicePages";
 import { landingPages } from "@/lib/landingPages";
 import { getGuides } from "@/lib/content";
-import { tools } from "@/lib/site";
+import { bundles, tools } from "@/lib/site";
 
 // The menu is built from the same data as the pages, so a new service or
 // price change appears in the menu without touching this file.
@@ -13,6 +13,7 @@ function navData(): NavData {
   const featured = ["how-to-use-ai-for-seo", "ai-seo-strategies", "best-ai-seo-tools", "generative-engine-optimization"];
   const guides = getGuides();
   return {
+    bundles: bundles.map((b) => ({ href: `/pricing#bundle-${b.id}`, name: b.name, short: b.short, price: `${b.price}/mo` })),
     services: MENU_GROUPS.map((group) => ({
       group,
       items: servicePages.filter((s) => s.group === group).map((s) => ({ href: `/services/${s.slug}`, name: s.name, short: s.short, price: shortPrice(s) })),

@@ -14,7 +14,7 @@ export default function Footer() {
         <div>
           <Logo />
           <p className="mt-5 max-w-sm text-[15px] text-muted">
-            Free guides and tools for doing SEO with AI, plus done-for-you AI SEO services with a person reviewing every deliverable.
+            SEO using AI for small businesses. We optimize your business to show up on Google, Google Maps and AI search.
           </p>
           <p className="mt-5 text-[15px]"><a className="text-link hover:text-mark" href={`mailto:${site.email}`}>{site.email}</a></p>
         </div>

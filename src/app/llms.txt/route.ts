@@ -1,5 +1,5 @@
 import { getGuides } from "@/lib/content";
-import { site, tools, abs } from "@/lib/site";
+import { site, tools, bundles, bothBundles, abs } from "@/lib/site";
 import { servicePages } from "@/lib/servicePages";
 import { landingPages } from "@/lib/landingPages";
 import { getCaseStudies } from "@/lib/caseStudies";
@@ -12,11 +12,15 @@ export function GET() {
     ``,
     `> ${site.description}`,
     ``,
+    `## Bundles`,
+    ...bundles.map((b) => `- [${b.name}](${abs(`/pricing#bundle-${b.id}`)}): ${b.price} ${b.unit}. ${b.plain} Includes: ${b.get.join("; ")}.`),
+    `- Both bundles together: ${bothBundles.price} ${bothBundles.unit}. Month to month, no contract.`,
+    ``,
     `## Services`,
-    `- [AI SEO services](${abs("/services")}): done-for-you audits, fixes, strategy, content, link outreach, local SEO, and reporting, with human review`,
+    `- [SEO using AI services](${abs("/services")}): done-for-you SEO for Google, Google Maps and AI search, websites, social media and AI reels, with human review`,
     ...servicePages.map((sp) => `- [${sp.name}](${abs(`/services/${sp.slug}`)}): ${sp.description}`),
     ...landingPages.map((l) => `- [${l.nav}](${abs(`/${l.slug}`)}): ${l.description}`),
-    `- [Pricing](${abs("/pricing")}): what SEO, content, local search, and website work costs, with a free website audit first`,
+    `- [Pricing](${abs("/pricing")}): prices for both bundles and every single service, month to month`,
     `- [Book a call](${abs("/book-a-call")}): free ${site.callMinutes}-minute strategy call on Google Meet`,
     ``,
     `## Guides`,

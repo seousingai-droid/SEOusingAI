@@ -4,16 +4,18 @@ import Reveal from "@/components/Reveal";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { pageMeta } from "@/lib/meta";
-import { site, offers, abs } from "@/lib/site";
+import Bundles from "@/components/Bundles";
+import { site, offers, bundles, abs } from "@/lib/site";
 
 export const metadata = pageMeta({
-  title: "Pricing: What SEO and Website Work Costs",
-  description: "Plain prices for SEO, content, local search, and website work. One fixed quote in writing before anything starts, and no long contracts.",
+  title: "Pricing: SEO Using AI Bundles and Services",
+  description: "Monthly bundles for website + SEO and for social media + AI reels, plus single services. Clear prices, month to month, no contracts.",
   path: "/pricing",
   absolute: true,
 });
 
 const faqs = [
+  { q: "What is the difference between a bundle and a single service?", a: "A bundle is ongoing: one monthly price and we run the whole thing, website and SEO or social media and reels. A single service is one job, like a website checkup or a redesign, quoted and paid once or monthly." },
   { q: "Why are these prices a range?", a: "Because a five-page local site and a 500-product shop need very different work. The range tells you whether we are in your budget. After a free call you get one fixed price in writing, and it does not move." },
   { q: "Do I have to sign a contract?", a: "No. Monthly work is month to month and you can stop whenever you like. One-off work is quoted and paid once." },
   { q: "How do I know what I need?", a: "Book the free call. We look at your website together and tell you what is actually wrong with it. If the honest answer is that you need less than you thought, we will say so." },
@@ -27,12 +29,26 @@ export default function Pricing() {
   return (
     <>
       <PageHero eyebrow="Pricing" crumbs={crumbs}
-        title={<>What this costs, <span className="hl">before you call</span></>}
-        lede="Most agencies hide their prices until they have you on the phone. These are ours. You get one fixed quote in writing after a free call, and it does not move." />
+        title={<>Prices, <span className="hl">up front</span></>}
+        lede="Two monthly bundles where we handle everything, or one service when you need one thing. You get a fixed quote in writing before any work starts." />
 
-      <section className="band">
+      <section id="bundles" className="band scroll-mt-20">
         <div className="wrap">
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <Reveal>
+            <p className="eyebrow">Bundles</p>
+            <h2 className="h-lg mt-5">We handle everything, for one monthly price.</h2>
+          </Reveal>
+          <div className="mt-10"><Bundles /></div>
+        </div>
+      </section>
+
+      <section className="band band-line">
+        <div className="wrap">
+          <Reveal>
+            <p className="eyebrow">Single services</p>
+            <h2 className="h-lg mt-5">Or pick one service.</h2>
+          </Reveal>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {offers.map((o, i) => (
               <Reveal key={o.id} delay={(i % 3) * 90}>
                 <div className="card flex h-full flex-col p-7">
@@ -86,7 +102,7 @@ export default function Pricing() {
         </div>
       </section>
 
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "OfferCatalog", name: "SEO and website services", url: abs("/pricing"), provider: { "@id": abs("/#org") }, itemListElement: offers.map((o) => ({ "@type": "Offer", name: o.name, description: o.plain, url: abs(o.href), priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", description: `${o.price} ${o.unit}` } })) }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "OfferCatalog", name: "SEO Using AI bundles and services", url: abs("/pricing"), provider: { "@id": abs("/#org") }, itemListElement: [...bundles, ...offers].map((o) => ({ "@type": "Offer", name: o.name, description: o.plain, url: "href" in o ? abs(o.href) : abs(`/pricing#bundle-${o.id}`), priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", description: `${o.price} ${o.unit}` } })) }} />
       <JsonLd data={crumbLd(crumbs)} />
       <JsonLd data={faqLd(faqs)} />
     </>

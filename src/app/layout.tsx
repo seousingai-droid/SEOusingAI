@@ -14,8 +14,8 @@ export const viewport: Viewport = { themeColor: "#0a0f1f" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: "SEO Using AI: Rank on Google and in AI Answers", template: "%s | SEO Using AI" },
-  description: "SEO using AI for small businesses: get found on Google, Google Maps, and in AI answers. Free guides and tools, or done-for-you services checked by a person.",
+  title: { default: "SEO Using AI: Get Found on Google, Maps and AI Search", template: "%s | SEO Using AI" },
+  description: site.description,
   applicationName: site.name,
   openGraph: { type: "website", siteName: site.name, locale: site.locale, url: site.url },
   twitter: { card: "summary_large_image" },

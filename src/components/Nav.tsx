@@ -7,6 +7,7 @@ import AccountMenu from "./AccountMenu";
 
 export type NavItem = { href: string; name: string; short?: string; price?: string };
 export type NavData = {
+  bundles: NavItem[];
   services: { group: string; items: NavItem[] }[];
   audiences: NavItem[];
   guides: NavItem[];
@@ -119,19 +120,25 @@ function Desktop({ data }: { data: NavData }) {
       {open === "services" && (
         <div className="absolute inset-x-0 top-full" onPointerEnter={clear} onPointerLeave={(e) => e.pointerType === "mouse" && closeSoon()}>
           <div className="wrap pt-2">
-            <div id="menu-services" className="nav-panel card grid gap-2 p-5 lg:grid-cols-3 xl:grid-cols-[1fr_1fr_1fr_250px]">
+            <div id="menu-services" className="nav-panel card grid gap-2 p-5 lg:grid-cols-3 xl:grid-cols-[1fr_1fr_1fr_270px]">
               {data.services.map((g) => (
                 <div key={g.group}>
                   <p className="nav-label">{g.group}</p>
                   {g.items.map((i) => <Item key={i.href} i={i} onGo={() => close()} />)}
                 </div>
               ))}
-              <div className="flex flex-col justify-between rounded-xl border border-line bg-ink p-5 lg:col-span-3 xl:col-span-1">
+              <div className="flex flex-col justify-between rounded-xl border border-mark/50 bg-ink p-3 lg:col-span-3 xl:col-span-1">
                 <div>
-                  <p className="eyebrow">Not sure which?</p>
-                  <p className="mt-3 text-[15px] leading-snug">Tell us about your website on a free 30-minute call. We will tell you what actually matters.</p>
+                  <p className="nav-label">Bundles: we handle everything</p>
+                  {data.bundles.map((i) => (
+                    <Link key={i.href} href={i.href} onClick={() => close()} className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-panel2 focus-visible:bg-panel2">
+                      <span className="block text-[15.5px] font-semibold leading-snug">{i.name}</span>
+                      <span className="mt-0.5 block font-mono text-[12.5px] text-mark">{i.price}</span>
+                      <span className="mt-0.5 block text-[13.5px] leading-snug text-muted">{i.short}</span>
+                    </Link>
+                  ))}
                 </div>
-                <div className="mt-5 flex flex-col gap-2">
+                <div className="mt-3 flex flex-col gap-2 px-2 pb-2">
                   <Link href="/book-a-call" onClick={() => close()} className="btn btn-primary !py-2.5 !text-[14.5px]">Book a free call</Link>
                   <Link href="/services" onClick={() => close()} className="text-center text-[14px] text-link underline underline-offset-4 hover:text-mark">All services and prices</Link>
                 </div>
@@ -182,6 +189,8 @@ function Mobile({ data }: { data: NavData }) {
       {open && createPortal(
         <div role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-x-0 bottom-0 top-[73px] z-[60] overflow-y-auto border-t border-line bg-ink px-6 pb-10">
           <Section title="Services" on={section === "Services"} onToggle={() => setSection(section === "Services" ? null : "Services")}>
+            <p className="nav-label !px-3">Bundles</p>
+            <div className="mb-3">{data.bundles.map((i) => <Item key={i.href} i={i} onGo={() => setOpen(false)} />)}</div>
             {data.services.map((g) => (
               <div key={g.group} className="mb-3">
                 <p className="nav-label !px-3">{g.group}</p>

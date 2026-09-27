@@ -3,9 +3,9 @@ export const site = {
   name: "SEO Using AI",
   domain: "seousingai.com",
   url: "https://seousingai.com",
-  tagline: "Rank on Google and get cited by AI answers",
+  tagline: "We optimize your business to show up on Google, Google Maps and AI search",
   description:
-    "SEO Using AI helps businesses rank on Google and get cited by ChatGPT, Perplexity, and AI Overviews, through free step-by-step guides, prompts, and tools, and through done-for-you AI SEO services reviewed by a person.",
+    "SEO Using AI optimizes small businesses to show up on Google, Google Maps and AI search. Done-for-you SEO, websites, social media and AI reels.",
   email: "hello@seousingai.com",
   locale: "en_US",
   founded: "2026",
@@ -108,7 +108,45 @@ export const services = [
   },
 ] as const;
 
-// The ways people start with us. Prices are shown on the site, so a visitor can
+// Bundles: one monthly price and we run the whole thing. Shown first on the
+// homepage and the pricing page. Change prices here and every page follows.
+export const bundles = [
+  {
+    id: "managed",
+    name: "Website + SEO, Managed",
+    short: "We run your website and your SEO.",
+    plain: "One monthly price for your website and your search. We keep the site updated and working, and we optimize it to show up on Google, Google Maps and AI search.",
+    get: [
+      "Website updates: new pages, layout changes, text and photo swaps",
+      "Speed, security and plugin updates, and fixes when something breaks",
+      "New pages and articles each month, fact-checked by a person",
+      "Google Business Profile kept complete and active for Maps",
+      "Pages set up so ChatGPT and Google's AI can quote you",
+      "A plain monthly report: what we did and what changed",
+    ],
+    price: "from $990",
+    unit: "per month",
+  },
+  {
+    id: "social",
+    name: "Social + AI Reels",
+    short: "We run your social media and make reels about your business.",
+    plain: "Short animated reels that explain what you do, posted for you every week. Like the ones on our own channel, made about your business.",
+    get: [
+      "8 AI reels a month explaining your services, in your brand colors",
+      "Voiceover, captions and music on every reel",
+      "Posted to Instagram, Facebook, TikTok and YouTube Shorts",
+      "Captions and hashtags written for each platform",
+      "A monthly calendar you approve before anything goes out",
+      "A plain monthly report",
+    ],
+    price: "from $790",
+    unit: "per month",
+  },
+] as const;
+export const bothBundles = { price: "$1,590", unit: "per month", saves: "$190" };
+
+// Single services, for when you need one thing. Prices are shown on the site, so a visitor can
 // tell whether we are in their range before booking a call. This is the only
 // place they are written: change them here and every page follows.
 export const offers = [
