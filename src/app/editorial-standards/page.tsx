@@ -18,7 +18,7 @@ export default function Page() {
         <li>We do not publish software prices in guides, because they change often. We link to the vendor instead.</li>
       </ul>
       <h2>How are tools recommended?</h2>
-      <p>Tools are described by what they are for and where they fall short. We do not accept payment for placement. When a link is an affiliate link, it is labeled.</p>
+      <p>Tools are described by what they are for and where they fall short. We do not accept payment for placement or earn commissions from the tools we mention.</p>
       <h2>How often are guides updated?</h2>
       <p>Each guide shows a last updated date. Guides are reviewed when the underlying facts change, such as new research, a major Google update, or a change in how AI engines cite sources.</p>
       <h2>How do you report an error?</h2>

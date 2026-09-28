@@ -4,7 +4,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   trailingSlash: false,
   async redirects() {
-    return [{ source: "/:path*", has: [{ type: "host", value: "se-ousing-ai.vercel.app" }], destination: "https://seousingai.com/:path*", permanent: true }];
+    return [
+      { source: "/:path*", has: [{ type: "host", value: "se-ousing-ai.vercel.app" }], destination: "https://seousingai.com/:path*", permanent: true },
+      // The affiliate disclosure was retired: there are no affiliate links on the site.
+      { source: "/affiliate-disclosure", destination: "/about", permanent: true },
+    ];
   },
   async headers() {
     return [{ source: "/(.*)", headers: [

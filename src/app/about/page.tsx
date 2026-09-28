@@ -19,7 +19,7 @@ export default function About() {
       <p>The work is done by specialist AI workflows with a person reviewing the output. There is one workflow for each job: site audits, keyword strategy, competitor analysis, writing, images, publishing, link outreach, local SEO, conversion review, and reporting. AI handles the volume. A person sets the strategy, checks every fact, and approves what ships.</p>
       <p>The site exists because most advice on AI and SEO falls into two camps: hype that promises rankings at the press of a button, and dismissal that says AI content never works. Neither matches what happens on real websites.</p>
       <h2>How does the site make money?</h2>
-      <p>The guides and tools are free. Income comes from client services and, in some cases, affiliate links to software. Affiliate links are labeled, and a commission never decides what gets recommended. Details are in the <Link href="/affiliate-disclosure">affiliate disclosure</Link>.</p>
+      <p>The guides, videos and tools are free. The business runs on done-for-you services: two monthly bundles and single services, all with prices on the <Link href="/pricing">pricing page</Link>. Nobody pays us to recommend a tool.</p>
       <h2>How is the content produced?</h2>
       <p>AI models help with research, outlines, drafts, and diagrams. Every statistic is checked against its original source and linked. Anything that cannot be verified is removed. The full process is in our <Link href="/editorial-standards">editorial standards</Link>.</p>
       <h2>How do you get in touch?</h2>

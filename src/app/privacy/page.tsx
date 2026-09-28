@@ -15,7 +15,7 @@ export default function Page() {
       <p>Our hosting provider keeps standard server logs, such as IP address, browser type, and pages requested, for security and reliability. If we add privacy-friendly analytics, this page will be updated before it goes live.</p>
 
       <h2>Do we use cookies?</h2>
-      <p>The site does not set its own cookies, and there are no advertising or tracking cookies. If you click an affiliate link, the destination site may set its own cookies under its own privacy policy. The booking calendar is provided by Google and may set Google cookies.</p>
+      <p>The site does not set its own cookies, and there are no advertising or tracking cookies. Sites we link to set their own cookies under their own privacy policies. The booking calendar is provided by Google and may set Google cookies.</p>
 
       <h2>What happens when you book a call?</h2>
       <p>Calls are booked through Google Calendar and held on Google Meet. The name, email address, and notes you enter are handled by Google under its privacy policy, and are used only to arrange and hold the call.</p>

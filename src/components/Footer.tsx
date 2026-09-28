@@ -57,7 +57,6 @@ export default function Footer() {
             <li><Link className="hover:text-white" href="/seo-tips">SEO tips videos</Link></li>
             <li><Link className="hover:text-white" href="/glossary">Glossary</Link></li>
             <li><Link className="hover:text-white" href="/editorial-standards">Editorial standards</Link></li>
-            <li><Link className="hover:text-white" href="/affiliate-disclosure">Affiliate disclosure</Link></li>
             <li><Link className="hover:text-white" href="/contact">Contact</Link></li>
             <li><Link className="hover:text-white" href="/privacy">Privacy policy</Link></li>
             <li><Link className="hover:text-white" href="/terms">Terms of use</Link></li>
@@ -67,7 +66,7 @@ export default function Footer() {
       <div className="border-t border-[#2d3662]">
         <div className="wrap flex flex-col gap-2 py-6 text-[14px] text-muted sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <p>Some links may be affiliate links. They are always labeled.</p>
+          <p>We optimize businesses to show up on Google, Maps and AI search.</p>
         </div>
       </div>
     </footer>

@@ -9,7 +9,7 @@ import { seoTips } from "@/lib/seoTips";
 export default function sitemap(): MetadataRoute.Sitemap {
   const guides = getGuides(); const studies = getCaseStudies();
   const latest = guides.map((g) => g.updated).sort().at(-1)!;
-  const stat = ["/about", "/editorial-standards", "/affiliate-disclosure", "/contact", "/privacy", "/terms"];
+  const stat = ["/about", "/editorial-standards", "/contact", "/privacy", "/terms"];
   return [
     { url: abs("/"), lastModified: latest, priority: 1 },
     { url: abs("/services"), lastModified: latest, priority: 0.9 },
