@@ -26,7 +26,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "$290", unit: "one-time", short: "Every page checked, fixes in plain English", group: "Get found",
     slug: "ai-seo-audit", name: "AI SEO Audit", art: "scan",
-    metaTitle: "AI SEO Audit: Every Page Checked, Explained Simply",
+    metaTitle: "AI SEO Audit: Every Page Checked",
     description: "An AI SEO audit checks every page of your website for what stops it ranking on Google and in AI answers. You get a plain-English fix list, reviewed by a person.",
     h1: "AI SEO audit: find out what is", h1Mark: "holding your website back",
     lede: "We check every page of your website, not a sample, and tell you in plain English what to fix first and why.",
@@ -58,7 +58,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $490", unit: "one-time", short: "Errors, speed, and the code Google reads", group: "Get found",
     slug: "technical-seo", name: "Technical SEO Fixes", art: "fix",
-    metaTitle: "Technical SEO Services: Website Fixes Done for You",
+    metaTitle: "Technical SEO Services, Done for You",
     description: "Technical SEO services that fix what hurts your rankings: errors, slow pages, broken links, redirects, and the code Google reads. WordPress and Next.js.",
     h1: "Technical SEO: we fix the problems", h1Mark: "you cannot see",
     lede: "Errors, slow pages, broken links, and missing behind-the-scenes details, repaired on your live website.",
@@ -89,7 +89,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $390", unit: "per month", short: "Pages and articles, checked by a person", group: "Grow",
     slug: "ai-content-writing", name: "AI Content Writing", art: "write",
-    metaTitle: "AI SEO Content Writing, Fact-Checked by a Person",
+    metaTitle: "AI SEO Content Writing, Fact-Checked",
     description: "AI SEO content writing services: articles and web pages planned from real searches, drafted with AI, then fact-checked and edited by a person. Ready to publish.",
     h1: "AI SEO content writing that is", h1Mark: "checked by a person",
     lede: "Helpful pages and articles, planned from what your customers search for, without you writing a word.",
@@ -121,7 +121,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $590", unit: "per month", short: "Earn mentions from trusted websites", group: "Grow",
     slug: "link-building", name: "Link Building and Digital PR", art: "links",
-    metaTitle: "Link Building Services: Earn Mentions, No Schemes",
+    metaTitle: "Link Building Services, No Link Schemes",
     description: "Link building and digital PR services that earn real mentions from relevant websites. Builds the authority Google and AI tools trust. No paid link schemes.",
     h1: "Link building that earns", h1Mark: "real mentions",
     lede: "When trusted websites mention you, Google and AI tools trust you more. We earn those mentions the honest way.",
@@ -184,7 +184,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $590", unit: "one-time", short: "Get mentioned by ChatGPT and AI answers", group: "Get found",
     slug: "ai-search-optimization", name: "AI Search Optimization", art: "chat",
-    metaTitle: "AI Search Optimization: Get Recommended by ChatGPT",
+    metaTitle: "AI Search Optimization for ChatGPT and AI",
     description: "AI search optimization (GEO) services that help ChatGPT, Perplexity, Gemini, and Google AI Overviews understand, trust, and mention your business.",
     h1: "AI search optimization: get", h1Mark: "recommended by ChatGPT",
     lede: "People now ask AI who to hire. We help those tools understand your business, trust it, and mention it by name.",
@@ -216,7 +216,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "$390", unit: "one-time", short: "See exactly why rivals outrank you", group: "Grow",
     slug: "competitor-analysis", name: "SEO Competitor Analysis", art: "gap",
-    metaTitle: "SEO Competitor Analysis: See Why They Outrank You",
+    metaTitle: "SEO Competitor Analysis: Why They Outrank You",
     description: "An AI SEO competitor analysis shows what rival websites rank for that you do not, how their sites are built, and exactly what to copy, beat, or ignore.",
     h1: "SEO competitor analysis: see why they", h1Mark: "outrank you",
     lede: "We study the websites that beat you in search and turn what we find into a short plan of what to copy, beat, and ignore.",
@@ -247,7 +247,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $490", unit: "per month", short: "A month of posts, written for each platform", group: "Market and convert",
     slug: "social-media-marketing", name: "Social Media Marketing", art: "social",
-    metaTitle: "Social Media Marketing for Small Business, Done for You",
+    metaTitle: "Social Media Marketing for Small Business",
     description: "Done-for-you social media marketing for small businesses: a monthly plan, posts written for each platform, images, and a plain report. You approve every post.",
     h1: "Social media marketing that", h1Mark: "feeds your search results",
     lede: "Posts written properly for each platform, planned a month ahead, made from the content that is already working on your website.",
@@ -279,7 +279,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $290", unit: "per month", short: "New pages become scheduled posts", group: "Market and convert",
     slug: "social-media-automation", name: "Social Media Automation", art: "automation",
-    metaTitle: "Social Media Automation With a Person Approving Every Post",
+    metaTitle: "Social Media Automation, Human-Approved",
     description: "Social media automation that turns each new article into scheduled posts for every platform, with a person approving each one. No bots, no bought engagement.",
     h1: "Social media automation with a", h1Mark: "person on the approve button",
     lede: "Every new page on your website becomes a set of scheduled posts, written for each platform, waiting for your approval.",
@@ -311,7 +311,7 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $1,490", unit: "one-time", short: "A site that turns visitors into customers", group: "Market and convert",
     slug: "website-redesign", name: "Website Redesign for Conversion", art: "redesign",
-    metaTitle: "Website Redesign for Conversion, Without Losing Rankings",
+    metaTitle: "Website Redesign for More Calls and Sales",
     description: "A website redesign built to turn visitors into customers: clearer pages, faster loading, mobile first, and every redirect in place so your rankings stay.",
     h1: "Website redesign that turns visitors into", h1Mark: "customers",
     lede: "A faster, clearer site that makes the next step obvious, built so the rankings you already have come with you.",
@@ -343,8 +343,8 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $990", unit: "per month", short: "We run your website and your SEO", group: "Bundle",
     slug: "managed-website-seo", name: "Website + SEO, Managed", art: "fix",
-    metaTitle: "Managed Website and SEO Services: One Monthly Price",
-    description: "Managed website and SEO services for small businesses: updates, fixes, new pages, Google Maps and AI search, done for you every month from $990.",
+    metaTitle: "Managed Website and SEO Services",
+    description: "Managed website and SEO services from SEO Using AI: updates, fixes, new pages, Google Maps and AI search, done for you every month from $990.",
     h1: "Website + SEO, managed:", h1Mark: "we run both for you",
     lede: "One monthly price for your website and your search. We keep the site updated and working, and optimize it to show up on Google, Google Maps and AI search.",
     quickQ: "What are managed website and SEO services?",
@@ -375,8 +375,8 @@ export const servicePages: ServicePage[] = [
   {
     price: "from $790", unit: "per month", short: "Social media and reels about your business", group: "Bundle",
     slug: "ai-reels-for-business", name: "Social + AI Reels", art: "social",
-    metaTitle: "AI Reels for Business: Explainer Videos, Posted for You",
-    description: "Short animated AI reels that explain your business, with voiceover and captions, posted to Instagram, Facebook, TikTok and YouTube Shorts. From $790 a month.",
+    metaTitle: "AI Reels for Business, Posted for You",
+    description: "AI reels for business from SEO Using AI: short animated videos about your services, with voiceover and captions, posted for you. From $790 a month.",
     h1: "AI reels that", h1Mark: "explain your business",
     lede: "Short animated videos about your services, made in your brand colors and posted for you every week on Instagram, Facebook, TikTok and YouTube Shorts.",
     quickQ: "What are AI reels for business?",

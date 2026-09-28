@@ -1,6 +1,6 @@
 ---
 title: "AI SEO Strategies: 9 That Work, With Examples"
-metaTitle: "AI SEO Strategies: 9 That Work, With Examples"
+metaTitle: "AI SEO Strategies: 9 That Work"
 description: "Nine AI SEO strategies that work in 2026, from fixing near-miss pages to building comparison content, each with a worked example and the prompt idea behind it."
 eyebrow: "Strategies"
 image: "/images/ai-seo-strategies.webp"

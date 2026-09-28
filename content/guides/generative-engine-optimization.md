@@ -1,6 +1,6 @@
 ---
 title: "Generative Engine Optimization: How to Get Cited by AI"
-metaTitle: "Generative Engine Optimization (GEO): Get Cited by AI"
+metaTitle: "Generative Engine Optimization (GEO) Guide"
 description: "Generative engine optimization (GEO) is the practice of making content easy for AI answer engines to retrieve, quote, and cite. Here is how it works."
 eyebrow: "GEO"
 image: "/images/how-ai-engines-cite-sources.webp"

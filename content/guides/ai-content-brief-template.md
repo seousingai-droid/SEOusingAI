@@ -1,6 +1,6 @@
 ---
 title: "AI Content Brief Template (Copy and Use)"
-metaTitle: "AI SEO Content Brief Template: Copy and Use"
+metaTitle: "AI SEO Content Brief Template"
 description: "A free SEO content brief template you can fill in with AI in ten minutes. Includes the template, the prompt that fills it, and a worked example."
 eyebrow: "Template"
 image: "/images/ai-content-brief-template.webp"

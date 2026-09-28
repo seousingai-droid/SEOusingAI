@@ -8,7 +8,7 @@ import { getServicePage } from "@/lib/servicePages";
 import { site, abs } from "@/lib/site";
 import { pageMeta } from "@/lib/meta";
 
-export const landingMeta = (l: Landing) => pageMeta({ title: l.metaTitle, description: l.description, path: `/${l.slug}`, absolute: true });
+export const landingMeta = (l: Landing) => pageMeta({ title: l.metaTitle, description: l.description, path: `/${l.slug}` });
 
 export default function LandingPage({ l }: { l: Landing }) {
   const crumbs = [{ name: l.nav, href: `/${l.slug}` }];

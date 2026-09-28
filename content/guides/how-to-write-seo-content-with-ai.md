@@ -1,6 +1,6 @@
 ---
 title: "How to Write SEO Content With AI (and Keep It Good)"
-metaTitle: "How to Write SEO Content With AI, Step by Step"
+metaTitle: "How to Write SEO Content With AI"
 description: "To write SEO content with AI, start from a brief, draft section by section, then verify every fact and add your own experience. Here is the full process."
 eyebrow: "Content"
 image: "/images/writing-seo-content-with-ai-steps.webp"

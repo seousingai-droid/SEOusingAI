@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Book a Free AI SEO Strategy Call",
-  description: "Book a free AI SEO strategy call on Google Meet. Talk through your site, your market, and the first fix worth making. No pitch deck.",
+  description: "Book a free 30-minute call with SEO Using AI on Google Meet. We look at your site and Google profile together and name the first fix. No pitch deck.",
   path: "/book-a-call",
 });
 

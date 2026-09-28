@@ -1,6 +1,6 @@
 ---
 title: "AI SEO Agents: What They Are and How to Use Them"
-metaTitle: "AI SEO Agents: What They Are and How to Use Them"
+metaTitle: "AI SEO Agents: What They Are, How to Use Them"
 description: "An AI SEO agent completes a whole SEO task from one instruction, such as a site audit. See what agents can do, where they fail, and how to use them safely."
 eyebrow: "AI agents"
 image: "/images/ai-seo-agents.webp"

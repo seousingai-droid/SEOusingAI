@@ -1,6 +1,6 @@
 ---
 title: "ChatGPT Prompts for SEO That Produce Usable Work"
-metaTitle: "ChatGPT Prompts for SEO: 11 That Actually Work"
+metaTitle: "ChatGPT Prompts for SEO: 11 That Work"
 description: "Good SEO prompts give the model a role, context, source material, constraints, and an output format. Here are 11 prompts for ChatGPT, Claude, or Gemini."
 eyebrow: "Prompts"
 image: "/images/anatomy-of-an-seo-prompt.webp"

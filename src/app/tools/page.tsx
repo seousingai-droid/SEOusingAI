@@ -6,7 +6,7 @@ import { tools } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Free AI SEO Tools, No Signup",
-  description: "Free SEO tools with no sign-up: a Google snippet preview, an AI SEO prompt builder, and an llms.txt generator. Everything runs in your browser.",
+  description: "Free tools for SEO using AI, no sign-up: a Google snippet preview, an AI SEO prompt builder, and an llms.txt generator. Runs in your browser.",
   path: "/tools",
 });
 

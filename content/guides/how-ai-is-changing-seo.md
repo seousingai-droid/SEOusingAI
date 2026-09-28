@@ -1,6 +1,6 @@
 ---
 title: "How AI Is Changing SEO in 2026"
-metaTitle: "How AI Is Changing SEO in 2026: What the Data Shows"
+metaTitle: "How AI Is Changing SEO in 2026"
 description: "AI is changing SEO in two ways: fewer clicks from Google because of AI answers, and faster SEO work because of AI tools. Here is what the data shows for 2026."
 eyebrow: "The big picture"
 image: "/images/how-ai-is-changing-seo.webp"

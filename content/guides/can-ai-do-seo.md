@@ -1,6 +1,6 @@
 ---
 title: "Can AI Do SEO? What to Automate and What Not To"
-metaTitle: "Can AI Do SEO? What to Automate and What Not To"
+metaTitle: "Can AI Do SEO? What to Automate"
 description: "AI can do most of the manual work in SEO, including audits, research, drafts, and reports. It cannot replace strategy, fact-checking, or real experience."
 eyebrow: "Automation"
 image: "/images/what-ai-can-automate-in-seo.webp"

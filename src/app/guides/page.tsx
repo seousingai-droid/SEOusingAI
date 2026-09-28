@@ -6,7 +6,7 @@ import GuideCard from "@/components/GuideCard";
 
 export const metadata = pageMeta({
   title: "AI SEO Guides: Step-by-Step Tutorials",
-  description: "Free AI SEO guides covering the full workflow: how to use AI for SEO, keyword research, prompts, tool comparisons, and getting cited by AI answers.",
+  description: "Free guides to SEO using AI: how to use AI for SEO, keyword research, prompts, tool comparisons, and getting cited by AI answers. Step by step.",
   path: "/guides",
 });
 

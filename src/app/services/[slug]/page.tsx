@@ -16,7 +16,7 @@ export const generateStaticParams = () => servicePages.map((s) => ({ slug: s.slu
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const s = getServicePage((await params).slug);
   if (!s) return {};
-  return pageMeta({ title: s.metaTitle, description: s.description, path: `/services/${s.slug}`, absolute: true });
+  return pageMeta({ title: s.metaTitle, description: s.description, path: `/services/${s.slug}` });
 }
 
 const art = { scan: <ScanArt />, fix: <FixArt />, write: <WriteArt />, links: <LinksArt />, map: <MapPin />, chat: <ChatRecommend />, gap: <GapArt />, social: <SocialArt />, automation: <AutomationArt />, redesign: <RedesignArt /> };

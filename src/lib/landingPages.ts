@@ -48,8 +48,8 @@ export const landingPages: Landing[] = [
   },
   {
     slug: "ai-seo-for-small-business", nav: "AI SEO for small business", eyebrow: "For small businesses",
-    metaTitle: "AI SEO for Small Business: A Plain-English Guide",
-    description: "AI SEO for small business, explained simply: what it is, five things to do first, what to skip, and when it makes sense to get help. No jargon.",
+    metaTitle: "AI SEO for Small Business, Explained",
+    description: "SEO using AI for small business, explained simply: what it is, five things to do first, what to skip, and when to get help. No jargon.",
     h1: "AI SEO for small business,", h1Mark: "without the jargon",
     lede: "You do not need a marketing department. You need to show up when nearby customers search, and AI makes that affordable.",
     quickQ: "What is AI SEO for small business?",

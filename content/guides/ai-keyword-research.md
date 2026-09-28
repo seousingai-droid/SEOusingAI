@@ -1,6 +1,6 @@
 ---
 title: "AI Keyword Research: How to Find Keywords With AI"
-metaTitle: "AI Keyword Research: Find Keywords With AI (2026)"
+metaTitle: "AI Keyword Research: A 2026 Guide"
 description: "AI keyword research uses AI models to expand, cluster, and prioritize keywords, then validates them with real search data. Here is the exact process."
 eyebrow: "Keyword research"
 image: "/images/ai-keyword-research-process.webp"

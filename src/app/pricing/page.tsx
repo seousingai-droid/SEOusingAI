@@ -9,7 +9,7 @@ import { site, offers, bundles, abs } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Pricing: SEO Using AI Bundles and Services",
-  description: "Monthly bundles for website + SEO and for social media + AI reels, plus single services. Clear prices, month to month, no contracts.",
+  description: "SEO Using AI prices: monthly bundles for website + SEO and for social media + AI reels, plus single services. Month to month, no contracts.",
   path: "/pricing",
   absolute: true,
 });

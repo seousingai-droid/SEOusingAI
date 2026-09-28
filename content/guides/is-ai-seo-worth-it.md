@@ -1,6 +1,6 @@
 ---
 title: "Is AI SEO Worth It? Benefits, Costs, and ROI"
-metaTitle: "Is AI SEO Worth It? Benefits, Costs, and ROI"
+metaTitle: "Is AI SEO Worth It? Costs and ROI"
 description: "AI SEO is worth it when a person checks the work and the traffic can turn into revenue. Here are the real benefits, the risks, and a simple way to work out ROI."
 eyebrow: "Worth it?"
 image: "/images/ai-seo-roi-formula.webp"

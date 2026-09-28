@@ -1,6 +1,6 @@
 ---
 title: "How to Use AI for SEO: A Step-by-Step Guide"
-metaTitle: "How to Use AI for SEO: Step-by-Step Guide (2026)"
+metaTitle: "How to Use AI for SEO: Step-by-Step (2026)"
 description: "SEO using AI means letting AI handle research, briefs, drafts, and audits while you verify facts and add experience. Here is the full workflow, step by step."
 eyebrow: "Start here"
 image: "/images/ai-seo-workflow.webp"

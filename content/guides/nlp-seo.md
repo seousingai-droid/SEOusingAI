@@ -1,6 +1,6 @@
 ---
 title: "NLP and SEO: How Google Understands Your Content"
-metaTitle: "NLP SEO: How Google Understands Your Content"
+metaTitle: "NLP SEO: How Google Understands Content"
 description: "NLP SEO means writing so search engines that understand language can tell what a page is about. Here is how Google uses NLP and what to do about it."
 eyebrow: "NLP"
 image: "/images/nlp-seo.webp"
