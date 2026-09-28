@@ -31,11 +31,11 @@ function navData(): NavData {
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-canvas/90 backdrop-blur">
-      <div className="wrap relative flex h-[72px] items-center justify-between gap-6">
+      <div className="wrap relative flex h-[72px] items-center justify-between gap-2.5 lg:gap-6">
         <Link href="/" aria-label="SEO Using AI home" className="shrink-0"><Logo /></Link>
         <Nav data={navData()} />
-        <div className="flex items-center gap-3">
-          <Link href="/book-a-call" className="btn btn-primary !hidden !py-2.5 !px-4 !text-[15px] sm:!inline-flex">Book a call</Link>
+        <div className="ml-auto flex items-center lg:ml-0">
+          <Link href="/book-a-call" className="btn btn-primary whitespace-nowrap !px-3.5 !py-2 !text-[14px] sm:!px-4 sm:!py-2.5 sm:!text-[15px]">Book a call</Link>
         </div>
       </div>
     </header>
