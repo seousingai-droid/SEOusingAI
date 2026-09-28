@@ -13,7 +13,7 @@ function navData(): NavData {
   const featured = ["how-to-use-ai-for-seo", "ai-seo-strategies", "best-ai-seo-tools", "generative-engine-optimization"];
   const guides = getGuides();
   return {
-    bundles: bundles.map((b) => ({ href: `/pricing#bundle-${b.id}`, name: b.name, short: b.short, price: `${b.price}/mo` })),
+    bundles: bundles.map((b) => ({ href: b.href, name: b.name, short: b.short, price: `${b.price}/mo` })),
     services: MENU_GROUPS.map((group) => ({
       group,
       items: servicePages.filter((s) => s.group === group).map((s) => ({ href: `/services/${s.slug}`, name: s.name, short: s.short, price: shortPrice(s) })),

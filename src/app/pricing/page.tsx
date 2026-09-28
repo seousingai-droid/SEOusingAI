@@ -102,7 +102,7 @@ export default function Pricing() {
         </div>
       </section>
 
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "OfferCatalog", name: "SEO Using AI bundles and services", url: abs("/pricing"), provider: { "@id": abs("/#org") }, itemListElement: [...bundles, ...offers].map((o) => ({ "@type": "Offer", name: o.name, description: o.plain, url: "href" in o ? abs(o.href) : abs(`/pricing#bundle-${o.id}`), priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", description: `${o.price} ${o.unit}` } })) }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "OfferCatalog", name: "SEO Using AI bundles and services", url: abs("/pricing"), provider: { "@id": abs("/#org") }, itemListElement: [...bundles, ...offers].map((o) => ({ "@type": "Offer", name: o.name, description: o.plain, url: abs(o.href), priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", description: `${o.price} ${o.unit}` } })) }} />
       <JsonLd data={crumbLd(crumbs)} />
       <JsonLd data={faqLd(faqs)} />
     </>

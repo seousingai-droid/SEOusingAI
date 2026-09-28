@@ -54,6 +54,7 @@ export default function Footer() {
             <li><Link className="hover:text-text" href="/book-a-call">Book a call</Link></li>
             {hasStudies && <li><Link className="hover:text-text" href="/case-studies">Case studies</Link></li>}
             <li><Link className="hover:text-text" href="/about">About</Link></li>
+            <li><Link className="hover:text-text" href="/seo-tips">SEO tips videos</Link></li>
             <li><Link className="hover:text-text" href="/glossary">Glossary</Link></li>
             <li><Link className="hover:text-text" href="/editorial-standards">Editorial standards</Link></li>
             <li><Link className="hover:text-text" href="/affiliate-disclosure">Affiliate disclosure</Link></li>

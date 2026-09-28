@@ -3,6 +3,7 @@ import { site, tools, bundles, bothBundles, abs } from "@/lib/site";
 import { servicePages } from "@/lib/servicePages";
 import { landingPages } from "@/lib/landingPages";
 import { getCaseStudies } from "@/lib/caseStudies";
+import { seoTips } from "@/lib/seoTips";
 
 export const dynamic = "force-static";
 
@@ -13,7 +14,7 @@ export function GET() {
     `> ${site.description}`,
     ``,
     `## Bundles`,
-    ...bundles.map((b) => `- [${b.name}](${abs(`/pricing#bundle-${b.id}`)}): ${b.price} ${b.unit}. ${b.plain} Includes: ${b.get.join("; ")}.`),
+    ...bundles.map((b) => `- [${b.name}](${abs(b.href)}): ${b.price} ${b.unit}. ${b.plain} Includes: ${b.get.join("; ")}.`),
     `- Both bundles together: ${bothBundles.price} ${bothBundles.unit}. Month to month, no contract.`,
     ``,
     `## Services`,
@@ -25,6 +26,9 @@ export function GET() {
     ``,
     `## Guides`,
     ...getGuides().map((g) => `- [${g.title}](${abs(`/guides/${g.slug}`)}): ${g.description}`),
+    ``,
+    `## SEO tips (short videos with the full method written out)`,
+    ...seoTips.map((t) => `- [${t.title}](${abs(`/seo-tips/${t.slug}`)}): ${t.answer}`),
     ``,
     `## Free tools`,
     ...tools.map((t) => `- [${t.name}](${abs(`/tools/${t.slug}`)}): ${t.blurb}`),

@@ -35,7 +35,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             <nav aria-label="Breadcrumb" className="mb-8 font-mono text-[12.5px] text-muted">
               <ol className="flex flex-wrap gap-2"><li><Link className="hover:text-text" href="/">Home</Link></li><li className="flex gap-2"><span aria-hidden>/</span><Link className="hover:text-text" href="/services">Services</Link></li><li className="flex gap-2"><span aria-hidden>/</span><span className="text-text" aria-current="page">{s.name}</span></li></ol>
             </nav>
-            <p className="eyebrow">Service</p>
+            <p className="eyebrow">{s.group === "Bundle" ? "Bundle" : "Service"}</p>
             <h1 className="h-lg mt-5 !text-[clamp(34px,4.6vw,58px)]">{s.h1} <span className="hl">{s.h1Mark}</span></h1>
             <p className="lede mt-6 max-w-xl">{s.lede}</p>
             <p className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">

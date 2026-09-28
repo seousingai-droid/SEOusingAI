@@ -113,6 +113,7 @@ export const services = [
 export const bundles = [
   {
     id: "managed",
+    href: "/services/managed-website-seo",
     name: "Website + SEO, Managed",
     short: "We run your website and your SEO.",
     plain: "One monthly price for your website and your search. We keep the site updated and working, and we optimize it to show up on Google, Google Maps and AI search.",
@@ -129,6 +130,7 @@ export const bundles = [
   },
   {
     id: "social",
+    href: "/services/ai-reels-for-business",
     name: "Social + AI Reels",
     short: "We run your social media and make reels about your business.",
     plain: "Short animated reels that explain what you do, posted for you every week. Like the ones on our own channel, made about your business.",

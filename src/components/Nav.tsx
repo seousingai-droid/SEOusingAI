@@ -100,6 +100,7 @@ function Desktop({ data }: { data: NavData }) {
         <p className="nav-label">Free tools</p>
         {data.tools.map((i) => <Item key={i.href} i={i} onGo={() => close()} />)}
         <p className="nav-label mt-4">Reference</p>
+        <Item i={{ href: "/seo-tips", name: "SEO tips videos", short: "20-second tips, full method" }} onGo={() => close()} />
         <Item i={{ href: "/glossary", name: "Glossary", short: "SEO words in plain English" }} onGo={() => close()} />
         <Item i={{ href: "/case-studies", name: "Case studies", short: "Real results, with sources" }} onGo={() => close()} />
       </div>
@@ -204,6 +205,7 @@ function Mobile({ data }: { data: NavData }) {
             {data.guides.map((i) => <Item key={i.href} i={i} onGo={() => setOpen(false)} />)}
             <p className="nav-label !px-3 mt-3">Free tools</p>
             {data.tools.map((i) => <Item key={i.href} i={i} onGo={() => setOpen(false)} />)}
+            <Item i={{ href: "/seo-tips", name: "SEO tips videos" }} onGo={() => setOpen(false)} />
             <Item i={{ href: "/glossary", name: "Glossary" }} onGo={() => setOpen(false)} />
           </Section>
           <Link href="/pricing" className="block border-b border-line py-4 text-[17px] font-medium">Pricing</Link>

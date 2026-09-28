@@ -1,6 +1,8 @@
 // One entry per service page. Plain English first, the technical term second.
-export type MenuGroup = "Get found" | "Grow" | "Market and convert";
+// "Bundle" pages are full pages too, but the menu shows bundles in their own card.
+export type MenuGroup = "Get found" | "Grow" | "Market and convert" | "Bundle";
 export const MENU_GROUPS: MenuGroup[] = ["Get found", "Grow", "Market and convert"];
+export const isBundle = (s: Pick<ServicePage, "group">) => s.group === "Bundle";
 
 export type ServicePage = {
   /** Starting price, shown in the menu, on the service page, and on the index. */
@@ -337,6 +339,70 @@ export const servicePages: ServicePage[] = [
       { q: "What is a good conversion rate for a small business website?", a: "It varies by industry, but many service websites turn two to five percent of visitors into enquiries. The useful comparison is your own rate before and after, which we measure." },
     ],
     related: ["ai-seo-audit", "technical-seo", "local-seo"], guide: { href: "/services/ai-seo-audit", label: "the Website Checkup" },
+  },
+  {
+    price: "from $990", unit: "per month", short: "We run your website and your SEO", group: "Bundle",
+    slug: "managed-website-seo", name: "Website + SEO, Managed", art: "fix",
+    metaTitle: "Managed Website and SEO Services: One Monthly Price",
+    description: "Managed website and SEO services for small businesses: updates, fixes, new pages, Google Maps and AI search, done for you every month from $990.",
+    h1: "Website + SEO, managed:", h1Mark: "we run both for you",
+    lede: "One monthly price for your website and your search. We keep the site updated and working, and optimize it to show up on Google, Google Maps and AI search.",
+    quickQ: "What are managed website and SEO services?",
+    quickA: "Managed website and SEO services mean one team looks after your website and your search visibility every month, for one price. That covers updates and fixes, speed and security, new pages and articles, your Google Business Profile, and making your pages easy for AI tools like ChatGPT to quote. You approve every change, we do the work, and each month we report what changed.",
+    signs: ["Your website has not been updated in months", "You pay one person for the site and another for SEO, and nobody owns the results", "Small changes take weeks because you have to find someone", "Your Google Business Profile is out of date", "You want to show up in AI answers but do not know where to start"],
+    doTitle: "What is included each month?",
+    doItems: [
+      ["Website updates", "New pages, layout changes, text and photo swaps. Send the request, we make the change and check it on phones."],
+      ["Speed, security and updates", "Plugin, theme and framework updates, backups, uptime checks, and fixes when something breaks."],
+      ["New pages and articles", "Pages that answer the questions your customers search, fact-checked by a person before they go live."],
+      ["Google Maps", "Your Google Business Profile kept complete: categories, services, hours, photos and posts, plus an easy way to ask for reviews."],
+      ["AI search", "Clear answers, consistent business facts and structured data, so ChatGPT and Google's AI can understand you and quote you."],
+      ["Monthly report and next steps", "What we did, what changed in Google Search Console, and what we will work on next month. In plain English."],
+    ],
+    get: ["One monthly price, month to month", "Website changes handled within the month", "New pages and articles every month", "Google Business Profile management", "A plain monthly report and a short call"],
+    ai: ["Checks every page each month for errors and slow spots", "Drafts new pages and articles from your notes", "Tracks your searches and AI mentions"],
+    human: ["Sets the priorities with you each month", "Checks every fact and every change before it goes live", "Talks to you directly, not through a ticket system"],
+    steps: [["Free call and plan", "We look at your site, your Google profile and your competitors, and agree on the first month."], ["Month one setup", "Fixes, tracking, profile clean-up and the first new pages."], ["Every month after", "Updates on request, new pages, profile activity, and a report on what changed."]],
+    honest: "SEO builds over months, not days, and results depend on your market and your competitors. We promise the work, done properly and checked by a person, and an honest report every month on what moved and what did not.",
+    faqs: [
+      { q: "What counts as a website update?", a: "Changes to existing pages, new pages built from your content, layout tweaks, and text or photo swaps. A full redesign is a separate project, quoted in writing." },
+      { q: "Which website platforms do you manage?", a: "WordPress and Next.js sites fully. On other platforms we handle SEO, content and your Google profile, and advise on the changes the platform allows." },
+      { q: "Is there a contract?", a: "No. The bundle is month to month and you can stop whenever you like. You keep everything we built." },
+      { q: "How is this different from Monthly Growth?", a: "Monthly Growth covers SEO content and links. This bundle adds website care, updates and fixes, and your Google Business Profile, so one team owns the whole thing." },
+    ],
+    related: ["technical-seo", "local-seo", "ai-search-optimization"], guide: { href: "/seo-tips/page-two-gold", label: "Page two gold, our fastest SEO win" },
+  },
+  {
+    price: "from $790", unit: "per month", short: "Social media and reels about your business", group: "Bundle",
+    slug: "ai-reels-for-business", name: "Social + AI Reels", art: "social",
+    metaTitle: "AI Reels for Business: Explainer Videos, Posted for You",
+    description: "Short animated AI reels that explain your business, with voiceover and captions, posted to Instagram, Facebook, TikTok and YouTube Shorts. From $790 a month.",
+    h1: "AI reels that", h1Mark: "explain your business",
+    lede: "Short animated videos about your services, made in your brand colors and posted for you every week on Instagram, Facebook, TikTok and YouTube Shorts.",
+    quickQ: "What are AI reels for business?",
+    quickA: "AI reels are short animated videos, usually 15 to 25 seconds, that explain one thing about a business: a service, a price, a common question, or a tip. AI helps with the animation, voiceover and captions, so they cost far less than filmed video. A person writes every script and checks every reel, and you approve each one before it is posted.",
+    signs: ["You know you should post videos but never have the time", "Filming yourself is not your thing", "Your social accounts have not posted in weeks", "Customers keep asking the same questions", "You want social posts that also send people to your website"],
+    doTitle: "What is in the bundle?",
+    doItems: [
+      ["8 AI reels a month", "Each one explains a service, a price, a question or a tip, animated in your brand colors."],
+      ["Scripts written for you", "We turn your services and your customers' questions into short, clear scripts. You approve them first."],
+      ["Voiceover, captions and music", "Every reel has a voiceover, word-by-word captions for people watching with the sound off, and background music."],
+      ["Posted on four platforms", "Instagram, Facebook, TikTok and YouTube Shorts, each with captions and hashtags written for that platform."],
+      ["A monthly calendar", "You see the whole month before anything goes out, and can change anything you like."],
+      ["A plain monthly report", "What went out, what people watched, and which topics to make more of."],
+    ],
+    get: ["8 reels a month, approved by you", "Posting to 4 platforms", "Captions and hashtags written per platform", "The video files, yours to keep and reuse", "A plain monthly report"],
+    ai: ["Animates each scene and syncs captions to the voice", "Creates the voiceover and the music", "Sizes and schedules each reel for each platform"],
+    human: ["Writes and fact-checks every script", "Reviews every reel before you see it", "Picks topics from your customers' real questions"],
+    steps: [["Free call", "We learn your services, your customers and your brand colors."], ["First month of scripts", "You approve 8 scripts and a posting calendar."], ["Reels go live", "We make, schedule and post them, then report what worked."]],
+    honest: "Reels build awareness and trust over time. A single video rarely goes viral, and we do not promise views. We promise a steady stream of clear, on-brand videos that answer your customers' questions.",
+    faqs: [
+      { q: "Do I need to be on camera?", a: "No. The reels are animated with a voiceover, so you never have to film anything." },
+      { q: "Can the reels use my own voice?", a: "Yes. Record the script on your phone and we build the reel around your voice." },
+      { q: "Who owns the videos?", a: "You do. You get the final files to keep and reuse on your website, in ads or in emails." },
+      { q: "Can I see examples first?", a: "Yes. There is a sample on our homepage, and our SEO tips library has more reels made exactly the same way." },
+    ],
+    related: ["social-media-marketing", "social-media-automation", "ai-content-writing"], guide: { href: "/seo-tips", label: "our SEO tips videos" },
   },
 ];
 

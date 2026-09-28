@@ -176,6 +176,7 @@ export default function Home() {
                 <h2 className="h-lg mt-5">Learn SEO using AI, free.</h2>
               </div>
               <div className="flex flex-wrap gap-3">
+                <Link href="/seo-tips" className="btn btn-primary">SEO tips videos <span aria-hidden>→</span></Link>
                 <Link href="/guides" className="btn btn-ghost">All {guides.length} guides</Link>
                 <Link href="/tools" className="btn btn-ghost">Free tools</Link>
               </div>
@@ -223,7 +224,7 @@ export default function Home() {
             "@type": "Offer",
             name: b.name,
             description: b.plain,
-            url: abs(`/pricing#bundle-${b.id}`),
+            url: abs(b.href),
             priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", description: `${b.price} ${b.unit}` },
           })),
         }}

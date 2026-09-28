@@ -11,11 +11,11 @@ export function SampleReel() {
     <figure className="card flex h-full flex-col p-5">
       <p className="eyebrow">Sample AI reel</p>
       <ReelPlayer
-        src="/videos/sample-reel.mp4"
-        poster="/videos/sample-reel.webp"
+        src="/videos/tips/more-calls.mp4"
+        poster="/videos/tips/more-calls.webp"
         label="Sample AI reel: a stick-man animation explaining how to turn website visits into calls"
       />
-      <figcaption className="mt-4 text-[14.5px] text-muted">From our own channel. Yours explains your business, in your colors.</figcaption>
+      <figcaption className="mt-4 text-[14.5px] text-muted">From our own channel. Yours explains your business, in your colors. <Link className="text-link underline underline-offset-4 hover:text-mark" href="/seo-tips">See more</Link></figcaption>
     </figure>
   );
 }
@@ -39,7 +39,10 @@ export default function Bundles() {
               <ul className="mt-6 flex-1 space-y-2.5 border-t border-line pt-6 text-[15.5px]">
                 {b.get.map((g) => <li key={g} className="flex gap-2.5"><Tick />{g}</li>)}
               </ul>
-              <Link href="/book-a-call" className="btn btn-primary mt-7 self-start">Book a free call <span aria-hidden>→</span></Link>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link>
+                <Link href={b.href} className="btn btn-ghost">Full details</Link>
+              </div>
             </article>
           </Reveal>
         ))}

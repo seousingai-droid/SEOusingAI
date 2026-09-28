@@ -4,6 +4,7 @@ import { abs, tools } from "@/lib/site";
 import { servicePages } from "@/lib/servicePages";
 import { landingPages } from "@/lib/landingPages";
 import { getCaseStudies } from "@/lib/caseStudies";
+import { seoTips } from "@/lib/seoTips";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const guides = getGuides(); const studies = getCaseStudies();
@@ -20,6 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: abs("/book-a-call"), lastModified: latest, priority: 0.7 },
     { url: abs("/guides"), lastModified: latest, priority: 0.9 },
     ...guides.map((g) => ({ url: abs(`/guides/${g.slug}`), lastModified: g.updated, priority: 0.9 })),
+    { url: abs("/seo-tips"), lastModified: seoTips.map((t) => t.uploaded).sort().at(-1)!, priority: 0.9 },
+    ...seoTips.map((t) => ({ url: abs(`/seo-tips/${t.slug}`), lastModified: t.uploaded, priority: 0.8 })),
     { url: abs("/tools"), lastModified: latest, priority: 0.8 },
     ...tools.map((t) => ({ url: abs(`/tools/${t.slug}`), lastModified: latest, priority: 0.8 })),
     ...stat.map((p) => ({ url: abs(p), lastModified: latest, priority: 0.3 })),
