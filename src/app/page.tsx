@@ -50,6 +50,8 @@ const steps = [
 const faqs = [
   { q: "What is in the Website + SEO bundle?", a: "We manage your website and your SEO for one monthly price: website updates and layout changes, speed and security updates, new pages and articles, your Google Business Profile, AI search setup, and a plain monthly report. A full redesign is quoted separately." },
   { q: "What are AI reels?", a: "Short animated videos, 15 to 20 seconds each, that explain one thing about your business: a service, a price, or a question customers ask. AI helps us make them quickly. A person writes every script and checks every reel, and you approve each one before it is posted." },
+  { q: "How much does SEO using AI cost?", a: "Our Website + SEO bundle starts at $990 a month and Social + AI Reels starts at $790 a month, or $1,590 for both. Single services start at $290 for a one-time website checkup. Every price is on our pricing page, and bundles are month to month." },
+  { q: "How long does SEO take to show results?", a: "Usually months rather than weeks. Fixes and Google Business Profile changes can show within days, while new pages and links build over three to six months. We report progress from Google Search Console every month, so you see impressions and positions move before clicks do." },
   { q: "Do you guarantee first place on Google?", a: "No, and be careful with anyone who does. Google and AI tools decide their own results. We promise the work: done properly, checked by a person, and reported to you every month." },
   { q: "Is there a contract?", a: "No. Bundles are month to month and you can stop whenever you like. One-off work is quoted in writing and paid once." },
   { q: "Is SEO using AI allowed by Google?", a: "Yes. Google rewards helpful content however it is made. What it punishes is mass-produced pages made only to game rankings. That is why a person reviews everything we publish." },
@@ -68,9 +70,9 @@ export default function Home() {
         <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/3 h-[300px] w-[300px] rounded-full bg-[radial-gradient(closest-side,rgb(239_91_69/0.12),transparent)]" />
         <div className="wrap relative grid items-center gap-14 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
           <div>
-            <p className="pill rise !border-night/15 !bg-white" style={{ animationDelay: ".05s" }}><i className="!bg-leaf" />SEO using AI for small businesses</p>
-            <h1 className="h-xl rise mt-7" style={{ animationDelay: ".15s" }}>
-              We optimize your business to show up on <span className="hl">Google and AI search</span>
+            <h1 className="rise" style={{ animationDelay: ".1s" }}>
+              <span className="flex items-center gap-3 text-[clamp(20px,2.3vw,27px)] font-bold tracking-[-0.01em]"><span aria-hidden className="h-3.5 w-3.5 shrink-0 rounded-full bg-leaf ring-4 ring-leaf/20" />SEO using AI for small businesses</span>
+              <span className="h-xl mt-5 block">We optimize your business to show up on <span className="hl">Google and AI search</span></span>
             </h1>
             <p className="lede rise mt-7 max-w-xl" style={{ animationDelay: ".3s" }}>
               Your website, your Google Maps profile and your content, optimized so customers find you on Google and AI tools like ChatGPT can recommend you. Pick a bundle and we handle all of it.
@@ -103,14 +105,17 @@ export default function Home() {
 
       {/* Promises */}
       <section className="band !pb-0">
-        <div className="wrap grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="wrap">
+          <h2 className="font-[family-name:var(--font-display)] text-[clamp(22px,2.4vw,28px)] font-bold">Why small businesses choose SEO Using AI</h2>
+        </div>
+        <div className="wrap mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {promises.map((p, i) => (
             <Reveal key={p.t} delay={i * 80}>
               <div className="card h-full p-6">
                 <span aria-hidden className={`grid h-10 w-10 place-items-center rounded-xl ${p.c} text-white`}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12 5 5 9-10" /></svg>
                 </span>
-                <h2 className="mt-4 text-[19px] font-bold leading-snug">{p.t}</h2>
+                <h3 className="mt-4 text-[19px] font-bold leading-snug">{p.t}</h3>
                 <p className="mt-2 text-[15px] text-muted">{p.b}</p>
               </div>
             </Reveal>
@@ -123,7 +128,7 @@ export default function Home() {
         <div className="wrap">
           <Reveal>
             <p className="eyebrow">Where you show up</p>
-            <h2 className="h-lg mt-5 max-w-3xl">Customers search in three places. We optimize for <span className="hl">all three</span>.</h2>
+            <h2 className="h-lg mt-5 max-w-3xl">Get found on Google search, Google Maps and <span className="hl">AI answers</span></h2>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {places.map((p, i) => (
@@ -144,7 +149,7 @@ export default function Home() {
         <div className="wrap">
           <Reveal>
             <p className="eyebrow">Bundles</p>
-            <h2 className="h-lg mt-5 max-w-3xl">Two bundles. <span className="hl">We handle everything.</span></h2>
+            <h2 className="h-lg mt-5 max-w-3xl">SEO and social media bundles: <span className="hl">we handle everything</span></h2>
             <p className="lede mt-5 max-w-2xl">One monthly price. We do the work, you approve it, and every month you see what changed.</p>
           </Reveal>
           <div className="mt-12"><Bundles /></div>
@@ -173,7 +178,7 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-8">
             <Reveal className="max-w-2xl">
               <p className="eyebrow">SEO in 20 seconds</p>
-              <h2 className="h-lg mt-5">Tips we give away, <span className="hl">every week</span></h2>
+              <h2 className="h-lg mt-5">Free SEO tips, <span className="hl">a new video every week</span></h2>
               <p className="lede mt-5">Short animated videos with the full method written out. The same reels we make for our clients&apos; businesses.</p>
             </Reveal>
             <Mascot pose="wave" tone="light" className="hidden h-[170px] w-auto shrink-0 md:block" />
@@ -208,7 +213,7 @@ export default function Home() {
         <div className="wrap grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <Reveal>
             <p className="eyebrow">Single services</p>
-            <h2 className="h-lg mt-5">Need one thing? Pick one service.</h2>
+            <h2 className="h-lg mt-5">Single SEO services, with prices</h2>
             <p className="lede mt-5">Same team, same checks, one job. Every price is a starting point, and you get a fixed quote before we begin.</p>
             <Link href="/services" className="btn btn-ghost mt-8">All services <span aria-hidden>→</span></Link>
           </Reveal>
@@ -221,7 +226,7 @@ export default function Home() {
         <div className="wrap">
           <Reveal>
             <p className="eyebrow">How it works</p>
-            <h2 className="h-lg mt-5">Three steps.</h2>
+            <h2 className="h-lg mt-5">How it works: three steps to getting found</h2>
           </Reveal>
           <Reveal className="relative mt-14">
             <div aria-hidden className="steps-line absolute left-0 right-0 top-[38px] hidden h-[2px] bg-gradient-to-r from-mark via-mark/60 to-line md:block" />
@@ -279,7 +284,7 @@ export default function Home() {
       {/* FAQ */}
       <section className="band band-line">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <Reveal><p className="eyebrow">FAQ</p><h2 className="h-lg mt-5">Straight answers</h2></Reveal>
+          <Reveal><p className="eyebrow">FAQ</p><h2 className="h-lg mt-5">SEO using AI: questions small businesses ask</h2></Reveal>
           <Reveal delay={100}><Faq items={faqs} /></Reveal>
         </div>
       </section>
@@ -291,7 +296,7 @@ export default function Home() {
             <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-10 h-[300px] w-[300px] rounded-full bg-[radial-gradient(closest-side,rgb(255_216_77/0.2),transparent)]" />
             <div className="relative">
               <p className="eyebrow">Start here</p>
-              <h2 className="h-lg mt-4">Let&apos;s look at your business together.</h2>
+              <h2 className="h-lg mt-4">Book a free SEO call. We look at your business together.</h2>
               <p className="lede mt-5 max-w-xl">A free {site.callMinutes}-minute call on Google Meet. We tell you which bundle fits, or if you need less than you think.</p>
               <Link href="/book-a-call" className="btn btn-primary mt-8">Book a free call <span aria-hidden>→</span></Link>
             </div>

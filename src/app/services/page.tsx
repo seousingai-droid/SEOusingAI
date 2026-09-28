@@ -37,7 +37,7 @@ export default function Services() {
       <section className="band band-line">
         <div className="wrap">
           <p className="eyebrow">Single services</p>
-          <h2 className="h-lg mt-5">Or pick one service</h2>
+          <h2 className="h-lg mt-5">Or pick one SEO service</h2>
           <p className="lede mt-5 max-w-2xl">Each page says what you get, what it costs, and what it will not do.</p>
           {MENU_GROUPS.map((group) => (
             <div key={group} className="mt-10">
@@ -65,7 +65,7 @@ export default function Services() {
 
       <section className="band band-line">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div><p className="eyebrow">FAQ</p><h2 className="h-lg mt-5">Questions about working together</h2></div>
+          <div><p className="eyebrow">FAQ</p><h2 className="h-lg mt-5">Questions about our SEO services</h2></div>
           <Faq items={faqs} />
         </div>
       </section>

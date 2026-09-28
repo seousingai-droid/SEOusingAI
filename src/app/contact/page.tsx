@@ -30,7 +30,7 @@ export default function Contact() {
   const crumbs = [{ name: "Contact", href: "/contact" }];
   return (
     <>
-      <PageHero eyebrow="Contact" crumbs={crumbs} title={<>Send us a <span className="hl">message</span></>}
+      <PageHero eyebrow="Contact" crumbs={crumbs} title={<>Contact <span className="hl">SEO Using AI</span></>}
         lede="Not ready for a call? Tell us about your business and what you want to change. A person reads every message and replies within one business day." />
 
       <section className="band paper-dots !pt-12 lg:!pt-16">

@@ -19,7 +19,7 @@ export default function Book() {
   const embed = url ? `${url}${url.includes("?") ? "&" : "?"}gv=true` : "";
   return (
     <>
-      <PageHero eyebrow="Free strategy call" crumbs={crumbs} title={<>Book a {site.callMinutes}-minute call on <span className="hl">Google Meet</span></>} lede={embed ? "Pick a time that suits you. You get a calendar invite with a Google Meet link as soon as you book." : "A free video call about your site, your market, and the first fix worth making. No pitch deck."} />
+      <PageHero eyebrow="Free strategy call" crumbs={crumbs} title={<>Book a free SEO call on <span className="hl">Google Meet</span></>} lede={embed ? "Pick a time that suits you. You get a calendar invite with a Google Meet link as soon as you book." : "A free video call about your site, your market, and the first fix worth making. No pitch deck."} />
       <section className="band">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>

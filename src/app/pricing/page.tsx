@@ -29,7 +29,7 @@ export default function Pricing() {
   return (
     <>
       <PageHero eyebrow="Pricing" crumbs={crumbs}
-        title={<>Prices, <span className="hl">up front</span></>}
+        title={<>SEO prices, <span className="hl">up front</span></>}
         lede="Two monthly bundles where we handle everything, or one service when you need one thing. You get a fixed quote in writing before any work starts." />
 
       <section id="bundles" className="band scroll-mt-20">

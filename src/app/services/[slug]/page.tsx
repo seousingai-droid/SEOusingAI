@@ -99,7 +99,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
 
       <section className="band band-line">
         <div className="wrap">
-          <Reveal><p className="eyebrow">How it works</p><h2 className="h-lg mt-5">Three steps</h2></Reveal>
+          <Reveal><p className="eyebrow">How it works</p><h2 className="h-lg mt-5">How it works, in three steps</h2></Reveal>
           <ol className="mt-12 grid gap-5 md:grid-cols-3">
             {s.steps.map(([t, b], i) => (<Reveal key={t} delay={i * 120}><li className="card h-full list-none p-7"><span className="font-mono text-[14px] font-bold text-gold">Step {i + 1}</span><h3 className="mt-4 text-[21px] font-semibold leading-snug">{t}</h3><p className="mt-3 text-[16px] text-muted">{b}</p></li></Reveal>))}
           </ol>
