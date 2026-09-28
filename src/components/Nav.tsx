@@ -115,6 +115,7 @@ function Desktop({ data }: { data: NavData }) {
         {trigger("resources", "Resources", resources)}
         <Link href="/pricing" className="nav-trigger">Pricing</Link>
         <Link href="/about" className="nav-trigger">About</Link>
+        <Link href="/contact" className="nav-trigger">Contact</Link>
       </nav>
 
       {open === "services" && (
@@ -239,6 +240,7 @@ function Mobile({ data }: { data: NavData }) {
             </Section>
             <Link href="/pricing" onClick={go} className="flex items-center gap-3 border-b-2 border-line py-4 font-[family-name:var(--font-display)] text-[19px] font-bold"><span aria-hidden className="h-3 w-3 rounded-full bg-mark ring-1 ring-night/30" />Pricing</Link>
             <Link href="/about" onClick={go} className="flex items-center gap-3 border-b-2 border-line py-4 font-[family-name:var(--font-display)] text-[19px] font-bold"><span aria-hidden className="h-3 w-3 rounded-full bg-coral" />About</Link>
+            <Link href="/contact" onClick={go} className="flex items-center gap-3 border-b-2 border-line py-4 font-[family-name:var(--font-display)] text-[19px] font-bold"><span aria-hidden className="h-3 w-3 rounded-full bg-leaf" />Contact us</Link>
           </div>
           <div className="border-t-2 border-line bg-white px-5 pb-6 pt-4">
             <Link href="/book-a-call" onClick={go} className="btn btn-primary w-full">Book a free call <span aria-hidden>→</span></Link>

@@ -9,13 +9,16 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <Simple name="Privacy policy" href="/privacy" eyebrow="Legal" title="Privacy policy">
-      <p>Last updated September 28, 2026.</p>
+      <p>Last updated September 29, 2026.</p>
       <h2>What do we collect?</h2>
       <p>You can use the whole site, including the free tools, without an account. What you type into the tools runs in your browser and is never sent to us.</p>
       <p>Our hosting provider keeps standard server logs, such as IP address, browser type, and pages requested, for security and reliability. If we add privacy-friendly analytics, this page will be updated before it goes live.</p>
 
       <h2>Do we use cookies?</h2>
       <p>The site does not set its own cookies, and there are no advertising or tracking cookies. Sites we link to set their own cookies under their own privacy policies. The booking calendar is provided by Google and may set Google cookies.</p>
+
+      <h2>What happens when you send a message?</h2>
+      <p>The contact form sends your name, email address, website, the options you chose and your message to our inbox by email, through our email provider Resend. It is not stored on this website. We use it only to reply, and never add you to a mailing list or share it.</p>
 
       <h2>What happens when you book a call?</h2>
       <p>Calls are booked through Google Calendar and held on Google Meet. The name, email address, and notes you enter are handled by Google under its privacy policy, and are used only to arrange and hold the call.</p>

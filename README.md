@@ -45,4 +45,6 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 
 ## No accounts
 
-The site has no sign-in (removed 2026-09-28). The free tools are open to everyone and run in the browser. Every call to action leads to `/book-a-call`. The site needs no environment variables.
+The site has no sign-in (removed 2026-09-28). The free tools are open to everyone and run in the browser. Calls to action lead to `/book-a-call`, and `/contact` has a message form for people who prefer to write.
+
+The contact form needs `RESEND_API_KEY` and `CONTACT_TO` in Vercel (see `.env.example`). Without them the form tells visitors to email instead.

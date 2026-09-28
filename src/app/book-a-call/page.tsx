@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { pageMeta } from "@/lib/meta";
 import PageHero, { crumbLd } from "@/components/PageHero";
 import CallArt from "@/components/CallArt";
@@ -46,7 +47,7 @@ export default function Book() {
                 <p className="mt-5 font-mono text-[13px] text-muted">{site.email}</p>
               </div>
             )}
-            {embed && <p className="mt-4 text-[14.5px] text-muted">Trouble with the calendar? <a className="text-link underline underline-offset-4 hover:text-gold" href={url} target="_blank" rel="noopener">Open the booking page</a> or <a className="text-link underline underline-offset-4 hover:text-gold" href={mailto}>email us</a>.</p>}
+            {embed && <p className="mt-4 text-[14.5px] text-muted">Prefer to write? <Link className="text-link underline underline-offset-4 hover:text-gold" href="/contact">Send us a message</Link> instead. Trouble with the calendar? <a className="text-link underline underline-offset-4 hover:text-gold" href={url} target="_blank" rel="noopener">Open the booking page</a>.</p>}
           </div>
         </div>
       </section>
