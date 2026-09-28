@@ -21,6 +21,74 @@ export type SeoTip = {
 
 export const seoTips: SeoTip[] = [
   {
+    slug: "refresh-decaying-content",
+    level: "Advanced",
+    title: "How to find and refresh pages that are losing traffic",
+    metaTitle: "Refresh Pages That Are Losing Traffic",
+    description: "Find pages losing clicks with Search Console's date comparison, see what top results now cover, then update them at the same URL and request indexing.",
+    answer: "Content decay is when a page that used to bring clicks slowly loses them, usually because newer, more complete pages overtook it. Find it by comparing the last three months with the same period last year in Search Console, see what today's top results cover that your page does not, then update the page at the same URL and request indexing.",
+    steps: [
+      { h: "Compare periods and sort by lost clicks", p: "In Search Console, open Performance, then Search results. Click Date, choose Compare, and pick the last 3 months against the same period last year, so seasonal swings cancel out. Open the Pages tab and sort by the change in clicks. The pages with the biggest drops are your refresh list." },
+      { h: "See what the top results cover that you don't", p: "Click the page, open the Queries tab to find its main search, then search it yourself. Note what the top three results include that your page does not: newer prices or dates, sections that answer follow-up questions, comparison tables, photos or video. That list is your brief." },
+      { h: "Update it at the same URL and request indexing", p: "Fix outdated facts first, then add the missing sections and tighten the answer at the top. Keep the same URL so the page keeps its links and history. Change the visible updated date only when the content really changed. Then inspect the URL in Search Console's URL Inspection tool and click Request indexing." },
+    ],
+    why: "The page already has links, history and Google's trust. A real refresh gives it what newer competitors have, without starting from zero on a new URL.",
+    mistakes: [
+      "Changing only the date, which Google can see through",
+      "Moving the page to a new URL and losing its links",
+      "Comparing with the previous 3 months, so a seasonal dip looks like decay",
+      "Refreshing pages that never earned traffic instead of ones that lost it",
+    ],
+    faqs: [
+      { q: "What is content decay?", a: "A gradual drop in a page's search traffic over months, usually because competitors published fresher or more complete pages, or because what searchers want has changed." },
+      { q: "How often should I refresh old content?", a: "Check Search Console every quarter. Refresh the pages with the biggest drops first, and anything with prices, dates or rules that have changed." },
+    ],
+    transcript: [
+      "Your old pages are quietly losing clicks. Here's the three-step refresh.",
+      "One. In Search Console, compare the last three months with last year, and sort pages by lost clicks.",
+      "Two. Search that page's main query, and see what the top results cover that you don't.",
+      "Three. Update the facts, add what's missing, keep the same URL, then request indexing.",
+      "A real refresh can win back the clicks you lost.",
+    ],
+    seconds: 24,
+    uploaded: "2026-09-28",
+    service: { href: "/services/managed-website-seo", label: "Website + SEO, Managed" },
+  },
+  {
+    slug: "fix-index-bloat",
+    level: "Advanced",
+    title: "How to find and fix index bloat on WordPress",
+    metaTitle: "Index Bloat: Clean Up Thin WordPress Pages",
+    description: "Compare indexed pages with the pages you really have, find thin WordPress tag, author and attachment pages, then noindex, redirect or merge them.",
+    answer: "Index bloat is when Google indexes far more of your pages than you meant to publish, usually thin pages WordPress creates automatically. Compare the indexed count in Search Console with your real page count, find the thin pages, then noindex archives, redirect attachment pages, and merge or remove thin posts.",
+    steps: [
+      { h: "Compare indexed pages with your real pages", p: "In Search Console, open Indexing, then Pages, and note how many pages are indexed. Compare it with the number of pages and posts you actually published. If the indexed number is far higher, open the list of indexed pages and look for patterns in the addresses. Crawled, currently not indexed often lists the same kinds of thin pages." },
+      { h: "Find the thin pages", p: "Look for tag and category archives with one or two posts, author archives on a one-author site, image attachment pages (an address for every uploaded image), date archives, internal search results, and near-duplicate posts. A Google search for site:yourdomain.com/tag/ shows how many of one type are indexed." },
+      { h: "Noindex, redirect, merge or delete", p: "In your SEO plugin, such as Yoast or Rank Math, set thin tag, author and date archives to noindex and keep them out of the sitemap. Turn on the setting that redirects attachment pages to the file or parent post. Merge near-duplicates into the stronger post with a 301 redirect. Delete thin posts with no traffic or links, or improve them if the topic matters." },
+    ],
+    why: "Google judges a site partly by the pages it finds on it. When most indexed pages are thin, your good pages are harder to see. On large sites, a cleanup also saves crawl budget, so new pages get found sooner.",
+    mistakes: [
+      "Noindexing category pages that actually rank and bring visitors",
+      "Blocking pages in robots.txt instead of using noindex, so Google never sees the noindex",
+      "Deleting pages that have backlinks instead of redirecting them",
+      "Expecting the indexed count to drop overnight. Google recrawls over weeks",
+    ],
+    faqs: [
+      { q: "What is index bloat?", a: "When a search engine has indexed many low-value pages from your site, such as tag archives, attachment pages or duplicates, compared with the pages you actually want people to find." },
+      { q: "Should I noindex category pages?", a: "Not automatically. Categories with several posts and real traffic can be useful landing pages. Noindex the thin ones, and check Search Console for clicks before you change any archive." },
+    ],
+    transcript: [
+      "Your site may have hundreds of junk pages in Google. Here's the three-step cleanup.",
+      "One. In Search Console's Pages report, compare indexed pages with the pages you actually have.",
+      "Two. Find the thin ones: tag pages, author pages, image attachments, and duplicates.",
+      "Three. Noindex the archives, redirect attachment pages, and merge or delete thin posts.",
+      "Fewer, stronger pages Google can trust.",
+    ],
+    seconds: 25,
+    uploaded: "2026-09-28",
+    service: { href: "/services/technical-seo", label: "Technical SEO Fixes" },
+  },
+  {
     slug: "page-two-gold",
     level: "Advanced",
     title: "How to find your fastest SEO wins in Google Search Console",
@@ -298,6 +366,8 @@ export const seoTips: SeoTip[] = [
 
 /** The rendered file for each tip, named after the episode in the video project. */
 export const tipVideo: Record<string, string> = {
+  "refresh-decaying-content": "refresh-decay",
+  "fix-index-bloat": "trim-the-bloat",
   "page-two-gold": "page-two-gold",
   "one-page-wins": "one-page-wins",
   "win-the-click": "win-the-click",
