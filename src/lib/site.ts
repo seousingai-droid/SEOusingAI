@@ -13,7 +13,7 @@ export const site = {
   editorial: { name: "SEO Using AI Editorial Team", url: "https://seousingai.com/editorial-standards" },
   // Paste your Google Calendar appointment schedule link here to turn on live booking.
   // Google Calendar > Create > Appointment schedule > set Google Meet as the location > Share > copy the booking page link.
-  bookingUrl: "",
+  bookingUrl: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ28YPkshJARJONPYjb6ob2ggRzZjRS6FN-ihDy-z3rwnbwAFARb1xrAgAdDXahlTjWobY8fV637",
   // Paste the verification codes from Google Search Console and Bing Webmaster Tools here.
   verification: { google: "", bing: "" },
   // Public brand profiles. Add each URL as you create it. They feed the Organization schema (sameAs),
