@@ -2,7 +2,7 @@
 // so reduced-motion users and crawlers see the complete picture.
 
 const Frame = ({ children, label, tall }: { children: React.ReactNode; label: string; tall?: boolean }) => (
-  <div role="img" aria-label={label} className={`relative ${tall ? "h-[300px]" : "h-[230px]"} overflow-hidden rounded-2xl border border-line bg-ink p-5`}>{children}</div>
+  <div role="img" aria-label={label} className={`relative ${tall ? "h-[300px]" : "h-[230px]"} overflow-hidden rounded-2xl border border-line bg-canvas p-5`}>{children}</div>
 );
 
 export function SearchClimb() {
@@ -15,7 +15,7 @@ export function SearchClimb() {
       </div>
       <div className="il-loop relative h-[184px]">
         <div className={`${row} il-you top-0 border-mark/80 bg-mark/10`}>
-          <p className="text-[14.5px] font-semibold text-mark">Your business</p>
+          <p className="text-[14.5px] font-semibold text-gold">Your business</p>
           <p className="font-mono text-[11.5px] text-muted">your-business.com</p>
         </div>
         <div className={`${row} il-push top-[64px] border-line bg-panel`}><div className="h-2.5 w-2/3 rounded bg-line" /><div className="mt-2.5 h-2 w-1/3 rounded bg-line/70" /></div>
@@ -29,19 +29,19 @@ export function MapPin() {
   return (
     <Frame label="Animation of a map pin dropping onto a local map next to a business card">
       <svg viewBox="0 0 320 190" className="absolute inset-0 h-full w-full" aria-hidden>
-        <g stroke="#1b2447" strokeWidth="14" strokeLinecap="round" fill="none">
+        <g stroke="#e9dfc9" strokeWidth="14" strokeLinecap="round" fill="none">
           <path d="M-10 60 L330 95" /><path d="M90 -10 L120 200" /><path d="M230 -10 L205 200" /><path d="M-10 150 L330 140" />
         </g>
-        <g stroke="#252f55" strokeWidth="1.5" strokeDasharray="6 8" fill="none"><path d="M-10 60 L330 95" /><path d="M90 -10 L120 200" /></g>
+        <g stroke="#e6dcc6" strokeWidth="1.5" strokeDasharray="6 8" fill="none"><path d="M-10 60 L330 95" /><path d="M90 -10 L120 200" /></g>
         <circle className="il-ripple" cx="160" cy="112" r="34" fill="none" stroke="#ffd84d" strokeWidth="2" />
         <g className="il-pin">
           <path d="M160 112c-14-20-22-30-22-42a22 22 0 1 1 44 0c0 12-8 22-22 42z" fill="#ffd84d" />
-          <circle cx="160" cy="70" r="8" fill="#0a0f1f" />
+          <circle cx="160" cy="70" r="8" fill="#141a33" />
         </g>
       </svg>
       <div className="il-card absolute bottom-4 left-4 right-4 rounded-xl border border-line bg-panel/95 px-4 py-3 backdrop-blur">
         <p className="text-[14.5px] font-semibold">Your business</p>
-        <p className="text-[12.5px] text-muted"><span className="text-mark">Open now</span> · 0.4 mi · Call · Directions</p>
+        <p className="text-[12.5px] text-muted"><span className="text-gold">Open now</span> · 0.4 mi · Call · Directions</p>
       </div>
     </Frame>
   );
@@ -57,7 +57,7 @@ export function ChatRecommend() {
         </div>
         <div className="il-a w-fit max-w-[92%] rounded-2xl rounded-bl-md border border-line bg-panel px-4 py-3 text-[14px] leading-relaxed">
           A well-reviewed option is <span className="hl-soft font-semibold">Your Business</span>. They offer same-day visits and clear pricing.<span className="cite">1</span>
-          <p className="mt-2 font-mono text-[11.5px] text-mark">[1] your-business.com</p>
+          <p className="mt-2 font-mono text-[11.5px] text-gold">[1] your-business.com</p>
         </div>
       </div>
     </Frame>
@@ -66,12 +66,12 @@ export function ChatRecommend() {
 
 function Col({ title, items, human: h }: { title: string; items: string[]; human?: boolean }) {
   return (
-    <div className={`rounded-2xl border p-6 ${h ? "border-mark/70 bg-mark/[0.06]" : "border-line bg-ink"}`}>
-      <p className={`font-[family-name:var(--font-display)] text-[20px] font-bold ${h ? "text-mark" : ""}`}>{title}</p>
+    <div className={`rounded-2xl border p-6 ${h ? "border-mark/70 bg-mark/[0.06]" : "border-line bg-canvas"}`}>
+      <p className={`font-[family-name:var(--font-display)] text-[20px] font-bold ${h ? "text-gold" : ""}`}>{title}</p>
       <ul className="mt-5 space-y-3.5">
         {items.map((t, i) => (
           <li key={t} className="il-tick flex items-center gap-3 text-[15.5px]" style={{ animationDelay: `${(h ? 1.2 : 0) + i * 0.28}s` }}>
-            <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-full ${h ? "bg-mark text-ink" : "bg-panel2 text-link"}`}>
+            <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-full ${h ? "bg-mark text-night" : "bg-panel2 text-link"}`}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden><path d="m5 12 5 5 9-10" /></svg>
             </span>
             {t}
@@ -131,9 +131,9 @@ export function FixArt() {
       <div className="mx-auto flex h-full max-w-[420px] flex-col justify-center gap-3">
         {rows.map((r, i) => (
           <div key={r} className="relative h-[62px] overflow-hidden rounded-xl border border-line bg-panel">
-            <div className="absolute inset-0 flex items-center gap-3 px-4 text-[14.5px] text-muted"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#e5484d]/20 text-[#ff8589]">✕</span>{r}</div>
+            <div className="absolute inset-0 flex items-center gap-3 px-4 text-[14.5px] text-muted"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#e5484d]/20 text-[#d9362b]">✕</span>{r}</div>
             <div className="il-fixed absolute inset-0 flex items-center gap-3 border-l-2 border-mark bg-panel2 px-4 text-[14.5px] font-medium" style={{ animationDelay: `${1 + i * 1.2}s` }}>
-              <span className="grid h-6 w-6 place-items-center rounded-full bg-mark text-ink"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden><path d="m5 12 5 5 9-10" /></svg></span>{fixed[i]}
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-mark text-night"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden><path d="m5 12 5 5 9-10" /></svg></span>{fixed[i]}
             </div>
           </div>
         ))}
@@ -151,7 +151,7 @@ export function WriteArt() {
         {[95, 88, 92, 70, 0, 90, 84, 60].map((w, i) => w === 0
           ? <div key={i} className="il-line mt-5 h-3 w-2/5 rounded bg-link/70" style={{ animationDelay: `${0.5 + i * 0.3}s` }} />
           : <div key={i} className="il-line mt-3 h-2 rounded bg-line" style={{ width: `${w}%`, animationDelay: `${0.5 + i * 0.3}s` }} />)}
-        <div className="il-stamp absolute bottom-5 right-5 rotate-[-6deg] rounded-lg border-2 border-mark px-3 py-1.5 font-mono text-[12px] font-bold uppercase tracking-wider text-mark">Checked by a person</div>
+        <div className="il-stamp absolute bottom-5 right-5 rotate-[-6deg] rounded-lg border-2 border-mark px-3 py-1.5 font-mono text-[12px] font-bold uppercase tracking-wider text-gold">Checked by a person</div>
       </div>
     </Frame>
   );
@@ -164,9 +164,9 @@ export function LinksArt() {
       <svg viewBox="0 0 400 290" className="h-full w-full" aria-hidden>
         {nodes.map(([t, x, y], i) => (<line key={t} className="il-draw" x1={x} y1={y} x2="200" y2="145" stroke="#ffd84d" strokeWidth="2" pathLength={1} style={{ animationDelay: `${0.4 + i * 0.5}s` }} />))}
         {nodes.map(([t, x, y]) => (
-          <g key={t}><rect x={x - 52} y={y - 17} width="104" height="34" rx="10" fill="#111831" stroke="#2f3b69" /><text x={x} y={y + 5} textAnchor="middle" fill="#97a3c7" fontSize="12.5" fontFamily="var(--font-body), sans-serif">{t}</text></g>
+          <g key={t}><rect x={x - 52} y={y - 17} width="104" height="34" rx="10" fill="#ffffff" stroke="#d9cdb2" /><text x={x} y={y + 5} textAnchor="middle" fill="#5b627c" fontSize="12.5" fontFamily="var(--font-body), sans-serif">{t}</text></g>
         ))}
-        <circle cx="200" cy="145" r="44" fill="#ffd84d" /><text x="200" y="142" textAnchor="middle" fill="#0a0f1f" fontSize="13" fontWeight="700" fontFamily="var(--font-display), sans-serif">Your</text><text x="200" y="158" textAnchor="middle" fill="#0a0f1f" fontSize="13" fontWeight="700" fontFamily="var(--font-display), sans-serif">website</text>
+        <circle cx="200" cy="145" r="44" fill="#ffd84d" /><text x="200" y="142" textAnchor="middle" fill="#141a33" fontSize="13" fontWeight="700" fontFamily="var(--font-display), sans-serif">Your</text><text x="200" y="158" textAnchor="middle" fill="#141a33" fontSize="13" fontWeight="700" fontFamily="var(--font-display), sans-serif">website</text>
       </svg>
     </Frame>
   );
@@ -178,12 +178,12 @@ export function GapArt() {
     <Frame tall label="Animation of a comparison table showing topics a competitor covers and you do not, with the gaps highlighted">
       <div className="mx-auto flex h-full max-w-[420px] flex-col justify-center">
         <div className="grid grid-cols-[1fr_70px_70px] gap-y-2 text-[13.5px]">
-          <span /><span className="text-center font-mono text-[11px] uppercase tracking-wider text-muted">Them</span><span className="text-center font-mono text-[11px] uppercase tracking-wider text-mark">You</span>
+          <span /><span className="text-center font-mono text-[11px] uppercase tracking-wider text-muted">Them</span><span className="text-center font-mono text-[11px] uppercase tracking-wider text-gold">You</span>
           {rows.map(([t, you], i) => (
             <div key={t} className={`il-flag col-span-3 grid grid-cols-[1fr_70px_70px] items-center rounded-lg border px-3 py-2 ${you ? "border-line bg-panel" : "border-mark/60 bg-mark/10"}`} style={{ animationDelay: `${0.3 + i * 0.45}s` }}>
               <span>{t}</span>
               <span className="text-center text-link">✓</span>
-              <span className={`text-center ${you ? "text-link" : "font-mono text-[11px] font-bold uppercase text-mark"}`}>{you ? "✓" : "Gap"}</span>
+              <span className={`text-center ${you ? "text-link" : "font-mono text-[11px] font-bold uppercase text-gold"}`}>{you ? "✓" : "Gap"}</span>
             </div>
           ))}
         </div>
@@ -197,7 +197,7 @@ export function SocialArt() {
   return (
     <Frame tall label="Animation of one article becoming three different posts for LinkedIn, X, and Instagram">
       <div className="mx-auto grid h-full max-w-[440px] grid-cols-[110px_1fr] items-center gap-4">
-        <div className="rounded-xl border border-mark/60 bg-panel p-3"><div className="h-2 w-3/4 rounded bg-text/70" /><div className="mt-2 h-1.5 rounded bg-line" /><div className="mt-1.5 h-1.5 rounded bg-line" /><div className="mt-1.5 h-1.5 w-2/3 rounded bg-line" /><p className="mt-3 font-mono text-[10px] text-mark">New article</p></div>
+        <div className="rounded-xl border border-mark/60 bg-panel p-3"><div className="h-2 w-3/4 rounded bg-text/70" /><div className="mt-2 h-1.5 rounded bg-line" /><div className="mt-1.5 h-1.5 rounded bg-line" /><div className="mt-1.5 h-1.5 w-2/3 rounded bg-line" /><p className="mt-3 font-mono text-[10px] text-gold">New article</p></div>
         <div className="space-y-2.5">
           {posts.map(([p, t], i) => (
             <div key={p} className="il-flag rounded-xl border border-line bg-panel px-3 py-2.5" style={{ animationDelay: `${0.5 + i * 0.6}s` }}><p className="font-mono text-[10px] uppercase tracking-wider text-muted">{p}</p><p className="mt-1 text-[12.5px] leading-snug">{t}</p></div>
@@ -216,7 +216,7 @@ export function AutomationArt() {
         <div className="flex items-center gap-2">
           {steps.map((s, i) => (
             <div key={s} className="flex items-center gap-2">
-              <div className={`il-flag rounded-xl border px-3 py-2.5 text-center text-[12.5px] font-medium ${i === 2 ? "border-mark bg-mark text-ink" : "border-line bg-panel"}`} style={{ animationDelay: `${0.4 + i * 0.5}s` }}>{s}</div>
+              <div className={`il-flag rounded-xl border px-3 py-2.5 text-center text-[12.5px] font-medium ${i === 2 ? "border-mark bg-mark text-night" : "border-line bg-panel"}`} style={{ animationDelay: `${0.4 + i * 0.5}s` }}>{s}</div>
               {i < 3 && <span aria-hidden className="il-flag text-link" style={{ animationDelay: `${0.65 + i * 0.5}s` }}>→</span>}
             </div>
           ))}
@@ -239,11 +239,11 @@ export function RedesignArt() {
           <div className="mt-3 grid grid-cols-2 gap-2"><div className="h-6 rounded bg-line/50" /><div className="h-6 rounded bg-line/50" /></div>
           <p className="mt-3 font-mono text-[10px] text-muted">Before: everything, everywhere</p>
         </div>
-        <div className="il-fixed absolute inset-0 rounded-xl border border-mark/70 bg-ink p-5" style={{ animationDelay: "1.6s", animationDuration: "0.9s" }}>
+        <div className="il-fixed absolute inset-0 rounded-xl border border-mark/70 bg-canvas p-5" style={{ animationDelay: "1.6s", animationDuration: "0.9s" }}>
           <div className="h-5 w-4/5 rounded bg-text/85" /><div className="mt-2 h-5 w-3/5 rounded bg-text/85" />
           <div className="mt-4 h-2 w-full rounded bg-line" /><div className="mt-1.5 h-2 w-5/6 rounded bg-line" />
-          <div className="mt-5 inline-block rounded-lg bg-mark px-5 py-2 text-[13px] font-semibold text-ink">Book a call</div>
-          <div className="mt-4 flex gap-1 text-[11px] text-mark">★★★★★ <span className="text-muted">4.9 from 120 reviews</span></div>
+          <div className="mt-5 inline-block rounded-lg bg-mark px-5 py-2 text-[13px] font-semibold text-night">Book a call</div>
+          <div className="mt-4 flex gap-1 text-[11px] text-gold">★★★★★ <span className="text-muted">4.9 from 120 reviews</span></div>
           <p className="mt-4 font-mono text-[10px] text-muted">After: one message, one next step</p>
         </div>
       </div>

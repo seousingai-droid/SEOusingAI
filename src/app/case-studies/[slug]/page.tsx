@@ -30,7 +30,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             {c.metrics.map((m) => (
               <figure key={m.label} className="card p-6">
                 <p className="text-[15px] text-muted">{m.label}</p>
-                <p className="mt-2 flex flex-wrap items-baseline gap-x-3"><span className="text-[18px] text-muted line-through decoration-muted/60">{m.before}</span><span className="font-[family-name:var(--font-display)] text-[34px] font-bold text-mark">{m.after}</span></p>
+                <p className="mt-2 flex flex-wrap items-baseline gap-x-3"><span className="text-[18px] text-muted line-through decoration-muted/60">{m.before}</span><span className="font-[family-name:var(--font-display)] text-[34px] font-bold text-gold">{m.after}</span></p>
                 <figcaption className="mt-3 font-mono text-[11.5px] text-muted">Source: {m.source} · {c.period}</figcaption>
               </figure>
             ))}
@@ -46,7 +46,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           <div className="card p-7">
             <p className="eyebrow">About this client</p>
             <dl className="mt-4 space-y-3 text-[15px]">
-              <div><dt className="text-muted">Business</dt><dd className="font-medium">{c.website ? <a className="text-link underline underline-offset-4 hover:text-mark" href={c.website} target="_blank" rel="noopener">{c.client}</a> : c.client}</dd></div>
+              <div><dt className="text-muted">Business</dt><dd className="font-medium">{c.website ? <a className="text-link underline underline-offset-4 hover:text-gold" href={c.website} target="_blank" rel="noopener">{c.client}</a> : c.client}</dd></div>
               <div><dt className="text-muted">Industry</dt><dd className="font-medium">{c.industry}{c.location ? `, ${c.location}` : ""}</dd></div>
               <div><dt className="text-muted">Services</dt><dd className="font-medium">{c.services.join(", ")}</dd></div>
               <div><dt className="text-muted">Period</dt><dd className="font-medium">{c.period}</dd></div>

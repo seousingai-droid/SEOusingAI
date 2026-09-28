@@ -37,11 +37,11 @@ export default function SignInPage() {
         <p className="mt-3 text-muted">You have access to every free tool. Pick one to start.</p>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           {tools.map((t) => (
-            <Link key={t.slug} href={`/tools/${t.slug}`} className="card card-hover p-4 text-[15px] font-medium">{t.name} <span className="text-mark">→</span></Link>
+            <Link key={t.slug} href={`/tools/${t.slug}`} className="card card-hover p-4 text-[15px] font-medium">{t.name} <span className="text-gold">→</span></Link>
           ))}
         </div>
         <button type="button" onClick={async () => { await fetch("/api/auth/signout", { method: "POST" }); setSession(null); }}
-          className="mt-6 text-[15px] text-link underline underline-offset-4 hover:text-mark">Sign out</button>
+          className="mt-6 text-[15px] text-link underline underline-offset-4 hover:text-gold">Sign out</button>
       </div>
     );
   }

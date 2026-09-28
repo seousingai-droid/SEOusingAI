@@ -24,12 +24,12 @@ export default function Page() {
           <ul className="mt-5 space-y-4">
             {tools.map((t) => (
               <li key={t.slug} className="flex gap-3">
-                <span aria-hidden className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-ink"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><path d="m5 12 5 5 9-10" /></svg></span>
+                <span aria-hidden className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-night"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><path d="m5 12 5 5 9-10" /></svg></span>
                 <div><p className="text-[15.5px] font-medium">{t.name}</p><p className="text-[14px] text-muted">{t.blurb}</p></div>
               </li>
             ))}
           </ul>
-          <p className="mt-6 border-t border-line pt-5 text-[14px] text-muted">We use your email to keep you signed in and to send the occasional guide. Unsubscribe any time. Read our <Link className="text-link underline underline-offset-4 hover:text-mark" href="/privacy">privacy policy</Link>.</p>
+          <p className="mt-6 border-t border-line pt-5 text-[14px] text-muted">We use your email to keep you signed in and to send the occasional guide. Unsubscribe any time. Read our <Link className="text-link underline underline-offset-4 hover:text-gold" href="/privacy">privacy policy</Link>.</p>
         </aside>
       </section>
     </>

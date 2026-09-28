@@ -24,7 +24,7 @@ export default function GuideCard({ g, size = "md", sizes, priority = false }: {
         <p className="eyebrow">{g.eyebrow}</p>
         <h3 className={`mt-3 font-bold leading-tight ${title}`}>{g.title}</h3>
         {wide && <p className="mt-3 max-w-xl text-muted">{g.description}</p>}
-        <p className={`${wide ? "mt-auto lg:mt-6" : "mt-auto"} pt-5 font-mono text-[13px] text-muted`}>{g.readMinutes} min read <span className="text-mark transition-transform group-hover:translate-x-1 inline-block">→</span></p>
+        <p className={`${wide ? "mt-auto lg:mt-6" : "mt-auto"} pt-5 font-mono text-[13px] text-muted`}>{g.readMinutes} min read <span className="text-gold transition-transform group-hover:translate-x-1 inline-block">→</span></p>
       </div>
     </Link>
   );

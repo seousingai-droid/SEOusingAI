@@ -49,7 +49,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <div className="wrap grid gap-14 py-14 lg:grid-cols-[minmax(0,1fr)_280px] lg:py-20">
         <div className="min-w-0">
           <p className="font-mono text-[13px] text-muted">
-            By the <Link className="text-text underline underline-offset-4 hover:text-mark" href="/editorial-standards">{site.editorial.name}</Link> · Last updated <time dateTime={g.updated}>{formatDate(g.updated)}</time> · {g.readMinutes} min read
+            By the <Link className="text-text underline underline-offset-4 hover:text-gold" href="/editorial-standards">{site.editorial.name}</Link> · Last updated <time dateTime={g.updated}>{formatDate(g.updated)}</time> · {g.readMinutes} min read
           </p>
           {g.image && (
             <figure className="mt-8">
@@ -72,7 +72,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           <aside className="card mt-16 grid max-w-[72ch] gap-5 p-7 sm:grid-cols-[1fr_auto] sm:items-center">
             <div>
               <p className="font-[family-name:var(--font-display)] text-[20px] font-semibold">Want this done for you?</p>
-              <p className="mt-1 text-[15.5px] text-muted">We run this workflow for businesses, with a person checking every fact. Talk it through on a free {site.callMinutes}-minute Google Meet call. Read <Link className="text-link underline underline-offset-4 hover:text-mark" href="/editorial-standards">how we write and check guides</Link>.</p>
+              <p className="mt-1 text-[15.5px] text-muted">We run this workflow for businesses, with a person checking every fact. Talk it through on a free {site.callMinutes}-minute Google Meet call. Read <Link className="text-link underline underline-offset-4 hover:text-gold" href="/editorial-standards">how we write and check guides</Link>.</p>
             </div>
             <Link href="/book-a-call" className="btn btn-primary">Book a call</Link>
           </aside>

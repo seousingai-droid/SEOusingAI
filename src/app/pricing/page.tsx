@@ -96,7 +96,7 @@ export default function Pricing() {
           <Reveal>
             <p className="eyebrow">FAQ</p>
             <h2 className="h-lg mt-5">Questions about cost</h2>
-            <p className="mt-6 text-muted">Want to see the full list of what we do? <Link className="text-link underline underline-offset-4 hover:text-mark" href="/services">All services</Link>.</p>
+            <p className="mt-6 text-muted">Want to see the full list of what we do? <Link className="text-link underline underline-offset-4 hover:text-gold" href="/services">All services</Link>.</p>
           </Reveal>
           <Reveal delay={100}><Faq items={faqs} /></Reveal>
         </div>

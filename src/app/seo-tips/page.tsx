@@ -39,10 +39,10 @@ export default function SeoTips() {
                       <Link href={`/seo-tips/${t.slug}`} className="card card-hover group flex h-full flex-col overflow-hidden">
                         <div className="relative overflow-hidden border-b border-line">
                           <Image src={posterSrc(t.slug)} alt="" width={540} height={960} sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 100vw" className="aspect-[4/5] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
-                          <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 font-mono text-[12px] text-text">▶ {t.seconds}s</span>
+                          <span className="absolute bottom-3 left-3 rounded-full bg-canvas/85 px-3 py-1 font-mono text-[12px] text-text">▶ {t.seconds}s</span>
                         </div>
                         <div className="flex flex-1 flex-col p-6">
-                          <h2 className="text-[19px] font-bold leading-snug group-hover:text-mark">{t.title}</h2>
+                          <h2 className="text-[19px] font-bold leading-snug group-hover:text-gold">{t.title}</h2>
                           <p className="mt-2 text-[14.5px] text-muted">{t.description.split(". ")[0]}.</p>
                         </div>
                       </Link>

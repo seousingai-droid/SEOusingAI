@@ -50,7 +50,7 @@ export default function Tool() {
       </form>
       <div className="card flex min-w-0 flex-col p-7">
         <div className="flex items-center justify-between gap-4"><p className="eyebrow">Your prompt</p><CopyButton text={prompt} label="Copy prompt" /></div>
-        <pre className="mt-5 flex-1 overflow-x-auto whitespace-pre-wrap rounded-xl border border-line bg-ink p-5 font-mono text-[13.5px] leading-relaxed text-[#dfe5f7]" aria-live="polite">{prompt}</pre>
+        <pre className="mt-5 flex-1 overflow-x-auto whitespace-pre-wrap rounded-xl border border-line bg-canvas p-5 font-mono text-[13.5px] leading-relaxed text-text" aria-live="polite">{prompt}</pre>
         <p className="mt-4 text-[14.5px] text-muted">Paste it into ChatGPT, Claude, or Gemini, then replace [paste here] with your source material.</p>
       </div>
     </div>

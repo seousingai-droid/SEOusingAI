@@ -15,7 +15,7 @@ export function SampleReel() {
         poster="/videos/tips/more-calls.webp"
         label="Sample AI reel: a stick-man animation explaining how to turn website visits into calls"
       />
-      <figcaption className="mt-4 text-[14.5px] text-muted">From our own channel. Yours explains your business, in your colors. <Link className="text-link underline underline-offset-4 hover:text-mark" href="/seo-tips">See more</Link></figcaption>
+      <figcaption className="mt-4 text-[14.5px] text-muted">From our own channel. Yours explains your business, in your colors. <Link className="text-link underline underline-offset-4 hover:text-gold" href="/seo-tips">See more</Link></figcaption>
     </figure>
   );
 }
@@ -52,7 +52,7 @@ export default function Bundles() {
         <div className="card flex flex-wrap items-center justify-between gap-5 border-mark/50 px-7 py-6">
           <p className="text-[17px]">
             <strong>Want both?</strong> Website + SEO and Social + AI Reels together:{" "}
-            <strong className="text-mark">{bothBundles.price} {bothBundles.unit}</strong>. You save {bothBundles.saves} a month.
+            <strong className="text-gold">{bothBundles.price} {bothBundles.unit}</strong>. You save {bothBundles.saves} a month.
           </p>
           <p className="text-[15px] text-muted">Month to month. Stop whenever you like.</p>
         </div>
@@ -69,7 +69,7 @@ export function ServiceList() {
         <li key={o.id}>
           <Link href={o.href} className="group grid gap-1 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-8">
             <span>
-              <span className="font-[family-name:var(--font-display)] text-[20px] font-semibold group-hover:text-mark">{o.name}</span>
+              <span className="font-[family-name:var(--font-display)] text-[20px] font-semibold group-hover:text-gold">{o.name}</span>
               <span className="block text-[15px] text-muted">{o.plain}</span>
             </span>
             <span className="whitespace-nowrap font-[family-name:var(--font-display)] text-[18px] font-semibold">

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const art = { scan: <ScanArt />, fix: <FixArt />, write: <WriteArt />, links: <LinksArt />, map: <MapPin />, chat: <ChatRecommend />, gap: <GapArt />, social: <SocialArt />, automation: <AutomationArt />, redesign: <RedesignArt /> };
-const Check = () => (<span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-mark text-ink"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden><path d="m5 12 5 5 9-10" /></svg></span>);
+const Check = () => (<span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-mark text-night"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden><path d="m5 12 5 5 9-10" /></svg></span>);
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const s = getServicePage((await params).slug);
@@ -39,7 +39,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             <h1 className="h-lg mt-5 !text-[clamp(34px,4.6vw,58px)]">{s.h1} <span className="hl">{s.h1Mark}</span></h1>
             <p className="lede mt-6 max-w-xl">{s.lede}</p>
             <p className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="font-[family-name:var(--font-display)] text-[30px] font-bold text-mark">{s.price}</span>
+              <span className="font-[family-name:var(--font-display)] text-[30px] font-bold text-gold">{s.price}</span>
               <span className="font-mono text-[12px] uppercase tracking-widest text-muted">{s.unit}</span>
               <span className="text-[14.5px] text-muted">· fixed quote in writing before we start</span>
             </p>
@@ -56,7 +56,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         <div className="wrap grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <Reveal>
             <h2 className="h-lg !text-[clamp(28px,3.4vw,42px)]">{s.quickQ}</h2>
-            <p className="mt-6 text-[19px] leading-relaxed text-[#cfd6ec]">{s.quickA}</p>
+            <p className="mt-6 text-[19px] leading-relaxed text-text">{s.quickA}</p>
           </Reveal>
           <Reveal delay={120}>
             <div className="card border-l-2 !border-l-mark p-7">
@@ -90,8 +90,8 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
           </Reveal>
           <Reveal delay={120}>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-line bg-ink p-6"><p className="font-[family-name:var(--font-display)] text-[19px] font-bold">What AI does</p><ul className="mt-4 space-y-3">{s.ai.map((t) => <li key={t} className="flex gap-3 text-[15.5px] text-muted"><span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-link" />{t}</li>)}</ul></div>
-              <div className="rounded-2xl border border-mark/70 bg-mark/[0.06] p-6"><p className="font-[family-name:var(--font-display)] text-[19px] font-bold text-mark">What a person does</p><ul className="mt-4 space-y-3">{s.human.map((t) => <li key={t} className="flex gap-3 text-[15.5px]"><span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-mark" />{t}</li>)}</ul></div>
+              <div className="rounded-2xl border border-line bg-canvas p-6"><p className="font-[family-name:var(--font-display)] text-[19px] font-bold">What AI does</p><ul className="mt-4 space-y-3">{s.ai.map((t) => <li key={t} className="flex gap-3 text-[15.5px] text-muted"><span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-link" />{t}</li>)}</ul></div>
+              <div className="rounded-2xl border border-mark/70 bg-mark/[0.06] p-6"><p className="font-[family-name:var(--font-display)] text-[19px] font-bold text-gold">What a person does</p><ul className="mt-4 space-y-3">{s.human.map((t) => <li key={t} className="flex gap-3 text-[15.5px]"><span aria-hidden className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-mark" />{t}</li>)}</ul></div>
             </div>
           </Reveal>
         </div>
@@ -101,7 +101,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         <div className="wrap">
           <Reveal><p className="eyebrow">How it works</p><h2 className="h-lg mt-5">Three steps</h2></Reveal>
           <ol className="mt-12 grid gap-5 md:grid-cols-3">
-            {s.steps.map(([t, b], i) => (<Reveal key={t} delay={i * 120}><li className="card h-full list-none p-7"><span className="font-mono text-[14px] font-bold text-mark">Step {i + 1}</span><h3 className="mt-4 text-[21px] font-semibold leading-snug">{t}</h3><p className="mt-3 text-[16px] text-muted">{b}</p></li></Reveal>))}
+            {s.steps.map(([t, b], i) => (<Reveal key={t} delay={i * 120}><li className="card h-full list-none p-7"><span className="font-mono text-[14px] font-bold text-gold">Step {i + 1}</span><h3 className="mt-4 text-[21px] font-semibold leading-snug">{t}</h3><p className="mt-3 text-[16px] text-muted">{b}</p></li></Reveal>))}
           </ol>
           <Reveal className="mt-10"><div className="rounded-2xl border border-line bg-panel/60 p-7"><h2 className="font-[family-name:var(--font-display)] text-[20px] font-bold">What this will not do</h2><p className="mt-3 max-w-3xl text-muted">{s.honest}</p></div></Reveal>
         </div>
@@ -109,7 +109,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
 
       <section className="band band-line">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <Reveal><p className="eyebrow">FAQ</p><h2 className="h-lg mt-5">Questions about {s.name.toLowerCase().replace(/\bai\b/g, "AI").replace(/\bseo\b/g, "SEO").replace(/\bpr\b/g, "PR")}</h2><p className="mt-6 text-muted">Want to learn the method yourself? Read <Link className="text-link underline underline-offset-4 hover:text-mark" href={s.guide.href}>{s.guide.label}</Link>.</p></Reveal>
+          <Reveal><p className="eyebrow">FAQ</p><h2 className="h-lg mt-5">Questions about {s.name.toLowerCase().replace(/\bai\b/g, "AI").replace(/\bseo\b/g, "SEO").replace(/\bpr\b/g, "PR")}</h2><p className="mt-6 text-muted">Want to learn the method yourself? Read <Link className="text-link underline underline-offset-4 hover:text-gold" href={s.guide.href}>{s.guide.label}</Link>.</p></Reveal>
           <Reveal delay={100}><Faq items={s.faqs} /></Reveal>
         </div>
       </section>
@@ -118,7 +118,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         <div className="wrap">
           <h2 className="h-md">Related services</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {related.map((r) => (<Link key={r.slug} href={`/services/${r.slug}`} className="card card-hover p-7"><h3 className="text-[21px] font-bold">{r.name}</h3><p className="mt-2 text-[15.5px] text-muted">{r.lede}</p><p className="mt-5 font-mono text-[13px] text-mark">Learn more →</p></Link>))}
+            {related.map((r) => (<Link key={r.slug} href={`/services/${r.slug}`} className="card card-hover p-7"><h3 className="text-[21px] font-bold">{r.name}</h3><p className="mt-2 text-[15.5px] text-muted">{r.lede}</p><p className="mt-5 font-mono text-[13px] text-gold">Learn more →</p></Link>))}
           </div>
           <div className="card mt-12 grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-[1.3fr_0.7fr]">
             <div><h2 className="h-lg !text-[clamp(28px,3.4vw,42px)]">Talk it through on a free call.</h2><p className="lede mt-4 max-w-xl">A {site.callMinutes}-minute Google Meet call. You leave with one thing worth fixing this week, whether or not we work together.</p></div>

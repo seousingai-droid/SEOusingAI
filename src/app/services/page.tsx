@@ -50,7 +50,7 @@ export default function Services() {
                     </div>
                     <p className="mt-2 flex-1 text-[15.5px] text-muted">{sp.lede}</p>
                     <p className="mt-5 flex items-baseline gap-2 border-t border-line pt-4">
-                      <span className="font-[family-name:var(--font-display)] text-[20px] font-bold text-mark">{sp.price}</span>
+                      <span className="font-[family-name:var(--font-display)] text-[20px] font-bold text-gold">{sp.price}</span>
                       <span className="font-mono text-[11px] uppercase tracking-widest text-muted">{sp.unit}</span>
                       <span className="ml-auto font-mono text-[13px] text-muted">Details →</span>
                     </p>
@@ -59,7 +59,7 @@ export default function Services() {
               </div>
             </div>
           ))}
-          <p className="mt-10 text-muted">Looking for the big picture? See how we work as an <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-agency">AI SEO agency</Link>, or read <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-for-small-business">AI SEO for small business</Link> and <Link className="text-link underline underline-offset-4 hover:text-mark" href="/ai-seo-for-b2b">AI SEO for B2B</Link>.</p>
+          <p className="mt-10 text-muted">Looking for the big picture? See how we work as an <Link className="text-link underline underline-offset-4 hover:text-gold" href="/ai-seo-agency">AI SEO agency</Link>, or read <Link className="text-link underline underline-offset-4 hover:text-gold" href="/ai-seo-for-small-business">AI SEO for small business</Link> and <Link className="text-link underline underline-offset-4 hover:text-gold" href="/ai-seo-for-b2b">AI SEO for B2B</Link>.</p>
         </div>
       </section>
 

@@ -49,7 +49,7 @@ export default function LandingPage({ l }: { l: Landing }) {
           <Reveal><p className="eyebrow">How we can help</p><h2 className="h-lg mt-5">Services that fit</h2></Reveal>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {l.services.map((slug, i) => { const s = getServicePage(slug)!; return (
-              <Reveal key={slug} delay={(i % 3) * 100}><Link href={`/services/${slug}`} className="card card-hover block h-full p-7"><h3 className="text-[21px] font-bold">{s.name}</h3><p className="mt-2 text-[15.5px] text-muted">{s.lede}</p><p className="mt-5 font-mono text-[13px] text-mark">Learn more →</p></Link></Reveal>
+              <Reveal key={slug} delay={(i % 3) * 100}><Link href={`/services/${slug}`} className="card card-hover block h-full p-7"><h3 className="text-[21px] font-bold">{s.name}</h3><p className="mt-2 text-[15.5px] text-muted">{s.lede}</p><p className="mt-5 font-mono text-[13px] text-gold">Learn more →</p></Link></Reveal>
             ); })}
           </div>
         </div>

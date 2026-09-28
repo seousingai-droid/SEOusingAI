@@ -31,7 +31,7 @@ function navData(): NavData {
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ink/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-line bg-canvas/90 backdrop-blur">
       <div className="wrap relative flex h-[72px] items-center justify-between gap-6">
         <Link href="/" aria-label="SEO Using AI home" className="shrink-0"><Logo /></Link>
         <Nav data={navData()} />

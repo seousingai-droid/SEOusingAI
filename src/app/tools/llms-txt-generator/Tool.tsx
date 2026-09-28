@@ -30,7 +30,7 @@ export default function Tool() {
       </form>
       <div className="card flex min-w-0 flex-col p-7">
         <div className="flex items-center justify-between gap-4"><p className="eyebrow">llms.txt</p><CopyButton text={out} label="Copy file" /></div>
-        <pre className="mt-5 flex-1 overflow-x-auto whitespace-pre-wrap rounded-xl border border-line bg-ink p-5 font-mono text-[13.5px] leading-relaxed text-[#dfe5f7]" aria-live="polite">{out}</pre>
+        <pre className="mt-5 flex-1 overflow-x-auto whitespace-pre-wrap rounded-xl border border-line bg-canvas p-5 font-mono text-[13.5px] leading-relaxed text-text" aria-live="polite">{out}</pre>
         <p className="mt-4 text-[14.5px] text-muted">Save it as llms.txt and upload it to the root of your site, next to robots.txt.</p>
       </div>
     </div>

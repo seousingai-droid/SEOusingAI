@@ -17,11 +17,11 @@ export default function AnswerCard() {
           </p>
           <p className="rise text-muted" style={d(1.3)}>Other nearby options are listed in local directories.<span className="cite">2</span></p>
           <div className="rise grid gap-2 border-t border-line pt-5 sm:grid-cols-2" style={d(1.9)}>
-            <div className="pulse rounded-xl border border-mark/60 bg-ink px-4 py-3">
-              <p className="font-mono text-[12px] text-mark">[1] your-business.com</p>
+            <div className="pulse rounded-xl border border-mark/60 bg-canvas px-4 py-3">
+              <p className="font-mono text-[12px] text-gold">[1] your-business.com</p>
               <p className="mt-1 text-[14px]">This could be you</p>
             </div>
-            <div className="rounded-xl border border-line bg-ink px-4 py-3">
+            <div className="rounded-xl border border-line bg-canvas px-4 py-3">
               <p className="font-mono text-[12px] text-muted">[2] a local directory</p>
               <p className="mt-1 text-[14px] text-muted">Everyone else</p>
             </div>

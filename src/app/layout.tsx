@@ -10,7 +10,7 @@ const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-disp
 const body = Instrument_Sans({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap", weight: ["400", "700"] });
 
-export const viewport: Viewport = { themeColor: "#0a0f1f" };
+export const viewport: Viewport = { themeColor: "#fbf7ee" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-US" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
         <noscript><style>{`.reveal,.reveal .il-tick{opacity:1!important;transform:none!important}`}</style></noscript>
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-mark focus:px-4 focus:py-2 focus:text-ink">Skip to content</a>
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-mark focus:px-4 focus:py-2 focus:text-night">Skip to content</a>
         <Header />
         <main id="main">{children}</main>
         <Footer />

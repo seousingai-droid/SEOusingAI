@@ -63,7 +63,7 @@ export default function AccountMenu({ variant = "desktop" }: { variant?: "deskto
     <div ref={box} className="relative">
       <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-haspopup="true" aria-label="Account menu"
         className="flex items-center gap-2 rounded-lg border border-line px-2.5 py-2 transition-colors hover:border-muted">
-        <span aria-hidden className="grid h-6 w-6 place-items-center rounded-full bg-mark text-[12px] font-bold text-ink">{session.email[0]?.toUpperCase()}</span>
+        <span aria-hidden className="grid h-6 w-6 place-items-center rounded-full bg-mark text-[12px] font-bold text-night">{session.email[0]?.toUpperCase()}</span>
         <svg className={`h-2.5 w-2.5 text-muted transition-transform ${open ? "rotate-180" : ""}`} viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden><path d="m2 3.5 3 3 3-3" /></svg>
       </button>
       {open && <div className="nav-panel card absolute right-0 top-12 w-64 p-2">{items}</div>}

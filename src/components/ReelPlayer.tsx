@@ -22,7 +22,7 @@ export default function ReelPlayer({ src, poster, label }: { src: string; poster
     <div className="relative mt-4">
       <video
         ref={ref}
-        className="aspect-[9/16] w-full rounded-xl border border-line bg-ink object-cover"
+        className="aspect-[9/16] w-full rounded-xl border border-line bg-canvas object-cover"
         src={src}
         poster={poster}
         controls={started}
@@ -34,10 +34,10 @@ export default function ReelPlayer({ src, poster, label }: { src: string; poster
         <button
           type="button"
           onClick={start}
-          className="absolute inset-0 grid place-items-center rounded-xl bg-ink/25 transition-colors hover:bg-ink/10"
+          className="absolute inset-0 grid place-items-center rounded-xl bg-night/15 transition-colors hover:bg-night/5"
           aria-label={`Play with sound: ${label}`}
         >
-          <span className="flex items-center gap-2.5 rounded-full bg-mark px-5 py-3 font-semibold text-ink shadow-xl">
+          <span className="flex items-center gap-2.5 rounded-full bg-mark px-5 py-3 font-semibold text-night shadow-xl">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden><path d="M7 4.5v15l13-7.5z" fill="currentColor" /></svg>
             Play with sound
           </span>

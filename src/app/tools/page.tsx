@@ -21,7 +21,7 @@ export default function Tools() {
             <Link key={t.slug} href={`/tools/${t.slug}`} className="card card-hover p-8">
               <h2 className="text-[24px] font-bold">{t.name}</h2>
               <p className="mt-3 text-muted">{t.blurb}</p>
-              <p className="mt-6 font-mono text-[13px] text-mark">Open tool →</p>
+              <p className="mt-6 font-mono text-[13px] text-gold">Open tool →</p>
             </Link>
           ))}
         </div>

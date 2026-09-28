@@ -50,13 +50,13 @@ export default async function SeoTip({ params }: { params: Promise<{ slug: strin
           <div className="min-w-0 max-w-[760px]">
             <section aria-labelledby="quick-answer" className="card border-mark/50 p-7">
               <p id="quick-answer" className="eyebrow">Quick answer</p>
-              <p className="mt-4 text-[19px] leading-relaxed text-[#cfd6ec]">{t.answer}</p>
+              <p className="mt-4 text-[19px] leading-relaxed text-text">{t.answer}</p>
             </section>
 
             {t.steps.map((s, i) => (
               <section key={s.h} className="mt-12">
                 <h2 className="text-[clamp(24px,2.6vw,32px)] font-bold leading-tight">
-                  <span className="text-mark">Step {i + 1}.</span> {s.h}
+                  <span className="text-gold">Step {i + 1}.</span> {s.h}
                 </h2>
                 <p className="mt-4 text-[17.5px] leading-relaxed">{s.p}</p>
               </section>
@@ -96,7 +96,7 @@ export default async function SeoTip({ params }: { params: Promise<{ slug: strin
             </div>
             <div className="card mt-5 p-6">
               <p className="eyebrow">Want it done for you?</p>
-              <p className="mt-3 text-[16px]">We do this every month as part of <Link className="font-semibold text-link underline underline-offset-4 hover:text-mark" href={t.service.href}>{t.service.label}</Link>.</p>
+              <p className="mt-3 text-[16px]">We do this every month as part of <Link className="font-semibold text-link underline underline-offset-4 hover:text-gold" href={t.service.href}>{t.service.label}</Link>.</p>
               <Link href="/book-a-call" className="btn btn-primary mt-5 w-full">Book a free call</Link>
             </div>
           </aside>
@@ -115,7 +115,7 @@ export default async function SeoTip({ params }: { params: Promise<{ slug: strin
                 <Image src={posterSrc(m.slug)} alt="" width={540} height={960} sizes="96px" className="h-[150px] w-[96px] shrink-0 rounded-lg object-cover object-top" />
                 <div className="py-1">
                   <p className="eyebrow">{m.level}</p>
-                  <h3 className="mt-2 text-[17px] font-bold leading-snug group-hover:text-mark">{m.title}</h3>
+                  <h3 className="mt-2 text-[17px] font-bold leading-snug group-hover:text-gold">{m.title}</h3>
                 </div>
               </Link>
             ))}

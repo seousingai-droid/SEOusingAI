@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import Mascot from "@/components/Mascot";
 import Reveal from "@/components/Reveal";
 import AnswerCard from "@/components/AnswerCard";
 import Bundles, { ServiceList } from "@/components/Bundles";
@@ -9,7 +11,9 @@ import { getGuides } from "@/lib/content";
 import { getCaseStudies } from "@/lib/caseStudies";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import GuideCard from "@/components/GuideCard";
-import { bundles, site, abs } from "@/lib/site";
+import { bundles, site, abs, tools } from "@/lib/site";
+import { seoTips, posterSrc } from "@/lib/seoTips";
+import { servicePages } from "@/lib/servicePages";
 import { pageMeta } from "@/lib/meta";
 
 export const metadata = pageMeta({
@@ -20,10 +24,22 @@ export const metadata = pageMeta({
 });
 
 const places = [
-  { art: <SearchClimb />, title: "Google search", body: "People search for what you sell. We optimize your pages so you show up for those searches." },
-  { art: <MapPin />, title: "Google Maps", body: "\"Near me\" searches show three businesses on a map. We optimize your profile to compete for those spots." },
-  { art: <ChatRecommend />, title: "AI search", body: "People ask ChatGPT and Google's AI who to hire. We set up your site so AI can find you and name you." },
+  { art: <SearchClimb />, title: "Google search", tint: "bg-[#eaf0ff]", dot: "bg-sky", body: "People search for what you sell. We optimize your pages so you show up for those searches." },
+  { art: <MapPin />, title: "Google Maps", tint: "bg-[#e3f5ec]", dot: "bg-leaf", body: "\"Near me\" searches show three businesses on a map. We optimize your profile to compete for those spots." },
+  { art: <ChatRecommend />, title: "AI search", tint: "bg-[#efe9ff]", dot: "bg-grape", body: "People ask ChatGPT and Google's AI who to hire. We set up your site so AI can find you and name you." },
 ];
+
+// Promises we keep on every job. Proof we can stand behind today, not borrowed logos.
+const promises = [
+  { t: "Prices you can see", b: "Every service and bundle has its price on this site, before you ever call.", c: "bg-sky" },
+  { t: "Month to month", b: "No contracts. Stop whenever you like and keep what we built.", c: "bg-leaf" },
+  { t: "A person checks everything", b: "AI does the heavy lifting. A person approves every change.", c: "bg-coral" },
+  { t: "Plain-English reports", b: "Each month: what we did, what moved, and what comes next.", c: "bg-grape" },
+];
+
+const platforms = ["Google Search Console", "Google Business Profile", "Google Analytics", "ChatGPT", "Perplexity", "Gemini", "WordPress", "Next.js"];
+
+const stepColors = ["bg-sky", "bg-leaf", "bg-coral"];
 
 const steps = [
   ["Book a free call", `${site.callMinutes} minutes on Google Meet. We look at your website and your Google profile together.`],
@@ -46,11 +62,13 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(138_180_255/0.13),transparent)]" />
-        <div className="wrap relative grid items-center gap-14 pb-20 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:pb-28 lg:pt-24">
+      <section className="paper-dots relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-[radial-gradient(closest-side,rgb(255_216_77/0.45),transparent)]" />
+        <div aria-hidden className="pointer-events-none absolute -right-32 -top-20 h-[460px] w-[460px] rounded-full bg-[radial-gradient(closest-side,rgb(47_107_255/0.16),transparent)]" />
+        <div aria-hidden className="pointer-events-none absolute bottom-0 right-1/3 h-[300px] w-[300px] rounded-full bg-[radial-gradient(closest-side,rgb(239_91_69/0.12),transparent)]" />
+        <div className="wrap relative grid items-center gap-14 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
           <div>
-            <p className="pill rise" style={{ animationDelay: ".05s" }}><i />SEO using AI for small businesses</p>
+            <p className="pill rise !border-night/15 !bg-white" style={{ animationDelay: ".05s" }}><i className="!bg-leaf" />SEO using AI for small businesses</p>
             <h1 className="h-xl rise mt-7" style={{ animationDelay: ".15s" }}>
               We optimize your business to show up on <span className="hl">Google and AI search</span>
             </h1>
@@ -59,18 +77,49 @@ export default function Home() {
             </p>
             <div className="rise mt-9 flex flex-wrap gap-3" style={{ animationDelay: ".45s" }}>
               <Link href="#bundles" className="btn btn-primary">See bundles and prices <span aria-hidden>→</span></Link>
-              <Link href="/book-a-call" className="btn btn-ghost">Book a free call</Link>
+              <Link href="/book-a-call" className="btn btn-dark">Book a free call</Link>
             </div>
-            <p className="rise mt-7 text-[15px] text-muted" style={{ animationDelay: ".6s" }}>
-              Month to month. No contracts. A person checks every change.
+            <p className="rise mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-[15px] text-muted" style={{ animationDelay: ".6s" }}>
+              {["Month to month", "Prices on every service", "Checked by a person"].map((x) => (
+                <span key={x} className="inline-flex items-center gap-2"><span aria-hidden className="grid h-5 w-5 place-items-center rounded-full bg-leaf text-white"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><path d="m5 12 5 5 9-10" /></svg></span>{x}</span>
+              ))}
             </p>
           </div>
-          <AnswerCard />
+          <div className="relative">
+            <AnswerCard />
+            <span aria-hidden className="sticker absolute hidden lg:inline-flex -top-6 right-6 rotate-[-6deg] bg-[#eaf0ff]"><span className="h-2.5 w-2.5 rounded-full bg-sky" />Google</span>
+            <span aria-hidden className="sticker absolute hidden lg:inline-flex -right-2 top-1/3 rotate-[5deg] bg-[#e3f5ec]"><span className="h-2.5 w-2.5 rounded-full bg-leaf" />Maps</span>
+            <span aria-hidden className="sticker absolute hidden lg:inline-flex -bottom-5 left-8 rotate-[-4deg] bg-[#efe9ff]"><span className="h-2.5 w-2.5 rounded-full bg-grape" />AI answers</span>
+            <Mascot pose="point" facing={-1} className="pointer-events-none absolute -bottom-20 -right-24 hidden h-[190px] w-auto xl:block" />
+          </div>
+        </div>
+        <div className="relative border-y border-line bg-white/70">
+          <div className="wrap flex flex-wrap items-center gap-x-7 gap-y-2 py-4 text-[14px] text-muted">
+            <span className="font-mono text-[11.5px] uppercase tracking-[0.14em]">We work inside</span>
+            {platforms.map((p) => <span key={p} className="font-[family-name:var(--font-display)] font-semibold text-[#3b425f]">{p}</span>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Promises */}
+      <section className="band !pb-0">
+        <div className="wrap grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {promises.map((p, i) => (
+            <Reveal key={p.t} delay={i * 80}>
+              <div className="card h-full p-6">
+                <span aria-hidden className={`grid h-10 w-10 place-items-center rounded-xl ${p.c} text-white`}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12 5 5 9-10" /></svg>
+                </span>
+                <h2 className="mt-4 text-[19px] font-bold leading-snug">{p.t}</h2>
+                <p className="mt-2 text-[15px] text-muted">{p.b}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
       {/* Where you show up */}
-      <section className="band band-line">
+      <section className="band">
         <div className="wrap">
           <Reveal>
             <p className="eyebrow">Where you show up</p>
@@ -79,9 +128,9 @@ export default function Home() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {places.map((p, i) => (
               <Reveal key={p.title} delay={i * 120}>
-                <div className="card h-full p-5">
+                <div className={`card h-full p-5 ${p.tint}`}>
                   {p.art}
-                  <h3 className="mt-6 px-2 text-[23px] font-bold">{p.title}</h3>
+                  <h3 className="mt-6 flex items-center gap-2.5 px-2 text-[23px] font-bold"><span aria-hidden className={`h-3 w-3 rounded-full ${p.dot}`} />{p.title}</h3>
                   <p className="mt-2 px-2 pb-2 text-[16px] text-muted">{p.body}</p>
                 </div>
               </Reveal>
@@ -91,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* Bundles */}
-      <section id="bundles" className="band band-line scroll-mt-20">
+      <section id="bundles" className="band band-sun scroll-mt-20 border-y border-[#f1dd8c]">
         <div className="wrap">
           <Reveal>
             <p className="eyebrow">Bundles</p>
@@ -116,6 +165,43 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      {/* Our own videos: the brand in 20 seconds */}
+      <section className="band band-night relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(closest-side,rgb(255_216_77/0.18),transparent)]" />
+        <div className="wrap relative">
+          <div className="flex flex-wrap items-end justify-between gap-8">
+            <Reveal className="max-w-2xl">
+              <p className="eyebrow">SEO in 20 seconds</p>
+              <h2 className="h-lg mt-5">Tips we give away, <span className="hl">every week</span></h2>
+              <p className="lede mt-5">Short animated videos with the full method written out. The same reels we make for our clients&apos; businesses.</p>
+            </Reveal>
+            <Mascot pose="wave" tone="light" className="hidden h-[170px] w-auto shrink-0 md:block" />
+          </div>
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+            {seoTips.slice(0, 4).map((t, i) => (
+              <Reveal key={t.slug} delay={i * 90}>
+                <Link href={`/seo-tips/${t.slug}`} className="group block">
+                  <div className="relative overflow-hidden rounded-[22px] border-[6px] border-[#2d3662] bg-[#1d2447] shadow-[0_24px_50px_-24px_rgb(0_0_0/0.6)] transition-transform duration-300 group-hover:-translate-y-1">
+                    <Image src={posterSrc(t.slug)} alt="" width={540} height={960} sizes="(min-width: 1024px) 270px, 45vw" className="aspect-[9/14] w-full object-cover object-top" />
+                    <span className="absolute bottom-3 left-3 rounded-full bg-mark px-3 py-1 text-[12.5px] font-semibold text-night">▶ {t.seconds}s</span>
+                  </div>
+                  <p className="mt-4 text-[15.5px] font-semibold leading-snug text-[#f7f3e8] group-hover:text-mark">{t.title}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Link href="/seo-tips" className="btn btn-primary">All SEO tips <span aria-hidden>→</span></Link>
+            <p className="flex flex-wrap gap-x-6 gap-y-1 font-[family-name:var(--font-display)] text-[17px]">
+              <span><strong className="text-mark">{seoTips.length}</strong> video tips</span>
+              <span><strong className="text-mark">{guides.length}</strong> free guides</span>
+              <span><strong className="text-mark">{tools.length}</strong> free tools</span>
+              <span><strong className="text-mark">{servicePages.length}</strong> services and bundles</span>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Single services */}
       <section className="band band-line">
@@ -142,8 +228,8 @@ export default function Home() {
             <ol className="grid gap-10 md:grid-cols-3">
               {steps.map(([t, b], i) => (
                 <li key={t} className="relative">
-                  <div className="grid h-[76px] w-[76px] place-items-center rounded-2xl border border-mark/70 bg-ink text-mark"><StepIcon n={i as 0 | 1 | 2} /></div>
-                  <p className="mt-6 font-mono text-[13px] font-bold text-mark">Step {i + 1}</p>
+                  <div className={`grid h-[76px] w-[76px] place-items-center rounded-2xl ${stepColors[i]} text-white shadow-[4px_5px_0_#141a33]`}><StepIcon n={i as 0 | 1 | 2} /></div>
+                  <p className="mt-6 font-mono text-[13px] font-bold text-muted">Step {i + 1}</p>
                   <h3 className="mt-2 text-[24px] font-bold">{t}</h3>
                   <p className="mt-3 max-w-sm text-muted">{b}</p>
                 </li>
@@ -199,15 +285,17 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="band band-line">
+      <section className="band">
         <Reveal className="wrap">
-          <div className="card grid items-center gap-8 p-8 sm:p-14 lg:grid-cols-[1.3fr_0.7fr]">
-            <div>
+          <div className="band-night relative grid items-center gap-8 overflow-hidden rounded-[28px] p-8 sm:p-14 lg:grid-cols-[1.3fr_0.7fr]">
+            <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-10 h-[300px] w-[300px] rounded-full bg-[radial-gradient(closest-side,rgb(255_216_77/0.2),transparent)]" />
+            <div className="relative">
               <p className="eyebrow">Start here</p>
               <h2 className="h-lg mt-4">Let&apos;s look at your business together.</h2>
               <p className="lede mt-5 max-w-xl">A free {site.callMinutes}-minute call on Google Meet. We tell you which bundle fits, or if you need less than you think.</p>
+              <Link href="/book-a-call" className="btn btn-primary mt-8">Book a free call <span aria-hidden>→</span></Link>
             </div>
-            <div className="flex flex-wrap gap-3 lg:justify-end"><Link href="/book-a-call" className="btn btn-primary">Book a free call <span aria-hidden>→</span></Link></div>
+            <Mascot pose="cheer" tone="light" className="relative mx-auto hidden h-[220px] w-auto lg:block" />
           </div>
         </Reveal>
       </section>

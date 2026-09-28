@@ -63,7 +63,7 @@ export default function SignIn({ onSignedIn, website = "", title = "Create your 
               <input id="signin-email" type="email" required autoComplete="email" className="field sm:flex-1" placeholder="you@yourbusiness.com" value={email} onChange={(e) => setEmail(e.target.value)} />
               <button className="btn btn-primary shrink-0 disabled:opacity-60" disabled={busy || email.length < 6}>{busy ? "Sending…" : "Send me a code"} {!busy && <span aria-hidden>→</span>}</button>
             </form>
-            <p className="mt-4 text-[14.5px] text-muted">We use your email to keep you signed in and to send occasional guides. Unsubscribe any time. See our <Link className="text-link underline underline-offset-4 hover:text-mark" href="/privacy">privacy policy</Link>.</p>
+            <p className="mt-4 text-[14.5px] text-muted">We use your email to keep you signed in and to send occasional guides. Unsubscribe any time. See our <Link className="text-link underline underline-offset-4 hover:text-gold" href="/privacy">privacy policy</Link>.</p>
           </>
         ) : (
           <>
@@ -78,8 +78,8 @@ export default function SignIn({ onSignedIn, website = "", title = "Create your 
             </form>
             <p className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[14.5px] text-muted">
               <span>The email also has a one-click link.</span>
-              <button type="button" onClick={resend} disabled={busy} className="text-link underline underline-offset-4 hover:text-mark disabled:opacity-50">Send another code</button>
-              <button type="button" onClick={() => { setStep("email"); setError(""); setNote(""); setCode(""); }} className="text-link underline underline-offset-4 hover:text-mark">Use a different email</button>
+              <button type="button" onClick={resend} disabled={busy} className="text-link underline underline-offset-4 hover:text-gold disabled:opacity-50">Send another code</button>
+              <button type="button" onClick={() => { setStep("email"); setError(""); setNote(""); setCode(""); }} className="text-link underline underline-offset-4 hover:text-gold">Use a different email</button>
             </p>
           </>
         )}

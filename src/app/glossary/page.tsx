@@ -52,7 +52,7 @@ export default function Glossary() {
             {terms.map(([t, d, href]) => (
               <div key={t} id={slug(t)} className="card scroll-mt-28 p-7">
                 <dt className="font-[family-name:var(--font-display)] text-[22px] font-bold">{t}</dt>
-                <dd className="mt-3 text-[16.5px] text-[#cfd6ec]">{d}{href && <> <Link className="whitespace-nowrap text-link underline underline-offset-4 hover:text-mark" href={href}>Learn more</Link></>}</dd>
+                <dd className="mt-3 text-[16.5px] text-text">{d}{href && <> <Link className="whitespace-nowrap text-link underline underline-offset-4 hover:text-gold" href={href}>Learn more</Link></>}</dd>
               </div>
             ))}
           </dl>
