@@ -6,7 +6,7 @@ import { tools } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Free AI SEO Tools, No Signup",
-  description: "Free SEO tools with one account: a Google snippet preview, an AI SEO prompt builder, and an llms.txt generator. Email sign-up, no password.",
+  description: "Free SEO tools with no sign-up: a Google snippet preview, an AI SEO prompt builder, and an llms.txt generator. Everything runs in your browser.",
   path: "/tools",
 });
 
@@ -14,7 +14,7 @@ export default function Tools() {
   const crumbs = [{ name: "Free tools", href: "/tools" }];
   return (
     <>
-      <PageHero eyebrow="Free tools" crumbs={crumbs} title={<>Free SEO tools, <span className="hl">one account</span></>} lede="Small, fast tools for the jobs you do every week. They are free with an account, which takes one email and about twenty seconds." />
+      <PageHero eyebrow="Free tools" crumbs={crumbs} title={<>Free SEO tools, <span className="hl">no sign-up</span></>} lede="Small, fast tools for the jobs you do every week. Open one and start. What you type stays in your browser." />
       <section className="band">
         <div className="wrap grid gap-5 md:grid-cols-3">
           {tools.map((t) => (

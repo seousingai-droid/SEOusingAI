@@ -4,7 +4,7 @@ import Tool from "./Tool";
 
 export const metadata = pageMeta({
   title: "SERP Snippet Preview and Length Checker",
-  description: "Preview how your title tag and meta description look in Google. A free SERP snippet preview with live length checks. Free with an account.",
+  description: "Preview how your title tag and meta description look in Google. A free SERP snippet preview with live length checks. Free, no sign-up.",
   path: "/tools/serp-preview",
 });
 

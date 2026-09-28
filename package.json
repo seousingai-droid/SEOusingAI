@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "verify": "tsx scripts/verify-auth.ts",
     "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {

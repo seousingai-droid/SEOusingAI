@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import Nav, { type NavData } from "./Nav";
-import AccountMenu from "./AccountMenu";
 import { servicePages, MENU_GROUPS, shortPrice } from "@/lib/servicePages";
 import { landingPages } from "@/lib/landingPages";
 import { getGuides } from "@/lib/content";
@@ -36,7 +35,6 @@ export default function Header() {
         <Link href="/" aria-label="SEO Using AI home" className="shrink-0"><Logo /></Link>
         <Nav data={navData()} />
         <div className="flex items-center gap-3">
-          <div className="hidden lg:block"><AccountMenu /></div>
           <Link href="/book-a-call" className="btn btn-primary !hidden !py-2.5 !px-4 !text-[15px] sm:!inline-flex">Book a call</Link>
         </div>
       </div>

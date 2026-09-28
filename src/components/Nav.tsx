@@ -3,7 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import AccountMenu from "./AccountMenu";
 
 export type NavItem = { href: string; name: string; short?: string; price?: string };
 export type NavData = {
@@ -210,7 +209,6 @@ function Mobile({ data }: { data: NavData }) {
           </Section>
           <Link href="/pricing" className="block border-b border-line py-4 text-[17px] font-medium">Pricing</Link>
           <Link href="/about" className="block border-b border-line py-4 text-[17px] font-medium">About</Link>
-          <div className="mt-6"><AccountMenu variant="mobile" /></div>
           <Link href="/book-a-call" className="btn btn-primary mt-4 w-full">Book a free call</Link>
         </div>,
         document.body,

@@ -43,10 +43,6 @@ House rules for guides: question H2s, first sentence answers the heading, every 
 - Set a real mailbox for `hello@seousingai.com` or change `email` in `src/lib/site.ts`.
 - Turn on live booking: in Google Calendar choose Create, Appointment schedule, keep Google Meet as the location, save, click Share, copy the booking page link, and paste it into `bookingUrl` in `src/lib/site.ts`. Until then the page shows an email request instead.
 
-## Sign-up for the free tools
+## No accounts
 
-The three tools ask visitors to create a free account first. Only the interactive part is gated (`src/components/ToolGate.tsx`); the explanation and FAQ around it stay in the page, so the tool pages keep ranking.
-
-Sign-up is email plus a six-digit code, with no password and no database. Needs `AUTH_SECRET` and `RESEND_API_KEY` in Vercel. Resend's test sender only delivers to your own Resend inbox, so real visitors get codes once `MAIL_FROM` is on a domain verified in Resend. `npm run verify` runs 28 checks on the sign-in code.
-
-Set `LEAD_WEBHOOK_URL` to send every new sign-up to your email list.
+The site has no sign-in (removed 2026-09-28). The free tools are open to everyone and run in the browser. Every call to action leads to `/book-a-call`. The site needs no environment variables.
