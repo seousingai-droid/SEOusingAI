@@ -9,7 +9,7 @@ import { pageMeta } from "@/lib/meta";
 
 export const metadata = pageMeta({
   title: "SEO Tips: Short Videos, Full Guides",
-  description: "Short animated SEO tips from SEO Using AI, each with the full method written out: Search Console wins, cannibalization, titles, Maps and AI search.",
+  description: "Short animated SEO tips from SEO Using AI, each with the full method written out: Search Console wins, AI traffic in GA4, titles, Maps and AI search.",
   path: "/seo-tips",
 });
 

@@ -21,6 +21,75 @@ export type SeoTip = {
 
 export const seoTips: SeoTip[] = [
   {
+    slug: "track-ai-traffic-in-ga4",
+    level: "Advanced",
+    title: "How to track traffic from ChatGPT and AI search in GA4",
+    metaTitle: "Track ChatGPT and AI Traffic in GA4",
+    description: "See how many visitors ChatGPT, Perplexity, Gemini and Copilot send you: create a GA4 custom channel group for AI assistants and put it above Referral.",
+    answer: "GA4 files visits from ChatGPT, Perplexity, Gemini and other AI assistants under Referral or Unassigned, mixed in with everything else. To see them on their own, create a custom channel group with an AI assistants channel that matches those sources, and place it above Referral so it is checked first. Custom channel groups also apply to your past data.",
+    steps: [
+      { h: "Create a custom channel group", p: "In GA4, go to Admin, then Data display, then Channel groups, and click Create new channel group. Name it something like Channels with AI. It starts as a copy of the default channels, so everything else keeps working. Then click Add new channel and call it AI assistants." },
+      { h: "Match the AI sources with a regex", p: "Set the channel's condition to Source, matches regex, and paste .*(chatgpt|openai|perplexity|gemini|copilot|claude).* This catches chatgpt.com, perplexity.ai, gemini.google.com, copilot.microsoft.com and claude.ai. Add new names to the list as new AI tools appear." },
+      { h: "Move it above Referral and save", p: "GA4 checks channels from top to bottom, and a visit gets the first channel it matches. Drag AI assistants above Referral, then save. In Reports, open Acquisition, then Traffic acquisition, pick your new channel group from the dimension menu, and add Landing page as a secondary dimension to see which pages AI tools send people to." },
+    ],
+    why: "AI referrals are still a small share of most sites' traffic, but they are growing and easy to miss inside Referral. Seeing which pages AI tools send people to shows what they trust you for, so you can build more pages like them.",
+    mistakes: [
+      "Leaving the AI channel below Referral, so visits match Referral first",
+      "Looking for an AI channel in the default channel group, which cannot be edited",
+      "Expecting every AI visit to appear: when an app strips the referrer, the visit lands in Direct",
+      "Never updating the regex as new AI tools launch",
+    ],
+    faqs: [
+      { q: "Does ChatGPT traffic show up in Google Analytics?", a: "Yes. When someone clicks a link in ChatGPT, the visit usually arrives with chatgpt.com as the source. By default GA4 puts it in Referral, or Unassigned when the link carries a source tag but no medium, which is why a separate AI channel helps." },
+      { q: "Do custom channel groups change past data?", a: "Yes. Google applies custom channel groups to reports retroactively, so you also see AI visits from before you created the group. Audiences built on a channel group only change going forward." },
+    ],
+    transcript: [
+      "Is ChatGPT sending you customers? Find out in three steps.",
+      "One. In GA4, create a custom channel group called AI assistants.",
+      "Two. Set the source to match ChatGPT, Perplexity, Gemini, Copilot, and Claude.",
+      "Three. Drag it above Referral, so AI visits stop hiding there.",
+      "Now you can see which pages AI sends people to, and build more like them.",
+    ],
+    seconds: 24,
+    uploaded: "2026-09-29",
+    service: { href: "/services/ai-search-optimization", label: "AI Search Optimization" },
+  },
+  {
+    slug: "ai-content-without-spam",
+    level: "Advanced",
+    title: "How to use AI to write pages without breaking Google's spam rules",
+    metaTitle: "Use AI Content Without Google Spam Issues",
+    description: "Google allows AI content, not scaled content abuse. Feed AI your real facts, add proof only you have, and have a person fact-check every page.",
+    answer: "Google does not penalize pages for being written with AI. It acts against scaled content abuse: many pages made mainly to rank, with little value for readers, however they were produced. To stay clear, give the AI your real facts, add things only your business has, such as photos, customer stories and your own numbers, and have a person edit and fact-check every page before it goes live.",
+    steps: [
+      { h: "Feed the AI your real facts", p: "Start the prompt with your prices, services, past jobs, service areas and the questions customers really ask. A blank prompt like write a page about plumbing produces the same generic page anyone could publish. Specific inputs produce a page only you could publish." },
+      { h: "Add what only you have", p: "Add photos of real jobs, a short customer story shared with their permission, your own numbers such as jobs completed or typical timelines, and details about the areas you serve. This first-hand experience is what Google's guidance asks for, and it is what makes one page different from the next." },
+      { h: "A person edits and fact-checks every page", p: "Before a page goes live, a person checks every price, claim and date, cuts filler, and makes sure it answers the question better than what already ranks. Publish at a pace you can review properly, and if a page adds nothing new, don't publish it." },
+    ],
+    why: "Google rewards helpful content however it is made. Pages built on real facts and real experience are harder to copy, more useful to customers, and more likely to be trusted by Google and AI tools.",
+    mistakes: [
+      "A page for every city where only the city name changes",
+      "Publishing AI drafts without checking prices, claims and dates",
+      "Invented statistics, fake reviews or stock photos passed off as your work",
+      "Publishing hundreds of pages at once because it is cheap to do",
+    ],
+    faqs: [
+      { q: "Does Google penalize AI-generated content?", a: "Not for being AI-generated. Google says it rewards high-quality content however it is produced. Using automation mainly to manipulate rankings breaks its spam policies, and the same rule applies to content written by people." },
+      { q: "What is scaled content abuse?", a: "A Google spam policy, added in March 2024, against producing many pages mainly to manipulate search rankings rather than help people. It covers pages made with AI, by people, or both. Affected pages can rank lower or be removed from results." },
+      { q: "Are city pages allowed?", a: "Yes, when each one has something real for that area, such as jobs you did there, local prices or travel times. Near-identical pages that only swap the city name are what Google calls doorway pages." },
+    ],
+    transcript: [
+      "Writing pages with AI? Here's how to stay clear of Google's spam rules, in three steps.",
+      "One. Feed the AI your real facts: prices, past jobs, and local details.",
+      "Two. Add what only you have: real photos, a customer story, and your own numbers.",
+      "Three. A real person edits and fact-checks every page before it goes live.",
+      "Google judges the page, not the tool. Helpful beats mass-produced.",
+    ],
+    seconds: 25,
+    uploaded: "2026-09-29",
+    service: { href: "/services/ai-content-writing", label: "AI Content Writing" },
+  },
+  {
     slug: "refresh-decaying-content",
     level: "Advanced",
     title: "How to find and refresh pages that are losing traffic",
@@ -366,6 +435,8 @@ export const seoTips: SeoTip[] = [
 
 /** The rendered file for each tip, named after the episode in the video project. */
 export const tipVideo: Record<string, string> = {
+  "track-ai-traffic-in-ga4": "track-ai-traffic",
+  "ai-content-without-spam": "ai-pages-right",
   "refresh-decaying-content": "refresh-decay",
   "fix-index-bloat": "trim-the-bloat",
   "page-two-gold": "page-two-gold",
