@@ -17,7 +17,7 @@ export const landingPages: Landing[] = [
     metaTitle: "AI SEO Agency: AI Speed, Human Judgment",
     description: "SEO Using AI is an AI SEO agency for small and mid-sized businesses. AI does the volume work, a person checks everything, and you get a fixed price up front.",
     h1: "An AI SEO agency with a", h1Mark: "person checking everything",
-    lede: "AI does the heavy lifting so the work is fast and affordable. A real person reviews every deliverable so it is right.",
+    lede: "We are an AI SEO agency for small and mid-sized businesses: AI does the time-consuming SEO work, and a person checks every deliverable before it reaches you. Month to month, with every price published.",
     quickQ: "What is an AI SEO agency?",
     quickA: "An AI SEO agency is a search marketing company that uses AI tools to do the time-consuming parts of SEO, such as checking every page of a website, researching what customers search for, drafting content, and building reports, while people handle strategy, fact-checking, and client decisions. A good AI SEO agency also works on AI search, meaning it helps a business get mentioned by ChatGPT, Perplexity, and Google's AI answers, not only ranked on Google.",
     sections: [
@@ -55,7 +55,7 @@ export const landingPages: Landing[] = [
     metaTitle: "AI SEO for Small Business, Explained",
     description: "SEO using AI for small business, explained simply: what it is, five things to do first, what to skip, and when to get help. No jargon.",
     h1: "AI SEO for small business,", h1Mark: "without the jargon",
-    lede: "You do not need a marketing department. You need to show up when nearby customers search, and AI makes that affordable.",
+    lede: "We get small businesses found on Google search, Google Maps and AI answers like ChatGPT, using AI for the heavy lifting and a person to check every page. No marketing department needed.",
     quickQ: "What is AI SEO for small business?",
     quickA: "AI SEO for small business means using AI tools to do the search marketing work a small company could never afford to do by hand. AI can check your whole website, find the questions your customers type into Google, draft helpful pages, and write your monthly report. A person still needs to check the facts and add what is true about your business. The goal is simple: more calls, bookings, and sales from Google, Google Maps, and AI assistants.",
     sections: [
@@ -84,7 +84,7 @@ export const landingPages: Landing[] = [
     metaTitle: "AI SEO for B2B: Be the Vendor AI Recommends",
     description: "AI SEO for B2B companies: get found when buyers research on Google and ask AI tools for vendor shortlists. Comparison pages, proof, and clear answers.",
     h1: "AI SEO for B2B: be on the shortlist", h1Mark: "before sales hears about it",
-    lede: "B2B buyers research quietly, and more of them now start by asking an AI tool. We help you show up in both places.",
+    lede: "We help B2B companies make the shortlist: pages that rank on Google and get cited when buyers ask AI tools to compare vendors, with every claim checked by a person.",
     quickQ: "What is AI SEO for B2B?",
     quickA: "AI SEO for B2B is search optimization for companies that sell to other businesses, carried out with AI tools and aimed at both Google and AI assistants. B2B purchases involve long research, several decision makers, and detailed comparison. AI SEO for B2B focuses on the pages those buyers actually use: comparison pages, pricing explanations, integration and use-case pages, and clear answers that AI tools can quote when someone asks for a vendor shortlist.",
     sections: [

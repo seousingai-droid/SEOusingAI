@@ -322,7 +322,7 @@ export const servicePages: ServicePage[] = [
     doItems: [
       ["Find where visitors give up", "We review every page area, from the menu to the footer, for fonts, spacing, readability, and the elements that stop people from acting."],
       ["A clear message and next step", "Each page says what you offer, who it is for, why you, and what to do next, above the fold and again at the end."],
-      ["Mobile first, and fast", "Most visitors are on a phone. Pages are built for that screen first and tuned for Google's speed measurements."],
+      ["Mobile first, and fast", "For most local businesses, a large share of visitors arrive on a phone, so pages are built for that screen first and tuned for Google's Core Web Vitals."],
       ["Proof where it persuades", "Real reviews, results, and credentials placed next to the decision, not on a separate page."],
       ["Rankings protected", "Every old address is redirected, titles and content are carried over, and we monitor Search Console after launch."],
       ["Built on WordPress or Next.js", "Clean code you or any developer can maintain. No page builder bloat."],
@@ -336,7 +336,7 @@ export const servicePages: ServicePage[] = [
       { q: "Will a redesign hurt my Google rankings?", a: "It can, if addresses change without redirects or content is dropped. We keep every address or redirect it, carry over titles and content, and watch Search Console after launch, so rankings are protected." },
       { q: "How long does a website redesign take?", a: "A small business site usually takes a few weeks from the review to launch. Larger sites and online stores take longer. You get a schedule with the written scope." },
       { q: "Can you redesign my site on the platform it is on now?", a: "We build on WordPress and Next.js. If your site is on another platform, we can advise on the move or on conversion changes that platform allows." },
-      { q: "What is a good conversion rate for a small business website?", a: "It varies by industry, but many service websites turn two to five percent of visitors into enquiries. The useful comparison is your own rate before and after, which we measure." },
+      { q: "What is a good conversion rate for a small business website?", a: "It depends too much on the industry, the offer and where visitors come from for a single benchmark to be useful. The number that matters is your own rate before and after the redesign, so we set up tracking first and report both." },
     ],
     related: ["ai-seo-audit", "technical-seo", "local-seo"], guide: { href: "/services/ai-seo-audit", label: "the Website Checkup" },
   },
