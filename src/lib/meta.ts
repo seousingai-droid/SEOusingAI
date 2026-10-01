@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "./site";
+import { ogImagePath } from "./og";
 
 // One place that builds complete metadata, so no page can ship without a
 // canonical URL, Open Graph tags, and a Twitter card.
@@ -7,8 +8,11 @@ export function pageMeta({ title, description, path, absolute = false, type = "w
   title: string; description: string; path: string; absolute?: boolean; type?: "website" | "article"; image?: string; published?: string; modified?: string;
 }): Metadata {
   const full = absolute ? title : `${title} | ${site.name}`;
-  // Every page gets a share image: its own diagram if it has one, otherwise the brand card.
-  const img = image ? { url: image, width: 1600, height: 900 } : { url: "/opengraph-image", width: 1200, height: 630 };
+  // Every page gets a share card with its own title (src/lib/og.tsx). A case study can pass a
+  // real screenshot instead, because proof beats a title card.
+  const img = image
+    ? { url: image, width: 1600, height: 900, alt: full }
+    : { url: ogImagePath(path), width: 1200, height: 630, alt: full, type: "image/png" };
   return {
     title: absolute ? { absolute: title } : title,
     description,
@@ -18,6 +22,6 @@ export function pageMeta({ title, description, path, absolute = false, type = "w
       images: [img],
       ...(type === "article" ? { publishedTime: published, modifiedTime: modified } : {}),
     },
-    twitter: { card: "summary_large_image", title: full, description, images: [img.url] },
+    twitter: { card: "summary_large_image", title: full, description, images: [{ url: img.url, alt: full }] },
   };
 }
