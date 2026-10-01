@@ -9,21 +9,22 @@ import { bundles, tools } from "@/lib/site";
 // The menu is built from the same data as the pages, so a new service or
 // price change appears in the menu without touching this file.
 function navData(): NavData {
-  const featured = ["how-to-use-ai-for-seo", "ai-seo-strategies", "best-ai-seo-tools", "generative-engine-optimization"];
-  const guides = getGuides();
+  // Guides shown in the menu, with their menu labels written out.
+  const featured: { slug: string; name: string; short?: string }[] = [
+    { slug: "how-to-use-ai-for-seo", name: "How to Use AI for SEO", short: "Start here" },
+    { slug: "ai-seo-strategies", name: "AI SEO Strategies" },
+    { slug: "best-ai-seo-tools", name: "Best AI SEO Tools" },
+    { slug: "generative-engine-optimization", name: "Generative Engine Optimization", short: "GEO" },
+  ];
+  const guides = new Set(getGuides().map((g) => g.slug));
   return {
     bundles: bundles.map((b) => ({ href: b.href, name: b.name, short: b.short, price: `${b.price}/mo` })),
     services: MENU_GROUPS.map((group) => ({
       group,
       items: servicePages.filter((s) => s.group === group).map((s) => ({ href: `/services/${s.slug}`, name: s.name, short: s.short, price: shortPrice(s) })),
     })),
-    audiences: landingPages.map((l) => ({ href: `/${l.slug}`, name: l.nav.replace(/^AI SEO for /, "For ").replace(/^AI SEO agency$/, "How our agency works"), short: l.lede.split(". ")[0].replace(/\.$/, "") })),
-    guides: featured.map((slug) => guides.find((g) => g.slug === slug)).filter(Boolean).map((g) => {
-      const name = g!.title.split(":")[0];
-      // A subtitle that repeats the title ("AI SEO Strategies / Strategies") says nothing, so drop it.
-      const first = g!.eyebrow.split(" ")[0].toLowerCase().replace(/s$/, "");
-      return { href: `/guides/${g!.slug}`, name, short: name.toLowerCase().includes(first) ? undefined : g!.eyebrow };
-    }),
+    audiences: landingPages.map((l) => ({ href: `/${l.slug}`, name: l.menu.name, short: l.menu.short })),
+    guides: featured.filter((g) => guides.has(g.slug)).map((g) => ({ href: `/guides/${g.slug}`, name: g.name, short: g.short })),
     tools: tools.map((t) => ({ href: `/tools/${t.slug}`, name: t.name })),
   };
 }

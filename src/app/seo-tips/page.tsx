@@ -43,7 +43,7 @@ export default function SeoTips() {
                         </div>
                         <div className="flex flex-1 flex-col p-6">
                           <h2 className="text-[19px] font-bold leading-snug group-hover:text-gold">{t.title}</h2>
-                          <p className="mt-2 text-[14.5px] text-muted">{t.description.split(". ")[0]}.</p>
+                          <p className="mt-2 text-[14.5px] text-muted">{t.description}</p>
                         </div>
                       </Link>
                     </Reveal>

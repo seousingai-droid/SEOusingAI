@@ -13,7 +13,7 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import GuideCard from "@/components/GuideCard";
 import { bundles, site, abs, tools } from "@/lib/site";
 import { seoTips, posterSrc } from "@/lib/seoTips";
-import { servicePages } from "@/lib/servicePages";
+import { servicePages, priceSpec } from "@/lib/servicePages";
 import { pageMeta } from "@/lib/meta";
 
 export const metadata = pageMeta({
@@ -318,7 +318,7 @@ export default function Home() {
             name: b.name,
             description: b.plain,
             url: abs(b.href),
-            priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", description: `${b.price} ${b.unit}` },
+            priceSpecification: priceSpec(b.price, b.unit),
           })),
         }}
       />

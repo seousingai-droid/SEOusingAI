@@ -410,3 +410,26 @@ export const servicePages: ServicePage[] = [
 export const shortPrice = (s: Pick<ServicePage, "price" | "unit">) => (s.unit === "per month" ? `${s.price}/mo` : s.price);
 
 export const getServicePage = (slug: string) => servicePages.find((s) => s.slug === slug);
+
+/**
+ * Prices are written for people ("$290", "from $1,490"). This reads them for schema.org,
+ * and stops the build on any other format, so a typo can never reach Google as a wrong price.
+ * A "from" price is a starting price, so it is marked as a minimum rather than an exact price.
+ */
+const PRICE = /^(from )?\$(\d{1,3}(?:,\d{3})*)$/;
+export function priceAmount(price: string) {
+  const m = PRICE.exec(price);
+  if (!m) throw new Error(`Unexpected price format: "${price}". Use "$290" or "from $1,490".`);
+  return m[2].replace(/,/g, "");
+}
+export function priceSpec(price: string, unit: string) {
+  const amount = priceAmount(price);
+  const from = price.startsWith("from ");
+  return {
+    "@type": "UnitPriceSpecification",
+    priceCurrency: "USD",
+    ...(from ? { minPrice: amount } : { price: amount }),
+    ...(unit === "per month" ? { unitText: "MONTH" } : {}),
+    description: `${price} ${unit}`,
+  };
+}

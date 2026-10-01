@@ -1,5 +1,7 @@
 export type Landing = {
   slug: string; nav: string; eyebrow: string; metaTitle: string; description: string;
+  /** How the page appears in the "Who we help" menu. */
+  menu: { name: string; short: string };
   h1: string; h1Mark: string; lede: string;
   quickQ: string; quickA: string;
   sections: { h: string; p: string[]; list?: string[]; ordered?: boolean }[];
@@ -11,6 +13,7 @@ export type Landing = {
 export const landingPages: Landing[] = [
   {
     slug: "ai-seo-agency", nav: "AI SEO agency", eyebrow: "AI SEO agency",
+    menu: { name: "How our agency works", short: "AI does the heavy lifting so the work is fast and affordable" },
     metaTitle: "AI SEO Agency: AI Speed, Human Judgment",
     description: "SEO Using AI is an AI SEO agency for small and mid-sized businesses. AI does the volume work, a person checks everything, and you get a fixed price up front.",
     h1: "An AI SEO agency with a", h1Mark: "person checking everything",
@@ -48,6 +51,7 @@ export const landingPages: Landing[] = [
   },
   {
     slug: "ai-seo-for-small-business", nav: "AI SEO for small business", eyebrow: "For small businesses",
+    menu: { name: "For small business", short: "You do not need a marketing department" },
     metaTitle: "AI SEO for Small Business, Explained",
     description: "SEO using AI for small business, explained simply: what it is, five things to do first, what to skip, and when to get help. No jargon.",
     h1: "AI SEO for small business,", h1Mark: "without the jargon",
@@ -76,6 +80,7 @@ export const landingPages: Landing[] = [
   },
   {
     slug: "ai-seo-for-b2b", nav: "AI SEO for B2B", eyebrow: "For B2B companies",
+    menu: { name: "For B2B", short: "B2B buyers research quietly, and more now start with AI" },
     metaTitle: "AI SEO for B2B: Be the Vendor AI Recommends",
     description: "AI SEO for B2B companies: get found when buyers research on Google and ask AI tools for vendor shortlists. Comparison pages, proof, and clear answers.",
     h1: "AI SEO for B2B: be on the shortlist", h1Mark: "before sales hears about it",

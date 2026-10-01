@@ -6,7 +6,7 @@ import Reveal from "@/components/Reveal";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { ScanArt, FixArt, WriteArt, LinksArt, MapPin, ChatRecommend, GapArt, SocialArt, AutomationArt, RedesignArt } from "@/components/Illustrations";
-import { servicePages, getServicePage } from "@/lib/servicePages";
+import { servicePages, getServicePage, priceAmount, priceSpec } from "@/lib/servicePages";
 import { site, abs } from "@/lib/site";
 import { pageMeta } from "@/lib/meta";
 
@@ -109,7 +109,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
 
       <section className="band band-line">
         <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <Reveal><p className="eyebrow">FAQ</p><h2 className="h-lg mt-5">Questions about {s.name.toLowerCase().replace(/\bai\b/g, "AI").replace(/\bseo\b/g, "SEO").replace(/\bpr\b/g, "PR")}</h2><p className="mt-6 text-muted">Want to learn the method yourself? Read <Link className="text-link underline underline-offset-4 hover:text-gold" href={s.guide.href}>{s.guide.label}</Link>.</p></Reveal>
+          <Reveal><p className="eyebrow">FAQ</p><h2 className="h-lg mt-5">Questions about {s.name}</h2><p className="mt-6 text-muted">Want to learn the method yourself? Read <Link className="text-link underline underline-offset-4 hover:text-gold" href={s.guide.href}>{s.guide.label}</Link>.</p></Reveal>
           <Reveal delay={100}><Faq items={s.faqs} /></Reveal>
         </div>
       </section>
@@ -128,7 +128,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       </section>
 
       <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: s.name, serviceType: s.name, description: s.description, url: abs(`/services/${s.slug}`), provider: { "@id": abs("/#org") }, areaServed: { "@type": "Country", name: "United States" },
-        offers: { "@type": "Offer", priceCurrency: "USD", price: s.price.replace(/[^0-9.]/g, ""), priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "USD", price: s.price.replace(/[^0-9.]/g, ""), ...(s.unit === "per month" ? { unitText: "MONTH" } : {}), description: `${s.price} ${s.unit}` }, url: abs(`/services/${s.slug}`) } }} />
+        offers: { "@type": "Offer", priceCurrency: "USD", price: priceAmount(s.price), priceSpecification: priceSpec(s.price, s.unit), url: abs(`/services/${s.slug}`) } }} />
       <JsonLd data={crumbLd(crumbs)} />
       <JsonLd data={faqLd(s.faqs)} />
     </>

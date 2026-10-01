@@ -5,7 +5,7 @@ import Bundles from "@/components/Bundles";
 import Faq, { faqLd } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { abs } from "@/lib/site";
-import { servicePages, MENU_GROUPS } from "@/lib/servicePages";
+import { servicePages, MENU_GROUPS, priceSpec } from "@/lib/servicePages";
 
 export const metadata = pageMeta({
   title: "Services: SEO, Maps, AI Search and Social",
@@ -77,7 +77,7 @@ export default function Services() {
         </div></div>
       </section>
 
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: "AI SEO services", serviceType: "Search engine optimization", url: abs("/services"), provider: { "@id": abs("/#org") }, areaServed: { "@type": "Country", name: "United States" }, description: "Done-for-you SEO using AI: Google search, Google Maps, AI search, websites, social media and AI reels, with a person reviewing every deliverable.", hasOfferCatalog: { "@type": "OfferCatalog", name: "SEO Using AI services", itemListElement: servicePages.map((sp) => ({ "@type": "Offer", url: abs(`/services/${sp.slug}`), itemOffered: { "@type": "Service", name: sp.name, description: sp.lede }, priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", description: `${sp.price} ${sp.unit}` } })) } }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: "AI SEO services", serviceType: "Search engine optimization", url: abs("/services"), provider: { "@id": abs("/#org") }, areaServed: { "@type": "Country", name: "United States" }, description: "Done-for-you SEO using AI: Google search, Google Maps, AI search, websites, social media and AI reels, with a person reviewing every deliverable.", hasOfferCatalog: { "@type": "OfferCatalog", name: "SEO Using AI services", itemListElement: servicePages.map((sp) => ({ "@type": "Offer", url: abs(`/services/${sp.slug}`), itemOffered: { "@type": "Service", name: sp.name, description: sp.lede }, priceSpecification: priceSpec(sp.price, sp.unit) })) } }} />
       <JsonLd data={crumbLd(crumbs)} />
       <JsonLd data={faqLd(faqs)} />
     </>
