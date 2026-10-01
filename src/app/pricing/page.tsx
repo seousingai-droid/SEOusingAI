@@ -15,7 +15,13 @@ export const metadata = pageMeta({
   absolute: true,
 });
 
+// The answer to "how much does SEO cost?", built from the price list so it never disagrees with it.
+const price = (id: string) => offers.find((o) => o.id === id)!.price;
+const managed = bundles.find((b) => b.id === "managed")!.price;
+const costAnswer = `With SEO Using AI, SEO for a small business costs ${price("checkup")} for a one-time website checkup, ${price("local")} a month for local SEO on Google Maps, ${price("grow")} a month for new content and links, or ${managed} a month for the managed plan, where we run your website and your SEO. The price depends on how many pages and locations you have, how competitive your searches are, and how much new content you need. Every monthly plan is month to month.`;
+
 const faqs = [
+  { q: "How much does SEO cost for a small business?", a: costAnswer },
   { q: "What is the difference between a bundle and a single service?", a: "A bundle is ongoing: one monthly price and we run the whole thing, website and SEO or social media and reels. A single service is one job, like a website checkup or a redesign, quoted and paid once or monthly." },
   { q: "Why are these prices a range?", a: "Because a five-page local site and a 500-product shop need very different work. The range tells you whether we are in your budget. After a free call you get one fixed price in writing, and it does not move." },
   { q: "Do I have to sign a contract?", a: "No. Monthly work is month to month and you can stop whenever you like. One-off work is quoted and paid once." },
@@ -31,7 +37,17 @@ export default function Pricing() {
     <>
       <PageHero eyebrow="Pricing" crumbs={crumbs}
         title={<>SEO prices, <span className="hl">up front</span></>}
-        lede="Two monthly bundles where we handle everything, or one service when you need one thing. You get a fixed quote in writing before any work starts." />
+        lede={`Single services from ${price("checkup")}, local SEO ${price("local")} a month, and the managed website and SEO plan ${managed} a month. You get a fixed quote in writing before any work starts.`} />
+
+      <section className="band !pb-0">
+        <div className="wrap">
+          <div className="card max-w-[72ch] border-l-2 !border-l-mark p-7">
+            <p className="eyebrow">Quick answer</p>
+            <h2 className="mt-3 text-[24px] font-bold">How much does SEO cost for a small business?</h2>
+            <p className="mt-3 text-[18px] leading-relaxed">{costAnswer}</p>
+          </div>
+        </div>
+      </section>
 
       <section id="bundles" className="band scroll-mt-20">
         <div className="wrap">

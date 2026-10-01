@@ -47,8 +47,8 @@ while (queue.length) {
 
   // Visible text problems: leftovers from code and doubled punctuation.
   const body = root.querySelector("main") || root.querySelector("body");
-  const text = body ? body.text : "";
-  for (const [re, label] of [[/\bundefined\b/, '"undefined"'], [/\bNaN\b/, '"NaN"'], [/\[object Object\]/, "[object Object]"], [/[a-z]\.\.(?!\.)/i, 'double period ".."'], [/\bTODO\b|lorem ipsum/i, "placeholder text"]]) {
+  const text = body ? body.structuredText : "";
+  for (const [re, label] of [[/\bundefined\b/, '"undefined"'], [/\bNaN\b/, '"NaN"'], [/\[object Object\]/, "[object Object]"], [/[a-z]\.\.(?!\.)/i, 'double period ".."'], [/\bTODO\b|lorem ipsum/i, "placeholder text"], [/\b([a-z]{2,}) \1\b/i, "repeated word"]]) {
     const m = text.match(re);
     if (m) flag(path, `${label} near "${text.slice(Math.max(0, m.index - 40), m.index + 10).replace(/\s+/g, " ")}"`);
   }

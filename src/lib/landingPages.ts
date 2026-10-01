@@ -107,5 +107,58 @@ export const landingPages: Landing[] = [
       { q: "How do you measure B2B SEO results?", a: "We measure qualified enquiries and pipeline influenced by organic search where your tracking allows it, plus rankings for decision-stage searches and monthly mentions in AI tools for a fixed list of buyer questions." },
     ],
   },
+  {
+    slug: "seo-for-hvac-companies", nav: "SEO for HVAC companies", eyebrow: "For HVAC companies",
+    menu: { name: "For HVAC companies", short: "More calls from Google Maps and AI answers" },
+    metaTitle: "SEO for HVAC Companies: Get More Calls",
+    description: "SEO for HVAC companies: get into the Google Maps 3-pack, give every service its own page, cover your service area, and get ready before peak season.",
+    h1: "SEO for HVAC companies:", h1Mark: "more calls, every season",
+    lede: "HVAC companies get more calls from Google by winning the map results, giving every service its own page, and having seasonal pages live before demand peaks. We do that work for heating and air-conditioning companies; our lead SEO has run SEO for an air-conditioning and electrical contractor since 2021.",
+    quickQ: "What does SEO for an HVAC company involve?",
+    quickA: "SEO for an HVAC company means showing up when someone nearby searches for AC repair, furnace installation or a new heat pump: on Google Maps, in the search results and in AI answers. In practice it is five jobs: a complete Google Business Profile, one page for each service you sell, pages for the areas you cover, a steady flow of genuine reviews, and seasonal pages that are live before summer and winter demand arrives.",
+    sections: [
+      { h: "How do HVAC companies get into the Google Maps 3-pack?", p: [
+        "Google ranks map results on three things: relevance, distance and prominence. You cannot move closer to every searcher, but you control relevance and prominence through your Google Business Profile and your reviews.",
+        "Choose the most specific primary category for the work you most want, such as HVAC contractor, then add secondary categories that match services you really offer, such as air conditioning repair or furnace repair. Fill in every service, your service area, hours and holiday hours, and add photos of real jobs and your vans. If customers never visit your address, set the profile up as a service-area business and hide the address, as Google's guidelines ask.",
+      ] },
+      { h: "Should an HVAC company have a separate page for each service?", p: [
+        "Yes. Someone searching for heat pump installation wants a page about heat pump installation, not a homepage that lists twelve services. Give each service you want more of its own page: what it includes, the brands you work on, typical prices or how pricing works, how fast you can come out, and how to book.",
+        "The homepage's first screen should say what you do and where in one line, such as heating and air conditioning repair in your city, with a tap-to-call button and two or three genuine reviews beside it.",
+      ] },
+      { h: "How do you rank in several cities without a storefront in each?", p: [
+        "Map results depend heavily on distance from your business, so towns further out are usually won with your website. Create a page for each main area you serve, but only when you can make each one genuinely different: jobs you have done there, the neighborhoods you cover, common local problems, and how quickly you can get there.",
+        "Pages that only swap the city name are what Google calls doorway pages, and they can drag the whole site down. Five real area pages beat fifty copies.",
+      ] },
+      { h: "How do you prepare for summer and winter search peaks?", p: [
+        "Air-conditioning searches climb with the first heat wave and furnace searches with the first cold snap. New pages often take weeks or months to settle in Google, so publish and refresh seasonal pages a couple of months before each season, not during it.",
+      ], list: [
+        "Before summer: AC repair, AC tune-up and new AC installation pages.",
+        "Before winter: furnace repair, heat pump and maintenance plan pages.",
+        "As each season starts: seasonal offers and fresh job photos on your Google Business Profile.",
+      ] },
+      { h: "How do HVAC companies get more Google reviews?", p: [
+        "Ask every happy customer right after the job, with a direct link to your review form sent by text. Technicians are the best people to ask, because the customer has just met them and the job is fresh.",
+        "Reply to every review, good or bad. Never offer discounts or gifts in exchange: Google's policies ban incentivized reviews, and it can remove them.",
+      ] },
+    ],
+    table: { caption: "What we check first on an HVAC website", head: ["What we check", "Why it matters for calls"], rows: [
+      ["Business Profile categories and services", "They decide which map searches you can appear in"],
+      ["One page per service", "Google and AI tools match each search to a specific page"],
+      ["Tap-to-call button on phones", "Someone with a broken AC wants to call, not fill in a form"],
+      ["Area pages with real local detail", "They win searches outside your map radius"],
+      ["Review requests after every job", "Reviews feed map prominence and the decision to call"],
+      ["Seasonal pages published early", "Pages need time to rank before demand peaks"],
+    ] },
+    services: ["local-seo", "managed-website-seo", "ai-seo-audit", "ai-content-writing"],
+    faqs: [
+      { q: "How much does SEO cost for an HVAC company?", a: "With us, local SEO starts at $390 a month and the managed website and SEO plan at $990 a month, both month to month. A one-time website checkup is $290. Every price is on our pricing page." },
+      { q: "How long does SEO take for an HVAC company?", a: "Business Profile fixes can show within weeks. New service and area pages usually take a few months to settle in Google, which is why seasonal pages go up early." },
+      { q: "Do HVAC companies need Local Services Ads as well as SEO?", a: "They do different jobs. Local Services Ads are paid listings at the top of some searches, charged per lead. SEO earns the map and search results you do not pay for per click, and it keeps working when you pause ads." },
+      { q: "Should an HVAC company put prices on its website?", a: "Starting prices or ranges help: they answer what people search for and filter out calls that were never a fit. If every job is quoted, explain what affects the price and offer a free estimate." },
+      { q: "How do HVAC companies show up in ChatGPT and other AI answers?", a: "AI tools recommend businesses they can find and trust: service pages that answer questions directly, business details that match everywhere, and mentions on review sites and local directories. The work that helps on Google helps here too." },
+      { q: "Is blogging worth it for an HVAC company?", a: "Only when posts answer real customer questions, such as why an AC unit freezes up or when to replace a furnace. A few useful answers beat a weekly post that says nothing." },
+      { q: "What schema markup should an HVAC website use?", a: "The HVACBusiness type from schema.org, with your name, phone, service area and opening hours matching your Google Business Profile, plus Service markup on each service page." },
+    ],
+  },
 ];
 export const getLanding = (slug: string) => landingPages.find((l) => l.slug === slug)!;
