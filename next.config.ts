@@ -1,22 +1,14 @@
 import type { NextConfig } from "next";
 
+// The site is exported as static files and served by Cloudflare Pages.
+// Redirects and headers live in public/_redirects and public/_headers (Cloudflare reads
+// those); the contact form runs as a Cloudflare Pages Function in functions/api/contact.ts.
 const nextConfig: NextConfig = {
+  output: "export",
   poweredByHeader: false,
   trailingSlash: false,
-  async redirects() {
-    return [
-      { source: "/:path*", has: [{ type: "host", value: "se-ousing-ai.vercel.app" }], destination: "https://seousingai.com/:path*", permanent: true },
-      // The affiliate disclosure was retired: there are no affiliate links on the site.
-      { source: "/affiliate-disclosure", destination: "/about", permanent: true },
-    ];
-  },
-  async headers() {
-    return [{ source: "/(.*)", headers: [
-      { key: "X-Content-Type-Options", value: "nosniff" },
-      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-      { key: "X-Frame-Options", value: "SAMEORIGIN" },
-    ] }];
-  },
+  // Images are already sized and compressed at build time; there is no image server.
+  images: { unoptimized: true },
 };
 
 export default nextConfig;

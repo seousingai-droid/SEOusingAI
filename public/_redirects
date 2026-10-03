@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects (https://developers.cloudflare.com/pages/configuration/redirects/)
+# The affiliate disclosure was retired: there are no affiliate links on the site.
+/affiliate-disclosure  /about  301

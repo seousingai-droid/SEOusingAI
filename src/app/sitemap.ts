@@ -6,6 +6,8 @@ import { landingPages } from "@/lib/landingPages";
 import { getCaseStudies } from "@/lib/caseStudies";
 import { seoTips } from "@/lib/seoTips";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const guides = getGuides(); const studies = getCaseStudies();
   const latest = guides.map((g) => g.updated).sort().at(-1)!;

@@ -1,15 +1,19 @@
-// Contact form: validates the message, filters obvious bots, and emails it to us
-// through Resend with Reply-To set to the sender, so a reply goes straight back to them.
-// Needs RESEND_API_KEY and CONTACT_TO in Vercel. MAIL_FROM is optional until the
-// domain is verified in Resend (until then Resend's test sender is used, which can
-// only deliver to the Resend account's own address).
-import { NextResponse } from "next/server";
-import { NEEDS, BUDGETS } from "@/lib/contact";
+// Contact form, as a Cloudflare Pages Function (POST /api/contact): validates the message,
+// filters obvious bots, and emails it to us through Resend with Reply-To set to the sender,
+// so a reply goes straight back to them.
+// Needs RESEND_API_KEY and CONTACT_TO in the Cloudflare Pages project settings (Settings →
+// Variables and Secrets). MAIL_FROM is optional until the domain is verified in Resend
+// (until then Resend's test sender is used, which can only deliver to the Resend account's
+// own address).
+import { NEEDS, BUDGETS } from "../../src/lib/contact";
 
-export const runtime = "nodejs";
+type Env = { RESEND_API_KEY?: string; CONTACT_TO?: string; MAIL_FROM?: string };
+type Context = { request: Request; env: Env };
 
+const json = (data: unknown, status = 200) =>
+  new Response(JSON.stringify(data), { status, headers: { "Content-Type": "application/json" } });
 
-// Five messages per address per 10 minutes. Per server instance, which is enough to stop a script.
+// Five messages per address per 10 minutes. Per Worker instance, which is enough to stop a script.
 const hits = new Map<string, number[]>();
 function limited(ip: string) {
   const now = Date.now();
@@ -22,16 +26,16 @@ function limited(ip: string) {
 const clean = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 
-export async function POST(req: Request) {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (limited(ip)) return NextResponse.json({ error: "Too many messages. Please try again in a few minutes." }, { status: 429 });
+export async function onRequestPost({ request, env }: Context) {
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (limited(ip)) return json({ error: "Too many messages. Please try again in a few minutes." }, 429);
 
   let body: Record<string, unknown>;
-  try { body = await req.json(); } catch { return NextResponse.json({ error: "Bad request." }, { status: 400 }); }
+  try { body = await request.json(); } catch { return json({ error: "Bad request." }, 400); }
 
   // Bots fill the hidden field or submit instantly. Pretend it worked so they move on.
   const started = Number(body.started) || 0;
-  if (clean(body.company_url, 200) || (started && Date.now() - started < 2500)) return NextResponse.json({ ok: true });
+  if (clean(body.company_url, 200) || (started && Date.now() - started < 2500)) return json({ ok: true });
 
   const name = clean(body.name, 100);
   const email = clean(body.email, 200);
@@ -40,14 +44,14 @@ export async function POST(req: Request) {
   const budget = (BUDGETS as readonly string[]).includes(String(body.budget)) ? String(body.budget) : "Not sure yet";
   const message = clean(body.message, 5000);
 
-  if (!name) return NextResponse.json({ error: "Please add your name.", field: "name" }, { status: 400 });
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return NextResponse.json({ error: "Please check your email address.", field: "email" }, { status: 400 });
-  if (message.length < 10) return NextResponse.json({ error: "Please tell us a little more (at least 10 characters).", field: "message" }, { status: 400 });
+  if (!name) return json({ error: "Please add your name.", field: "name" }, 400);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return json({ error: "Please check your email address.", field: "email" }, 400);
+  if (message.length < 10) return json({ error: "Please tell us a little more (at least 10 characters).", field: "message" }, 400);
 
-  const key = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO;
-  if (!key || !to) return NextResponse.json({ error: "setup" }, { status: 503 });
-  const from = process.env.MAIL_FROM || "SEO Using AI <onboarding@resend.dev>";
+  const key = env.RESEND_API_KEY;
+  const to = env.CONTACT_TO;
+  if (!key || !to) return json({ error: "setup" }, 503);
+  const from = env.MAIL_FROM || "SEO Using AI <onboarding@resend.dev>";
 
   const rows: [string, string][] = [["Name", name], ["Email", email], ["Website", website || "(not given)"], ["Needs", need], ["Budget", budget]];
   const text = `${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\n${message}\n\nSent from seousingai.com/contact`;
@@ -60,8 +64,7 @@ export async function POST(req: Request) {
   });
   if (!res.ok) {
     console.error("contact: resend failed", res.status, await res.text().catch(() => ""));
-    return NextResponse.json({ error: "send" }, { status: 502 });
+    return json({ error: "send" }, 502);
   }
-  return NextResponse.json({ ok: true });
+  return json({ ok: true });
 }
-

@@ -1,6 +1,6 @@
 // Share cards: the picture Facebook, LinkedIn, X, WhatsApp and iMessage show when someone
 // posts a link. Every page gets its own card with its own title, built from the same data as
-// the page, and rendered once at build time (src/app/og/[...key]/route.tsx).
+// the page, and rendered once at build time as /og/<page>.png (src/app/og/[...key]/route.tsx).
 import fs from "node:fs";
 import path from "node:path";
 import { ImageResponse } from "next/og";
@@ -53,7 +53,7 @@ export function ogCards(): OgCard[] {
 /** The card URL for a page path, or the home card when a page has none of its own. */
 export function ogImagePath(pagePath: string) {
   const key = pagePath.replace(/^\/|\/$/g, "") || "home";
-  return `/og/${ogCards().some((c) => c.key === key) ? key : "home"}`;
+  return `/og/${ogCards().some((c) => c.key === key) ? key : "home"}.png`;
 }
 
 const font = (file: string) => fs.readFileSync(path.join(process.cwd(), "src/lib/og-fonts", file));

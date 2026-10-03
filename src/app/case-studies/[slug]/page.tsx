@@ -11,9 +11,15 @@ import { abs } from "@/lib/site";
 import { formatDate } from "@/lib/content";
 
 export const dynamicParams = false;
-export const generateStaticParams = () => getCaseStudies().map((c) => ({ slug: c.slug }));
+// A static export needs at least one page here. Until the first real study is published, a
+// placeholder renders the not-found page with noindex; nothing links to it.
+const PLACEHOLDER = "coming-soon";
+export const generateStaticParams = () => {
+  const slugs = getCaseStudies().map((c) => ({ slug: c.slug }));
+  return slugs.length ? slugs : [{ slug: PLACEHOLDER }];
+};
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const c = getCaseStudy((await params).slug); if (!c) return {};
+  const c = getCaseStudy((await params).slug); if (!c) return { robots: { index: false, follow: true } };
   return pageMeta({ title: `${c.headline} | Case Study`, description: c.summary, path: `/case-studies/${c.slug}`, absolute: true, type: "article", image: c.screenshots[0]?.file, published: c.published, modified: c.published });
 }
 
