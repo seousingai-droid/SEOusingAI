@@ -1,14 +1,13 @@
-// Contact form, as a Cloudflare Pages Function (POST /api/contact): validates the message,
+// Contact form (POST /api/contact), run by the Worker in worker/index.ts: validates the message,
 // filters obvious bots, and emails it to us through Resend with Reply-To set to the sender,
 // so a reply goes straight back to them.
-// Needs RESEND_API_KEY and CONTACT_TO in the Cloudflare Pages project settings (Settings →
+// Needs RESEND_API_KEY and CONTACT_TO as secrets on the Cloudflare Worker (Settings →
 // Variables and Secrets). MAIL_FROM is optional until the domain is verified in Resend
 // (until then Resend's test sender is used, which can only deliver to the Resend account's
 // own address).
-import { NEEDS, BUDGETS } from "../../src/lib/contact";
+import { NEEDS, BUDGETS } from "../src/lib/contact";
 
-type Env = { RESEND_API_KEY?: string; CONTACT_TO?: string; MAIL_FROM?: string };
-type Context = { request: Request; env: Env };
+export type ContactEnv = { RESEND_API_KEY?: string; CONTACT_TO?: string; MAIL_FROM?: string };
 
 const json = (data: unknown, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: { "Content-Type": "application/json" } });
@@ -26,7 +25,7 @@ function limited(ip: string) {
 const clean = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 
-export async function onRequestPost({ request, env }: Context) {
+export async function handleContact(request: Request, env: ContactEnv) {
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
   if (limited(ip)) return json({ error: "Too many messages. Please try again in a few minutes." }, 429);
 

@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
-// The site is exported as static files and served by Cloudflare Pages.
-// Redirects and headers live in public/_redirects and public/_headers (Cloudflare reads
-// those); the contact form runs as a Cloudflare Pages Function in functions/api/contact.ts.
+// The site is exported as static files (out/) and served by a Cloudflare Worker with static
+// assets (wrangler.jsonc). Redirects and headers live in public/_redirects and public/_headers;
+// the contact form runs in the Worker (worker/contact.ts).
 const nextConfig: NextConfig = {
   output: "export",
   poweredByHeader: false,

@@ -1,0 +1,14 @@
+// Cloudflare Workers config. Build: `npm run build` (static export to out/), deploy: `npx wrangler deploy`.
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "seousingai",
+  "main": "worker/index.ts",
+  "compatibility_date": "2025-07-18",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "observability": { "enabled": true }
+}
