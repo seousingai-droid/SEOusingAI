@@ -1,0 +1,7 @@
+// Demo HVAC template, served as static files. Build: `npm run build`, deploy: `npx wrangler deploy`.
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "hvac-demo",
+  "compatibility_date": "2025-07-18",
+  "assets": { "directory": "./out", "not_found_handling": "404-page" }
+}

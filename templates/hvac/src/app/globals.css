@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* Copperline: copper line sets and cool supply air. Five colors, nothing else. */
+@theme inline {
+  --color-ink: #15191c;
+  --color-paper: #f5f7f6;
+  --color-frost: #dff0ed;
+  --color-copper: #b4582a;
+  --color-copper-deep: #8c4220;
+  --color-coolant: #1b6670;
+  --color-line: #d7dedb;
+  --color-muted: #55626a;
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-public);
+  --font-mono: var(--font-plex);
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 6rem; }
+  body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--color-frost); }
+  :focus-visible { outline: 3px solid var(--color-coolant); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@layer components {
+  .wrap { width: 100%; max-width: 76rem; margin-inline: auto; padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .wrap { padding-inline: 2rem; } }
+
+  /* Display type: wide, heavy, like the lettering on an equipment nameplate. */
+  .display { font-family: var(--font-display); font-weight: 800; font-stretch: 118%; letter-spacing: -0.015em; line-height: 1.02; }
+  .h-xl { font-size: clamp(2.4rem, 5.6vw, 4.6rem); }
+  .h-lg { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
+  .h-md { font-size: clamp(1.35rem, 2.2vw, 1.7rem); }
+  .label { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 3rem; padding: 0 1.4rem; border-radius: 0.6rem; font-weight: 700; font-size: 1rem; transition: background-color .15s, color .15s, border-color .15s, transform .15s; }
+  .btn:active { transform: translateY(1px); }
+  .btn-copper { background: var(--color-copper); color: #fff; }
+  .btn-copper:hover { background: var(--color-copper-deep); }
+  .btn-ink { background: var(--color-ink); color: #fff; }
+  .btn-ink:hover { background: #2b3237; }
+  .btn-line { border: 1.5px solid var(--color-ink); color: var(--color-ink); background: transparent; }
+  .btn-line:hover { background: var(--color-ink); color: #fff; }
+
+  /* The rating plate: the label riveted to every condenser, listing what it is and what it does.
+     Here it carries the real facts of each service: time, starting price, warranty. */
+  .plate {
+    position: relative; background: #fff; border: 1.5px solid var(--color-ink); border-radius: 0.5rem;
+    background-image:
+      radial-gradient(circle at 12px 12px, #a9b2ae 2.5px, transparent 3px),
+      radial-gradient(circle at calc(100% - 12px) 12px, #a9b2ae 2.5px, transparent 3px),
+      radial-gradient(circle at 12px calc(100% - 12px), #a9b2ae 2.5px, transparent 3px),
+      radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), #a9b2ae 2.5px, transparent 3px);
+  }
+  .plate-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--color-line); }
+  .plate-row > div { padding: 0.7rem 0.9rem; }
+  .plate-row > div + div { border-left: 1px solid var(--color-line); }
+
+  .card { background: #fff; border: 1px solid var(--color-line); border-radius: 0.75rem; }
+  .link { color: var(--color-coolant); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+  .link:hover { color: var(--color-copper-deep); }
+
+  .prose-copy p + p { margin-top: 1rem; }
+  .faq summary { list-style: none; cursor: pointer; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq[open] .faq-icon { transform: rotate(45deg); }
+}
+
+/* The hero's thermostat readout cools from the outside temperature to the set point once, on load. */
+@keyframes cool-down { from { color: var(--color-copper); } to { color: var(--color-coolant); } }
+.cool-in { animation: cool-down 2.2s ease-out 0.4s both; }
+@media (prefers-reduced-motion: reduce) { .cool-in { animation: none; color: var(--color-coolant); } }
