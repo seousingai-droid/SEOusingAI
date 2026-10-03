@@ -10,5 +10,7 @@
     "not_found_handling": "404-page",
     "run_worker_first": ["/api/*"]
   },
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  // Keep variables set in the dashboard (RESEND_API_KEY, CONTACT_TO) when GitHub builds deploy.
+  "keep_vars": true
 }
